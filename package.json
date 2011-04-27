@@ -1,0 +1,17 @@
+{
+  "name": "com.phonegap.plugin.Menu",
+  "description": "HTMLMenuElement and HTMLCommandElement polyfill to use native menus.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nitobi/phonegap-plugin-menu.git"
+  },
+  "author": "Michael Brooks <michael@michaelbrooks.ca> (http://michaelbrooks.ca)",
+  "directories": {
+    "lib": "www"
+  },
+  "engines": {
+    "phonegap": "0.9.4"
+  }
+}
+
