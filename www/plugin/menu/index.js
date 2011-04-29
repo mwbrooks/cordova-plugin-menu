@@ -4,12 +4,17 @@
         var self = this;
         var attr = {};
 
+        // Unused at the moment
         ['label', 'type'].forEach(function(property) {
             Object.defineProperty(self, property, {
                 get: function()  { return attr[property]; },
                 set: function(v) { attr[property] = v; }
             });
         });
+
+        var success = function() { console.log('created toolbar'); };
+        var fail    = function() { console.log('failed to create toolbar'); };
+        PhoneGap.exec(success, fail, 'ca.michaelbrooks.menu.toolbar', 'new');
     };
 
     HTMLMenuElement.prototype.setAttribute = function(name, value) {
