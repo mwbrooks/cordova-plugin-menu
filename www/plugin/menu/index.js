@@ -19,6 +19,11 @@
 
     HTMLMenuElement.prototype.setAttribute = function(name, value) {
         this[name] = value;
+
+        var success = function() { console.log('updated ' + name); };
+        var fail    = function() { console.log('failed to update ' + name); };
+
+        PhoneGap.exec(success, fail, 'ca.michaelbrooks.menu.toolbar', name, [value]);
     };
 
     HTMLMenuElement.prototype.getAttribute = function(name) {

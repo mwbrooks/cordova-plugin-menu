@@ -2,11 +2,28 @@
     if (typeof window.PhoneGap === 'undefined') window.PhoneGap = {};
     var phonegapExec = window.PhoneGap.exec || function() {};
 
+    var toolbarElement;
+
     var toolbar = {
-        'new': function() {
-            var element = document.createElement('div');
-            element.setAttribute('id', 'phonegap-menu-toolbar');
-            document.body.appendChild(element);
+        'new': function(success, fail, args) {
+            toolbarElement = document.createElement('div');
+            toolbarElement.setAttribute('id', 'phonegap-menu-toolbar');
+            document.body.appendChild(toolbarElement);
+            success();
+        },
+
+        'type': function(success, fail, args) {
+            // should create the toolbar here
+        },
+
+        'label': function(success, fail, args) {
+            try {
+                toolbarElement.innerText = args[0];
+                success();
+            }
+            catch(e) {
+                fail(e);
+            }
         }
     };
 
