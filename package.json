@@ -1,6 +1,6 @@
 {
   "name": "com.phonegap.plugin.Menu",
-  "description": "HTMLMenuElement and HTMLCommandElement polyfill to use native menus.",
+  "description": "HTMLMenuElement and HTMLCommandElement polyfill that enables support for menus on mobile devices.",
   "version": "0.0.1",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
     "lib": "www"
   },
   "engines": {
-    "phonegap": "0.9.4"
+    "phonegap": "0.9.5"
   }
 }
 
