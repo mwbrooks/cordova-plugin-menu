@@ -36,4 +36,16 @@
     HTMLMenuElement.prototype.removeChild = function(element) {
     };
 
+    //
+    // Override document.createElement
+    //
+
+    var _createElement = document.createElement;
+    document.createElement = function() {
+        if (arguments[0] === 'menu')
+            return new HTMLMenuElement();
+        else
+            return _createElement.apply(this, arguments);
+    };
+
 })(window);
