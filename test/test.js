@@ -44,6 +44,27 @@ test('should support getAttribute', 1, function() {
         ok(true);
 });
 
+test('should support hasAttribute', 5, function() {
+    if (!menu.hasAttribute('label'))
+        ok(true, 'supports no attribute');
+    
+    menu.setAttribute('label', 'PhoneGap');
+    if (menu.hasAttribute('label'))
+        ok(true, 'suports String');
+
+    menu.setAttribute('label', false);
+    if (menu.hasAttribute('label'))
+        ok(true, 'supports falsey boolean');
+
+    menu.setAttribute('label', null);
+    if (menu.hasAttribute('label'))
+        ok(true, 'supports null');
+
+    menu.setAttribute('label', undefined);
+    if (!menu.hasAttribute('label'))
+        ok(true, 'supports undefined as no attribute');
+});
+
 test('toolbar should have no default title', 1, function() {
     menu.setAttribute('type', 'toolbar');
 

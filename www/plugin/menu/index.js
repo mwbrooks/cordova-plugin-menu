@@ -33,6 +33,10 @@
     HTMLMenuElement.prototype.getAttribute = function(name) {
         return this[name];
     };
+    
+    HTMLMenuElement.prototype.hasAttribute = function(name) {
+        return (typeof this[name] !== 'undefined');
+    };
 
     HTMLMenuElement.prototype.appendChild = function(element) {
     };
