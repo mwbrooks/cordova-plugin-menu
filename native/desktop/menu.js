@@ -1,8 +1,5 @@
 (function(window) {
-    if (typeof window.PhoneGap === 'undefined') window.PhoneGap = {};
-    var phonegapExec = window.PhoneGap.exec || function() {};
-
-    var toolbarElement;
+    var htmlElement;
 
     var toolbar = {
         'new': function(success, fail, args) {
@@ -11,9 +8,14 @@
 
         'type': function(success, fail, args) {
             if (args[0] === 'toolbar') {
-                toolbarElement = document.createElement('div');
-                toolbarElement.setAttribute('id', 'phonegap-menu-toolbar');
-                document.body.appendChild(toolbarElement);
+                if (document.getElementById('phonegap-menu-toolbar')) {
+                    success();
+                    return;
+                }
+
+                htmlElement = document.createElement('div');
+                htmlElement.setAttribute('id', 'phonegap-menu-toolbar');
+                document.body.appendChild(htmlElement);
                 success();
             }
             else {
@@ -23,7 +25,7 @@
 
         'label': function(success, fail, args) {
             try {
-                toolbarElement.innerText = args[0];
+                htmlElement.innerText = args[0];
                 success();
             }
             catch(e) {
@@ -32,16 +34,29 @@
         }
     };
 
+    //
+    // Stub PhoneGap or backup PhoneGap.exec
+    //
+
+    if (typeof window.PhoneGap === 'undefined')
+        window.PhoneGap = {};
+
+    var phonegapExec = window.PhoneGap.exec || function() {};
+
+    //
+    // Define PhoneGap.exec for HTMLMenuElement
+    //
+
     window.PhoneGap.exec = function(success, fail, uri, action, args) {
         if (uri === 'ca.michaelbrooks.menu.toolbar') {
             try {
                 toolbar[action](success, fail, args);
             }
             catch(e) {
-                console.log('Unknown call to PhoneGap.exec:');
-                console.log('  uri:    ' + uri);
-                console.log('  action: ' + action);
-                console.log('  args:   ' + args);
+                console.log('Unknown action for ca.michaelbrooks.menu.toolbar:');
+                console.log('  => uri:    ' + uri);
+                console.log('  => action: ' + action);
+                console.log('  => args:   ' + args);
             }
         }
         else if (uri === 'ca.michaelbrooks.menu.command') {
