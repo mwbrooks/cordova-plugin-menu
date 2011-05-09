@@ -32,6 +32,18 @@ test('should render toolbar', 1, function() {
         ok(true);
 });
 
+test('should support setAttribute', 1, function() {
+    menu.setAttribute('label', 'PhoneGap');
+    ok(true);
+});
+
+test('should support getAttribute', 1, function() {
+    menu.setAttribute('label', 'PhoneGap');
+
+    if (menu.getAttribute('label') === 'PhoneGap')
+        ok(true);
+});
+
 test('toolbar should have no default title', 1, function() {
     menu.setAttribute('type', 'toolbar');
 
