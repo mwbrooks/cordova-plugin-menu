@@ -35,11 +35,15 @@ __HTMLMenuElement:__
 
 - appendChild(...)
 - removeChild(...)
-- setAttribute(...);
+- setAttribute(...)
+- getAttribute(...)
+- hasAttribute(...)
 - removeAttribute(...)
 
 __HTMLCommandElement:__
 
-- setAttribute(...);
+- setAttribute(...)
+- getAttribute(...)
+- hasAttribute(...)
 - removeAttribute(...)
 
