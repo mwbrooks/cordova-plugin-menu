@@ -6,14 +6,19 @@
 
     var toolbar = {
         'new': function(success, fail, args) {
-            toolbarElement = document.createElement('div');
-            toolbarElement.setAttribute('id', 'phonegap-menu-toolbar');
-            document.body.appendChild(toolbarElement);
             success();
         },
 
         'type': function(success, fail, args) {
-            // should create the toolbar here
+            if (args[0] === 'toolbar') {
+                toolbarElement = document.createElement('div');
+                toolbarElement.setAttribute('id', 'phonegap-menu-toolbar');
+                document.body.appendChild(toolbarElement);
+                success();
+            }
+            else {
+                fail();
+            }
         },
 
         'label': function(success, fail, args) {
