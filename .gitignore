@@ -3,3 +3,4 @@
 
 *.mode1v3
 *.pbxuser
+/native/iOS/test/build/
