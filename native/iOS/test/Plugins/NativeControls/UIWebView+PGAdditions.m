@@ -16,7 +16,10 @@ static char nameKey; // CGRect
 {
 	NSAssert(siblingView.frame.size.height < self.frame.size.height, @"PhoneGap: Cannot add a sibling view that is larger than the UIWebView");
 
+	CGRect siblingViewFrame = siblingView.frame;
 	CGRect webViewFrame = self.frame;
+	CGRect screenBounds = [[UIScreen mainScreen] bounds];
+	
 	NSEnumerator* enumerator = [self.superview.subviews objectEnumerator];
 	UIView* subview;
 	
@@ -37,6 +40,10 @@ static char nameKey; // CGRect
 			webViewFrame.origin.y += siblingView.frame.size.height;
 			webViewFrame.size.height -= siblingView.frame.size.height;
 			self.frame = webViewFrame;
+			
+			// make sure the siblingView's frame is to the top
+			siblingViewFrame.origin.y = 0;
+			siblingView.frame = siblingViewFrame;
 		}
 			break;
 		case PGLayoutPositionBottom:
@@ -53,6 +60,10 @@ static char nameKey; // CGRect
 			// webView is shrunk by new view's height (no origin shift)
 			webViewFrame.size.height -= siblingView.frame.size.height;
 			self.frame = webViewFrame;
+			
+			// make sure the siblingView's frame is to the bottom
+			siblingViewFrame.origin.y = screenBounds.size.height - siblingView.frame.size.height;
+			siblingView.frame = siblingViewFrame;
 		}
 			break;
 		default: // not specified, or unsupported, so we return
@@ -122,6 +133,7 @@ static char nameKey; // CGRect
 	NSArray* subviews = self.superview.subviews; 
 	NSInteger count = [subviews count];
 	
+	// for a low number of subviews, this algorithm is acceptable
 	for (NSInteger i=0; i < count; ++i)
 	{
 		UIView* currentView = [subviews objectAtIndex:i];
