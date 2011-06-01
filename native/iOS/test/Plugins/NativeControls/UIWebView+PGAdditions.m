@@ -113,7 +113,7 @@ static char nameKey; // CGRect
 	{
 		return PGLayoutPositionBottom;
 	} 
-	else if (fromViewFrame.origin.y < (siblingFrame.origin.y + siblingFrame.size.height)) 
+	else if (fromViewFrame.origin.y > (siblingFrame.origin.y + siblingFrame.size.height)) 
 	{
 		return PGLayoutPositionTop;
 	} 
