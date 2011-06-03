@@ -345,7 +345,7 @@
     NSString* imageName = [arguments objectAtIndex:2];
     int tag             = [[arguments objectAtIndex:3] intValue];
 	
-    UITabBarItem *item = nil;    
+    UIBarButtonItem* item = nil;    
     if ([imageName length] > 0) 
 	{
         UIBarButtonSystemItem systemItem = -1;
@@ -375,6 +375,7 @@
 
         if (systemItem != -1) {
             item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:self action:@selector(toolBarDidSelectItem:)];
+			item.style = UIBarButtonItemStyleBordered;
 			item.tag = tag;
 		}
     }
@@ -383,7 +384,7 @@
 	{
 		if (title && [title length] > 0) {
 			NSLog(@"Creating toolbarItem with title");
-			item = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain 
+			item = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered 
 												   target:self action:@selector(toolBarDidSelectItem:)];
 		} else {
 			UIImage* image = [UIImage imageNamed:imageName];
@@ -393,7 +394,7 @@
 			}
 			
 			NSLog(@"Creating toolbarItem with custom image");
-			item = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain 
+			item = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleBordered
 												   target:self action:@selector(toolBarDidSelectItem:)];
 		}
 		item.tag = tag;
