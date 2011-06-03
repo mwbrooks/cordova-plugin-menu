@@ -12,7 +12,9 @@
  */
 function NativeControls() {
     this.tabBarTag = 0;
+    this.toolBarTag = 0;
     this.tabBarCallbacks = {};
+    this.toolBarCallbacks = {};
 }
 
 /**
@@ -23,22 +25,32 @@ NativeControls.prototype.createTabBar = function() {
 };
 
 /**
+ * Remove a native tab bar
+ */
+NativeControls.prototype.removeTabBar = function() {
+    PhoneGap.exec("NativeControls.removeTabBar");
+};
+
+/**
  * Show a tab bar.  The tab bar has to be created first.
  * @param {Object} [options] Options indicating how the tab bar should be shown:
  * - \c height integer indicating the height of the tab bar (default: \c 49)
  * - \c position specifies whether the tab bar will be placed at the \c top or \c bottom of the screen (default: \c bottom)
  */
-NativeControls.prototype.showTabBar = function(options) {
-    if (!options) options = {};
-    PhoneGap.exec("NativeControls.showTabBar", options);
+NativeControls.prototype.showTabBar = function(animate) {
+    if (animate == undefined || animate == null) {
+        animate = true;
+	}
+    PhoneGap.exec("NativeControls.showTabBar", { animate: animate });
 };
 
 /**
  * Hide a tab bar.  The tab bar has to be created first.
  */
 NativeControls.prototype.hideTabBar = function(animate) {
-    if (animate == undefined || animate == null)
+    if (animate == undefined || animate == null) {
         animate = true;
+	}
     PhoneGap.exec("NativeControls.hideTabBar", { animate: animate });
 };
 
@@ -72,7 +84,6 @@ NativeControls.prototype.createTabBarItem = function(name, label, image, options
 	var tag = this.tabBarTag++;
     if (options && 'onSelect' in options && typeof(options['onSelect']) == 'function') {
         this.tabBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name};
-        //delete options.onSelect;
     }
 	
     PhoneGap.exec("NativeControls.createTabBarItem", name, label, image, tag, options);
@@ -90,19 +101,13 @@ NativeControls.prototype.updateTabBarItem = function(name, options) {
 };
 
 /**
- * Show previously created items on the tab bar
- * @param {String} arguments... the item names to be shown
- * @param {Object} [options] dictionary of options, notable options including:
- *  - \c animate indicates that the items should animate onto the tab bar
- * @see createTabBarItem
- * @see createTabBar
+ * Remove an existing tab bar item.
+ * @param {String} name internal name used to represent this item when it was created
+ * @param {Object} options Options for customizing the individual tab item
  */
-NativeControls.prototype.showTabBarItems = function() {
-    var parameters = [ "NativeControls.showTabBarItems" ];
-    for (var i = 0; i < arguments.length; i++) {
-        parameters.push(arguments[i]);
-    }
-    PhoneGap.exec.apply(this, parameters);
+NativeControls.prototype.removeTabBarItem = function(name, options) {
+    if (!options) options = {};
+    PhoneGap.exec("NativeControls.removeTabBarItem", name, options);
 };
 
 /**
@@ -121,8 +126,19 @@ NativeControls.prototype.selectTabBarItem = function(tab) {
  */
 NativeControls.prototype.tabBarItemSelected = function(tag) 
 {
-    if (typeof(this.tabBarCallbacks[tag].onSelect) == 'function')
+    if (typeof(this.tabBarCallbacks[tag].onSelect) == 'function') {
         this.tabBarCallbacks[tag].onSelect(this.tabBarCallbacks[tag].name);
+	}
+};
+
+// /////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Remove a toolbar.
+ */
+NativeControls.prototype.removeToolBar = function() 
+{
+    PhoneGap.exec("NativeControls.removeToolBar");
 };
 
 /**
@@ -134,77 +150,87 @@ NativeControls.prototype.createToolBar = function()
 };
 
 /**
- * Function called when a tab bar item has been selected.
- * @param {String} title the title to set within the toolbar
+ * Create a new toolbar item for use on a previously created toolbar.
+ *
+ * If the supplied image name is one of the labels listed below, then this method will construct a toolbar button
+ * using the standard system buttons.  Note that if you use one of the system images, that the \c title you supply will be ignored.
+ *
+ * <b>Toolbar Buttons</b>
+ *   - toolbarButton:Done      
+ *   - toolbarButton:Cancel   
+ *   - toolbarButton:Edit
+ *   - toolbarButton:Save
+ *   - toolbarButton:Add
+ *   - toolbarButton:FlexibleSpace 
+ *   - toolbarButton:FixedSpace
+ *   - toolbarButton:Compose
+ *   - toolbarButton:Reply
+ *   - toolbarButton:Action
+ *   - toolbarButton:Organize
+ *   - toolbarButton:Bookmarks
+ *   - toolbarButton:Search
+ *   - toolbarButton:Refresh
+ *   - toolbarButton:Stop
+ *   - toolbarButton:Camera
+ *   - toolbarButton:Trash
+ *   - toolbarButton:Play
+ *   - toolbarButton:Pause
+ *   - toolbarButton:Rewind
+ *   - toolbarButton:FastForward
+ *   - toolbarButton:Undo
+ *   - toolbarButton:Redo
+ *
+ * @param {String} name internal name to refer to this toolbar item by
+ * @param {String} [title] title text to show on the toolbar item, or null if no text should be shown
+ * @param {String} [image] image filename or internal identifier to show, or null if now image should be shown
+ * @param {Object} [options] Options for customizing the individual toolbar item
  */
-NativeControls.prototype.setToolBarTitle = function(title) 
+NativeControls.prototype.createToolBarItem = function(name, label, image, options) {
+    
+	var tag = this.toolBarTag++;
+    if (options && 'onSelect' in options && typeof(options['onSelect']) == 'function') {
+        this.toolBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name };
+    }
+	
+    PhoneGap.exec("NativeControls.createToolBarItem", name, label, image, tag, options);
+};
+
+/**
+ * Function called when a toolbar item has been selected.
+ * @param {Number} tag the tag number for the item that has been selected
+ */
+NativeControls.prototype.toolBarItemSelected = function(tag) 
 {
-    PhoneGap.exec("NativeControls.setToolBarTitle", title);
+    if (typeof(this.toolBarCallbacks[tag].onSelect) == 'function') {
+        this.toolBarCallbacks[tag].onSelect(this.toolBarCallbacks[tag].name);
+	}
 };
 
 
-
-NativeControls.prototype.createActionSheet = function(buttonTitles,actionSheetTitle,cancelButtonIndex,destructiveButtonIndex)
-{
-	var options = {};
-	
-	if(actionSheetTitle != null)
-	{
-		options.title = actionSheetTitle;
+NativeControls.prototype.showToolBar = function(animate) {
+    if (animate == undefined || animate == null) {
+        animate = true;
 	}
-	if(cancelButtonIndex != null)
-	{
-		options.cancelButtonIndex = cancelButtonIndex;
+    PhoneGap.exec("NativeControls.showToolBar", { animate: animate });
+};
+
+NativeControls.prototype.hideToolBar = function(animate) {
+    if (animate == undefined || animate == null) {
+        animate = true;
 	}
-	if(destructiveButtonIndex != null)
-	{
-		options.destructiveButtonIndex = destructiveButtonIndex;
-	}
+    PhoneGap.exec("NativeControls.hideToolBar", { animate: animate });
+};
 
-	var params = [ "NativeControls.createActionSheet",options ];
-    for (var i = 0; i < buttonTitles.length; i++) 
-	{
-        params.push(buttonTitles[i]);
-    }
-    PhoneGap.exec.apply(this, params);
-	
-	this.actionSheetDelegate = {};
-	return this.actionSheetDelegate;
-}
 
-NativeControls.prototype._onActionSheetDismissed = function(index)
+NativeControls.install = function()
 {
-	this.actionSheetDelegate.onActionSheetDismissed(index);
-}
-
-PhoneGap.addConstructor(function() 
-{
-	if(!window.plugins)
-	{
+	if(!window.plugins)	{
 		window.plugins = {};
 	}
-    window.plugins.nativeControls = new NativeControls();
-});
-
-function StatusBar()
-{
 	
-}
+	if (!window.plugins.nativeControls) {
+		window.plugins.nativeControls = new NativeControls();
+	}
+};
 
-StatusBar.prototype.setHidden = function(bHide)
-{
-	PhoneGap.exec("StatusBar.setHidden",bHide);
-}
-
-PhoneGap.addConstructor(
-						
-						function() 
-						{
-						if (typeof window.plugins == "undefined") 
-						window.plugins = {};
-						
-						if (typeof window.plugins.statusBar == "undefined")
-						window.plugins.statusBar = new StatusBar();
-						
-						}
-						);
+PhoneGap.addConstructor(NativeControls.install);

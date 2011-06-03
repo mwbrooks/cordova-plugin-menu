@@ -36,7 +36,7 @@
 	
 	function onBodyLoad()
 	{		
-		document.addEventListener("deviceready",onDeviceReady,false);
+		document.addEventListener("deviceready", onDeviceReady, false);
 	}
 	
 	/* When this function is called, PhoneGap has been initialized and is ready to roll */
@@ -45,14 +45,33 @@
 	for more details -jm */
 	function onDeviceReady()
 	{
-		// do your thing!
-		navigator.notification.alert("PhoneGap is working")
+		try {
+		
+			var nc = window.plugins.nativeControls;
+			
+//			nc.createTabBar();
+//			nc.hideTabBar();
+			nc.createToolBar();
+//			nc.removeTabBar();
+			nc.removeToolBar();
+			nc.createToolBar();
+			nc.createTabBar();
+			nc.removeTabBar();
+			nc.createTabBar();
+			
+		} catch (e) {
+			alert(e);
+		}
 	}
     
     </script>
   </head>
-  <body onload="onBodyLoad()">
-  	  <h1>Hey, it's PhoneGap!</h1>
-	  <p>Don't know how to get started? Check out <em><a href="http://github.com/phonegap/phonegap-start">PhoneGap Start</a></em>  	
+  <body style="margin:0; padding:0;" onload="onBodyLoad()">
+	<span style="position:absolute; top:0;">
+		This is some text at the top of the webview.
+	</span>
+	<span style="position:absolute;bottom:0">
+		This is some text at the bottom of the webview.
+	</span>  
   </body>
 </html>

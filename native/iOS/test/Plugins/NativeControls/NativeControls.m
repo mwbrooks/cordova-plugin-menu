@@ -11,6 +11,7 @@
 //  Copyright 2009 Decaf Ninja Software. All rights reserved.
 
 #import "UIWebView+PGAdditions.h"
+#import "PhoneGapDelegate.h"
 #import "NativeControls.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -22,13 +23,15 @@
 -(PhoneGapCommand*) initWithWebView:(UIWebView*)theWebView
 {
     self = (NativeControls*)[super initWithWebView:theWebView];
-    if (self) {
+    if (self) 
+	{
         self.tabBarItems = [[NSMutableDictionary alloc] initWithCapacity:5];
+        self.toolBarItems = [[NSMutableDictionary alloc] initWithCapacity:5];
     }
     return self;
 }
 
-- (void)dealloc
+- (void) dealloc
 {
 	self.tabBar = nil;
 	self.toolBar = nil;
@@ -41,72 +44,66 @@
 #pragma mark -
 #pragma mark TabBar
 
-/**
- * Create a native tab bar at either the top or the bottom of the display.
- * @brief creates a tab bar
- * @param arguments unused
- * @param options unused
- */
-- (void)createTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) removeTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
 {
+	if (!self.tabBar) {
+		return;
+	}
+	
+	[webView pg_removeSiblingView:self.tabBar withAnimation:NO];
+	[webView pg_relayout:NO];
+	
+	self.tabBar = nil;
+}
+
+
+- (void) createTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+	if (self.tabBar) {
+		return;
+	}
+	
     self.tabBar = [UITabBar new];
-    [self.tabBar sizeToFit];
     self.tabBar.delegate = self;
     self.tabBar.multipleTouchEnabled   = NO;
     self.tabBar.autoresizesSubviews    = YES;
-    self.tabBar.hidden                 = YES;
+    self.tabBar.hidden                 = NO;
     self.tabBar.userInteractionEnabled = YES;
 	self.tabBar.opaque = YES;
+    [self.tabBar sizeToFit];
 	
 	self.webView.superview.autoresizesSubviews = YES;
-}
-
-/**
- * Show the tab bar after its been created.
- * @brief show the tab bar
- * @param arguments unused
- * @param options used to indicate options for where and how the tab bar should be placed
- * - \c height integer indicating the height of the tab bar (default: \c 49)
- * - \c position specifies whether the tab bar will be placed at the \c top or \c bottom of the screen (default: \c bottom)
- */
-- (void)showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
-{
-    if (!self.tabBar) {
-        [self createTabBar:nil withDict:nil];
-	}
 	
-	// if we are calling this again when its shown, reset
-	if (!self.tabBar.hidden) {
-		return;
-	}
-
-    CGFloat height = 0.0f;
-    BOOL atBottom = YES;
+	BOOL atBottom = YES;
 	
-//	CGRect offsetRect = [ [UIApplication sharedApplication] statusBarFrame];
-    
     if (options) {
-        height   = [[options objectForKey:@"height"] floatValue];
         atBottom = [[options objectForKey:@"position"] isEqualToString:@"bottom"];
     }
-	if (height == 0) {
-		height = 49.0f;
-	}
 	
-    self.tabBar.hidden = NO;
 	[self.webView pg_addSiblingView:self.tabBar withPosition:(atBottom?PGLayoutPositionBottom:PGLayoutPositionTop) withAnimation:NO];
 }
 
 /**
- * Hide the tab bar
- * @brief hide the tab bar
- * @param arguments unused
- * @param options unused
+ * Show the tab bar after its been created.
  */
-- (void)hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
+	}
+    
+	self.tabBar.hidden = YES;
+	
+	[self.webView pg_relayout:NO];
+}
+
+/**
+ * Hide the tab bar
+ */
+- (void) hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    if (!self.tabBar) {
+        return;
 	}
     
 	self.tabBar.hidden = YES;
@@ -115,7 +112,7 @@
 }
 
 /**
- * Create a new tab bar item for use on a previously created tab bar.  Use ::showTabBarItems to show the new item on the tab bar.
+ * Create a new tab bar item for use on a previously created tab bar.
  *
  * If the supplied image name is one of the labels listed below, then this method will construct a tab button
  * using the standard system buttons.  Note that if you use one of the system images, that the \c title you supply will be ignored.
@@ -141,19 +138,20 @@
  * @param options Options for customizing the individual tab item
  *  - \c badge value to display in the optional circular badge on the item; if nil or unspecified, the badge will be hidden
  */
-- (void)createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
 	}
 
-    NSString  *name      = [arguments objectAtIndex:0];
-    NSString  *title     = [arguments objectAtIndex:1];
-    NSString  *imageName = [arguments objectAtIndex:2];
-    int tag              = [[arguments objectAtIndex:3] intValue];
+    NSString* name      = [arguments objectAtIndex:0];
+    NSString* title     = [arguments objectAtIndex:1];
+    NSString* imageName = [arguments objectAtIndex:2];
+    int tag             = [[arguments objectAtIndex:3] intValue];
 
     UITabBarItem *item = nil;    
-    if ([imageName length] > 0) {
+    if ([imageName length] > 0) 
+	{
         UITabBarSystemItem systemItem = -1;
         if ([imageName isEqualToString:@"tabButton:More"])       systemItem = UITabBarSystemItemMore;
         if ([imageName isEqualToString:@"tabButton:Favorites"])  systemItem = UITabBarSystemItemFavorites;
@@ -167,6 +165,7 @@
         if ([imageName isEqualToString:@"tabButton:Downloads"])  systemItem = UITabBarSystemItemDownloads;
         if ([imageName isEqualToString:@"tabButton:MostRecent"]) systemItem = UITabBarSystemItemMostRecent;
         if ([imageName isEqualToString:@"tabButton:MostViewed"]) systemItem = UITabBarSystemItemMostViewed;
+		
         if (systemItem != -1) {
             item = [[UITabBarItem alloc] initWithTabBarSystemItem:systemItem tag:tag];
 		}
@@ -174,6 +173,12 @@
     
     if (item == nil) {
         NSLog(@"Creating with custom image and title");
+		UIImage* image = [UIImage imageNamed:imageName];
+		if (!image) {
+			NSString* imagePath = [[PhoneGapDelegate class] pathForResource:imageName];
+			image = [UIImage imageWithContentsOfFile:imagePath];
+		}
+		
         item = [[UITabBarItem alloc] initWithTitle:title image:[UIImage imageNamed:imageName] tag:tag];
     }
 
@@ -181,63 +186,60 @@
         item.badgeValue = [options objectForKey:@"badge"];
 	}
     
-    [self.tabBarItems setObject:item forKey:name];
+    BOOL animateItems = YES;
+    if ([options objectForKey:@"animate"]) {
+        animateItems = [(NSString*)[options objectForKey:@"animate"] boolValue];
+	}
+	
+    NSMutableArray* items = [[self.tabBar items] mutableCopy];
+	[items addObject:item];
+	
+    [self.tabBar setItems:items animated:animateItems];
+	[items release];
+	
+	[self.toolBarItems setObject:item forKey:name];
 	[item release];
 }
 
 
 /**
- * Update an existing tab bar item to change its badge value.
- * @brief update the badge value on an existing tab bar item
- * @param arguments Parameters used to identify the tab bar item to update
- *  -# \c name internal name used to represent this item when it was created
- * @param options Options for customizing the individual tab item
- *  - \c badge value to display in the optional circular badge on the item; if nil or unspecified, the badge will be hidden
+ * Update an existing tab bar item to change its title/badge value.
  */
-- (void)updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
 	}
 
-    NSString  *name = [arguments objectAtIndex:0];
-    UITabBarItem *item = [self.tabBarItems objectForKey:name];
+    NSString* name = [arguments objectAtIndex:0];
+    UITabBarItem* item = [self.tabBarItems objectForKey:name];
     if (item) {
+		item.title = [options objectForKey:@"title"];
         item.badgeValue = [options objectForKey:@"badge"];
 	}
 }
 
-
 /**
- * Show previously created items on the tab bar
- * @brief show a list of tab bar items
- * @param arguments the item names to be shown
- * @param options dictionary of options, notable options including:
- *  - \c animate indicates that the items should animate onto the tab bar
- * @see createTabBarItem
- * @see createTabBar
+ * Remove an existing tab bar item
+ * @param arguments Parameters used to identify the tab bar item to update
+ *  -# \c name internal name used to represent this item when it was created
  */
-- (void)showTabBarItems:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) removeTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
 	}
-    
-    int i, count = [arguments count];
-    NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:count];
-    for (i = 0; i < count; i++) {
-        NSString *itemName = [arguments objectAtIndex:i];
-        UITabBarItem *item = [self.tabBarItems objectForKey:itemName];
-        if (item) {
-            [items addObject:item];
-		}
-    }
-    
-    BOOL animateItems = YES;
-    if ([options objectForKey:@"animate"]) {
-        animateItems = [(NSString*)[options objectForKey:@"animate"] boolValue];
+	
+    NSString* name = [arguments objectAtIndex:0];
+    UITabBarItem* item = [self.tabBarItems objectForKey:name];
+	
+	NSMutableArray* items = [self.tabBar.items mutableCopy];
+	NSUInteger index = [items indexOfObject:item];
+	if (index != NSNotFound) {
+		[items removeObjectAtIndex:index];
+		[self.tabBar setItems:items animated:YES];
 	}
-    [self.tabBar setItems:items animated:animateItems];
+	
 	[items release];
 }
 
@@ -248,40 +250,49 @@
  * @see createTabBarItem
  * @see showTabBarItems
  */
-- (void)selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
 	}
 
-    NSString *itemName = [arguments objectAtIndex:0];
-    UITabBarItem *item = [self.tabBarItems objectForKey:itemName];
-    if (item) {
-        self.tabBar.selectedItem = item;
-	}
-    else {
-        self.tabBar.selectedItem = nil;
-	}
+    NSString* itemName = [arguments objectAtIndex:0];
+    UITabBarItem* item = [self.tabBarItems objectForKey:itemName];
+    self.tabBar.selectedItem = item;
 }
 
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+- (void)tabBar:(UITabBar*)tabBar didSelectItem:(UITabBarItem *)item
 {
-    NSString * jsCallBack = [NSString stringWithFormat:@"window.plugins.nativeControls.tabBarItemSelected(%d);", item.tag];    
+    NSString* jsCallBack = [NSString stringWithFormat:@"window.plugins.nativeControls.tabBarItemSelected(%d);", item.tag];    
     [super writeJavascript:jsCallBack];
 }
 
 #pragma mark -
 #pragma mark ToolBar
 
-
-/*********************************************************************************/
-- (void)createToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) removeToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
 {
+	if (!self.toolBar) {
+		return;
+	}
+	
+	[webView pg_removeSiblingView:self.toolBar withAnimation:NO];
+	[webView pg_relayout:NO];
+	
+	self.toolBar = nil;
+}
+
+- (void) createToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+	if (self.toolBar) {
+		return;
+	}
+	
     CGFloat height   = 45.0f;
     BOOL atTop       = YES;
     UIBarStyle style = UIBarStyleBlackOpaque;
 
-    NSDictionary* toolBarSettings = options;//[settings objectForKey:@"ToolBarSettings"];
+    NSDictionary* toolBarSettings = options;
     if (toolBarSettings) 
 	{
         if ([toolBarSettings objectForKey:@"height"])
@@ -314,12 +325,13 @@
 	[self.webView pg_addSiblingView:self.toolBar withPosition:atTop?PGLayoutPositionTop:PGLayoutPositionBottom withAnimation:NO];
 }
 
-- (void)toolBarDidSelectItem:(UIBarButtonItem*)item
+- (void) toolBarDidSelectItem:(UIBarButtonItem*)item
 {
-	//TODO:
+    NSString* jsCallBack = [NSString stringWithFormat:@"window.plugins.nativeControls.toolBarItemSelected(%d);", item.tag];    
+    [super writeJavascript:jsCallBack];
 }
 
-- (void)createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     if (!self.toolBar) {
         [self createToolBar:nil withDict:nil];
@@ -330,35 +342,9 @@
     NSString* imageName = [arguments objectAtIndex:2];
     int tag             = [[arguments objectAtIndex:3] intValue];
 	
-	/*
-	 UIBarButtonSystemItemDone,
-	 UIBarButtonSystemItemCancel,
-	 UIBarButtonSystemItemEdit,  
-	 UIBarButtonSystemItemSave,  
-	 UIBarButtonSystemItemAdd,
-	 UIBarButtonSystemItemFlexibleSpace,
-	 UIBarButtonSystemItemFixedSpace,
-	 UIBarButtonSystemItemCompose,
-	 UIBarButtonSystemItemReply,
-	 UIBarButtonSystemItemAction,
-	 UIBarButtonSystemItemOrganize,
-	 UIBarButtonSystemItemBookmarks,
-	 UIBarButtonSystemItemSearch,
-	 UIBarButtonSystemItemRefresh,
-	 UIBarButtonSystemItemStop,
-	 UIBarButtonSystemItemCamera,
-	 UIBarButtonSystemItemTrash,
-	 UIBarButtonSystemItemPlay,
-	 UIBarButtonSystemItemPause,
-	 UIBarButtonSystemItemRewind,
-	 UIBarButtonSystemItemFastForward,
-	 UIBarButtonSystemItemUndo,
-	 UIBarButtonSystemItemRedo,
-	 
-	 */
-	
     UITabBarItem *item = nil;    
-    if ([imageName length] > 0) {
+    if ([imageName length] > 0) 
+	{
         UIBarButtonSystemItem systemItem = -1;
         if ([imageName isEqualToString:@"toolbarButton:Done"])       systemItem = UIBarButtonSystemItemDone;
         if ([imageName isEqualToString:@"toolbarButton:Cancel"])       systemItem = UIBarButtonSystemItemCancel;
@@ -390,12 +376,30 @@
 		}
     }
     
-    if (item == nil && [title length] == 0) {
-        NSLog(@"Creating with custom image and title");
-		item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageName] style:UIBarButtonItemStylePlain 
-																				   target:self action:@selector(toolBarDidSelectItem:)];
+    if (item == nil) 
+	{
+		if (title && [title length] > 0) {
+			NSLog(@"Creating toolbarItem with title");
+			item = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain 
+												   target:self action:@selector(toolBarDidSelectItem:)];
+		} else {
+			UIImage* image = [UIImage imageNamed:imageName];
+			if (!image) {
+				NSString* imagePath = [[PhoneGapDelegate class] pathForResource:imageName];
+				image = [UIImage imageWithContentsOfFile:imagePath];
+			}
+			
+			NSLog(@"Creating toolbarItem with custom image");
+			item = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain 
+												   target:self action:@selector(toolBarDidSelectItem:)];
+		}
 		item.tag = tag;
-    }	
+    }
+	
+    BOOL animateItems = YES;
+    if ([options objectForKey:@"animate"]) {
+        animateItems = [(NSString*)[options objectForKey:@"animate"] boolValue];
+	}
 	
     NSMutableArray* items = [[self.toolBar items] mutableCopy];
 	[items addObject:item];
@@ -406,5 +410,57 @@
 	[self.toolBarItems setObject:item forKey:name];
 }
 
+/**
+ * Remove an existing toolbar item
+ * @param arguments Parameters used to identify the toolbar item to update
+ *  -# \c name internal name used to represent this item when it was created
+ */
+- (void) removeToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    if (!self.toolBar) {
+        [self createToolBar:nil withDict:nil];
+	}
+	
+    NSString* name = [arguments objectAtIndex:0];
+    UIBarButtonItem* item = [self.toolBarItems objectForKey:name];
+	
+	NSMutableArray* items = [self.toolBar.items mutableCopy];
+	NSUInteger index = [items indexOfObject:item];
+	if (index != NSNotFound)
+	{
+		[items removeObjectAtIndex:index];
+		[self.tabBar setItems:items animated:YES];
+	}
+	
+	[items release];
+}
+
+/**
+ * Show the toolbar after its been created.
+ */
+- (void) showToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    if (!self.toolBar) {
+        [self createToolBar:nil withDict:nil];
+	}
+    
+	self.toolBar.hidden = YES;
+	
+	[self.webView pg_relayout:NO];
+}
+
+/**
+ * Hide the toolbar
+ */
+- (void) hideToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    if (!self.toolBar) {
+        return;
+	}
+    
+	self.toolBar.hidden = YES;
+	
+	[self.webView pg_relayout:NO];
+}
 
 @end

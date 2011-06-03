@@ -28,18 +28,22 @@
 
 /* Tab Bar methods 
  */
-- (void)createTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void)createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-
-- (void)showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void)hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void)showTabBarItems:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void)updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void)selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) createTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) removeTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) removeTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 /* Tool Bar methods
  */
-- (void)createToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void)createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) createToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) removeToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) removeToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) showToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) hideToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 @end
