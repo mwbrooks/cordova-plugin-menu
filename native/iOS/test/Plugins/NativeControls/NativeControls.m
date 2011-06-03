@@ -10,7 +10,6 @@
 //  Created by Michael Nachbaur on 13/04/09.
 //  Copyright 2009 Decaf Ninja Software. All rights reserved.
 
-#import "UIWebView+PGAdditions.h"
 #import "PhoneGapDelegate.h"
 #import "NativeControls.h"
 
@@ -19,6 +18,7 @@
 @implementation NativeControls
 
 @synthesize tabBar, toolBar, tabBarItems, toolBarItems;
+@synthesize lastTabBarPosition, lastToolBarPosition;
 
 -(PhoneGapCommand*) initWithWebView:(UIWebView*)theWebView
 {
@@ -80,7 +80,8 @@
         atBottom = [[options objectForKey:@"position"] isEqualToString:@"bottom"];
     }
 	
-	[self.webView pg_addSiblingView:self.tabBar withPosition:(atBottom?PGLayoutPositionBottom:PGLayoutPositionTop) withAnimation:NO];
+	self.lastTabBarPosition = atBottom?PGLayoutPositionBottom:PGLayoutPositionTop;
+	[self.webView pg_addSiblingView:self.tabBar withPosition:self.lastTabBarPosition withAnimation:NO];
 }
 
 /**
@@ -92,9 +93,9 @@
         [self createTabBar:nil withDict:nil];
 	}
     
-	self.tabBar.hidden = YES;
-	
-	[self.webView pg_relayout:NO];
+	if (![self.webView pg_hasSiblingView:self.tabBar]) {
+		[self.webView pg_addSiblingView:self.tabBar withPosition:self.lastTabBarPosition withAnimation:NO];
+	}
 }
 
 /**
@@ -105,10 +106,11 @@
     if (!self.tabBar) {
         return;
 	}
-    
-	self.tabBar.hidden = YES;
-
-	[self.webView pg_relayout:NO];
+	
+	if ([self.webView pg_hasSiblingView:self.tabBar]) {
+		[webView pg_removeSiblingView:self.tabBar withAnimation:NO];
+		[self.webView pg_relayout:NO];
+	}
 }
 
 /**
@@ -325,7 +327,8 @@
     self.toolBar.userInteractionEnabled = YES;
     self.toolBar.barStyle               = style;
 	
-	[self.webView pg_addSiblingView:self.toolBar withPosition:atTop?PGLayoutPositionTop:PGLayoutPositionBottom withAnimation:NO];
+	self.lastToolBarPosition = atTop?PGLayoutPositionTop:PGLayoutPositionBottom;
+	[self.webView pg_addSiblingView:self.toolBar withPosition:self.lastToolBarPosition withAnimation:NO];
 }
 
 - (void) toolBarDidSelectItem:(UIBarButtonItem*)item
@@ -451,9 +454,9 @@
         [self createToolBar:nil withDict:nil];
 	}
     
-	self.toolBar.hidden = YES;
-	
-	[self.webView pg_relayout:NO];
+	if (![self.webView pg_hasSiblingView:self.toolBar]) {
+		[self.webView pg_addSiblingView:self.toolBar withPosition:self.lastToolBarPosition withAnimation:NO];
+	}
 }
 
 /**
@@ -465,9 +468,10 @@
         return;
 	}
     
-	self.toolBar.hidden = YES;
-	
-	[self.webView pg_relayout:NO];
+	if ([self.webView pg_hasSiblingView:self.toolBar]) {
+		[webView pg_removeSiblingView:self.toolBar withAnimation:NO];
+		[webView pg_relayout:NO];
+	}
 }
 
 @end

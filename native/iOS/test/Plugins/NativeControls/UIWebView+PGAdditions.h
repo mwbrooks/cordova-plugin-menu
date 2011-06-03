@@ -44,6 +44,13 @@ typedef enum {
  */
 - (void) pg_removeSiblingView:(UIView*) siblingView withAnimation:(BOOL)animate;
 
+
+/*
+ * Returns true if the sibling view exists.
+ *
+ */
+- (BOOL) pg_hasSiblingView:(UIView*) siblingView;
+
 /*
  * Re-lays out all the sibling UIViews to fill the available height.
  *

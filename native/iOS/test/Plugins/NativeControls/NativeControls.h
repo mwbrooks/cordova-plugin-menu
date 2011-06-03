@@ -15,11 +15,14 @@
 #import <UIKit/UITabBar.h>
 #import <UIKit/UIToolbar.h>
 #import "PhoneGapCommand.h"
+#import "UIWebView+PGAdditions.h"
 
 @interface NativeControls : PhoneGapCommand <UITabBarDelegate, UIActionSheetDelegate> {
 
 }
 
+@property (nonatomic, assign) PGLayoutPosition lastTabBarPosition;
+@property (nonatomic, assign) PGLayoutPosition lastToolBarPosition;
 @property (nonatomic, retain) UITabBar* tabBar;
 @property (nonatomic, retain) UIToolbar* toolBar;
 @property (nonatomic, retain) NSMutableDictionary* tabBarItems;

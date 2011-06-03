@@ -49,15 +49,14 @@
 		
 			var nc = window.plugins.nativeControls;
 			
-//			nc.createTabBar();
-//			nc.hideTabBar();
+			nc.createTabBar();
 			nc.createToolBar();
-//			nc.removeTabBar();
+			nc.removeTabBar();
 			nc.removeToolBar();
 			nc.createToolBar();
 			nc.createTabBar();
-			nc.removeTabBar();
-			nc.createTabBar();
+//			nc.removeTabBar();
+//			nc.createTabBar();
 			
 			var tabHandler = function(name) {
 				navigator.notification.alert(name, null, "TabBar");
@@ -81,8 +80,14 @@
 			nc.createToolBarItem("tool2-n", "tool2-l", "alarm.png",{ onSelect: toolHandler }); // either label or image, here label takes precedent
 			nc.createToolBarItem("tool3-n", null, "alarm.png",{ onSelect: toolHandler }); // here no label, so image is used
 			nc.createToolBarItem("tool4-remove", "remove me", "",{ onSelect: removeToolHandler }); // either label or image, here label takes precedent
-
 			
+			
+//			nc.hideToolBar();
+//			nc.showToolBar();
+//			nc.hideTabBar();
+//			nc.showTabBar();
+
+
 		} catch (e) {
 			alert(e);
 		}

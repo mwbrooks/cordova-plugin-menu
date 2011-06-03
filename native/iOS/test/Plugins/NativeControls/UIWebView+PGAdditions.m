@@ -79,13 +79,25 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 			// make sure the siblingView's frame is to the bottom
 			siblingViewFrame.origin.y = (screenBounds.size.height - statusBarRect.size.height) - siblingView.frame.size.height;
 			siblingView.frame = siblingViewFrame;
+			
+			NSLog(@"Sibling Calc1: x: %f y: %f w: %f h: %f", siblingViewFrame.origin.x, siblingViewFrame.origin.y, 
+				  siblingViewFrame.size.width, siblingViewFrame.size.height);
+			NSLog(@"Sibling Calc2: x: %f y: %f w: %f h: %f", siblingView.frame.origin.x, siblingView.frame.origin.y, 
+				  siblingView.frame.size.width, siblingView.frame.size.height);
+			
 		}
 			break;
 		default: // not specified, or unsupported, so we return
 			return;
 	}
 	
+	NSLog(@"Sibling Before: x: %f y: %f w: %f h: %f", siblingView.frame.origin.x, siblingView.frame.origin.y, 
+		  siblingView.frame.size.width, siblingView.frame.size.height);
+
 	[self.superview addSubview:siblingView];
+	
+	NSLog(@"Sibling After: x: %f y: %f w: %f h: %f", siblingView.frame.origin.x, siblingView.frame.origin.y, 
+		  siblingView.frame.size.width, siblingView.frame.size.height);
 }
 
 - (void) pg_moveSiblingView:(UIView*) siblingView toPosition:(PGLayoutPosition)position withAnimation:(BOOL)animate
@@ -98,21 +110,16 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 
 - (void) pg_removeSiblingView:(UIView*) siblingView withAnimation:(BOOL)animate
 {
-	// find the view in the superView hierarchy. we could use viewWithTag,
-	// but this assumes callers have tagged their views (and we don't really want to do tag management)
 	// pg_relayout: needs to be called after to fill in the gap
-	
-	NSEnumerator* enumerator = [self.superview.subviews objectEnumerator];
-	id subview;
-	BOOL found = NO;
-	
-	while (subview = [enumerator nextObject]) {
-		if (subview == siblingView) {
-			found = YES;
-		}
+
+	if ([self pg_hasSiblingView:siblingView]) {
+		[siblingView removeFromSuperview];
 	}
-	
-	[siblingView removeFromSuperview];
+}
+
+- (BOOL) pg_hasSiblingView:(UIView*) siblingView
+{
+	return ([self.superview.subviews indexOfObject:siblingView] != NSNotFound);
 }
 
 - (CGSize) pg_totalViewDimensions:(NSMutableArray*)views
@@ -174,8 +181,10 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 	NSMutableArray* middle =	[NSMutableArray arrayWithCapacity:1];
 	NSMutableArray* bottom =	[NSMutableArray arrayWithCapacity:1];
 	
-	NSEnumerator* enumerator = [self.superview.subviews objectEnumerator];
+	NSEnumerator* enumerator = [centreView.superview.subviews objectEnumerator];
 	UIView* subview;
+	NSLog(@"CentreView: x: %f y: %f w: %f h: %f", centreView.frame.origin.x, centreView.frame.origin.x, 
+		  centreView.frame.size.width, centreView.frame.size.height);
 	
 	while (subview = [enumerator nextObject]) {
 		if (subview.hidden) {
@@ -186,8 +195,10 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 			[top addObject:subview];
 		} else if ([self pg_layoutPositionOfView:subview fromView:centreView] == PGLayoutPositionBottom) {
 			[bottom addObject:subview];
-		} else if (subview != self) { // it is in the "middle" check that it is not the UIWebView
+		} else if (subview != centreView) { // it is in the "middle" check that it is not the centreView
 			[middle addObject:subview];
+			NSLog(@"SubView: x: %f y: %f w: %f h: %f", subview.frame.origin.x, subview.frame.origin.x, 
+				  subview.frame.size.width, subview.frame.size.height);
 		}
 	}
 	
@@ -200,6 +211,17 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 		
 		return;
 	}
+	
+	// Special case: no items in Bottom. Restore centreView to full height
+	if ([top count] == 0 && [middle count] == 0 && [bottom count] == 0) {
+		CGRect centreViewRect = centreView.frame;
+		centreViewRect.size.height = screenBounds.size.height - statusBarRect.size.height;
+		centreViewRect.origin.y = 0;
+		centreView.frame = centreViewRect;
+		
+		return;
+	}
+	
 	
 	// Sort the Top, Middle, and Bottom Items.
 	
@@ -225,7 +247,7 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 	} 
 	
 	// get the last object from Middle, to set the origin of centreView
-	if (lastObject) {
+	if (lastObject || [bottom count] == 0 || [top count] == 0) {
 		CGRect centreViewRect = centreView.frame;
 		
 		centreViewRect.origin.y = nextOrigin.y;
@@ -261,11 +283,11 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 	CGRect fromViewFrame = fromView.frame;
 	CGRect siblingFrame = siblingView.frame;
 	
-	if (siblingFrame.origin.y > (fromViewFrame.origin.y + fromViewFrame.size.height)) 
+	if (siblingFrame.origin.y >= (fromViewFrame.origin.y + fromViewFrame.size.height)) 
 	{
 		return PGLayoutPositionBottom;
 	} 
-	else if (fromViewFrame.origin.y > (siblingFrame.origin.y + siblingFrame.size.height)) 
+	else if (fromViewFrame.origin.y >= (siblingFrame.origin.y + siblingFrame.size.height)) 
 	{
 		return PGLayoutPositionTop;
 	} 
