@@ -30,6 +30,7 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 	CGRect siblingViewFrame = siblingView.frame;
 	CGRect webViewFrame = self.frame;
 	CGRect screenBounds = [[UIScreen mainScreen] bounds];
+	CGRect statusBarRect = [ [UIApplication sharedApplication] statusBarFrame];
 	
 	NSEnumerator* enumerator = [self.superview.subviews objectEnumerator];
 	UIView* subview;
@@ -73,7 +74,7 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 			self.frame = webViewFrame;
 			
 			// make sure the siblingView's frame is to the bottom
-			siblingViewFrame.origin.y = screenBounds.size.height - siblingView.frame.size.height;
+			siblingViewFrame.origin.y = (screenBounds.size.height - statusBarRect.size.height) - siblingView.frame.size.height;
 			siblingView.frame = siblingViewFrame;
 		}
 			break;
@@ -160,6 +161,8 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 	// here we will choose the top
 	
 	CGRect screenBounds = [[UIScreen mainScreen] bounds];
+	CGRect statusBarRect = [ [UIApplication sharedApplication] statusBarFrame];
+	
 	BOOL middleToTop = YES;
 	
 	UIView* centreView = self;
@@ -185,6 +188,16 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 		}
 	}
 	
+	// Special case: no items in Top, Middle, Bottom. Restore centreView to full screen
+	if ([top count] == 0 && [middle count] == 0 && [bottom count] == 0) {
+		CGRect centreViewRect = centreView.frame;
+		centreViewRect.size.height = screenBounds.size.height - statusBarRect.size.height;
+		centreViewRect.origin.y = 0;
+		centreView.frame = centreViewRect;
+		
+		return;
+	}
+	
 	// Sort the Top, Middle, and Bottom Items.
 	
 	CGPoint nextOrigin = CGPointMake(0, 0);
@@ -201,35 +214,39 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 	if (middleToTop) {
 		// sort Middle items
 		[self pg_sortViews:middle withOrigin:nextOrigin];
-		lastObject = [middle lastObject];
 
-		nextOrigin = CGPointMake(0, lastObject.frame.origin.y + lastObject.frame.size.height);
+		lastObject = [middle lastObject];
+		if (lastObject) {
+			nextOrigin = CGPointMake(0, lastObject.frame.origin.y + lastObject.frame.size.height);
+		}
 	} 
 	
 	// get the last object from Middle, to set the origin of centreView
 	if (lastObject) {
-
 		CGRect centreViewRect = centreView.frame;
-
+		
 		centreViewRect.origin.y = nextOrigin.y;
 		
 		// to calculate the height, we do (screenBounds - (topHeight + middleHeight + bottomHeight))
-		centreViewRect.size.height = screenBounds.size.height - (
+		centreViewRect.size.height = (screenBounds.size.height - statusBarRect.size.height) - (
 									[self pg_totalViewDimensions:top].height +
 									[self pg_totalViewDimensions:middle].height +
 									[self pg_totalViewDimensions:bottom].height);
 		
 		centreView.frame = centreViewRect;
 		
-		nextOrigin = CGPointMake(0, (centreViewRect.origin.y + centreViewRect.size.height));
+		nextOrigin = CGPointMake(0, (centreViewRect.origin .y + centreViewRect.size.height));
 	}
 	
 	if (!middleToTop) {
 		// sort Middle items
 		[self pg_sortViews:middle withOrigin:nextOrigin];
-		lastObject = [middle lastObject];
+
 		
-		nextOrigin = CGPointMake(0, lastObject.frame.origin.y + lastObject.frame.size.height);
+		lastObject = [middle lastObject];
+		if (lastObject) {
+			nextOrigin = CGPointMake(0, lastObject.frame.origin.y + lastObject.frame.size.height);
+		}
 	} 
 	
 	// sort Bottom items
