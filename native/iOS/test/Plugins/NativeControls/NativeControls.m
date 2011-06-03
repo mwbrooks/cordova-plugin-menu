@@ -200,7 +200,7 @@
     [self.tabBar setItems:items animated:animateItems];
 	[items release];
 	
-	[self.toolBarItems setObject:item forKey:name];
+	[self.tabBarItems setObject:item forKey:name];
 	[item release];
 }
 
@@ -436,7 +436,7 @@
 	if (index != NSNotFound)
 	{
 		[items removeObjectAtIndex:index];
-		[self.tabBar setItems:items animated:YES];
+		[self.toolBar setItems:items animated:YES];
 	}
 	
 	[items release];

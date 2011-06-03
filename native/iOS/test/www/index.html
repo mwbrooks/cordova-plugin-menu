@@ -65,14 +65,22 @@
 			var toolHandler = function(name) {
 				navigator.notification.alert(name, null, "ToolBar");
 			};
+			var removeToolHandler = function(name) {
+				nc.removeToolBarItem("tool4-remove"); // remove by name
+			};
+			var removeTabHandler = function(name) {
+				nc.removeTabBarItem("tab4-remove"); // remove by name
+			};
 
 			nc.createTabBarItem("tab1-n", "tab1-l", "tabButton:Favorites",{ onSelect: tabHandler }); // here a system item takes precedent
 			nc.createTabBarItem("tab2-n", "tab2-l", "alarm.png",{ onSelect: tabHandler }); // label and title
 			nc.createTabBarItem("tab3-n", null, "alarm.png",{ onSelect: tabHandler }); // no label
+			nc.createTabBarItem("tab4-remove", "remove me", "alarm.png",{ onSelect: removeTabHandler }); // label and title
 			
 			nc.createToolBarItem("tool1-n", "tool1-l", "toolbarButton:Compose",{ onSelect: toolHandler }); // here a system item takes precedent
 			nc.createToolBarItem("tool2-n", "tool2-l", "alarm.png",{ onSelect: toolHandler }); // either label or image, here label takes precedent
 			nc.createToolBarItem("tool3-n", null, "alarm.png",{ onSelect: toolHandler }); // here no label, so image is used
+			nc.createToolBarItem("tool4-remove", "remove me", "",{ onSelect: removeToolHandler }); // either label or image, here label takes precedent
 
 			
 		} catch (e) {

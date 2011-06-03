@@ -196,6 +196,16 @@ NativeControls.prototype.createToolBarItem = function(name, label, image, option
 };
 
 /**
+ * Remove an existing tab bar item.
+ * @param {String} name internal name used to represent this item when it was created
+ * @param {Object} options Options for customizing the individual tab item
+ */
+NativeControls.prototype.removeToolBarItem = function(name, options) {
+    if (!options) options = {};
+    PhoneGap.exec("NativeControls.removeToolBarItem", name, options);
+};
+
+/**
  * Function called when a toolbar item has been selected.
  * @param {Number} tag the tag number for the item that has been selected
  */
