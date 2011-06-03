@@ -86,7 +86,7 @@ NativeControls.prototype.createTabBarItem = function(name, label, image, options
         this.tabBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name};
     }
 	
-    PhoneGap.exec("NativeControls.createTabBarItem", name, label, image, tag, options);
+    PhoneGap.exec("NativeControls.createTabBarItem", name, (label || ""), image, tag, options);
 };
 
 /**
@@ -192,7 +192,7 @@ NativeControls.prototype.createToolBarItem = function(name, label, image, option
         this.toolBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name };
     }
 	
-    PhoneGap.exec("NativeControls.createToolBarItem", name, label, image, tag, options);
+    PhoneGap.exec("NativeControls.createToolBarItem", name, (label || ""), image, tag, options);
 };
 
 /**
