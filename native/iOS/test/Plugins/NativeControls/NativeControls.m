@@ -179,7 +179,7 @@
 			image = [UIImage imageWithContentsOfFile:imagePath];
 		}
 		
-        item = [[UITabBarItem alloc] initWithTitle:title image:[UIImage imageNamed:imageName] tag:tag];
+        item = [[UITabBarItem alloc] initWithTitle:title image:image tag:tag];
     }
 
     if ([options objectForKey:@"badge"]) {
@@ -192,6 +192,9 @@
 	}
 	
     NSMutableArray* items = [[self.tabBar items] mutableCopy];
+	if (!items) {
+		items = [[NSMutableArray alloc] initWithCapacity:1];
+	}
 	[items addObject:item];
 	
     [self.tabBar setItems:items animated:animateItems];
@@ -402,6 +405,9 @@
 	}
 	
     NSMutableArray* items = [[self.toolBar items] mutableCopy];
+	if (!items) {
+		items = [[NSMutableArray alloc] initWithCapacity:1];
+	}
 	[items addObject:item];
 
     [self.toolBar setItems:items animated:YES];
