@@ -1,6 +1,9 @@
 //
 //  UIWebview+PGAdditions.m
-
+//
+//  Sibling view management for PhoneGap.
+//  Only tested for the case of 1 Top and/or 1 Bottom sibling view (for now).
+//
 #import "UIWebView+PGAdditions.h"
 
 
@@ -96,7 +99,7 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 - (void) pg_removeSiblingView:(UIView*) siblingView withAnimation:(BOOL)animate
 {
 	// find the view in the superView hierarchy. we could use viewWithTag,
-	// but this assumes callers have tagged their views (and we don't really want to tag management)
+	// but this assumes callers have tagged their views (and we don't really want to do tag management)
 	// pg_relayout: needs to be called after to fill in the gap
 	
 	NSEnumerator* enumerator = [self.superview.subviews objectEnumerator];
