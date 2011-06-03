@@ -10,30 +10,31 @@
 //  Created by Michael Nachbaur on 13/04/09.
 //  Copyright 2009 Decaf Ninja Software. All rights reserved.
 
+#import "UIWebView+PGAdditions.h"
 #import "NativeControls.h"
 
 #import <QuartzCore/QuartzCore.h>
 
 @implementation NativeControls
-#ifndef __IPHONE_3_0
-@synthesize webView;
-#endif
+
+@synthesize tabBar, toolBar, tabBarItems, toolBarItems;
 
 -(PhoneGapCommand*) initWithWebView:(UIWebView*)theWebView
 {
     self = (NativeControls*)[super initWithWebView:theWebView];
-    if (self) 
-	{
-        tabBarItems = [[NSMutableDictionary alloc] initWithCapacity:5];
-		originalWebViewBounds = theWebView.bounds;
+    if (self) {
+        self.tabBarItems = [[NSMutableDictionary alloc] initWithCapacity:5];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    if (tabBar)
-        [tabBar release];
+	self.tabBar = nil;
+	self.toolBar = nil;
+	self.toolBarItems = nil;
+	self.tabBarItems = nil;
+	
     [super dealloc];
 }
 
@@ -48,18 +49,16 @@
  */
 - (void)createTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
 {
-    tabBar = [UITabBar new];
-    [tabBar sizeToFit];
-    tabBar.delegate = self;
-    tabBar.multipleTouchEnabled   = NO;
-    tabBar.autoresizesSubviews    = YES;
-    tabBar.hidden                 = YES;
-    tabBar.userInteractionEnabled = YES;
-	tabBar.opaque = YES;
+    self.tabBar = [UITabBar new];
+    [self.tabBar sizeToFit];
+    self.tabBar.delegate = self;
+    self.tabBar.multipleTouchEnabled   = NO;
+    self.tabBar.autoresizesSubviews    = YES;
+    self.tabBar.hidden                 = YES;
+    self.tabBar.userInteractionEnabled = YES;
+	self.tabBar.opaque = YES;
 	
-	webView.superview.autoresizesSubviews = YES;
-	
-	[ webView.superview addSubview:tabBar];    
+	self.webView.superview.autoresizesSubviews = YES;
 }
 
 /**
@@ -72,71 +71,30 @@
  */
 - (void)showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
 {
-    if (!tabBar)
+    if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
+	}
 	
 	// if we are calling this again when its shown, reset
-	if (!tabBar.hidden) {
+	if (!self.tabBar.hidden) {
 		return;
 	}
 
     CGFloat height = 0.0f;
     BOOL atBottom = YES;
 	
-	CGRect offsetRect = [ [UIApplication sharedApplication] statusBarFrame];
+//	CGRect offsetRect = [ [UIApplication sharedApplication] statusBarFrame];
     
-    if (options) 
-	{
+    if (options) {
         height   = [[options objectForKey:@"height"] floatValue];
         atBottom = [[options objectForKey:@"position"] isEqualToString:@"bottom"];
     }
-	if(height == 0)
-	{
+	if (height == 0) {
 		height = 49.0f;
 	}
 	
-    tabBar.hidden = NO;
-     CGRect webViewBounds = originalWebViewBounds;
-     CGRect tabBarBounds;
-	
-	NSNotification* notif = [NSNotification notificationWithName:@"PGLayoutSubviewAdded" object:tabBar];
-	[[NSNotificationQueue defaultQueue] enqueueNotification:notif postingStyle: NSPostASAP];
-	
-     if (atBottom) 
-	 {
-         tabBarBounds = CGRectMake(
-             webViewBounds.origin.x,
-             webViewBounds.origin.y + webViewBounds.size.height - height - offsetRect.size.height,
-             webViewBounds.size.width,
-             height
-         );
-         webViewBounds = CGRectMake(
-            webViewBounds.origin.x,
-            webViewBounds.origin.y,
-            webViewBounds.size.width,
-            webViewBounds.size.height - height - offsetRect.size.height
-         );
-     } 
-	 else 
-	 {
-         tabBarBounds = CGRectMake(
-             webViewBounds.origin.x,
-             webViewBounds.origin.y,
-             webViewBounds.size.width,
-             height
-         );
-         webViewBounds = CGRectMake(
-            webViewBounds.origin.x,
-            webViewBounds.origin.y + height,
-            webViewBounds.size.width,
-            webViewBounds.size.height - height
-         );
-     }
-     
-    [tabBar setFrame:tabBarBounds];
-	
-	
-    [webView setFrame:webViewBounds];
+    self.tabBar.hidden = NO;
+	[self.webView pg_addSiblingView:self.tabBar withPosition:(atBottom?PGLayoutPositionBottom:PGLayoutPositionTop) withAnimation:NO];
 }
 
 /**
@@ -147,15 +105,13 @@
  */
 - (void)hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
 {
-    if (!tabBar)
+    if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
-    tabBar.hidden = YES;
-	
-	NSNotification* notif = [NSNotification notificationWithName:@"PGLayoutSubviewRemoved" object:tabBar];
-	[[NSNotificationQueue defaultQueue] enqueueNotification:notif postingStyle: NSPostASAP];
-	
-	
-	[webView setFrame:originalWebViewBounds];
+	}
+    
+	self.tabBar.hidden = YES;
+
+	[self.webView pg_relayout:NO];
 }
 
 /**
@@ -187,8 +143,9 @@
  */
 - (void)createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 {
-    if (!tabBar)
+    if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
+	}
 
     NSString  *name      = [arguments objectAtIndex:0];
     NSString  *title     = [arguments objectAtIndex:1];
@@ -197,7 +154,7 @@
 
     UITabBarItem *item = nil;    
     if ([imageName length] > 0) {
-        UIBarButtonSystemItem systemItem = -1;
+        UITabBarSystemItem systemItem = -1;
         if ([imageName isEqualToString:@"tabButton:More"])       systemItem = UITabBarSystemItemMore;
         if ([imageName isEqualToString:@"tabButton:Favorites"])  systemItem = UITabBarSystemItemFavorites;
         if ([imageName isEqualToString:@"tabButton:Featured"])   systemItem = UITabBarSystemItemFeatured;
@@ -210,8 +167,9 @@
         if ([imageName isEqualToString:@"tabButton:Downloads"])  systemItem = UITabBarSystemItemDownloads;
         if ([imageName isEqualToString:@"tabButton:MostRecent"]) systemItem = UITabBarSystemItemMostRecent;
         if ([imageName isEqualToString:@"tabButton:MostViewed"]) systemItem = UITabBarSystemItemMostViewed;
-        if (systemItem != -1)
+        if (systemItem != -1) {
             item = [[UITabBarItem alloc] initWithTabBarSystemItem:systemItem tag:tag];
+		}
     }
     
     if (item == nil) {
@@ -219,10 +177,11 @@
         item = [[UITabBarItem alloc] initWithTitle:title image:[UIImage imageNamed:imageName] tag:tag];
     }
 
-    if ([options objectForKey:@"badge"])
+    if ([options objectForKey:@"badge"]) {
         item.badgeValue = [options objectForKey:@"badge"];
+	}
     
-    [tabBarItems setObject:item forKey:name];
+    [self.tabBarItems setObject:item forKey:name];
 	[item release];
 }
 
@@ -237,13 +196,15 @@
  */
 - (void)updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 {
-    if (!tabBar)
+    if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
+	}
 
     NSString  *name = [arguments objectAtIndex:0];
-    UITabBarItem *item = [tabBarItems objectForKey:name];
-    if (item)
+    UITabBarItem *item = [self.tabBarItems objectForKey:name];
+    if (item) {
         item.badgeValue = [options objectForKey:@"badge"];
+	}
 }
 
 
@@ -258,22 +219,25 @@
  */
 - (void)showTabBarItems:(NSArray*)arguments withDict:(NSDictionary*)options
 {
-    if (!tabBar)
+    if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
+	}
     
     int i, count = [arguments count];
     NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:count];
     for (i = 0; i < count; i++) {
         NSString *itemName = [arguments objectAtIndex:i];
-        UITabBarItem *item = [tabBarItems objectForKey:itemName];
-        if (item)
+        UITabBarItem *item = [self.tabBarItems objectForKey:itemName];
+        if (item) {
             [items addObject:item];
+		}
     }
     
     BOOL animateItems = YES;
-    if ([options objectForKey:@"animate"])
+    if ([options objectForKey:@"animate"]) {
         animateItems = [(NSString*)[options objectForKey:@"animate"] boolValue];
-    [tabBar setItems:items animated:animateItems];
+	}
+    [self.tabBar setItems:items animated:animateItems];
 	[items release];
 }
 
@@ -286,22 +250,24 @@
  */
 - (void)selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 {
-    if (!tabBar)
+    if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
+	}
 
     NSString *itemName = [arguments objectAtIndex:0];
-    UITabBarItem *item = [tabBarItems objectForKey:itemName];
-    if (item)
-        tabBar.selectedItem = item;
-    else
-        tabBar.selectedItem = nil;
+    UITabBarItem *item = [self.tabBarItems objectForKey:itemName];
+    if (item) {
+        self.tabBar.selectedItem = item;
+	}
+    else {
+        self.tabBar.selectedItem = nil;
+	}
 }
-
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
     NSString * jsCallBack = [NSString stringWithFormat:@"window.plugins.nativeControls.tabBarItemSelected(%d);", item.tag];    
-    [webView stringByEvaluatingJavaScriptFromString:jsCallBack];
+    [super writeJavascript:jsCallBack];
 }
 
 #pragma mark -
@@ -321,11 +287,10 @@
         if ([toolBarSettings objectForKey:@"height"])
             height = [[toolBarSettings objectForKey:@"height"] floatValue];
 		
-        if ([toolBarSettings objectForKey:@"position"])
+        if ([toolBarSettings objectForKey:@"position"]) {
             atTop  = [[toolBarSettings objectForKey:@"position"] isEqualToString:@"top"];
+		}
         
-#pragma unused(atTop)
-		
         NSString *styleStr = [toolBarSettings objectForKey:@"style"];
         if ([styleStr isEqualToString:@"Default"])
             style = UIBarStyleDefault;
@@ -335,168 +300,110 @@
             style = UIBarStyleBlackTranslucent;
     }
 
-    CGRect webViewBounds = webView.bounds;
-    CGRect toolBarBounds = CGRectMake(
-                              webViewBounds.origin.x,
-                              webViewBounds.origin.y,
-                              webViewBounds.size.width,
-                              height
-                              );
-    webViewBounds = CGRectMake(
-                               webViewBounds.origin.x,
-                               webViewBounds.origin.y + height,
-                               webViewBounds.size.width,
-                               webViewBounds.size.height - height
-                               );
-    toolBar = [[UIToolbar alloc] initWithFrame:toolBarBounds];
-    [toolBar sizeToFit];
-    toolBar.hidden                 = NO;
-    toolBar.multipleTouchEnabled   = NO;
-    toolBar.autoresizesSubviews    = YES;
-    toolBar.userInteractionEnabled = YES;
-    toolBar.barStyle               = style;
+    CGRect toolBarBounds = webView.bounds;
+	toolBarBounds.size.height = height;
 	
-
-    [toolBar setFrame:toolBarBounds];
-    [webView setFrame:webViewBounds];
-
-    [self.webView.superview addSubview:toolBar];
+    self.toolBar = [[UIToolbar alloc] initWithFrame:toolBarBounds];
+    [self.toolBar sizeToFit];
+    self.toolBar.hidden                 = NO;
+    self.toolBar.multipleTouchEnabled   = NO;
+    self.toolBar.autoresizesSubviews    = YES;
+    self.toolBar.userInteractionEnabled = YES;
+    self.toolBar.barStyle               = style;
+	
+	[self.webView pg_addSiblingView:self.toolBar withPosition:atTop?PGLayoutPositionTop:PGLayoutPositionBottom withAnimation:NO];
 }
 
-
-
-
-- (void)setToolBarTitle:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void)toolBarDidSelectItem:(UIBarButtonItem*)item
 {
-    if (!toolBar)
+	//TODO:
+}
+
+- (void)createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    if (!self.toolBar) {
         [self createToolBar:nil withDict:nil];
+	}
 
-    NSString *title = [arguments objectAtIndex:0];
-    if (!toolBarTitle) {
-        toolBarTitle = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(toolBarTitleClicked)];
-    } else {
-        //toolBarTitle.title = title;
+    NSString* name      = [arguments objectAtIndex:0];
+    NSString* title     = [arguments objectAtIndex:1];
+    NSString* imageName = [arguments objectAtIndex:2];
+    int tag             = [[arguments objectAtIndex:3] intValue];
+	
+	/*
+	 UIBarButtonSystemItemDone,
+	 UIBarButtonSystemItemCancel,
+	 UIBarButtonSystemItemEdit,  
+	 UIBarButtonSystemItemSave,  
+	 UIBarButtonSystemItemAdd,
+	 UIBarButtonSystemItemFlexibleSpace,
+	 UIBarButtonSystemItemFixedSpace,
+	 UIBarButtonSystemItemCompose,
+	 UIBarButtonSystemItemReply,
+	 UIBarButtonSystemItemAction,
+	 UIBarButtonSystemItemOrganize,
+	 UIBarButtonSystemItemBookmarks,
+	 UIBarButtonSystemItemSearch,
+	 UIBarButtonSystemItemRefresh,
+	 UIBarButtonSystemItemStop,
+	 UIBarButtonSystemItemCamera,
+	 UIBarButtonSystemItemTrash,
+	 UIBarButtonSystemItemPlay,
+	 UIBarButtonSystemItemPause,
+	 UIBarButtonSystemItemRewind,
+	 UIBarButtonSystemItemFastForward,
+	 UIBarButtonSystemItemUndo,
+	 UIBarButtonSystemItemRedo,
+	 
+	 */
+	
+    UITabBarItem *item = nil;    
+    if ([imageName length] > 0) {
+        UIBarButtonSystemItem systemItem = -1;
+        if ([imageName isEqualToString:@"toolbarButton:Done"])       systemItem = UIBarButtonSystemItemDone;
+        if ([imageName isEqualToString:@"toolbarButton:Cancel"])       systemItem = UIBarButtonSystemItemCancel;
+        if ([imageName isEqualToString:@"toolbarButton:Edit"])       systemItem = UIBarButtonSystemItemEdit;
+        if ([imageName isEqualToString:@"toolbarButton:Save"])       systemItem = UIBarButtonSystemItemSave;
+        if ([imageName isEqualToString:@"toolbarButton:Add"])       systemItem = UIBarButtonSystemItemAdd;
+        if ([imageName isEqualToString:@"toolbarButton:FlexibleSpace"])       systemItem = UIBarButtonSystemItemFlexibleSpace;
+        if ([imageName isEqualToString:@"toolbarButton:FixedSpace"])       systemItem = UIBarButtonSystemItemFixedSpace;
+        if ([imageName isEqualToString:@"toolbarButton:Compose"])       systemItem = UIBarButtonSystemItemCompose;
+        if ([imageName isEqualToString:@"toolbarButton:Reply"])       systemItem = UIBarButtonSystemItemReply;
+        if ([imageName isEqualToString:@"toolbarButton:Action"])       systemItem = UIBarButtonSystemItemAction;
+        if ([imageName isEqualToString:@"toolbarButton:Organize"])       systemItem = UIBarButtonSystemItemOrganize;
+        if ([imageName isEqualToString:@"toolbarButton:Bookmarks"])       systemItem = UIBarButtonSystemItemBookmarks;
+        if ([imageName isEqualToString:@"toolbarButton:Search"])       systemItem = UIBarButtonSystemItemSearch;
+        if ([imageName isEqualToString:@"toolbarButton:Refresh"])       systemItem = UIBarButtonSystemItemRefresh;
+        if ([imageName isEqualToString:@"toolbarButton:Stop"])       systemItem = UIBarButtonSystemItemStop;
+        if ([imageName isEqualToString:@"toolbarButton:Camera"])       systemItem = UIBarButtonSystemItemCamera;
+        if ([imageName isEqualToString:@"toolbarButton:Trash"])       systemItem = UIBarButtonSystemItemTrash;
+        if ([imageName isEqualToString:@"toolbarButton:Play"])       systemItem = UIBarButtonSystemItemPlay;
+        if ([imageName isEqualToString:@"toolbarButton:Pause"])       systemItem = UIBarButtonSystemItemPause;
+        if ([imageName isEqualToString:@"toolbarButton:Rewind"])       systemItem = UIBarButtonSystemItemRewind;
+        if ([imageName isEqualToString:@"toolbarButton:FastForward"])       systemItem = UIBarButtonSystemItemFastForward;
+        if ([imageName isEqualToString:@"toolbarButton:Undo"])       systemItem = UIBarButtonSystemItemUndo;
+        if ([imageName isEqualToString:@"toolbarButton:Redo"])       systemItem = UIBarButtonSystemItemRedo;
+
+        if (systemItem != -1) {
+            item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:self action:@selector(toolBarDidSelectItem:)];
+			item.tag = tag;
+		}
     }
-	
-	
-	//UINavigationBar
-	
-	//initWithImage
-	UIImage* logoImage = [UIImage imageNamed:@"www/ui/tabHeader.png"];
-	
-	
-	
-	/*UIImageView* logo = [[ UIImageView alloc ] initWithImage: logoImage ];
-	logo.userInteractionEnabled = YES;*/
-	
-	
-	UIButton* logoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-	
-	[ logoBtn setBackgroundImage:logoImage forState:UIControlStateNormal];
-	[ logoBtn addTarget:self action:@selector(toolBarTitleClicked) forControlEvents:UIControlEventTouchUpInside];
-	 
-	UIBarButtonItem *modalBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logoBtn];
-	
-	UIImageView* backImage = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"www/ui/but-back.png"]];
-	UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(toolBarTitleClicked)];
-	[ backButtonItem setCustomView:backImage];
-	// backButtonItem.target = self;
-	// backButtonItem.action = @selector(toolBarTitleClicked);
-	
-	/*[ backButtonItem addTarget:self action:@selector(toolBarTitleClicked) forControlEvents:UIControlEventTouchUpInside];*/
-	 
-	
-	
-	
-	//UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithImage:  style:UIBarButtonItemStylePlain target:self action:@selector(toolBarTitleClicked)];
-
-    UIBarButtonItem *space1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    UIBarButtonItem *space2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-	
-	UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:nil];
-	//refresh.target = self;
-	//refresh.action = @selector(toolBarTitleClicked);
-	
-	//refresh.customView = backImage;
-	
-
-    NSArray *items = [[NSArray alloc] initWithObjects:backButtonItem,space1,modalBarButtonItem,space2, refresh, nil];
-
-	
-	//UINavigationItem* navItem = [[UINavigationItem alloc] init];
-	//navItem.titleView = logo;
-	
-    [toolBar setItems:items animated:YES];
-	
-
-	
-	modalBarButtonItem.target = self;
-	modalBarButtonItem.action = @selector(toolBarTitleClicked);
-	[modalBarButtonItem release];
-	
-	
-
-	 [backButtonItem release];
-	[space1 release];
-	[space2 release];
-	[ refresh release ];
-	[ backImage release ];
-	
-	
-	//[ toolBar pushNavigationItem:navItem animated:YES];
-	
-	[items release];
-}
-
-- (void)toolBarTitleClicked
-{
-    NSLog(@"Toolbar clicked");
-}
-
-#pragma mark -
-#pragma mark ActionSheet
-
-- (void)createActionSheet:(NSArray*)arguments withDict:(NSDictionary*)options
-{
     
-	NSString* title = [options objectForKey:@"title"];
+    if (item == nil && [title length] == 0) {
+        NSLog(@"Creating with custom image and title");
+		item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageName] style:UIBarButtonItemStylePlain 
+																				   target:self action:@selector(toolBarDidSelectItem:)];
+		item.tag = tag;
+    }	
+	
+    NSMutableArray* items = [[self.toolBar items] mutableCopy];
+	[items addObject:item];
 
+    [self.toolBar setItems:items animated:YES];
+	[items release];
 	
-	UIActionSheet* actionSheet = [ [UIActionSheet alloc ] 
-						 initWithTitle:title 
-						 delegate:self 
-						 cancelButtonTitle:nil 
-						 destructiveButtonTitle:nil
-						 otherButtonTitles:nil
-						 ];
-	
-	int count = [arguments count];
-	for(int n = 0; n < count; n++)
-	{
-		[ actionSheet addButtonWithTitle:[arguments objectAtIndex:n]];
-	}
-	
-	if([options objectForKey:@"cancelButtonIndex"])
-	{
-		actionSheet.cancelButtonIndex = [[options objectForKey:@"cancelButtonIndex"] intValue];
-	}
-	if([options objectForKey:@"destructiveButtonIndex"])
-	{
-		actionSheet.destructiveButtonIndex = [[options objectForKey:@"destructiveButtonIndex"] intValue];
-	}
-	
-	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;//UIActionSheetStyleBlackOpaque;
-    [actionSheet showInView:webView.superview];
-    [actionSheet release];
-	
-}
-
-
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-	NSString * jsCallBack = [NSString stringWithFormat:@"window.plugins.nativeControls._onActionSheetDismissed(%d);", buttonIndex];    
-    [webView stringByEvaluatingJavaScriptFromString:jsCallBack];
+	[self.toolBarItems setObject:item forKey:name];
 }
 
 

@@ -17,35 +17,29 @@
 #import "PhoneGapCommand.h"
 
 @interface NativeControls : PhoneGapCommand <UITabBarDelegate, UIActionSheetDelegate> {
-	UITabBar* tabBar;
-	NSMutableDictionary* tabBarItems;
 
-	UIToolbar* toolBar;
-	UIBarButtonItem* toolBarTitle;
-	NSMutableDictionary* toolBarItems;
-	CGRect	originalWebViewBounds;
-	
 }
+
+@property (nonatomic, retain) UITabBar* tabBar;
+@property (nonatomic, retain) UIToolbar* toolBar;
+@property (nonatomic, retain) NSMutableDictionary* tabBarItems;
+@property (nonatomic, retain) NSMutableDictionary* toolBarItems;
+
 
 /* Tab Bar methods 
  */
 - (void)createTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void)createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+
 - (void)showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void)hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void)showTabBarItems:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void)createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void)updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void)selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 /* Tool Bar methods
  */
 - (void)createToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void)setToolBarTitle:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void)toolBarTitleClicked;
-
-/* ActionSheet 
- */
-- (void)createActionSheet:(NSArray*)arguments withDict:(NSDictionary*)options;
-
+- (void)createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 @end
