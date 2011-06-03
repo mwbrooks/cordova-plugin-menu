@@ -12,6 +12,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		30082B401399A6340033E116 /* NativeControls2.m in Sources */ = {isa = PBXBuildFile; fileRef = 30082B3F1399A6340033E116 /* NativeControls2.m */; };
 		301BF552109A68D80062928A /* libPhoneGap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libPhoneGap.a */; };
 		301BF570109A69640062928A /* www in Resources */ = {isa = PBXBuildFile; fileRef = 301BF56E109A69640062928A /* www */; };
 		301BF5B5109A6A2B0062928A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF5B4109A6A2B0062928A /* AddressBook.framework */; };
@@ -23,7 +24,6 @@
 		301BF5C1109A6A2B0062928A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF5C0109A6A2B0062928A /* MediaPlayer.framework */; };
 		301BF5C3109A6A2B0062928A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF5C2109A6A2B0062928A /* QuartzCore.framework */; };
 		301BF5C5109A6A2B0062928A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF5C4109A6A2B0062928A /* SystemConfiguration.framework */; };
-		302B434713956B51006CEFE2 /* NativeControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 302B434613956B51006CEFE2 /* NativeControls.m */; };
 		302B434E13956F62006CEFE2 /* UIWebView+PGAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 302B434D13956F62006CEFE2 /* UIWebView+PGAdditions.m */; };
 		3053AC6F109B7857006FCFE7 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 3053AC6E109B7857006FCFE7 /* VERSION */; };
 		305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
@@ -72,6 +72,8 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		30082B3E1399A6340033E116 /* NativeControls2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeControls2.h; sourceTree = "<group>"; };
+		30082B3F1399A6340033E116 /* NativeControls2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeControls2.m; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* PhoneGapLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PhoneGapLib.xcodeproj; sourceTree = PHONEGAPLIB; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
 		301BF5B4109A6A2B0062928A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -83,8 +85,6 @@
 		301BF5C0109A6A2B0062928A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		301BF5C2109A6A2B0062928A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		301BF5C4109A6A2B0062928A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		302B434513956B51006CEFE2 /* NativeControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeControls.h; sourceTree = "<group>"; };
-		302B434613956B51006CEFE2 /* NativeControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeControls.m; sourceTree = "<group>"; };
 		302B434C13956F62006CEFE2 /* UIWebView+PGAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+PGAdditions.h"; sourceTree = "<group>"; };
 		302B434D13956F62006CEFE2 /* UIWebView+PGAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+PGAdditions.m"; sourceTree = "<group>"; };
 		3053AC6E109B7857006FCFE7 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = PHONEGAPLIB; };
@@ -217,8 +217,8 @@
 		302B434413956B51006CEFE2 /* NativeControls */ = {
 			isa = PBXGroup;
 			children = (
-				302B434513956B51006CEFE2 /* NativeControls.h */,
-				302B434613956B51006CEFE2 /* NativeControls.m */,
+				30082B3E1399A6340033E116 /* NativeControls2.h */,
+				30082B3F1399A6340033E116 /* NativeControls2.m */,
 				302B434C13956F62006CEFE2 /* UIWebView+PGAdditions.h */,
 				302B434D13956F62006CEFE2 /* UIWebView+PGAdditions.m */,
 			);
@@ -387,8 +387,8 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
-				302B434713956B51006CEFE2 /* NativeControls.m in Sources */,
 				302B434E13956F62006CEFE2 /* UIWebView+PGAdditions.m in Sources */,
+				30082B401399A6340033E116 /* NativeControls2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

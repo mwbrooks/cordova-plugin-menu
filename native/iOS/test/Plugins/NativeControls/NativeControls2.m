@@ -3,6 +3,7 @@
 //  
 //
 //  Created by Jesse MacFadyen on 10-02-03.
+//  Improved by Shazron Abdullah 11-06-03
 //  MIT Licensed
 
 //  Originally this code was developed my Michael Nachbaur
@@ -11,18 +12,18 @@
 //  Copyright 2009 Decaf Ninja Software. All rights reserved.
 
 #import "PhoneGapDelegate.h"
-#import "NativeControls.h"
+#import "NativeControls2.h"
 
 #import <QuartzCore/QuartzCore.h>
 
-@implementation NativeControls
+@implementation NativeControls2
 
 @synthesize tabBar, toolBar, tabBarItems, toolBarItems;
 @synthesize lastTabBarPosition, lastToolBarPosition;
 
 -(PhoneGapCommand*) initWithWebView:(UIWebView*)theWebView
 {
-    self = (NativeControls*)[super initWithWebView:theWebView];
+    self = (NativeControls2*)[super initWithWebView:theWebView];
     if (self) 
 	{
         self.tabBarItems = [[NSMutableDictionary alloc] initWithCapacity:5];

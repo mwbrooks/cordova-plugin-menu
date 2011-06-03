@@ -10,7 +10,7 @@
  * native tab and tool bars, etc.
  * @constructor
  */
-function NativeControls() {
+function NativeControls2() {
     this.tabBarTag = 0;
     this.toolBarTag = 0;
     this.tabBarCallbacks = {};
@@ -20,15 +20,15 @@ function NativeControls() {
 /**
  * Create a native tab bar that can have tab buttons added to it which can respond to events.
  */
-NativeControls.prototype.createTabBar = function() {
-    PhoneGap.exec("NativeControls.createTabBar");
+NativeControls2.prototype.createTabBar = function() {
+    PhoneGap.exec("NativeControls2.createTabBar");
 };
 
 /**
  * Remove a native tab bar
  */
-NativeControls.prototype.removeTabBar = function() {
-    PhoneGap.exec("NativeControls.removeTabBar");
+NativeControls2.prototype.removeTabBar = function() {
+    PhoneGap.exec("NativeControls2.removeTabBar");
 };
 
 /**
@@ -37,21 +37,21 @@ NativeControls.prototype.removeTabBar = function() {
  * - \c height integer indicating the height of the tab bar (default: \c 49)
  * - \c position specifies whether the tab bar will be placed at the \c top or \c bottom of the screen (default: \c bottom)
  */
-NativeControls.prototype.showTabBar = function(animate) {
+NativeControls2.prototype.showTabBar = function(animate) {
     if (animate == undefined || animate == null) {
         animate = true;
 	}
-    PhoneGap.exec("NativeControls.showTabBar", { animate: animate });
+    PhoneGap.exec("NativeControls2.showTabBar", { animate: animate });
 };
 
 /**
  * Hide a tab bar.  The tab bar has to be created first.
  */
-NativeControls.prototype.hideTabBar = function(animate) {
+NativeControls2.prototype.hideTabBar = function(animate) {
     if (animate == undefined || animate == null) {
         animate = true;
 	}
-    PhoneGap.exec("NativeControls.hideTabBar", { animate: animate });
+    PhoneGap.exec("NativeControls2.hideTabBar", { animate: animate });
 };
 
 /**
@@ -79,14 +79,14 @@ NativeControls.prototype.hideTabBar = function(animate) {
  * @param {Object} [options] Options for customizing the individual tab item
  *  - \c badge value to display in the optional circular badge on the item; if null or unspecified, the badge will be hidden
  */
-NativeControls.prototype.createTabBarItem = function(name, label, image, options) {
+NativeControls2.prototype.createTabBarItem = function(name, label, image, options) {
     
 	var tag = this.tabBarTag++;
     if (options && 'onSelect' in options && typeof(options['onSelect']) == 'function') {
         this.tabBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name};
     }
 	
-    PhoneGap.exec("NativeControls.createTabBarItem", name, (label || ""), image, tag, options);
+    PhoneGap.exec("NativeControls2.createTabBarItem", name, (label || ""), image, tag, options);
 };
 
 /**
@@ -95,9 +95,9 @@ NativeControls.prototype.createTabBarItem = function(name, label, image, options
  * @param {Object} options Options for customizing the individual tab item
  *  - \c badge value to display in the optional circular badge on the item; if null or unspecified, the badge will be hidden
  */
-NativeControls.prototype.updateTabBarItem = function(name, options) {
+NativeControls2.prototype.updateTabBarItem = function(name, options) {
     if (!options) options = {};
-    PhoneGap.exec("NativeControls.updateTabBarItem", name, options);
+    PhoneGap.exec("NativeControls2.updateTabBarItem", name, options);
 };
 
 /**
@@ -105,9 +105,9 @@ NativeControls.prototype.updateTabBarItem = function(name, options) {
  * @param {String} name internal name used to represent this item when it was created
  * @param {Object} options Options for customizing the individual tab item
  */
-NativeControls.prototype.removeTabBarItem = function(name, options) {
+NativeControls2.prototype.removeTabBarItem = function(name, options) {
     if (!options) options = {};
-    PhoneGap.exec("NativeControls.removeTabBarItem", name, options);
+    PhoneGap.exec("NativeControls2.removeTabBarItem", name, options);
 };
 
 /**
@@ -116,15 +116,15 @@ NativeControls.prototype.removeTabBarItem = function(name, options) {
  * @see createTabBarItem
  * @see showTabBarItems
  */
-NativeControls.prototype.selectTabBarItem = function(tab) {
-    PhoneGap.exec("NativeControls.selectTabBarItem", tab);
+NativeControls2.prototype.selectTabBarItem = function(tab) {
+    PhoneGap.exec("NativeControls2.selectTabBarItem", tab);
 };
 
 /**
  * Function called when a tab bar item has been selected.
  * @param {Number} tag the tag number for the item that has been selected
  */
-NativeControls.prototype.tabBarItemSelected = function(tag) 
+NativeControls2.prototype.tabBarItemSelected = function(tag) 
 {
     if (typeof(this.tabBarCallbacks[tag].onSelect) == 'function') {
         this.tabBarCallbacks[tag].onSelect(this.tabBarCallbacks[tag].name);
@@ -136,17 +136,17 @@ NativeControls.prototype.tabBarItemSelected = function(tag)
 /**
  * Remove a toolbar.
  */
-NativeControls.prototype.removeToolBar = function() 
+NativeControls2.prototype.removeToolBar = function() 
 {
-    PhoneGap.exec("NativeControls.removeToolBar");
+    PhoneGap.exec("NativeControls2.removeToolBar");
 };
 
 /**
  * Create a toolbar.
  */
-NativeControls.prototype.createToolBar = function() 
+NativeControls2.prototype.createToolBar = function() 
 {
-    PhoneGap.exec("NativeControls.createToolBar");
+    PhoneGap.exec("NativeControls2.createToolBar");
 };
 
 /**
@@ -185,14 +185,14 @@ NativeControls.prototype.createToolBar = function()
  * @param {String} [image] image filename or internal identifier to show, or null if now image should be shown
  * @param {Object} [options] Options for customizing the individual toolbar item
  */
-NativeControls.prototype.createToolBarItem = function(name, label, image, options) {
+NativeControls2.prototype.createToolBarItem = function(name, label, image, options) {
     
 	var tag = this.toolBarTag++;
     if (options && 'onSelect' in options && typeof(options['onSelect']) == 'function') {
         this.toolBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name };
     }
 	
-    PhoneGap.exec("NativeControls.createToolBarItem", name, (label || ""), image, tag, options);
+    PhoneGap.exec("NativeControls2.createToolBarItem", name, (label || ""), image, tag, options);
 };
 
 /**
@@ -200,16 +200,16 @@ NativeControls.prototype.createToolBarItem = function(name, label, image, option
  * @param {String} name internal name used to represent this item when it was created
  * @param {Object} options Options for customizing the individual tab item
  */
-NativeControls.prototype.removeToolBarItem = function(name, options) {
+NativeControls2.prototype.removeToolBarItem = function(name, options) {
     if (!options) options = {};
-    PhoneGap.exec("NativeControls.removeToolBarItem", name, options);
+    PhoneGap.exec("NativeControls2.removeToolBarItem", name, options);
 };
 
 /**
  * Function called when a toolbar item has been selected.
  * @param {Number} tag the tag number for the item that has been selected
  */
-NativeControls.prototype.toolBarItemSelected = function(tag) 
+NativeControls2.prototype.toolBarItemSelected = function(tag) 
 {
     if (typeof(this.toolBarCallbacks[tag].onSelect) == 'function') {
         this.toolBarCallbacks[tag].onSelect(this.toolBarCallbacks[tag].name);
@@ -217,30 +217,30 @@ NativeControls.prototype.toolBarItemSelected = function(tag)
 };
 
 
-NativeControls.prototype.showToolBar = function(animate) {
+NativeControls2.prototype.showToolBar = function(animate) {
     if (animate == undefined || animate == null) {
         animate = true;
 	}
-    PhoneGap.exec("NativeControls.showToolBar", { animate: animate });
+    PhoneGap.exec("NativeControls2.showToolBar", { animate: animate });
 };
 
-NativeControls.prototype.hideToolBar = function(animate) {
+NativeControls2.prototype.hideToolBar = function(animate) {
     if (animate == undefined || animate == null) {
         animate = true;
 	}
-    PhoneGap.exec("NativeControls.hideToolBar", { animate: animate });
+    PhoneGap.exec("NativeControls2.hideToolBar", { animate: animate });
 };
 
 
-NativeControls.install = function()
+NativeControls2.install = function()
 {
 	if(!window.plugins)	{
 		window.plugins = {};
 	}
 	
 	if (!window.plugins.nativeControls) {
-		window.plugins.nativeControls = new NativeControls();
+		window.plugins.nativeControls = new NativeControls2();
 	}
 };
 
-PhoneGap.addConstructor(NativeControls.install);
+PhoneGap.addConstructor(NativeControls2.install);

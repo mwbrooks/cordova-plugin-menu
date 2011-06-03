@@ -1,8 +1,9 @@
 //
-//  NativeControls.h
+//  NativeControls2.h
 //  
 //
 //  Created by Jesse MacFadyen on 10-02-03.
+//  Improved by Shazron Abdullah 11-06-03
 //  MIT Licensed
 
 //  Originally this code was developed my Michael Nachbaur
@@ -17,7 +18,7 @@
 #import "PhoneGapCommand.h"
 #import "UIWebView+PGAdditions.h"
 
-@interface NativeControls : PhoneGapCommand <UITabBarDelegate, UIActionSheetDelegate> {
+@interface NativeControls2 : PhoneGapCommand <UITabBarDelegate, UIActionSheetDelegate> {
 
 }
 
