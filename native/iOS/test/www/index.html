@@ -11,6 +11,8 @@
 	-->
 	<!-- If you application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
 	<script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="HTMLMenuElement.js"></script>
+	<script type="text/javascript" charset="utf-8" src="HTMLCommandElement.js"></script>
 	<script type="text/javascript" charset="utf-8" src="NativeControls2.js"></script>
     <script type="text/javascript" charset="utf-8">
 
@@ -36,14 +38,15 @@
 	
 	function onBodyLoad()
 	{		
-		document.addEventListener("deviceready", onDeviceReady, false);
+		document.addEventListener("deviceready", doNativeControls, false);
+		//document.addEventListener("deviceready", doHTMLElements, false);
 	}
 	
 	/* When this function is called, PhoneGap has been initialized and is ready to roll */
 	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
 	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
 	for more details -jm */
-	function onDeviceReady()
+	function doNativeControls()
 	{
 		try {
 		
@@ -71,15 +74,23 @@
 				nc.removeTabBarItem("tab4-remove"); // remove by name
 			};
 
-			nc.createTabBarItem("tab1-n", "tab1-l", "tabButton:Favorites",{ onSelect: tabHandler }); // here a system item takes precedent
-			nc.createTabBarItem("tab2-n", "tab2-l", "alarm.png",{ onSelect: tabHandler }); // label and title
-			nc.createTabBarItem("tab3-n", null, "alarm.png",{ onSelect: tabHandler }); // no label
-			nc.createTabBarItem("tab4-remove", "remove me", "alarm.png",{ onSelect: removeTabHandler }); // label and title
+			nc.createTabBarItem("tab1-n", "tab1-l", "tabButton:Favorites", true, { onSelect: tabHandler }); // here a system item takes precedent
+			nc.createTabBarItem("tab2-n", "tab2-l", "alarm.png", true, { onSelect: tabHandler }); // label and title
+			nc.createTabBarItem("tab3-n", null, "alarm.png", true, { onSelect: tabHandler }); // no label
+			nc.createTabBarItem("tab4-remove", "remove me", "alarm.png", true, { onSelect: removeTabHandler }); // label and title
 			
-			nc.createToolBarItem("tool1-n", "tool1-l", "toolbarButton:Compose",{ onSelect: toolHandler }); // here a system item takes precedent
-			nc.createToolBarItem("tool2-n", "tool2-l", "alarm.png",{ onSelect: toolHandler }); // either label or image, here label takes precedent
-			nc.createToolBarItem("tool3-n", null, "alarm.png",{ onSelect: toolHandler }); // here no label, so image is used
-			nc.createToolBarItem("tool4-remove", "remove me", "",{ onSelect: removeToolHandler }); // either label or image, here label takes precedent
+			//nc.enableTabBarItem("tab4-remove"); // disables
+			nc.enableTabBarItem("tab4-remove", false); // disables
+			nc.enableTabBarItem("tab4-remove", true);
+
+			nc.createToolBarItem("tool1-n", "tool1-l", "toolbarButton:Compose", true, { onSelect: toolHandler }); // here a system item takes precedent
+			nc.createToolBarItem("tool2-n", "tool2-l", "alarm.png", false, { onSelect: toolHandler }); // either label or image, here label takes precedent
+			nc.createToolBarItem("tool3-n", null, "alarm.png", true, { onSelect: toolHandler }); // here no label, so image is used
+			nc.createToolBarItem("tool4-remove", "remove me", "", true, { onSelect: removeToolHandler }); // either label or image, here label takes precedent
+			
+			//nc.enableToolBarItem("tool4-remove"); // disables
+			nc.enableToolBarItem("tool4-remove", false); // disables
+			nc.enableToolBarItem("tool4-remove", true);
 			
 //			nc.hideToolBar();
 //			nc.showToolBar();
@@ -90,6 +101,11 @@
 			alert(e);
 		}
 	}
+	
+	function doHTMLElements()
+	{
+	}
+
     
     </script>
   </head>

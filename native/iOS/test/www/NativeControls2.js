@@ -79,14 +79,17 @@ NativeControls2.prototype.hideTabBar = function(animate) {
  * @param {Object} [options] Options for customizing the individual tab item
  *  - \c badge value to display in the optional circular badge on the item; if null or unspecified, the badge will be hidden
  */
-NativeControls2.prototype.createTabBarItem = function(name, label, image, options) {
+NativeControls2.prototype.createTabBarItem = function(name, label, image, enabled, options) {
     
 	var tag = this.tabBarTag++;
     if (options && 'onSelect' in options && typeof(options['onSelect']) == 'function') {
         this.tabBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name};
     }
+	if (enabled == null) {
+		enabled = true;
+	}
 	
-    PhoneGap.exec("NativeControls2.createTabBarItem", name, (label || ""), image, tag, options);
+    PhoneGap.exec("NativeControls2.createTabBarItem", name, (label || ""), image, enabled, tag, options);
 };
 
 /**
@@ -109,6 +112,16 @@ NativeControls2.prototype.removeTabBarItem = function(name, options) {
     if (!options) options = {};
     PhoneGap.exec("NativeControls2.removeTabBarItem", name, options);
 };
+
+/**
+ * Enable/disable existing tab bar item.
+ * @param {String} name internal name used to represent this item when it was created
+ * @param {Object} options Options for customizing the individual tab item
+ */
+NativeControls2.prototype.enableTabBarItem = function(name, enabled) {
+    PhoneGap.exec("NativeControls2.enableTabBarItem", name, (enabled || false));
+};
+
 
 /**
  * Manually select an individual tab bar item, or nil for deselecting a currently selected tab bar item.
@@ -185,24 +198,36 @@ NativeControls2.prototype.createToolBar = function()
  * @param {String} [image] image filename or internal identifier to show, or null if now image should be shown
  * @param {Object} [options] Options for customizing the individual toolbar item
  */
-NativeControls2.prototype.createToolBarItem = function(name, label, image, options) {
+NativeControls2.prototype.createToolBarItem = function(name, label, image, enabled, options) {
     
 	var tag = this.toolBarTag++;
     if (options && 'onSelect' in options && typeof(options['onSelect']) == 'function') {
         this.toolBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name };
     }
+	if (enabled == null) {
+		enabled = true;
+	}
 	
-    PhoneGap.exec("NativeControls2.createToolBarItem", name, (label || ""), image, tag, options);
+    PhoneGap.exec("NativeControls2.createToolBarItem", name, (label || ""), image, enabled, tag, options);
 };
 
 /**
- * Remove an existing tab bar item.
+ * Remove an existing toolbar item.
  * @param {String} name internal name used to represent this item when it was created
  * @param {Object} options Options for customizing the individual tab item
  */
 NativeControls2.prototype.removeToolBarItem = function(name, options) {
     if (!options) options = {};
     PhoneGap.exec("NativeControls2.removeToolBarItem", name, options);
+};
+
+/**
+ * Enable/disable existing toolbar item.
+ * @param {String} name internal name used to represent this item when it was created
+ * @param {Object} options Options for customizing the individual tab item
+ */
+NativeControls2.prototype.enableToolBarItem = function(name, enable) {
+    PhoneGap.exec("NativeControls2.enableToolBarItem", name, enable || false);
 };
 
 /**

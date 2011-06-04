@@ -36,6 +36,7 @@
 - (void) removeTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) removeTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) enableTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
@@ -47,6 +48,7 @@
 - (void) removeToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) removeToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) enableToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) showToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) hideToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 

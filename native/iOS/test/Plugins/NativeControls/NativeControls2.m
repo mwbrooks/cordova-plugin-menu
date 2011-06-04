@@ -150,7 +150,8 @@
     NSString* name      = [arguments objectAtIndex:0];
     NSString* title     = [arguments objectAtIndex:1];
     NSString* imageName = [arguments objectAtIndex:2];
-    int tag             = [[arguments objectAtIndex:3] intValue];
+    BOOL enable         = [[arguments objectAtIndex:3] boolValue];
+    int tag             = [[arguments objectAtIndex:4] intValue];
 
     UITabBarItem *item = nil;    
     if ([imageName length] > 0) 
@@ -189,6 +190,8 @@
         item.badgeValue = [options objectForKey:@"badge"];
 	}
     
+	item.enabled = enable;
+	
     BOOL animateItems = YES;
     if ([options objectForKey:@"animate"]) {
         animateItems = [(NSString*)[options objectForKey:@"animate"] boolValue];
@@ -247,6 +250,19 @@
 	}
 	
 	[items release];
+}
+
+- (void) enableTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    NSString* name      = [arguments objectAtIndex:0];
+    BOOL enable         = [[arguments objectAtIndex:1] boolValue];
+	
+    UITabBarItem* item = [self.tabBarItems objectForKey:name];
+	
+	NSUInteger index = [self.tabBar.items indexOfObject:item];
+	if (index != NSNotFound) {
+		item.enabled = enable;
+	}
 }
 
 /**
@@ -347,7 +363,8 @@
     NSString* name      = [arguments objectAtIndex:0];
     NSString* title     = [arguments objectAtIndex:1];
     NSString* imageName = [arguments objectAtIndex:2];
-    int tag             = [[arguments objectAtIndex:3] intValue];
+    BOOL enable         = [[arguments objectAtIndex:3] boolValue];
+    int tag             = [[arguments objectAtIndex:4] intValue];
 	
     UIBarButtonItem* item = nil;    
     if ([imageName length] > 0) 
@@ -404,6 +421,8 @@
 		item.tag = tag;
     }
 	
+	item.enabled = enable;
+	
     BOOL animateItems = YES;
     if ([options objectForKey:@"animate"]) {
         animateItems = [(NSString*)[options objectForKey:@"animate"] boolValue];
@@ -445,6 +464,24 @@
 	
 	[items release];
 }
+
+- (void) enableToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    if (!self.toolBar) {
+        [self createToolBar:nil withDict:nil];
+	}
+	
+    NSString* name      = [arguments objectAtIndex:0];
+    BOOL enable         = [[arguments objectAtIndex:1] boolValue];
+	
+    UIBarButtonItem* item = [self.toolBarItems objectForKey:name];
+	
+	NSUInteger index = [self.toolBar.items indexOfObject:item];
+	if (index != NSNotFound)
+	{
+		item.enabled = enable;
+	}
+}	
 
 /**
  * Show the toolbar after its been created.
