@@ -1,8 +1,8 @@
 (function(window) {
-
+	var nextId = 0;
     // generate a unique ID
-    var uuid = function() { return ++this.nextId; };
-    uuid.nextId = 0;
+    var uuid = function() { return ++nextId; };
+    
 
     /**
      * HTMLCommandElement

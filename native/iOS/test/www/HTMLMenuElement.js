@@ -1,9 +1,9 @@
 (function(window) {
 
-    // generate a unique ID
-    var uuid = function() { return ++this.nextId; };
-    uuid.nextId = 0;
-
+	 var nextId = 0;
+	 // generate a unique ID
+	 var uuid = function() { return ++nextId; };
+ 
     /**
      * HTMLMenuElement
      * ===============
@@ -69,15 +69,23 @@
 
         switch(name) {
             case 'type':
-                // destroy existing menu
-                // create new menu
-                // apply attributes
-                PhoneGap.exec(
-                    function(){},
-                    function(){},
-                    'ca.michaelbrooks.menu.toolbar', 'type', [id, value]
-                );
-                break;
+			 {
+				switch (value) {
+					 case 'toolbar':
+					 {
+						window.plugins.nativeControls.removeToolBar();
+						window.plugins.nativeControls.createToolBar();
+					 }
+					 break;
+					 case 'context':
+					 {
+						 window.plugins.nativeControls.removeTabBar();
+						 window.plugins.nativeControls.createTabBar();
+					 }
+					 break;
+				}
+			 }
+			break;
             case 'label':
                 PhoneGap.exec(
                     function(){},
@@ -89,9 +97,39 @@
     };
 
     HTMLMenuElement.prototype.appendChild = function(element) {
+		var menutype = this.attribute['type'];
+ 
+		var my_uuid = element.getAttribute('data-uuid');
+		var label = element.getAttribute('label');
+		var icon = element.getAttribute('icon');
+		var disabled = element.getAttribute('disabled');
+ 
+		switch (menutype)
+		 {
+			 case 'toolbar':
+				window.plugins.nativeControls.createToolBarItem(my_uuid, label, icon, !disabled);
+			 break;
+			 case 'context':
+				window.plugins.nativeControls.createTabBarItem(my_uuid, label, icon, !disabled);
+			 break;
+		 }
+	
     };
 
     HTMLMenuElement.prototype.removeChild = function(element) {
+		var menutype = this.attribute['type'];
+		var my_uuid = element.getAttribute('data-uuid');
+ 
+		switch (menutype)
+		 {
+			 case 'toolbar':
+				window.plugins.nativeControls.removeToolBarItem(my_uuid);
+			 break;
+			 case 'context':
+				window.plugins.nativeControls.removeTabBarItem(my_uuid);
+			 break;
+		 }
+ 
     };
 
     // backup original `document.createElement`
