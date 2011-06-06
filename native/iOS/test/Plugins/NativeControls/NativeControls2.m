@@ -51,8 +51,8 @@
 		return;
 	}
 	
-	[webView pg_removeSiblingView:self.tabBar withAnimation:NO];
-	[webView pg_relayout:NO];
+	[self.webView pg_removeSiblingView:self.tabBar withAnimation:NO];
+	[self.webView pg_relayout:NO];
 	
 	self.tabBar = nil;
 }
@@ -109,7 +109,7 @@
 	}
 	
 	if ([self.webView pg_hasSiblingView:self.tabBar]) {
-		[webView pg_removeSiblingView:self.tabBar withAnimation:NO];
+		[self.webView pg_removeSiblingView:self.tabBar withAnimation:NO];
 		[self.webView pg_relayout:NO];
 	}
 }
@@ -298,8 +298,8 @@
 		return;
 	}
 	
-	[webView pg_removeSiblingView:self.toolBar withAnimation:NO];
-	[webView pg_relayout:NO];
+	[self.webView pg_removeSiblingView:self.toolBar withAnimation:NO];
+	[self.webView pg_relayout:NO];
 	
 	self.toolBar = nil;
 }
@@ -333,7 +333,7 @@
             style = UIBarStyleBlackTranslucent;
     }
 
-    CGRect toolBarBounds = webView.bounds;
+    CGRect toolBarBounds = self.webView.bounds;
 	toolBarBounds.size.height = height;
 	
     self.toolBar = [[UIToolbar alloc] initWithFrame:toolBarBounds];
@@ -507,8 +507,8 @@
 	}
     
 	if ([self.webView pg_hasSiblingView:self.toolBar]) {
-		[webView pg_removeSiblingView:self.toolBar withAnimation:NO];
-		[webView pg_relayout:NO];
+		[self.webView pg_removeSiblingView:self.toolBar withAnimation:NO];
+		[self.webView pg_relayout:NO];
 	}
 }
 

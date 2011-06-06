@@ -17,12 +17,6 @@ function NativeControls2() {
     this.toolBarCallbacks = {};
 }
 
-NativeControls2.prototype._createCustomEventName = function(type, name) {
-	// name is the name of the tool/tab bar item, type is "click" for e.g
-	return 'command-' + name + '-' + type;
-};
-
-
 /**
  * Create a native tab bar that can have tab buttons added to it which can respond to events.
  */
@@ -153,15 +147,13 @@ NativeControls2.prototype.tabBarItemSelected = function(tag)
     if (this.tabBarCallbacks[tag] && typeof(this.tabBarCallbacks[tag].onSelect) == 'function') {
         this.tabBarCallbacks[tag].onSelect(this.tabBarCallbacks[tag].name);
 	}
-		
 	
 	var name = this.tabBarCallbacks[tag].name;
 	// also fire custom event
 	if (name) {
-		var eventName = this._createCustomEventName('click', this.tabBarCallbacks[tag].name);
+		var eventName = HTMLCommandElement.getEventName('click', this.tabBarCallbacks[tag].name);
 		var e = document.createEvent('Events');
 		e.initEvent(eventName);
-		console.log("Firing event: " + eventName);
 		window.dispatchEvent(e);
 	}
 		
@@ -272,7 +264,7 @@ NativeControls2.prototype.toolBarItemSelected = function(tag)
 	var name = this.toolBarCallbacks[tag].name;
 	// also fire custom event
 	if (name) {
-		var eventName = this._createCustomEventName('click', this.toolBarCallbacks[tag].name);
+		var eventName = HTMLCommandElement.getEventName('click', this.toolBarCallbacks[tag].name);
 		var e = document.createEvent('Events');
 		e.initEvent(eventName);
 		window.dispatchEvent(e);
