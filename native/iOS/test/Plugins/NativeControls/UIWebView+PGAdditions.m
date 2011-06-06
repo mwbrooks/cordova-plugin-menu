@@ -79,25 +79,13 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 			// make sure the siblingView's frame is to the bottom
 			siblingViewFrame.origin.y = (screenBounds.size.height - statusBarRect.size.height) - siblingView.frame.size.height;
 			siblingView.frame = siblingViewFrame;
-			
-			NSLog(@"Sibling Calc1: x: %f y: %f w: %f h: %f", siblingViewFrame.origin.x, siblingViewFrame.origin.y, 
-				  siblingViewFrame.size.width, siblingViewFrame.size.height);
-			NSLog(@"Sibling Calc2: x: %f y: %f w: %f h: %f", siblingView.frame.origin.x, siblingView.frame.origin.y, 
-				  siblingView.frame.size.width, siblingView.frame.size.height);
-			
 		}
 			break;
 		default: // not specified, or unsupported, so we return
 			return;
 	}
 	
-	NSLog(@"Sibling Before: x: %f y: %f w: %f h: %f", siblingView.frame.origin.x, siblingView.frame.origin.y, 
-		  siblingView.frame.size.width, siblingView.frame.size.height);
-
 	[self.superview addSubview:siblingView];
-	
-	NSLog(@"Sibling After: x: %f y: %f w: %f h: %f", siblingView.frame.origin.x, siblingView.frame.origin.y, 
-		  siblingView.frame.size.width, siblingView.frame.size.height);
 }
 
 - (void) pg_moveSiblingView:(UIView*) siblingView toPosition:(PGLayoutPosition)position withAnimation:(BOOL)animate
@@ -183,8 +171,6 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 	
 	NSEnumerator* enumerator = [centreView.superview.subviews objectEnumerator];
 	UIView* subview;
-	NSLog(@"CentreView: x: %f y: %f w: %f h: %f", centreView.frame.origin.x, centreView.frame.origin.x, 
-		  centreView.frame.size.width, centreView.frame.size.height);
 	
 	while (subview = [enumerator nextObject]) {
 		if (subview.hidden) {
@@ -197,8 +183,6 @@ NSComparisonResult sortByYPos(UIView* u1, UIView* u2, void* context)
 			[bottom addObject:subview];
 		} else if (subview != centreView) { // it is in the "middle" check that it is not the centreView
 			[middle addObject:subview];
-			NSLog(@"SubView: x: %f y: %f w: %f h: %f", subview.frame.origin.x, subview.frame.origin.x, 
-				  subview.frame.size.width, subview.frame.size.height);
 		}
 	}
 	
