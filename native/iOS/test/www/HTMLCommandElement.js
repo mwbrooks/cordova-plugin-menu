@@ -10,28 +10,15 @@
  */
 window.HTMLCommandElement = function(uuid) {
 	this.attribute = {
-		'data-uuid': uuid()
+		'data-uuid': uuid
 	};
 };
 
-window.HTMLCommandElement.getEventName = function(type, id) {
+window.HTMLCommandElement.EventName = 'htmlcommandevent';
+
+window.HTMLCommandElement.getUniqueEventName = function(type, id) {
 	return 'command-' + type + '-' + id;
 };
-
-/**
- * fireEvent
- * ------------
- *
- * fires off an event.
- *
- */
- HTMLCommandElement.prototype.fireEvent = function(type) {
-
-	var e = document.createEvent('Events');
-	e.initEvent(HTMLCommandElement.getEventName(type, this.attribute['data-uuid']));
-
-	window.dispatchEvent(e);
- };
 
 /**
  * addEventListenr
@@ -41,7 +28,7 @@ window.HTMLCommandElement.getEventName = function(type, id) {
  *
  */
  HTMLCommandElement.prototype.addEventListener = function(type, listener, useCapture) {
-	var eventName = HTMLCommandElement.getEventName(type, this.attribute['data-uuid']);
+	var eventName = HTMLCommandElement.getUniqueEventName(type, this.attribute['data-uuid']);
 	window.addEventListener(eventName, listener, useCapture);
  };
 
@@ -53,7 +40,7 @@ window.HTMLCommandElement.getEventName = function(type, id) {
  *
  */
  HTMLCommandElement.prototype.removeEventListener = function(type, listener, useCapture) {
-	var eventName = HTMLCommandElement.getEventName(type, this.attribute['data-uuid']);
+	var eventName = HTMLCommandElement.getUniqueEventName(type, this.attribute['data-uuid']);
 	window.removeEventListener(eventName, listener, useCapture);
 };
 
@@ -105,6 +92,16 @@ HTMLCommandElement.prototype.removeChild = function(element) {
 
 HTMLCommandElement.install = function()
 {
+	var commandEventListener = function(e) {
+		var eventData = e.data || {};
+		var eventName = HTMLCommandElement.getUniqueEventName(eventData.type, eventData.id);
+		
+		var evt = document.createEvent('Events');
+		evt.initEvent(eventName);
+		window.dispatchEvent(evt);
+	};
+	window.addEventListener(HTMLCommandElement.EventName, commandEventListener, false);
+	
 	var nextId = 1000;
 	// generate a unique ID
 	var uuid = function() { return ++nextId; };
@@ -115,7 +112,7 @@ HTMLCommandElement.install = function()
 	// override `document.createElement` to support menu
 	document.createElement = function() {
 		 if (arguments[0] === 'command') {
-			return new HTMLCommandElement(uuid);
+			return new HTMLCommandElement(uuid());
 		 } else {
 			return _createElement.apply(this, arguments);
 		 }

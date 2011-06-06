@@ -151,9 +151,9 @@ NativeControls2.prototype.tabBarItemSelected = function(tag)
 	var name = this.tabBarCallbacks[tag].name;
 	// also fire custom event
 	if (name) {
-		var eventName = HTMLCommandElement.getEventName('click', this.tabBarCallbacks[tag].name);
 		var e = document.createEvent('Events');
-		e.initEvent(eventName);
+		e.initEvent('htmlcommandevent');
+		e.data = { type: 'click', id: name };
 		window.dispatchEvent(e);
 	}
 		
@@ -264,9 +264,9 @@ NativeControls2.prototype.toolBarItemSelected = function(tag)
 	var name = this.toolBarCallbacks[tag].name;
 	// also fire custom event
 	if (name) {
-		var eventName = HTMLCommandElement.getEventName('click', this.toolBarCallbacks[tag].name);
 		var e = document.createEvent('Events');
-		e.initEvent(eventName);
+		e.initEvent(HTMLCommandElement.EventName);
+		e.data = { type: 'click', id: name };
 		window.dispatchEvent(e);
 	}
 };

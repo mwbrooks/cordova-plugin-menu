@@ -9,9 +9,9 @@
  *
  * Since the type of menu is not yet defined, there is nothing to render.
  */
-window.HTMLMenuElement = function(nativeControls, uuid) {
+window.HTMLMenuElement = function(uuid, nativeControls) {
 	this.attribute = {
-		'data-uuid': uuid()
+		'data-uuid': uuid
 	};
 	this.nativeControls = nativeControls;
 };
@@ -141,7 +141,7 @@ HTMLMenuElement.install = function()
     // override `document.createElement` to support menu
     document.createElement = function() {
 		 if (arguments[0] === 'menu') {
-			return new HTMLMenuElement(window.plugins.nativeControls, uuid);
+			return new HTMLMenuElement(uuid(), window.plugins.nativeControls);
 		 } else {
 			return _createElement.apply(this, arguments);
 		 }
