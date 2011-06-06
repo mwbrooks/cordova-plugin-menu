@@ -17,6 +17,12 @@ function NativeControls2() {
     this.toolBarCallbacks = {};
 }
 
+NativeControls2.prototype._createCustomEventName = function(type, name) {
+	// name is the name of the tool/tab bar item, type is "click" for e.g
+	return 'command-' + name + '-' + type;
+};
+
+
 /**
  * Create a native tab bar that can have tab buttons added to it which can respond to events.
  */
@@ -84,7 +90,10 @@ NativeControls2.prototype.createTabBarItem = function(name, label, image, enable
 	var tag = this.tabBarTag++;
     if (options && 'onSelect' in options && typeof(options['onSelect']) == 'function') {
         this.tabBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name};
-    }
+    } else {
+        this.tabBarCallbacks[tag] = { 'name':name };
+	}
+	
 	if (enabled == null) {
 		enabled = true;
 	}
@@ -139,8 +148,25 @@ NativeControls2.prototype.selectTabBarItem = function(tab) {
  */
 NativeControls2.prototype.tabBarItemSelected = function(tag) 
 {
-    if (typeof(this.tabBarCallbacks[tag].onSelect) == 'function') {
+	try {
+
+    if (this.tabBarCallbacks[tag] && typeof(this.tabBarCallbacks[tag].onSelect) == 'function') {
         this.tabBarCallbacks[tag].onSelect(this.tabBarCallbacks[tag].name);
+	}
+		
+	
+	var name = this.tabBarCallbacks[tag].name;
+	// also fire custom event
+	if (name) {
+		var eventName = this._createCustomEventName('click', this.tabBarCallbacks[tag].name);
+		var e = document.createEvent('Events');
+		e.initEvent(eventName);
+		console.log("Firing event: " + eventName);
+		window.dispatchEvent(e);
+	}
+		
+	} catch (e) {
+		alert(e);
 	}
 };
 
@@ -203,7 +229,10 @@ NativeControls2.prototype.createToolBarItem = function(name, label, image, enabl
 	var tag = this.toolBarTag++;
     if (options && 'onSelect' in options && typeof(options['onSelect']) == 'function') {
         this.toolBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name };
-    }
+    } else {
+        this.toolBarCallbacks[tag] = { 'name':name };
+	}
+	
 	if (enabled == null) {
 		enabled = true;
 	}
@@ -236,11 +265,19 @@ NativeControls2.prototype.enableToolBarItem = function(name, enable) {
  */
 NativeControls2.prototype.toolBarItemSelected = function(tag) 
 {
-    if (typeof(this.toolBarCallbacks[tag].onSelect) == 'function') {
+    if (this.toolBarCallbacks[tag] && typeof(this.toolBarCallbacks[tag].onSelect) == 'function') {
         this.toolBarCallbacks[tag].onSelect(this.toolBarCallbacks[tag].name);
 	}
+	
+	var name = this.toolBarCallbacks[tag].name;
+	// also fire custom event
+	if (name) {
+		var eventName = this._createCustomEventName('click', this.toolBarCallbacks[tag].name);
+		var e = document.createEvent('Events');
+		e.initEvent(eventName);
+		window.dispatchEvent(e);
+	}
 };
-
 
 NativeControls2.prototype.showToolBar = function(animate) {
     if (animate == undefined || animate == null) {
@@ -255,7 +292,6 @@ NativeControls2.prototype.hideToolBar = function(animate) {
 	}
     PhoneGap.exec("NativeControls2.hideToolBar", { animate: animate });
 };
-
 
 NativeControls2.install = function()
 {

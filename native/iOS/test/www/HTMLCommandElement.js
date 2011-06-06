@@ -18,6 +18,51 @@
         this.attribute = {
             'data-uuid': uuid()
         };
+		this.eventListener = {};
+    };
+
+     HTMLCommandElement.prototype._prefix = function(type) {
+		var name = window.plugins.nativeControls._createCustomEventName(type, this.attribute['data-uuid']);
+		console.log("_prefix: " + name);
+		return name;
+    };
+ 
+    /**
+     * fireEvent
+     * ------------
+     *
+     * fires off an event.
+     *
+     */
+     HTMLCommandElement.prototype.fireEvent = function(type) {
+		var prefix = this._prefix(type);
+ 
+		var e = document.createEvent('Events');
+		e.initEvent(prefix);
+
+		window.dispatchEvent(e);
+     };
+ 
+    /**
+     * addEventListenr
+     * ------------
+     *
+     * Adds an event listener.
+     *
+     */
+     HTMLCommandElement.prototype.addEventListener = function(type, listener, useCapture) {
+		window.addEventListener(this._prefix(type), listener, useCapture);
+     };
+
+     /**
+     * removeEventListenr
+     * ------------
+     *
+     * Remove an event listener.
+     *
+     */
+     HTMLCommandElement.prototype.removeEventListener = function(type, listener, useCapture) {
+		window.removeEventListener(this._prefix(type), listener);
     };
 
     /**

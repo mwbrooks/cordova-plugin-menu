@@ -106,6 +106,22 @@
 	{
 		try {
 		
+		var nc = window.plugins.nativeControls;
+
+		var tabHandler = function() {
+			navigator.notification.alert("tabHandler", null, "TabBar");
+		};
+		var toolHandler = function() {
+			navigator.notification.alert("toolHandler", null, "ToolBar");
+		};
+		var removeToolHandler = function() {
+			toolbar.removeChild(tool4);
+		};
+		var removeTabHandler = function() {
+			tabbar.removeChild(tab4);
+		};
+		
+		
 		var tabbar = document.createElement('menu');
 		tabbar.setAttribute('type', 'context');
 		
@@ -113,24 +129,28 @@
 		tab1.setAttribute('label', 'tab1-l');
 		tab1.setAttribute('icon', 'tabButton:Favorites');
 		tab1.setAttribute('disabled', false);
+		tab1.addEventListener('click', tabHandler);
 		tabbar.appendChild(tab1);
 
 		var tab2 = document.createElement('command');
 		tab2.setAttribute('label', 'tab2-l');
 		tab2.setAttribute('icon', 'alarm.png');
 		tab2.setAttribute('disabled', false);
+		tab2.addEventListener('click', tabHandler);
 		tabbar.appendChild(tab2);
 
 		var tab3 = document.createElement('command');
 		tab3.setAttribute('label', '');
 		tab3.setAttribute('icon', 'alarm.png');
 		tab3.setAttribute('disabled', false);
+		tab3.addEventListener('click', tabHandler);
 		tabbar.appendChild(tab3);
 
 		var tab4 = document.createElement('command');
 		tab4.setAttribute('label', 'remove me');
 		tab4.setAttribute('icon', '');
 		tab4.setAttribute('disabled', false);
+		tab4.addEventListener('click', removeTabHandler);
 		tabbar.appendChild(tab4);
 
 		// ///////////////////
@@ -142,24 +162,28 @@
 		tool1.setAttribute('label', 'tool1-l');
 		tool1.setAttribute('icon', '');
 		tool1.setAttribute('disabled', false);
+		tool1.addEventListener('click', toolHandler);
 		toolbar.appendChild(tool1);
 
 		var tool2 = document.createElement('command');
 		tool2.setAttribute('label', 'tool2-l');
 		tool2.setAttribute('icon', 'toolbarButton:Compose');
 		tool2.setAttribute('disabled', true);
+		tool2.addEventListener('click', toolHandler);
 		toolbar.appendChild(tool2);
 
 		var tool3 = document.createElement('command');
 		tool3.setAttribute('label', '');
 		tool3.setAttribute('icon', 'alarm.png');
 		tool3.setAttribute('disabled', false);
+		tool3.addEventListener('click', toolHandler);
 		toolbar.appendChild(tool3);
 
 		var tool4 = document.createElement('command');
 		tool4.setAttribute('label', 'remove me');
 		tool4.setAttribute('icon', '');
 		tool4.setAttribute('disabled', false);
+		tool4.addEventListener('click', removeToolHandler);
 		toolbar.appendChild(tool4);
 		
 		
