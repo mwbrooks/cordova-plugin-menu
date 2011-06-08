@@ -40,7 +40,7 @@ body {
   background-position:50% 4px;
   background-repeat:no-repeat;
   cursor:pointer;
-  float:left;
+  display:inline-block;
   height:100%;
   text-shadow: #000000 0px -1px 0px;
   width:56px;
