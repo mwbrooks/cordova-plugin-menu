@@ -37,7 +37,7 @@ body {
 }
 
 #phonegap-menu-context .command {
-  background-position:50% 4px;
+  background-position:50% 3px;
   background-repeat:no-repeat;
   cursor:pointer;
   display:inline-block;

@@ -22,18 +22,23 @@
 
         var commandHome = document.createElement('command');
         commandHome.setAttribute('label', 'Home');
-        commandHome.setAttribute('icon',  'image/clock.png');
+        commandHome.setAttribute('icon',  'image/house.png');
         commandHome.setAttribute('action', function() { alert('Home'); });
         commandHome.setAttribute('disabled', true);
 
         var commandSearch = document.createElement('command');
         commandSearch.setAttribute('label', 'Search');
-        commandSearch.setAttribute('icon',  'image/clock.png');
+        commandSearch.setAttribute('icon',  'image/magnifyingglass.png');
         commandSearch.setAttribute('action', function() { alert('Search'); });
-        commandSearch.setAttribute('disabled', false);
+
+        var commandSettings = document.createElement('command');
+        commandSettings.setAttribute('label', 'Settings');
+        commandSettings.setAttribute('icon',  'image/preferences.png');
+        commandSettings.setAttribute('action', function() { alert('Settings'); });
 
         context.appendChild(commandHome);
         context.appendChild(commandSearch);
+        context.appendChild(commandSettings);
 
         // context.removeChild(commandHome);
     </script>
