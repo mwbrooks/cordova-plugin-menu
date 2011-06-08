@@ -40,6 +40,7 @@ body {
   cursor:pointer;
   float:right;
   font-size:11px;
+  line-height:16px;
   margin-right:10px;
   margin-top:2px;
 }
@@ -52,7 +53,6 @@ body {
   color:#444;
   display:inline-block;
   height:16px;
-  line-height:16px;
   min-width:24px;
   padding:4px;
   text-shadow:#EEE 0px 1px 0px;
@@ -85,4 +85,9 @@ body {
 
 .disabled {
     opacity:0.4;
+}
+
+#phonegap-menu-toolbar .accesskey-back {
+    float:left;
+    margin-left:10px;
 }

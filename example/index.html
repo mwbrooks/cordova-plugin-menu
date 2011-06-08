@@ -26,11 +26,16 @@
 
         var commandAdd = document.createElement('command');
         commandAdd.setAttribute('icon', 'image/plus.png');
-        commandAdd.setAttribute('label', 'image/plus.png');
         commandAdd.setAttribute('action', function() { alert('Add'); });
+
+        var commandBack = document.createElement('command');
+        commandBack.setAttribute('label', 'Back');
+        commandBack.setAttribute('accesskey', 'back');
+        commandBack.setAttribute('action', function() { alert('Back'); });
 
         toolbar.appendChild(commandLogout);
         toolbar.appendChild(commandAdd);
+        toolbar.appendChild(commandBack);
 
         // Context Menu
 

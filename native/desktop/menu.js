@@ -52,6 +52,23 @@
             delete contextElement;
             success();
         },
+        'accesskey': function(success, fail, args) {
+            var element = elements[args[0]];
+            var classes = element.getAttribute('class').split(' ');
+
+            switch(args[1]) {
+                case 'back':
+                    classes.push('accesskey-back');
+                    break;
+                default:
+                    classes.forEach(function(v, i) { if (v === 'accesskey-back') classes.splice(i, 1); });
+                    break;
+            }
+
+            element.setAttribute('class', classes.join(' '));
+
+            success();
+        },
         'disabled': function(success, fail, args) {
             var element = elements[args[0]];
             var classes = element.getAttribute('class').split(' ');

@@ -248,13 +248,13 @@
                 //   if supports search (Android)
                 //     bind success to search
                 if (!Help.exists(self)) { callback(); return; }
-                
-                // Help.execute({
-                //     action:   'accesskey',
-                //     element:  self,
-                //     data:     [ self.attribute.accesskey ],
-                //     callback: callback
-                // });
+
+                Help.execute({
+                    action:   'accesskey',
+                    element:  self,
+                    data:     [ self.attribute.accesskey ],
+                    callback: callback
+                });
             },
             'action': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }
@@ -308,7 +308,8 @@
                         self.fn['label'],
                         self.fn['icon'],
                         self.fn['disabled'],
-                        self.fn['action']
+                        self.fn['action'],
+                        self.fn['accesskey']
                     ]);
                 else
                     Help.process([ self.fn['delete'] ]);
