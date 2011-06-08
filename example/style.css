@@ -36,8 +36,35 @@ body {
     width:100%;
 }
 
+#phonegap-menu-toolbar .command {
+  cursor:pointer;
+  float:right;
+  font-size:11px;
+  margin-right:10px;
+  margin-top:2px;
+}
+
+#phonegap-menu-toolbar .command span {
+  background:-webkit-gradient(linear, left bottom, left top, color-stop(0.0, #909090), color-stop(1.0, #EDEDED));
+  border:1px solid #606060;
+  border-radius:4px;
+  -webkit-box-shadow:#FFF 0px 1px 0px;
+  color:#444;
+  display:inline-block;
+  height:16px;
+  line-height:16px;
+  min-width:24px;
+  padding:4px;
+  text-shadow:#EEE 0px 1px 0px;
+}
+
+#phonegap-menu-toolbar .command span img {
+    max-height:100%;
+    max-width:100%;
+}
+
 #phonegap-menu-context .command {
-  background-position:50% 3px;
+  background-position:50% 4px;
   background-repeat:no-repeat;
   cursor:pointer;
   display:inline-block;

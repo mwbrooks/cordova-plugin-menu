@@ -38,6 +38,48 @@
         }
     };
     
+    var toolbarCommand = {
+        'create': function(success, fail, args) {
+            var element = document.createElement('div');
+            element.setAttribute('class', 'command');
+            element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            document.getElementById('phonegap-menu-toolbar').appendChild(element);
+            elements[args[0]] = element;
+            success();
+        },
+        'delete': function(success, fail, args) {
+            contextElement.parentElement.removeChild(contextElement)
+            delete contextElement;
+            success();
+        },
+        'disabled': function(success, fail, args) {
+            var element = elements[args[0]];
+            var classes = element.getAttribute('class').split(' ');
+            
+            if (args[1]) {
+                classes.push('disabled');
+                element.removeEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action);
+            }
+            else {
+                classes.forEach(function(v, i) { if (v === 'disabled') classes.splice(i, 1); });
+                element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            }
+
+            element.setAttribute('class', classes.join(' '));
+
+            success();
+        },
+        'icon': function(success, fail, args) {
+            if (args[1] !== '')
+                elements[args[0]].innerHTML = '<span><img src="' + args[1] + '" />';
+            success();
+        },
+        'label': function(success, fail, args) {
+            elements[args[0]].innerHTML = '<span>' + args[1] + '</span>';
+            success();
+        }
+    };
+
     var context = {
         'create': function(success, fail, args) {
             if (args[1] === 'context') {

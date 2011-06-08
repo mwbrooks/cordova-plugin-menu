@@ -13,9 +13,26 @@
 <body>
 
     <script type="text/javascript" charset="utf-8">
+
+        // Toolbar
+
         var toolbar = document.createElement('menu');
         toolbar.setAttribute('type', 'toolbar');
-        toolbar.setAttribute('label', 'Title Bar');
+        toolbar.setAttribute('label', 'Home');
+
+        var commandLogout = document.createElement('command');
+        commandLogout.setAttribute('label', 'Logout');
+        commandLogout.setAttribute('action', function() { alert('Logout'); });
+
+        var commandAdd = document.createElement('command');
+        commandAdd.setAttribute('icon', 'image/plus.png');
+        commandAdd.setAttribute('label', 'image/plus.png');
+        commandAdd.setAttribute('action', function() { alert('Add'); });
+
+        toolbar.appendChild(commandLogout);
+        toolbar.appendChild(commandAdd);
+
+        // Context Menu
 
         var context = document.createElement('menu');
         context.setAttribute('type', 'context');
