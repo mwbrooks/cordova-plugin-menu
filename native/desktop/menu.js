@@ -81,9 +81,22 @@
             delete contextElement;
             success();
         },
-        
+        'disabled': function(success, fail, args) {
+            var element = elements[args[0]];
+            var classes = element.getAttribute('class').split(' ');
+            
+            if (args[1])
+                classes.push('disabled');
+            else
+                classes.forEach(function(v, i) { if (v === 'disabled') v.splice(i, 1); });
+
+            element.setAttribute('class', classes.join(' '));
+
+            success();
+        },
         'icon': function(success, fail, args) {
             elements[args[0]].style.backgroundImage = "url('" + args[1] + "')";
+            success();
         },
         'label': function(success, fail, args) {
             elements[args[0]].innerHTML = '<span>' + args[1] + '</span>';

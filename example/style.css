@@ -55,3 +55,7 @@ body {
     position:absolute;
     width:56px;
 }
+
+.disabled {
+    opacity:0.4;
+}

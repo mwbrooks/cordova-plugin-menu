@@ -256,7 +256,7 @@
             },
             'disabled': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }
-console.log('d');
+
                 Help.execute({
                     action:   'disabled',
                     element:  self,
