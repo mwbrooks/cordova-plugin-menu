@@ -76,7 +76,6 @@
             elements[args[0]] = element;
             success();
         },
-
         'delete': function(success, fail, args) {
             contextElement.parentElement.removeChild(contextElement)
             delete contextElement;

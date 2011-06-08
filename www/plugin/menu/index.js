@@ -249,7 +249,12 @@
                 //     bind success to search
                 if (!Help.exists(self)) { callback(); return; }
                 
-                callback();
+                // Help.execute({
+                //     action:   'accesskey',
+                //     element:  self,
+                //     data:     [ self.attribute.accesskey ],
+                //     callback: callback
+                // });
             },
             'action': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }
