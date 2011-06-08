@@ -19,6 +19,12 @@
             }
         },
 
+        'delete': function(success, fail, args) {
+            htmlElement.parentElement.removeChild(htmlElement)
+            delete htmlElement;
+            success();
+        },
+        
         'label': function(success, fail, args) {
             try {
                 htmlElement.innerText = args[1];
