@@ -25,10 +25,17 @@
         commandHome.setAttribute('icon',  'image/clock.png');
         commandHome.setAttribute('action', function() { alert('Home'); });
         commandHome.setAttribute('disabled', true);
+
+        var commandSearch = document.createElement('command');
+        commandSearch.setAttribute('label', 'Search');
+        commandSearch.setAttribute('icon',  'image/clock.png');
+        commandSearch.setAttribute('action', function() { alert('Search'); });
+        commandSearch.setAttribute('disabled', false);
+
         context.appendChild(commandHome);
-        
+        context.appendChild(commandSearch);
+
         // context.removeChild(commandHome);
-        
     </script>
 </body>
 </html>
