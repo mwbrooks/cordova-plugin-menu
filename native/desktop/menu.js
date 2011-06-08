@@ -1,4 +1,5 @@
 (function(window) {
+    var elements = {};
     var htmlElement;
     var contextElement;
     
@@ -65,6 +66,27 @@
             success();
         }
     };
+    
+    var contextCommand = {
+        'create': function(success, fail, args) {
+            var element = document.createElement('div');
+            element.setAttribute('class', 'command');
+            document.getElementById('phonegap-menu-context').appendChild(element);
+            elements[args[0]] = element;
+            success();
+        },
+
+        'delete': function(success, fail, args) {
+            contextElement.parentElement.removeChild(contextElement)
+            delete contextElement;
+            success();
+        },
+        
+        'label': function(success, fail, args) {
+            elements[args[0]].innerText = args[1];
+            success();
+        }
+    };
 
     //
     // Stub PhoneGap or backup PhoneGap.exec
@@ -85,10 +107,17 @@
                 case 'com.phonegap.menu.toolbar':
                     toolbar[action](success, fail, args);
                     break;
+                case 'com.phonegap.menu.toolbar.command':
+                    toolbarCommand[action](success, fail, args);
+                    break;
                 case 'com.phonegap.menu.context':
                     context[action](success, fail, args);
                     break;
+                case 'com.phonegap.menu.context.command':
+                    contextCommand[action](success, fail, args);
+                    break;
                 default:
+                    console.log('service consumed: ' + service + '::' + action);
                     phonegapExec(success, fail, service, action, args);
                     break;
             }

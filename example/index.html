@@ -19,6 +19,15 @@
 
         var context = document.createElement('menu');
         context.setAttribute('type', 'context');
+        
+        var commandHome = document.createElement('command');
+        commandHome.setAttribute('label', 'Home');
+        commandHome.setAttribute('icon',  'image/icon.png');
+        commandHome.setAttribute('action', function() { alert('Home'); });
+        context.appendChild(commandHome);
+        
+        // context.removeChild(commandHome);
+        
     </script>
 </body>
 </html>

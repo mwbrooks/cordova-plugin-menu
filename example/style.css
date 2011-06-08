@@ -35,3 +35,8 @@ body {
     text-shadow: white 0px 1px 0px;
     width:100%;
 }
+
+#phonegap-menu-context .command {
+  color:#AAA;
+  text-shadow: #000000 0px -1px 0px;
+}
