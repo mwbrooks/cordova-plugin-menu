@@ -1,6 +1,7 @@
 (function(window) {
     var htmlElement;
-
+    var contextElement;
+    
     var toolbar = {
         'create': function(success, fail, args) {
             if (args[1] === 'toolbar') {
@@ -35,6 +36,35 @@
             }
         }
     };
+    
+    var context = {
+        'create': function(success, fail, args) {
+            if (args[1] === 'context') {
+                if (document.getElementById('phonegap-menu-context')) {
+                    success();
+                    return;
+                }
+
+                contextElement = document.createElement('div');
+                contextElement.setAttribute('id', 'phonegap-menu-context');
+                document.body.appendChild(contextElement);
+                success();
+            }
+            else {
+                fail();
+            }
+        },
+
+        'delete': function(success, fail, args) {
+            contextElement.parentElement.removeChild(contextElement)
+            delete contextElement;
+            success();
+        },
+        
+        'label': function(success, fail, args) {
+            success();
+        }
+    };
 
     //
     // Stub PhoneGap or backup PhoneGap.exec
@@ -49,23 +79,25 @@
     // Define PhoneGap.exec for HTMLMenuElement
     //
 
-    window.PhoneGap.exec = function(success, fail, uri, action, args) {
-        if (uri === 'com.phonegap.menu.toolbar') {
-            try {
-                toolbar[action](success, fail, args);
-            }
-            catch(e) {
-                console.log('Unknown action for com.phonegap.menu.toolbar:');
-                console.log('  => uri:    ' + uri);
-                console.log('  => action: ' + action);
-                console.log('  => args:   ' + args);
+    window.PhoneGap.exec = function(success, fail, service, action, args) {
+        try {
+            switch(service) {
+                case 'com.phonegap.menu.toolbar':
+                    toolbar[action](success, fail, args);
+                    break;
+                case 'com.phonegap.menu.context':
+                    context[action](success, fail, args);
+                    break;
+                default:
+                    phonegapExec(success, fail, service, action, args);
+                    break;
             }
         }
-        else if (uri === 'com.phonegap.menu.command') {
-
-        }
-        else {
-            phonegapExec(success, fail, uri, action, args);
+        catch(e) {
+            console.log('Unknown action for ' + service + ':');
+            console.log('  => uri:    ' + service);
+            console.log('  => action: ' + action);
+            console.log('  => args:   ' + args);            
         }
     };
 })(window);
