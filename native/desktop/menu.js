@@ -2,12 +2,8 @@
     var htmlElement;
 
     var toolbar = {
-        'new': function(success, fail, args) {
-            success();
-        },
-
-        'type': function(success, fail, args) {
-            if (args[0] === 'toolbar') {
+        'create': function(success, fail, args) {
+            if (args[1] === 'toolbar') {
                 if (document.getElementById('phonegap-menu-toolbar')) {
                     success();
                     return;
@@ -25,7 +21,7 @@
 
         'label': function(success, fail, args) {
             try {
-                htmlElement.innerText = args[0];
+                htmlElement.innerText = args[1];
                 success();
             }
             catch(e) {
@@ -48,18 +44,18 @@
     //
 
     window.PhoneGap.exec = function(success, fail, uri, action, args) {
-        if (uri === 'ca.michaelbrooks.menu.toolbar') {
+        if (uri === 'com.phonegap.menu.toolbar') {
             try {
                 toolbar[action](success, fail, args);
             }
             catch(e) {
-                console.log('Unknown action for ca.michaelbrooks.menu.toolbar:');
+                console.log('Unknown action for com.phonegap.menu.toolbar:');
                 console.log('  => uri:    ' + uri);
                 console.log('  => action: ' + action);
                 console.log('  => args:   ' + args);
             }
         }
-        else if (uri === 'ca.michaelbrooks.menu.command') {
+        else if (uri === 'com.phonegap.menu.command') {
 
         }
         else {

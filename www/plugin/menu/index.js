@@ -1,9 +1,34 @@
 (function(window) {
 
-    // generate a unique ID
-    var uuid = function() { return ++this.nextId; };
-    uuid.nextId = 0;
-
+    var Help = {
+        nextUUID: 0,
+        generateUUID: function() {
+            return ++this.nextUUID;
+        },
+        execute: function(options) {
+            if (typeof options.data === 'undefined') options.data = [];
+            
+            var service = 'com.phonegap.menu.' + options.element.attribute['type'];
+            var id      = options.element.attribute['data-uuid'];
+            
+            options.data.unshift(id);
+            
+            PhoneGap.exec(
+                options.callback,
+                options.callback,
+                service,
+                options.action,
+                options.data
+            );
+        },
+        process: function(queue) {
+            (function next() {
+                if (queue.length <= 0) return;
+                queue.shift()(next);
+            })();
+        }
+    };
+    
     /**
      * HTMLMenuElement
      * ===============
@@ -15,8 +40,70 @@
      * Since the type of menu is not yet defined, there is nothing to render.
      */
     window.HTMLMenuElement = function() {
-        this.attribute = {
-            'data-uuid': uuid()
+        var self = this;
+        
+        self.attribute = {
+            'data-uuid': undefined,
+            'label':     '',
+            'type':      ''
+        };
+        
+        self.fn = {
+            'commands': function(callback) {
+                // for each child commmand
+                //   execute update
+                // then
+                //   fire callback
+            },
+            'create': function(callback) {
+                self.attribute['data-uuid'] = Help.generateUUID();
+                
+                Help.execute({
+                    action:   'create',
+                    data:     [ self.attribute.type ],
+                    element:  self,
+                    callback: callback
+                });
+            },
+            'delete': function(callback) {
+                if (typeof self.attribute['data-uuid'] === 'undefined') {
+                    callback();
+                    return;
+                }
+                
+                Help.execute({
+                    action:   'delete',
+                    element:  self,
+                    callback: function() {
+                        self.attribute['data-uuid'] = undefined;
+                        callback();
+                    }
+                });
+            },
+            'label': function(callback) {
+                Help.execute({
+                    action:   'label',
+                    element:  self,
+                    data:     [ self.attribute.label ],
+                    callback: callback
+                });
+            }
+        };
+        
+        self.update = {
+            'type': function() {
+                Help.process([
+                    self.fn['delete'],
+                    self.fn['create'],
+                    self.fn['label'],
+                    self.fn['commands']
+                ]);
+            },
+            'label': function() {
+                Help.process([
+                    self.fn['label']
+                ]);
+            }
         };
     };
 
@@ -64,28 +151,7 @@
      */
     HTMLMenuElement.prototype.setAttribute = function(name, value) {
         this.attribute[name] = value;
-
-        var id = this.attribute['data-uuid'];
-
-        switch(name) {
-            case 'type':
-                // destroy existing menu
-                // create new menu
-                // apply attributes
-                PhoneGap.exec(
-                    function(){},
-                    function(){},
-                    'ca.michaelbrooks.menu.toolbar', 'type', [id, value]
-                );
-                break;
-            case 'label':
-                PhoneGap.exec(
-                    function(){},
-                    function(){},
-                    'ca.michaelbrooks.menu.toolbar', 'label', [id, value]
-                );
-                break;
-        };
+        this.update[name]();
     };
 
     HTMLMenuElement.prototype.appendChild = function(element) {

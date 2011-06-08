@@ -18,3 +18,20 @@ body {
     top:0px;
     width:100%;
 }
+
+#phonegap-menu-context {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #4B4B4B), color-stop(1.0, #090909));
+    bottom:0px;
+    border-bottom:1px solid #000000;
+    border-top:1px solid #2B2B2B;
+    color:#000000;
+    height:42px;
+    font-family:Verdana, Helvetica, Arial, sans-serif;
+    font-size:18px;
+    line-height:32px;
+    left:0px;
+    position:fixed;
+    text-align:center;
+    text-shadow: white 0px 1px 0px;
+    width:100%;
+}
