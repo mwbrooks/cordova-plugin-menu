@@ -215,6 +215,8 @@
         self.fn = {
             'create': function(callback) {
                 self.attribute['data-uuid'] = Help.generateUUID();
+
+                window.HTMLCommandElement.elements[self.attribute['data-uuid']] = self;
                 
                 Help.execute({
                     action:   'create',
@@ -251,7 +253,7 @@
             },
             'action': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }
-                
+
                 callback();
             },
             'disabled': function(callback) {
@@ -300,7 +302,8 @@
                         self.fn['create'],
                         self.fn['label'],
                         self.fn['icon'],
-                        self.fn['disabled']
+                        self.fn['disabled'],
+                        self.fn['action']
                     ]);
                 else
                     Help.process([ self.fn['delete'] ]);
@@ -316,6 +319,8 @@
             }
         };
     };
+
+    HTMLCommandElement.elements = {};
 
     /**
      * getAttribute

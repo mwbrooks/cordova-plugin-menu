@@ -71,6 +71,7 @@
         'create': function(success, fail, args) {
             var element = document.createElement('div');
             element.setAttribute('class', 'command');
+            element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
             document.getElementById('phonegap-menu-context').appendChild(element);
             elements[args[0]] = element;
             success();
@@ -85,10 +86,14 @@
             var element = elements[args[0]];
             var classes = element.getAttribute('class').split(' ');
             
-            if (args[1])
+            if (args[1]) {
                 classes.push('disabled');
-            else
-                classes.forEach(function(v, i) { if (v === 'disabled') v.splice(i, 1); });
+                element.removeEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action);
+            }
+            else {
+                classes.forEach(function(v, i) { if (v === 'disabled') classes.splice(i, 1); });
+                element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            }
 
             element.setAttribute('class', classes.join(' '));
 
