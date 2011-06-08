@@ -82,8 +82,11 @@
             success();
         },
         
+        'icon': function(success, fail, args) {
+            elements[args[0]].style.backgroundImage = "url('" + args[1] + "')";
+        },
         'label': function(success, fail, args) {
-            elements[args[0]].innerText = args[1];
+            elements[args[0]].innerHTML = '<span>' + args[1] + '</span>';
             success();
         }
     };

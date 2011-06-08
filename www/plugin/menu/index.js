@@ -256,7 +256,7 @@
             },
             'disabled': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }
-                
+console.log('d');
                 Help.execute({
                     action:   'disabled',
                     element:  self,
@@ -266,7 +266,7 @@
             },
             'icon': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }
-                
+
                 Help.execute({
                     action:   'icon',
                     element:  self,
@@ -298,7 +298,9 @@
                     Help.process([
                         self.fn['delete'],
                         self.fn['create'],
-                        self.fn['label']
+                        self.fn['label'],
+                        self.fn['icon'],
+                        self.fn['disabled']
                     ]);
                 else
                     Help.process([ self.fn['delete'] ]);

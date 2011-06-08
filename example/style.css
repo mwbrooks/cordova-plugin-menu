@@ -37,6 +37,21 @@ body {
 }
 
 #phonegap-menu-context .command {
-  color:#AAA;
+  background-position:50% 4px;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  float:left;
+  height:100%;
   text-shadow: #000000 0px -1px 0px;
+  width:56px;
+}
+
+#phonegap-menu-context .command span {
+    bottom:0px;
+    color:#888;
+    font-size:10px;
+    font-family:Verdana;
+    line-height:1.2em;
+    position:absolute;
+    width:56px;
 }
