@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:pg="http://phonegap.com/ns/1.0" id="com.phonegap.vanilla" version="0.0.0">
+	<name>Menu Plugin</name>
+	<description>Example of the menu plugin.</description>
+	<author href="http://michaelbrooks.ca" email="michael@michaelbrooks.ca">@mwbrooks</author>
+    <icon src="resources/icon.png" width="57" height="57" />
+    <icon src="resources/icon.png" width="72" height="72" />
+    <icon src="resources/icon.png" width="114" height="114" />
+</widget>

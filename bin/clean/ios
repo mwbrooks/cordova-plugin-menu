@@ -1,0 +1,9 @@
+#! /bin/sh
+
+# Clean Project for iOS
+# =====================
+
+PROJECT_PATH=./target/ios
+
+rm -Rf $PROJECT_PATH/www
+mkdir $PROJECT_PATH/www

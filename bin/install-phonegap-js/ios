@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Install phonegap.js for iOS
+# ===========================
+
+PROJECT_PATH=./target/ios
+
+cp -R ${PROJECT_PATH}/lib/*.js $PROJECT_PATH/www/

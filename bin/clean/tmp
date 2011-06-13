@@ -1,0 +1,6 @@
+#! /bin/sh
+
+# Clean Tmp Project
+# =================
+
+rm -Rf ./tmp

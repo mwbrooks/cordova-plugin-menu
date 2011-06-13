@@ -1,0 +1,11 @@
+#! /bin/sh
+
+# Prepare Test Assets
+# ===================
+
+TMP_PATH=./tmp
+
+rm -Rf $TMP_PATH
+mkdir $TMP_PATH
+
+cp -R ./test $TMP_PATH/www

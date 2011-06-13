@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Install Plugins for iOS
+# =======================
+
+PLUGIN_PATH=./target/ios/MenuPlugin/Plugins
+
+cp -R ./native/ios/* ${PLUGIN_PATH}/

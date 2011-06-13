@@ -1,0 +1,719 @@
+TNativeControls2
+v3
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Info.plist NativeControls2-Info.plist
+cPhaseScriptExecution "Check PhoneGap Reference" /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-30E9A9A110B758320022D3BA.sh
+cPhaseScriptExecution "Touch www folder" /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-304B58A110DAC018002A0835.sh
+cCpResource www build/Release-iphonesimulator/NativeControls2.app/www
+cCpResource /Users/mwbrooks/Documents/PhoneGapLib/VERSION build/Release-iphonesimulator/NativeControls2.app/VERSION
+cCopyPlistFile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/PhoneGap.plist PhoneGap.plist
+cCpResource PhoneGapBuildSettings.xcconfig build/Release-iphonesimulator/NativeControls2.app/PhoneGapBuildSettings.xcconfig
+cCpResource Resources/icons/icon-72.png build/Release-iphonesimulator/NativeControls2.app/icon-72.png
+cCpResource Resources/icons/icon.png build/Release-iphonesimulator/NativeControls2.app/icon.png
+cCpResource Resources/icons/icon@2x.png build/Release-iphonesimulator/NativeControls2.app/icon@2x.png
+cCpResource Resources/splash/Default-Landscape.png build/Release-iphonesimulator/NativeControls2.app/Default-Landscape.png
+cCpResource Resources/splash/Default-Portrait.png build/Release-iphonesimulator/NativeControls2.app/Default-Portrait.png
+cCpResource Resources/splash/Default.png build/Release-iphonesimulator/NativeControls2.app/Default.png
+cCpResource Resources/splash/Default@2x.png build/Release-iphonesimulator/NativeControls2.app/Default@2x.png
+cCpResource Resources/splash/Default~iPad.png build/Release-iphonesimulator/NativeControls2.app/Default~iPad.png
+cProcessPCH /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch.gch NativeControls2-Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42
+cCompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/main.o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/main.m normal i386 objective-c com.apple.compilers.llvmgcc42
+cCompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/AppDelegate.o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvmgcc42
+cCompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/NativeControls2.m normal i386 objective-c com.apple.compilers.llvmgcc42
+cCompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/UIWebView+PGAdditions.o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/UIWebView+PGAdditions.m normal i386 objective-c com.apple.compilers.llvmgcc42
+cLd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2 normal i386
+cGenerateDSYMFile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app.dSYM /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2
+cTouch /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk
+c000000004DBDCE620000000000000110
+t1304284770
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+c000000004CC1288A00000000000F34A0
+t1287727242
+s996512
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AVFoundation.framework/Headers/AVFoundation.h
+c000000004CC128840000000000000733
+t1287727236
+s1843
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
+c000000004CC122E10000000000075FE0
+t1287725793
+s483296
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
+c000000004CC129090000000000151F20
+t1287727369
+s1384224
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c000000004CC1224600000000001EA9C0
+t1287725638
+s2009536
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioServices.h
+c000000004CC1222F0000000000010AAC
+t1287725615
+s68268
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c000000004CC1224400000000001C3D40
+t1287725636
+s1850688
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004CC12246000000000029B310
+t1287725638
+s2732816
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000004CC127E80000000000074190
+t1287727080
+s475536
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004CC127DD00000000000001D0
+t1287727069
+s464
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreTelephony.framework/CoreTelephony
+c000000004CC122BC00000000000C2CC0
+t1287725756
+s797888
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004CC1226D000000000029D5D0
+t1287725677
+s2741712
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004CC1225F0000000000001466
+t1287725663
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000004CC6569800000000001AAD60
+t1288066712
+s1748320
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+c000000004CC122D0000000000005BF20
+t1287725776
+s376608
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004CC1233C00000000000000C4
+t1287725884
+s196
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004CC12431000000000015CDB0
+t1287726129
+s1428912
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+c000000004CC121F60000000000068970
+t1287725558
+s428400
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004CC1281F0000000000000AA1
+t1287727135
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UINavigationController.h
+c000000004CC1282000000000000019AC
+t1287727136
+s6572
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITabBar.h
+c000000004CC128220000000000000C0D
+t1287727138
+s3085
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIToolbar.h
+c000000004CC1281F0000000000000734
+t1287727135
+s1844
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004CC12883000000000074D7B0
+t1287727235
+s7657392
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Classes/AppDelegate.h
+c000000004DF5A6300000000000000298
+t1307944496
+s664
+i<UIKit/UIKit.h>
+i<PhoneGap/PhoneGapDelegate.h>
+i"PhoneGapDelegate.h"
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Classes/AppDelegate.m
+c000000004DF5A6300000000000000D01
+t1307944496
+s3329
+i"AppDelegate.h"
+i<PhoneGap/PhoneGapViewController.h>
+i"PhoneGapViewController.h"
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/NativeControls2-Prefix.pch
+c000000004DF5A63000000000000000C7
+t1307944496
+s199
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/PhoneGap.plist
+c000000004DF5A630000000000000018B
+t1307944496
+s395
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/PhoneGapBuildSettings.xcconfig
+c000000004DF5A63000000000000000C9
+t1307944496
+s201
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/NativeControls2.h
+c000000004DF5A63000000000000008D8
+t1307944496
+s2264
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<UIKit/UITabBar.h>
+i<UIKit/UIToolbar.h>
+i"PhoneGapCommand.h"
+i"UIWebView+PGAdditions.h"
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/NativeControls2.m
+c000000004DF5A630000000000000462A
+t1307944496
+s17962
+i"PhoneGapDelegate.h"
+i"NativeControls2.h"
+i<QuartzCore/QuartzCore.h>
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/UIWebView+PGAdditions.h
+c000000004DF5A6300000000000000805
+t1307944496
+s2053
+i<Foundation/Foundation.h>
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/UIWebView+PGAdditions.m
+c000000004DF5A6300000000000002545
+t1307944496
+s9541
+i"UIWebView+PGAdditions.h"
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/icons/icon-72.png
+c000000004DF5A63000000000000013B9
+t1307944496
+s5049
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/icons/icon.png
+c000000004DF5A6300000000000000C36
+t1307944496
+s3126
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/icons/icon@2x.png
+c000000004DF5A63000000000000014DC
+t1307944496
+s5340
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default-Landscape.png
+c000000004DF5A630000000000000154E
+t1307944496
+s5454
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default-Portrait.png
+c000000004DF5A63000000000000016C0
+t1307944496
+s5824
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default.png
+c000000004DF5A6300000000000000BAE
+t1307944496
+s2990
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default@2x.png
+c000000004DF5A630000000000000769A
+t1307944496
+s30362
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default~iPad.png
+c000000004DF5A63000000000000016C0
+t1307944496
+s5824
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/AppDelegate.o
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.LinkFileList
+c000000004DF6480B00000000000002B7
+t1307985931
+s695
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.o
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/UIWebView+PGAdditions.o
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-304B58A110DAC018002A0835.sh
+c000000004DF6480B0000000000000027
+t1307985931
+s39
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-30E9A9A110B758320022D3BA.sh
+c000000004DF6480B00000000000001C2
+t1307985931
+s450
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app.dSYM
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default-Landscape.png
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default-Portrait.png
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default.png
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default@2x.png
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default~iPad.png
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Info.plist
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/PhoneGap.plist
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/PhoneGapBuildSettings.xcconfig
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/PkgInfo
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/VERSION
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/icon-72.png
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/icon.png
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/icon@2x.png
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/www
+t2
+s0
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/main.m
+c000000004DF5A6300000000000000176
+t1307944496
+s374
+i<UIKit/UIKit.h>
+
+N/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/www
+c000000004DF5A6300000000000000132
+t1307944496
+s306
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/DebugConsole.h
+c000000004D2B2F3A0000000000000170
+t1294675770
+s368
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i"PhoneGapCommand.h"
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON/JSON.h
+c000000004D2B2F3A00000000000008F9
+t1294675770
+s2297
+i"SBJSON.h"
+i"NSObject+SBJSON.h"
+i"NSString+SBJSON.h"
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON/NSObject+SBJSON.h
+c000000004D2B2F3A0000000000000A01
+t1294675770
+s2561
+i<Foundation/Foundation.h>
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON/NSString+SBJSON.h
+c000000004D2B2F3A0000000000000916
+t1294675770
+s2326
+i<Foundation/Foundation.h>
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON/SBJSON.h
+c000000004D2B2F3A0000000000000AED
+t1294675770
+s2797
+i<Foundation/Foundation.h>
+i"SBJsonParser.h"
+i"SBJsonWriter.h"
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON/SBJsonBase.h
+c000000004D2B2F3A0000000000000B82
+t1294675770
+s2946
+i<Foundation/Foundation.h>
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON/SBJsonParser.h
+c000000004D2B2F3A0000000000000C0B
+t1294675770
+s3083
+i<Foundation/Foundation.h>
+i"SBJsonBase.h"
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON/SBJsonWriter.h
+c000000004D2B2F3A0000000000001140
+t1294675770
+s4416
+i<Foundation/Foundation.h>
+i"SBJsonBase.h"
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/Location.h
+c000000004D2B2F3A00000000000005D0
+t1294675770
+s1488
+i<UIKit/UIKit.h>
+i<CoreLocation/CoreLocation.h>
+i"PhoneGapCommand.h"
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/PhoneGapCommand.h
+c000000004D7663070000000000000306
+t1299604231
+s774
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i"PluginResult.h"
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/PhoneGapDelegate.h
+c000000004DC2EF5300000000000008A2
+t1304620883
+s2210
+i<UIKit/UIKit.h>
+i<CoreLocation/CoreLocation.h>
+i<UIKit/UINavigationController.h>
+i"JSON.h"
+i"Location.h"
+i"Sound.h"
+i"DebugConsole.h"
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/PhoneGapViewController.h
+c000000004D766307000000000000021A
+t1299604231
+s538
+i<UIKit/UIKit.h>
+i<Foundation/Foundation.h>
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/PluginResult.h
+c000000004DAC6D210000000000000924
+t1303145761
+s2340
+i<Foundation/Foundation.h>
+
+N/Users/mwbrooks/Documents/PhoneGapLib/Classes/Sound.h
+c000000004D46EA6F0000000000000704
+t1296493167
+s1796
+i<Foundation/Foundation.h>
+i<AudioToolbox/AudioServices.h>
+i<AVFoundation/AVFoundation.h>
+i"PhoneGapCommand.h"
+
+N/Users/mwbrooks/Documents/PhoneGapLib/VERSION
+c000000004DC2EF530000000000000005
+t1304620883
+s5
+
+N/Users/mwbrooks/Documents/PhoneGapLib/build/Release-iphonesimulator/libPhoneGap.a
+c000000004DD6DB0A0000000000135220
+t1305926410
+s1266208
+
+N/var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch.gch
+t2
+s0
+
+NNativeControls2-Info.plist
+c000000004DF5A63000000000000005CA
+t1307944496
+s1482
+
+CCheck dependencies
+r0
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies2d07228b7fa6b341^aaee258b7fa6b341^---0#1#0#--18"Check dependencies
+
+CCompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/AppDelegate.o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvmgcc42
+s329678733.439041
+e329678733.860715
+r1
+xCompileC
+xbuild/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/AppDelegate.o
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Classes/AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Classes/AppDelegate.mf6b7708d7fa6b341^9356dc8d7fa6b341^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Classes/AppDelegate.m0000000000000000^3124"CompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/AppDelegate.o Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-generated-files.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-own-target-headers.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-all-target-headers.hmap -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-project-headers.hmap -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/include -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources/i386 -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources -F/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator -include /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch -c /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Classes/AppDelegate.m -o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/AppDelegate.o
+
+CCompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/NativeControls2.m normal i386 objective-c com.apple.compilers.llvmgcc42
+s329678733.439507
+e329678733.961874
+r1
+xCompileC
+xbuild/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.o
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/NativeControls2.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection112"Compile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/NativeControls2.m38d7708d7fa6b341^103cf68d7fa6b341^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/NativeControls2.m0000000000000000^3170"CompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.o Plugins/NativeControls/NativeControls2.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-generated-files.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-own-target-headers.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-all-target-headers.hmap -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-project-headers.hmap -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/include -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources/i386 -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources -F/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator -include /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch -c /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/NativeControls2.m -o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.o
+
+CCompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/UIWebView+PGAdditions.o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/UIWebView+PGAdditions.m normal i386 objective-c com.apple.compilers.llvmgcc42
+s329678733.439519
+e329678733.618108
+r1
+xCompileC
+xbuild/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/UIWebView+PGAdditions.o
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/UIWebView+PGAdditions.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Compile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/UIWebView+PGAdditions.me8dd708d7fa6b341^e9449e8d7fa6b341^---0#0#0#-19%DVTDocumentLocation2@126"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/UIWebView+PGAdditions.m0000000000000000^3194"CompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/UIWebView+PGAdditions.o Plugins/NativeControls/UIWebView+PGAdditions.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-generated-files.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-own-target-headers.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-all-target-headers.hmap -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-project-headers.hmap -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/include -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources/i386 -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources -F/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator -include /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch -c /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Plugins/NativeControls/UIWebView+PGAdditions.m -o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/UIWebView+PGAdditions.o
+
+CCompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/main.o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/main.m normal i386 objective-c com.apple.compilers.llvmgcc42
+s329678733.439015
+e329678733.542292
+r1
+xCompileC
+xbuild/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/main.o
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection78"Compile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/main.m79b1708d7fa6b341^6cd18a8d7fa6b341^---0#0#0#-19%DVTDocumentLocation2@86"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/main.m0000000000000000^3080"CompileC build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/main.o main.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-generated-files.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-own-target-headers.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-all-target-headers.hmap -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-project-headers.hmap -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/include -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources/i386 -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources -F/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator -include /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch -c /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/main.m -o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/main.o
+
+CCopyPlistFile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/PhoneGap.plist PhoneGap.plist
+s329678731.218224
+e329678731.227967
+r1
+xCopyPlistFile
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/PhoneGap.plist
+xPhoneGap.plist
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection19"Copy PhoneGap.plist37fb378b7fa6b341^9cfb3b8b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/PhoneGap.plist0000000000000000^886"CopyPlistFile build/Release-iphonesimulator/NativeControls2.app/PhoneGap.plist PhoneGap.plist    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copyPlist --convert binary1 --outdir /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app -- PhoneGap.plist
+
+CCpResource /Users/mwbrooks/Documents/PhoneGapLib/VERSION build/Release-iphonesimulator/NativeControls2.app/VERSION
+s329678731.218183
+e329678731.221871
+r1
+xCpResource
+x/Users/mwbrooks/Documents/PhoneGapLib/VERSION
+xbuild/Release-iphonesimulator/NativeControls2.app/VERSION
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection62"Copy build/Release-iphonesimulator/NativeControls2.app/VERSION77f8378b7fa6b341^b0cb388b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@137"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/VERSION0000204dfb01f041^1006"CpResource /Users/mwbrooks/Documents/PhoneGapLib/VERSION build/Release-iphonesimulator/NativeControls2.app/VERSION    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Documents/PhoneGapLib/VERSION /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource PhoneGapBuildSettings.xcconfig build/Release-iphonesimulator/NativeControls2.app/PhoneGapBuildSettings.xcconfig
+s329678731.218623
+e329678731.222044
+r1
+xCpResource
+xPhoneGapBuildSettings.xcconfig
+xbuild/Release-iphonesimulator/NativeControls2.app/PhoneGapBuildSettings.xcconfig
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Copy build/Release-iphonesimulator/NativeControls2.app/PhoneGapBuildSettings.xcconfig410c388b7fa6b341^9cdb388b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@160"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/PhoneGapBuildSettings.xcconfig0000204dfb01f041^1063"CpResource PhoneGapBuildSettings.xcconfig build/Release-iphonesimulator/NativeControls2.app/PhoneGapBuildSettings.xcconfig    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/PhoneGapBuildSettings.xcconfig /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource Resources/icons/icon-72.png build/Release-iphonesimulator/NativeControls2.app/icon-72.png
+s329678731.222188
+e329678731.224984
+r1
+xCpResource
+xResources/icons/icon-72.png
+xbuild/Release-iphonesimulator/NativeControls2.app/icon-72.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Copy build/Release-iphonesimulator/NativeControls2.app/icon-72.pngd201398b7fa6b341^b2f63b8b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@141"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/icon-72.png0000204dfb01f041^1038"CpResource Resources/icons/icon-72.png build/Release-iphonesimulator/NativeControls2.app/icon-72.png    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/icons/icon-72.png /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource Resources/icons/icon.png build/Release-iphonesimulator/NativeControls2.app/icon.png
+s329678731.222259
+e329678731.224624
+r1
+xCpResource
+xResources/icons/icon.png
+xbuild/Release-iphonesimulator/NativeControls2.app/icon.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection63"Copy build/Release-iphonesimulator/NativeControls2.app/icon.png3b01398b7fa6b341^b2f23b8b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@138"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/icon.png0000204dfb01f041^1029"CpResource Resources/icons/icon.png build/Release-iphonesimulator/NativeControls2.app/icon.png    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/icons/icon.png /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource Resources/icons/icon@2x.png build/Release-iphonesimulator/NativeControls2.app/icon@2x.png
+s329678731.223055
+e329678731.225075
+r1
+xCpResource
+xResources/icons/icon@2x.png
+xbuild/Release-iphonesimulator/NativeControls2.app/icon@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Copy build/Release-iphonesimulator/NativeControls2.app/icon@2x.png8f33398b7fa6b341^44f83b8b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@141"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/icon@2x.png0000204dfb01f041^1042"CpResource "Resources/icons/icon@2x.png" "build/Release-iphonesimulator/NativeControls2.app/icon@2x.png"    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/icons/icon@2x.png /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource Resources/splash/Default-Landscape.png build/Release-iphonesimulator/NativeControls2.app/Default-Landscape.png
+s329678731.224761
+e329678731.229251
+r1
+xCpResource
+xResources/splash/Default-Landscape.png
+xbuild/Release-iphonesimulator/NativeControls2.app/Default-Landscape.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Copy build/Release-iphonesimulator/NativeControls2.app/Default-Landscape.png86a9398b7fa6b341^ec2e3c8b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@151"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default-Landscape.png0000204dfb01f041^1070"CpResource Resources/splash/Default-Landscape.png build/Release-iphonesimulator/NativeControls2.app/Default-Landscape.png    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default-Landscape.png /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource Resources/splash/Default-Portrait.png build/Release-iphonesimulator/NativeControls2.app/Default-Portrait.png
+s329678731.225215
+e329678731.228492
+r1
+xCpResource
+xResources/splash/Default-Portrait.png
+xbuild/Release-iphonesimulator/NativeControls2.app/Default-Portrait.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Copy build/Release-iphonesimulator/NativeControls2.app/Default-Portrait.png76c0398b7fa6b341^af253c8b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@150"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default-Portrait.png0000204dfb01f041^1067"CpResource Resources/splash/Default-Portrait.png build/Release-iphonesimulator/NativeControls2.app/Default-Portrait.png    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default-Portrait.png /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource Resources/splash/Default.png build/Release-iphonesimulator/NativeControls2.app/Default.png
+s329678731.225625
+e329678731.229419
+r1
+xCpResource
+xResources/splash/Default.png
+xbuild/Release-iphonesimulator/NativeControls2.app/Default.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Copy build/Release-iphonesimulator/NativeControls2.app/Default.pngcfda398b7fa6b341^6a313c8b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@141"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default.png0000204dfb01f041^1040"CpResource Resources/splash/Default.png build/Release-iphonesimulator/NativeControls2.app/Default.png    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default.png /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource Resources/splash/Default@2x.png build/Release-iphonesimulator/NativeControls2.app/Default@2x.png
+s329678731.228134
+e329678731.233137
+r1
+xCpResource
+xResources/splash/Default@2x.png
+xbuild/Release-iphonesimulator/NativeControls2.app/Default@2x.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection69"Copy build/Release-iphonesimulator/NativeControls2.app/Default@2x.pngf1843a8b7fa6b341^5e473c8b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@144"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default@2x.png0000204dfb01f041^1053"CpResource "Resources/splash/Default@2x.png" "build/Release-iphonesimulator/NativeControls2.app/Default@2x.png"    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default@2x.png /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource Resources/splash/Default~iPad.png build/Release-iphonesimulator/NativeControls2.app/Default~iPad.png
+s329678731.228899
+e329678731.231096
+r1
+xCpResource
+xResources/splash/Default~iPad.png
+xbuild/Release-iphonesimulator/NativeControls2.app/Default~iPad.png
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Copy build/Release-iphonesimulator/NativeControls2.app/Default~iPad.png14b33a8b7fa6b341^7d403c8b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@146"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Default~iPad.png0000204dfb01f041^1059"CpResource "Resources/splash/Default~iPad.png" "build/Release-iphonesimulator/NativeControls2.app/Default~iPad.png"    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/Resources/splash/Default~iPad.png /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CCpResource www build/Release-iphonesimulator/NativeControls2.app/www
+s329678731.217973
+e329678731.222898
+r1
+xCpResource
+xwww
+xbuild/Release-iphonesimulator/NativeControls2.app/www
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection58"Copy build/Release-iphonesimulator/NativeControls2.app/wwwc9e9378b7fa6b341^cb0e398b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@133"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/www0000204dfb01f041^982"CpResource www build/Release-iphonesimulator/NativeControls2.app/www    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/www /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+
+CGenerateDSYMFile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app.dSYM /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2
+s329678734.535487
+e329678734.622698
+r1
+xGenerateDSYMFile
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app.dSYM
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection129"Generating /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app.dSYM842a898e7fa6b341^d3679f8e7fa6b341^---0#0#0#-19%DVTDocumentLocation2@134"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app.dSYM0000204dfb01f041^1033"GenerateDSYMFile build/Release-iphonesimulator/NativeControls2.app.dSYM build/Release-iphonesimulator/NativeControls2.app/NativeControls2    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    /Developer/usr/bin/dsymutil /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2 -o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app.dSYM
+
+CLd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2 normal i386
+s329678733.962688
+e329678734.534664
+r1
+xLd
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2
+xnormal
+xi386
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection134"Link /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2008df68d7fa6b341^37df888e7fa6b341^---0#0#0#--1944"Ld build/Release-iphonesimulator/NativeControls2.app/NativeControls2 normal i386    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator -F/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator -filelist /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.LinkFileList -mmacosx-version-min=10.6 -all_load -Obj-C -Xlinker -objc_abi_version -Xlinker 2 /Users/mwbrooks/Documents/PhoneGapLib/build/Release-iphonesimulator/libPhoneGap.a -framework Foundation -framework UIKit -framework CoreGraphics -framework AddressBook -framework AddressBookUI -framework AudioToolbox -framework AVFoundation -framework CFNetwork -framework CoreLocation -framework MediaPlayer -framework QuartzCore -framework SystemConfiguration -framework MobileCoreServices -weak_framework CoreTelephony -o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/NativeControls2
+
+CPhaseScriptExecution "Check PhoneGap Reference" /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-30E9A9A110B758320022D3BA.sh
+s329678731.165193
+e329678731.187817
+r1
+xPhaseScriptExecution
+xCheck PhoneGap Reference
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-30E9A9A110B758320022D3BA.sh
+o/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/www/index.html
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection50"Run custom shell script 'Check PhoneGap Reference'64e62a8b7fa6b341^db13308b7fa6b341^-79"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/www/index.html1(21%IDEActivityLogMessage2@79"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/www/index.html-329678731#0#79#-0#-----0#0#0#--20202"PhaseScriptExecution "Check PhoneGap Reference" build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-30E9A9A110B758320022D3BA.sh    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER mwbrooks    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv BUILD_ROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv BUILD_STYLE Release    setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator    setenv CACHE_ROOT /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501    setenv CCHROOT /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app    setenv COMBINE_HIDPI_IMAGES NO    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Release    setenv CONFIGURATION_BUILD_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator    setenv CONFIGURATION_TEMP_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator    setenv CONTENTS_FOLDER_PATH NativeControls2.app    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP YES    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv DEVELOPER_BIN_DIR /Developer/usr/bin    setenv DEVELOPER_DIR /Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Developer/Library    setenv DEVELOPER_SDK_DIR /Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Developer/Tools    setenv DEVELOPER_USR_DIR /Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH NativeControls2.app/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/NativeControls2.dst    setenv DWARF_DSYM_FILE_NAME NativeControls2.app.dSYM    setenv DWARF_DSYM_FOLDER_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv ENABLE_OPENMP_SUPPORT NO    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".svn CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) CVS .svn .git *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH NativeControls2.app/Executables    setenv EXECUTABLE_FOLDER_PATH NativeControls2.app    setenv EXECUTABLE_NAME NativeControls2    setenv EXECUTABLE_PATH NativeControls2.app/NativeControls2    setenv FILE_LIST /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH NativeControls2.app/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME NativeControls2.app    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC YES    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER NativeControls2-Prefix.pch    setenv GCC_SYMBOLS_PRIVATE_EXTERN YES    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvmgcc42    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvmgcc42    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/include\" "    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE NativeControls2-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PATH NativeControls2.app/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH NativeControls2.app/English.lproj/InfoPlist.strings    setenv INSTALL_DIR /tmp/NativeControls2.dst/Applications    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER mwbrooks    setenv INSTALL_PATH /Applications    setenv INSTALL_ROOT /tmp/NativeControls2.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH NativeControls2.app/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-LinkMap-normal-i386.txt    setenv LD_OPENMP_FLAGS -fopenmp    setenv LEGACY_DEVELOPER_DIR /Developer/Library/Xcode/PrivatePlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX /Developer/usr/bin/lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH NativeControls2.app/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 10J869    setenv MAC_OS_X_VERSION_ACTUAL 1067    setenv MAC_OS_X_VERSION_MAJOR 1060    setenv MAC_OS_X_VERSION_MINOR 0607    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJECT_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal    setenv OBJROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv ONLY_ACTIVE_ARCH NO    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS "-all_load -Obj-C"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Developer/Headers /Developer/SDKs /Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH NativeControls2.app/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS objective-c    setenv PHONEGAPLIB /Users/mwbrooks/Documents/PhoneGapLib    setenv PKGINFO_FILE_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/PkgInfo    setenv PKGINFO_PATH NativeControls2.app/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Developer/Library/Xcode/PrivatePlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 8F192    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 40200    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PLUGINS_FOLDER_PATH NativeControls2.app/PlugIns    setenv PREBINDING NO    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH NativeControls2.app/PrivateHeaders    setenv PRODUCT_NAME NativeControls2    setenv PRODUCT_SETTINGS_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/NativeControls2-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT NativeControls2    setenv PROJECT_DERIVED_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/DerivedSources    setenv PROJECT_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PROJECT_FILE_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/NativeControls2.xcodeproj    setenv PROJECT_NAME NativeControls2    setenv PROJECT_TEMP_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build    setenv PUBLIC_HEADERS_FOLDER_PATH NativeControls2.app/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH NativeControls2.app/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk    setenv SDK_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk    setenv SDK_NAME iphonesimulator4.2    setenv SDK_PRODUCT_BUILD_VERSION 8C134    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHALLOW_BUNDLE YES    setenv SHARED_DERIVED_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH NativeControls2.app/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH NativeControls2.app/SharedSupport    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv SRCROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv STANDARD_C_PLUS_PLUS_LIBRARY_TYPE dynamic    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMBOL_REPOSITORY_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/SymbolRepositories    setenv SYMROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1    setenv TARGETNAME NativeControls2    setenv TARGET_BUILD_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator    setenv TARGET_NAME NativeControls2    setenv TARGET_TEMP_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build    setenv TEMP_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build    setenv TEMP_FILES_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build    setenv TEMP_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build    setenv TEMP_ROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv TEST_AFTER_BUILD YES    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH NativeControls2.app    setenv UNSTRIPPED_PRODUCT NO    setenv USER mwbrooks    setenv USER_APPS_DIR /Users/mwbrooks/Applications    setenv USER_HEADER_SEARCH_PATHS "\"/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON\" \"/Users/mwbrooks/Documents/PhoneGapLib/Classes\""    setenv USER_LIBRARY_DIR /Users/mwbrooks/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH NativeControls2.app/version.plist    setenv VERSION_INFO_BUILDER mwbrooks    setenv VERSION_INFO_FILE NativeControls2_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:NativeControls2  PROJECT:NativeControls2-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME NativeControls2.app    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4A1006    setenv XCODE_VERSION_ACTUAL 0400    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0400    setenv YACC /Developer/usr/bin/yacc    /bin/sh -c /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-30E9A9A110B758320022D3BA.sh
+
+CPhaseScriptExecution "Touch www folder" /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-304B58A110DAC018002A0835.sh
+s329678731.191886
+e329678731.215933
+r1
+xPhaseScriptExecution
+xTouch www folder
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-304B58A110DAC018002A0835.sh
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection42"Run custom shell script 'Touch www folder'0400338b7fa6b341^4a45378b7fa6b341^---0#0#0#--20194"PhaseScriptExecution "Touch www folder" build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-304B58A110DAC018002A0835.sh    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER mwbrooks    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv BUILD_ROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv BUILD_STYLE Release    setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator    setenv CACHE_ROOT /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501    setenv CCHROOT /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app    setenv COMBINE_HIDPI_IMAGES NO    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Release    setenv CONFIGURATION_BUILD_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator    setenv CONFIGURATION_TEMP_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator    setenv CONTENTS_FOLDER_PATH NativeControls2.app    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP YES    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv DEVELOPER_BIN_DIR /Developer/usr/bin    setenv DEVELOPER_DIR /Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Developer/Library    setenv DEVELOPER_SDK_DIR /Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Developer/Tools    setenv DEVELOPER_USR_DIR /Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH NativeControls2.app/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/NativeControls2.dst    setenv DWARF_DSYM_FILE_NAME NativeControls2.app.dSYM    setenv DWARF_DSYM_FOLDER_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv ENABLE_OPENMP_SUPPORT NO    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".svn CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) CVS .svn .git *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH NativeControls2.app/Executables    setenv EXECUTABLE_FOLDER_PATH NativeControls2.app    setenv EXECUTABLE_NAME NativeControls2    setenv EXECUTABLE_PATH NativeControls2.app/NativeControls2    setenv FILE_LIST /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH NativeControls2.app/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME NativeControls2.app    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC YES    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER NativeControls2-Prefix.pch    setenv GCC_SYMBOLS_PRIVATE_EXTERN YES    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvmgcc42    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvmgcc42    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/include\" "    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE NativeControls2-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PATH NativeControls2.app/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH NativeControls2.app/English.lproj/InfoPlist.strings    setenv INSTALL_DIR /tmp/NativeControls2.dst/Applications    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER mwbrooks    setenv INSTALL_PATH /Applications    setenv INSTALL_ROOT /tmp/NativeControls2.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH NativeControls2.app/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-LinkMap-normal-i386.txt    setenv LD_OPENMP_FLAGS -fopenmp    setenv LEGACY_DEVELOPER_DIR /Developer/Library/Xcode/PrivatePlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX /Developer/usr/bin/lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal/i386/NativeControls2.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH NativeControls2.app/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 10J869    setenv MAC_OS_X_VERSION_ACTUAL 1067    setenv MAC_OS_X_VERSION_MAJOR 1060    setenv MAC_OS_X_VERSION_MINOR 0607    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJECT_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Objects-normal    setenv OBJROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv ONLY_ACTIVE_ARCH NO    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS "-all_load -Obj-C"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Developer/Headers /Developer/SDKs /Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH NativeControls2.app/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS objective-c    setenv PHONEGAPLIB /Users/mwbrooks/Documents/PhoneGapLib    setenv PKGINFO_FILE_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/PkgInfo    setenv PKGINFO_PATH NativeControls2.app/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Developer/Library/Xcode/PrivatePlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 8F192    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 40200    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PLUGINS_FOLDER_PATH NativeControls2.app/PlugIns    setenv PREBINDING NO    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH NativeControls2.app/PrivateHeaders    setenv PRODUCT_NAME NativeControls2    setenv PRODUCT_SETTINGS_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/NativeControls2-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT NativeControls2    setenv PROJECT_DERIVED_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/DerivedSources    setenv PROJECT_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PROJECT_FILE_PATH /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/NativeControls2.xcodeproj    setenv PROJECT_NAME NativeControls2    setenv PROJECT_TEMP_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build    setenv PUBLIC_HEADERS_FOLDER_PATH NativeControls2.app/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH NativeControls2.app/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk    setenv SDK_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk    setenv SDK_NAME iphonesimulator4.2    setenv SDK_PRODUCT_BUILD_VERSION 8C134    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHALLOW_BUNDLE YES    setenv SHARED_DERIVED_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH NativeControls2.app/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH NativeControls2.app/SharedSupport    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv SRCROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv STANDARD_C_PLUS_PLUS_LIBRARY_TYPE dynamic    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMBOL_REPOSITORY_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/SymbolRepositories    setenv SYMROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1    setenv TARGETNAME NativeControls2    setenv TARGET_BUILD_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator    setenv TARGET_NAME NativeControls2    setenv TARGET_TEMP_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build    setenv TEMP_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build    setenv TEMP_FILES_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build    setenv TEMP_FILE_DIR /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build    setenv TEMP_ROOT /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build    setenv TEST_AFTER_BUILD YES    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH NativeControls2.app    setenv UNSTRIPPED_PRODUCT NO    setenv USER mwbrooks    setenv USER_APPS_DIR /Users/mwbrooks/Applications    setenv USER_HEADER_SEARCH_PATHS "\"/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON\" \"/Users/mwbrooks/Documents/PhoneGapLib/Classes\""    setenv USER_LIBRARY_DIR /Users/mwbrooks/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH NativeControls2.app/version.plist    setenv VERSION_INFO_BUILDER mwbrooks    setenv VERSION_INFO_FILE NativeControls2_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:NativeControls2  PROJECT:NativeControls2-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME NativeControls2.app    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4A1006    setenv XCODE_VERSION_ACTUAL 0400    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0400    setenv YACC /Developer/usr/bin/yacc    /bin/sh -c /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/Script-304B58A110DAC018002A0835.sh
+
+CProcessInfoPlistFile /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Info.plist NativeControls2-Info.plist
+s329678731.158649
+e329678731.163817
+r1
+xProcessInfoPlistFile
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Info.plist
+xNativeControls2-Info.plist
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection34"Process NativeControls2-Info.plist20b6288b7fa6b341^24f2298b7fa6b341^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/NativeControls2-Info.plist0000000000000000^1100"ProcessInfoPlistFile build/Release-iphonesimulator/NativeControls2.app/Info.plist NativeControls2-Info.plist    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    builtin-infoPlistUtility NativeControls2-Info.plist -genpkginfo /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app/Info.plist
+
+CProcessPCH /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch.gch NativeControls2-Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42
+s329678731.234540
+e329678733.438610
+r1
+xProcessPCH
+x/var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch.gch
+xNativeControls2-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Precompile NativeControls2-Prefix.pcha0343c8b7fa6b341^5e47708d7fa6b341^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/NativeControls2-Prefix.pch0000000000000000^3039"ProcessPCH /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch.gch NativeControls2-Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-generated-files.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-own-target-headers.hmap -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-all-target-headers.hmap -iquote /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/NativeControls2-project-headers.hmap -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes/JSON -iquote/Users/mwbrooks/Documents/PhoneGapLib/Classes -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/include -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources/i386 -I/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/NativeControls2.build/Release-iphonesimulator/NativeControls2.build/DerivedSources -F/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator -c /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/NativeControls2-Prefix.pch -o /var/folders/Wk/WkA4u9p7GImySrIs6SjZrU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NativeControls2-Prefix-arkwhydudufvnfdbaepbhbuonhsw/NativeControls2-Prefix.pch.gch
+
+CTouch /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+s329678734.624185
+e329678734.630325
+r1
+xTouch
+x/Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Touch /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app2bdf9f8e7fa6b341^a75ca18e7fa6b341^---0#0#0#--803"Touch build/Release-iphonesimulator/NativeControls2.app    cd /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/PalmPDK/bin:/opt/PalmSDK/0.1/bin/:/usr/X11/bin:/Users/mwbrooks/Development/PhoneGap/Frameworks/phonegap-cli/bin:/Users/mwbrooks/Development/lib/jodoc:/Users/mwbrooks/Development/BlackBerry/SDK-4/net.rim.ejde.componentpack4.7.0_4.7.0.57/components/bin:/Users/mwbrooks/.local/bin:/Applications/android-sdk-mac_86/tools/:/Users/mwbrooks/Development/lib/cordova"    /usr/bin/touch -c /Users/mwbrooks/Development/lib/phonegap-plugin-menu/native/ios/build/Release-iphonesimulator/NativeControls2.app
+

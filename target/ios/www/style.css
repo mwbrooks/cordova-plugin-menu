@@ -1,0 +1,93 @@
+body {
+    padding-top:32px;
+}
+
+#phonegap-menu-toolbar {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #F9F9F9), color-stop(1.0, #CBCBCB));
+    border-bottom:1px solid #919395;
+    border-top:1px solid #383A3C;
+    color:#000000;
+    height:32px;
+    font-family:Verdana, Helvetica, Arial, sans-serif;
+    font-size:18px;
+    line-height:32px;
+    left:0px;
+    position:fixed;
+    text-align:center;
+    text-shadow: white 0px 1px 0px;
+    top:0px;
+    width:100%;
+}
+
+#phonegap-menu-context {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #4B4B4B), color-stop(1.0, #090909));
+    bottom:0px;
+    border-bottom:1px solid #000000;
+    border-top:1px solid #2B2B2B;
+    color:#000000;
+    height:42px;
+    font-family:Verdana, Helvetica, Arial, sans-serif;
+    font-size:18px;
+    line-height:32px;
+    left:0px;
+    position:fixed;
+    text-align:center;
+    text-shadow: white 0px 1px 0px;
+    width:100%;
+}
+
+#phonegap-menu-toolbar .command {
+  cursor:pointer;
+  float:right;
+  font-size:11px;
+  line-height:16px;
+  margin-right:10px;
+  margin-top:2px;
+}
+
+#phonegap-menu-toolbar .command span {
+  background:-webkit-gradient(linear, left bottom, left top, color-stop(0.0, #909090), color-stop(1.0, #EDEDED));
+  border:1px solid #606060;
+  border-radius:4px;
+  -webkit-box-shadow:#FFF 0px 1px 0px;
+  color:#444;
+  display:inline-block;
+  height:16px;
+  min-width:24px;
+  padding:4px;
+  text-shadow:#EEE 0px 1px 0px;
+}
+
+#phonegap-menu-toolbar .command span img {
+    max-height:100%;
+    max-width:100%;
+}
+
+#phonegap-menu-context .command {
+  background-position:50% 4px;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  display:inline-block;
+  height:100%;
+  text-shadow: #000000 0px -1px 0px;
+  width:56px;
+}
+
+#phonegap-menu-context .command span {
+    bottom:0px;
+    color:#888;
+    font-size:10px;
+    font-family:Verdana;
+    line-height:1.2em;
+    position:absolute;
+    width:56px;
+}
+
+.disabled {
+    opacity:0.4;
+}
+
+#phonegap-menu-toolbar .accesskey-back {
+    float:left;
+    margin-left:10px;
+}

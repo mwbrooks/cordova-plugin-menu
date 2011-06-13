@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Install Example for iOS
+# =======================
+
+PROJECT_PATH=./target/ios
+
+cp -R ./example/* $PROJECT_PATH/www/
