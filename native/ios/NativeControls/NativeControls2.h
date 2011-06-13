@@ -15,7 +15,7 @@
 #import <UIKit/UIKit.h>
 #import <UIKit/UITabBar.h>
 #import <UIKit/UIToolbar.h>
-#import "PhoneGapCommand.h"
+#import <PhoneGap/PhoneGapCommand.h>
 #import "UIWebView+PGAdditions.h"
 
 @interface NativeControls2 : PhoneGapCommand <UITabBarDelegate, UIActionSheetDelegate> {

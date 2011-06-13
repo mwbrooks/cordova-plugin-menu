@@ -11,7 +11,7 @@
 //  Created by Michael Nachbaur on 13/04/09.
 //  Copyright 2009 Decaf Ninja Software. All rights reserved.
 
-#import "PhoneGapDelegate.h"
+#import <PhoneGap/PhoneGapDelegate.h>
 #import "NativeControls2.h"
 
 #import <QuartzCore/QuartzCore.h>
