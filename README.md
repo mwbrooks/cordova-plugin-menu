@@ -11,7 +11,7 @@ The implementation is loosely based on the [W3C HTMLMenuElement / HTMLCommandEle
 API
 ---
 
-### Markup
+### Markup (Unsupported at the moment)
 
 __Toolbar:__
 
@@ -31,19 +31,41 @@ __Context Menu:__
 
 ### JavaScript
 
-__HTMLMenuElement:__
+    // Create a toolbar menu
+    //
+    var toolbar = document.createElement('menu');
+    toolbar.setAttribute('type', 'toolbar');
+    toolbar.setAttribute('label', 'Tweets');  // optional
+    
+    // Add a Back button
+    //
+    var backButton = document.createElement('command');
+    backButton.setAttribute('label',     'Back');            // Default: ""
+    backButton.setAttribute('icon',      'back-arrow.png');  // Default: ""
+    backButton.setAttribute('disabled',  'false');           // Default: false
+    backButton.setAttribute('accesskey', 'back');            // Default: ""
+    toolbar.appendChild(backButton);
+    
+    // Add a Options button
+    //
+    var optionsButton = document.createElement('command');
+    optionsButton.setAttribute('label', 'Options');
+    optionsButton.setAttribute('icon',  'gear.png');
+    toolbar.appendChild(optionsButton);
+    
+    // To remove a button
+    //
+    toolbar.removeChild(backButtton);
 
-- appendChild(...)
-- removeChild(...)
-- setAttribute(...)
-- getAttribute(...)
-- hasAttribute(...)
-- removeAttribute(...)
-
-__HTMLCommandElement:__
-
-- setAttribute(...)
-- getAttribute(...)
-- hasAttribute(...)
-- removeAttribute(...)
-
+    // getAttribute
+    //
+    toolbar.getAttribute('label');    // Returns 'Tweets'
+    backButton.getAttribute('icon');  // Returns 'back-arrow.png'
+    
+    // hasAttribute
+    //
+    toolbar.hasAttribute('label');  // true
+    
+    // removeAttribute
+    //
+    toolbar.removeAttribute('label');
