@@ -1,0 +1,1 @@
+Currently, the menu is built into the Android JAR

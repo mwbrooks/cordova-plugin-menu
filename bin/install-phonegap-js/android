@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Install phonegap.js for Android
+# ===============================
+
+PROJECT_PATH=./target/android
+
+cp -R ${PROJECT_PATH}/lib/*.js $PROJECT_PATH/assets/www/

@@ -1,0 +1,9 @@
+#! /bin/sh
+
+# Clean Project for Android
+# =========================
+
+PROJECT_PATH=./target/android
+
+rm -Rf $PROJECT_PATH/assets/www
+mkdir $PROJECT_PATH/assets/www

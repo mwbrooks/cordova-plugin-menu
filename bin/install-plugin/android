@@ -1,0 +1,7 @@
+#! /bin/sh
+
+# Install Plugins for Android
+# ===========================
+
+WWW_PATH=./target/android/assets/www
+cp -R ./www/* ${WWW_PATH}/
