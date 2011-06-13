@@ -4,65 +4,77 @@
     <meta name="viewport" content="width=default-width; user-scalable=no" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="text/javascript" charset="utf-8" src="../native/desktop/menu.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../www/plugin/menu/index.js"></script>
-
     <title>PhoneGap Menu Plugin Example</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="plugin/menu/native-controls.js"></script>
+    <script type="text/javascript" charset="utf-8" src="plugin/menu/index.js"></script>
+    <script type="text/javascript" charset="utf-8" src="plugin/menu/ios.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var onDeviceReady = function() {
+            // Toolbar
+
+            var toolbar = document.createElement('menu');
+            toolbar.setAttribute('type', 'toolbar');
+            toolbar.setAttribute('label', 'Home');
+
+            var commandLogout = document.createElement('command');
+            commandLogout.setAttribute('label', 'Logout');
+            commandLogout.setAttribute('action', function() { alert('Logout'); });
+
+            var commandAdd = document.createElement('command');
+            commandAdd.setAttribute('icon', 'image/plus.png');
+            commandAdd.setAttribute('action', function() { alert('Add'); });
+
+            var commandBack = document.createElement('command');
+            commandBack.setAttribute('label', 'Back');
+            commandBack.setAttribute('accesskey', 'back');
+            commandBack.setAttribute('action', function() { alert('Back'); });
+
+            toolbar.appendChild(commandLogout);
+            toolbar.appendChild(commandAdd);
+            toolbar.appendChild(commandBack);
+
+            // Context Menu
+
+            var context = document.createElement('menu');
+            context.setAttribute('type', 'context');
+
+            var commandHome = document.createElement('command');
+            commandHome.setAttribute('label', 'Home');
+            commandHome.setAttribute('icon',  'image/house.png');
+            commandHome.setAttribute('action', function() { alert('Home'); });
+            commandHome.setAttribute('disabled', true);
+
+            var commandSearch = document.createElement('command');
+            commandSearch.setAttribute('label', 'Search');
+            commandSearch.setAttribute('icon',  'image/magnifyingglass.png');
+            commandSearch.setAttribute('action', function() { alert('Search'); });
+
+            var commandSettings = document.createElement('command');
+            commandSettings.setAttribute('label', 'Settings');
+            commandSettings.setAttribute('icon',  'image/preferences.png');
+            commandSettings.setAttribute('action', function() { alert('Settings'); });
+
+            context.appendChild(commandHome);
+            context.appendChild(commandSearch);
+            context.appendChild(commandSettings);
+
+            // context.removeChild(commandHome);
+        };
+        
+        window.addEventListener('load', function() {
+            document.addEventListener('deviceready', onDeviceReady, false);
+        }, false);
+    </script>
 </head>
 <body>
-
-    <script type="text/javascript" charset="utf-8">
-
-        // Toolbar
-
-        var toolbar = document.createElement('menu');
-        toolbar.setAttribute('type', 'toolbar');
-        toolbar.setAttribute('label', 'Home');
-
-        var commandLogout = document.createElement('command');
-        commandLogout.setAttribute('label', 'Logout');
-        commandLogout.setAttribute('action', function() { alert('Logout'); });
-
-        var commandAdd = document.createElement('command');
-        commandAdd.setAttribute('icon', 'image/plus.png');
-        commandAdd.setAttribute('action', function() { alert('Add'); });
-
-        var commandBack = document.createElement('command');
-        commandBack.setAttribute('label', 'Back');
-        commandBack.setAttribute('accesskey', 'back');
-        commandBack.setAttribute('action', function() { alert('Back'); });
-
-        toolbar.appendChild(commandLogout);
-        toolbar.appendChild(commandAdd);
-        toolbar.appendChild(commandBack);
-
-        // Context Menu
-
-        var context = document.createElement('menu');
-        context.setAttribute('type', 'context');
-
-        var commandHome = document.createElement('command');
-        commandHome.setAttribute('label', 'Home');
-        commandHome.setAttribute('icon',  'image/house.png');
-        commandHome.setAttribute('action', function() { alert('Home'); });
-        commandHome.setAttribute('disabled', true);
-
-        var commandSearch = document.createElement('command');
-        commandSearch.setAttribute('label', 'Search');
-        commandSearch.setAttribute('icon',  'image/magnifyingglass.png');
-        commandSearch.setAttribute('action', function() { alert('Search'); });
-
-        var commandSettings = document.createElement('command');
-        commandSettings.setAttribute('label', 'Settings');
-        commandSettings.setAttribute('icon',  'image/preferences.png');
-        commandSettings.setAttribute('action', function() { alert('Settings'); });
-
-        context.appendChild(commandHome);
-        context.appendChild(commandSearch);
-        context.appendChild(commandSettings);
-
-        // context.removeChild(commandHome);
-    </script>
+    <span style="position:absolute; top:0;">
+        This is some text at the top of the webview.
+    </span>
+    <span style="position:absolute;bottom:0">
+        This is some text at the bottom of the webview.
+    </span>
 </body>
 </html>
