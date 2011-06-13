@@ -4,3 +4,8 @@
 *.mode1v3
 *.pbxuser
 /native/iOS/test/build/
+
+# iOS
+*.xcworkspace
+xcuserdata
+native/ios/build
