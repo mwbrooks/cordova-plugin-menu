@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC96E28A13A6BDC9004E38BF /* NativeControls2.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96E28713A6BDC9004E38BF /* NativeControls2.m */; };
+		AC96E28B13A6BDC9004E38BF /* UIWebView+PGAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96E28913A6BDC9004E38BF /* UIWebView+PGAdditions.m */; };
 		ACC1C4D913A6B11A007E2CEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4D813A6B11A007E2CEA /* Foundation.framework */; };
 		ACC1C4DB13A6B11A007E2CEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4DA13A6B11A007E2CEA /* UIKit.framework */; };
 		ACC1C4DD13A6B11A007E2CEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4DC13A6B11A007E2CEA /* CoreGraphics.framework */; };
@@ -37,6 +39,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC96E28613A6BDC9004E38BF /* NativeControls2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeControls2.h; sourceTree = "<group>"; };
+		AC96E28713A6BDC9004E38BF /* NativeControls2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeControls2.m; sourceTree = "<group>"; };
+		AC96E28813A6BDC9004E38BF /* UIWebView+PGAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+PGAdditions.h"; sourceTree = "<group>"; };
+		AC96E28913A6BDC9004E38BF /* UIWebView+PGAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+PGAdditions.m"; sourceTree = "<group>"; };
 		ACC1C4D413A6B11A007E2CEA /* MenuPlugin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuPlugin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACC1C4D813A6B11A007E2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ACC1C4DA13A6B11A007E2CEA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -99,6 +105,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC96E28513A6BDC9004E38BF /* NativeControls */ = {
+			isa = PBXGroup;
+			children = (
+				AC96E28613A6BDC9004E38BF /* NativeControls2.h */,
+				AC96E28713A6BDC9004E38BF /* NativeControls2.m */,
+				AC96E28813A6BDC9004E38BF /* UIWebView+PGAdditions.h */,
+				AC96E28913A6BDC9004E38BF /* UIWebView+PGAdditions.m */,
+			);
+			name = NativeControls;
+			path = Plugins/NativeControls;
+			sourceTree = "<group>";
+		};
 		ACC1C4C613A6B11A007E2CEA = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +219,7 @@
 		ACC1C51213A6B11A007E2CEA /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				AC96E28513A6BDC9004E38BF /* NativeControls */,
 				ACC1C51313A6B11A007E2CEA /* README */,
 			);
 			name = Plugins;
@@ -296,6 +315,8 @@
 			files = (
 				ACC1C4F913A6B11A007E2CEA /* main.m in Sources */,
 				ACC1C51113A6B11A007E2CEA /* AppDelegate.m in Sources */,
+				AC96E28A13A6BDC9004E38BF /* NativeControls2.m in Sources */,
+				AC96E28B13A6BDC9004E38BF /* UIWebView+PGAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +424,7 @@
 				ACC1C51913A6B11A007E2CEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

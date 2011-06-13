@@ -1,13 +1,13 @@
 (function(window) {
 
-    var Help = {
+    window.Help = {
         nextUUID: 0,
         generateUUID: function() {
             return ++this.nextUUID;
         },
         generateService: function(element) {
             var service = ['com.phonegap.menu'];
-            
+
             if (element.parentElement) service.push(element.parentElement.attribute.type);
             
             service.push(element.attribute['type']);
@@ -182,7 +182,7 @@
             if (value === element) { self.children.splice(index, 1); }
         });
         
-        element.parentElement = undefined;
+        // element.parentElement is removed by setAttribute('data-init', false);
         element.setAttribute('data-init', false);
     };
 
@@ -235,6 +235,7 @@
                     element:  self,
                     callback: function() {
                         self.attribute['data-uuid'] = undefined;
+                        self.parentElement = undefined;
                         callback();
                     }
                 });
@@ -259,7 +260,12 @@
             'action': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }
 
-                callback();
+                Help.execute({
+                    action:   'access',
+                    element:  self,
+                    data:     [ self.attribute.action ],
+                    callback: callback
+                });
             },
             'disabled': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }

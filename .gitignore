@@ -9,3 +9,5 @@
 *.xcworkspace
 xcuserdata
 native/ios/build
+target/ios/www
+target/ios/MenuPlugin/Plugins

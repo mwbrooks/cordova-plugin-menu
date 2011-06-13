@@ -4,5 +4,7 @@
 # =======================
 
 PLUGIN_PATH=./target/ios/MenuPlugin/Plugins
-
 cp -R ./native/ios/* ${PLUGIN_PATH}/
+
+WWW_PATH=./target/ios/www
+cp -R ./www/* ${WWW_PATH}/
