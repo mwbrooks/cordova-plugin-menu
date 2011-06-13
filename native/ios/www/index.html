@@ -12,8 +12,8 @@
 	<!-- If you application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
 	<script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.1.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="NativeControls2.js"></script>
-	<script type="text/javascript" charset="utf-8" src="HTMLMenuElement.js"></script>
-	<script type="text/javascript" charset="utf-8" src="HTMLCommandElement.js"></script>
+	<script type="text/javascript" charset="utf-8" src="menu.js"></script>
+	<script type="text/javascript" charset="utf-8" src="ios.js"></script>
     <script type="text/javascript" charset="utf-8">
 
 
@@ -41,67 +41,7 @@
 		//document.addEventListener("deviceready", doNativeControls, false);
 		document.addEventListener("deviceready", doHTMLElements, false);
 	}
-	
-	/* When this function is called, PhoneGap has been initialized and is ready to roll */
-	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
-	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
-	for more details -jm */
-	function doNativeControls()
-	{
-		try {
-		
-			var nc = window.plugins.nativeControls;
-			
-			nc.createTabBar();
-			nc.createToolBar();
-			nc.removeTabBar();
-			nc.removeToolBar();
-			nc.createToolBar();
-			nc.createTabBar();
-//			nc.removeTabBar();
-//			nc.createTabBar();
-			
-			var tabHandler = function(name) {
-				navigator.notification.alert(name, null, "TabBar");
-			};
-			var toolHandler = function(name) {
-				navigator.notification.alert(name, null, "ToolBar");
-			};
-			var removeToolHandler = function(name) {
-				nc.removeToolBarItem("tool4-remove"); // remove by name
-			};
-			var removeTabHandler = function(name) {
-				nc.removeTabBarItem("tab4-remove"); // remove by name
-			};
-
-			nc.createTabBarItem("tab1-n", "tab1-l", "tabButton:Favorites", true, { onSelect: tabHandler }); // here a system item takes precedent
-			nc.createTabBarItem("tab2-n", "tab2-l", "alarm.png", true, { onSelect: tabHandler }); // label and title
-			nc.createTabBarItem("tab3-n", null, "alarm.png", true, { onSelect: tabHandler }); // no label
-			nc.createTabBarItem("tab4-remove", "remove me", "alarm.png", true, { onSelect: removeTabHandler }); // label and title
-			
-			//nc.enableTabBarItem("tab4-remove"); // disables
-			nc.enableTabBarItem("tab4-remove", false); // disables
-			nc.enableTabBarItem("tab4-remove", true);
-
-			nc.createToolBarItem("tool1-n", "tool1-l", "toolbarButton:Compose", true, { onSelect: toolHandler }); // here a system item takes precedent
-			nc.createToolBarItem("tool2-n", "tool2-l", "alarm.png", false, { onSelect: toolHandler }); // either label or image, here label takes precedent
-			nc.createToolBarItem("tool3-n", null, "alarm.png", true, { onSelect: toolHandler }); // here no label, so image is used
-			nc.createToolBarItem("tool4-remove", "remove me", "", true, { onSelect: removeToolHandler }); // either label or image, here label takes precedent
-			
-			//nc.enableToolBarItem("tool4-remove"); // disables
-			nc.enableToolBarItem("tool4-remove", false); // disables
-			nc.enableToolBarItem("tool4-remove", true);
-			
-//			nc.hideToolBar();
-//			nc.showToolBar();
-//			nc.hideTabBar();
-//			nc.showTabBar();
-
-		} catch (e) {
-			alert(e);
-		}
-	}
-	
+    
 	function doHTMLElements()
 	{
 		try {
@@ -127,29 +67,29 @@
 		tab1.setAttribute('label', 'tab1-l');
 		tab1.setAttribute('icon', 'tabButton:Favorites');
 		tab1.setAttribute('disabled', false);
-		tab1.addEventListener('click', tabHandler);
-		tabbar.appendChild(tab1);
+		tab1.setAttribute('action', tabHandler);
+        tabbar.appendChild(tab1);
 
 		var tab2 = document.createElement('command');
 		tab2.setAttribute('label', 'tab2-l');
 		tab2.setAttribute('icon', 'alarm.png');
 		tab2.setAttribute('disabled', false);
-		tab2.addEventListener('click', tabHandler);
-		tabbar.appendChild(tab2);
+		tab2.setAttribute('action', tabHandler);
+        tabbar.appendChild(tab2);
 
 		var tab3 = document.createElement('command');
 		tab3.setAttribute('label', '');
 		tab3.setAttribute('icon', 'alarm.png');
 		tab3.setAttribute('disabled', false);
-		tab3.addEventListener('click', tabHandler);
-		tabbar.appendChild(tab3);
+		tab3.setAttribute('action', tabHandler);
+        tabbar.appendChild(tab3);
 
 		var tab4 = document.createElement('command');
 		tab4.setAttribute('label', 'remove me');
 		tab4.setAttribute('icon', '');
 		tab4.setAttribute('disabled', false);
-		tab4.addEventListener('click', removeTabHandler);
-		tabbar.appendChild(tab4);
+		tab4.setAttribute('action', removeTabHandler);
+        tabbar.appendChild(tab4);
 
 		// ///////////////////
 		
@@ -160,29 +100,29 @@
 		tool1.setAttribute('label', 'tool1-l');
 		tool1.setAttribute('icon', '');
 		tool1.setAttribute('disabled', false);
-		tool1.addEventListener('click', toolHandler);
-		toolbar.appendChild(tool1);
+		tool1.setAttribute('action', toolHandler);
+        toolbar.appendChild(tool1);
 
 		var tool2 = document.createElement('command');
 		tool2.setAttribute('label', 'tool2-l');
 		tool2.setAttribute('icon', 'toolbarButton:Compose');
 		tool2.setAttribute('disabled', true);
-		tool2.addEventListener('click', toolHandler);
-		toolbar.appendChild(tool2);
+		tool2.setAttribute('action', toolHandler);
+        toolbar.appendChild(tool2);
 
 		var tool3 = document.createElement('command');
 		tool3.setAttribute('label', '');
 		tool3.setAttribute('icon', 'alarm.png');
 		tool3.setAttribute('disabled', false);
-		tool3.addEventListener('click', toolHandler);
-		toolbar.appendChild(tool3);
+		tool3.setAttribute('action', toolHandler);
+        toolbar.appendChild(tool3);
 
 		var tool4 = document.createElement('command');
 		tool4.setAttribute('label', 'remove me');
 		tool4.setAttribute('icon', '');
 		tool4.setAttribute('disabled', false);
-		tool4.addEventListener('click', removeToolHandler);
-		toolbar.appendChild(tool4);
+		tool4.setAttribute('action', removeToolHandler);
+        toolbar.appendChild(tool4);
 		
 		
 		//toolbar.removeChild(tool2);
