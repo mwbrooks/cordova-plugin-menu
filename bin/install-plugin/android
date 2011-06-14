@@ -5,7 +5,7 @@
 
 # Plugin JavaScript
 WWW_PATH=./target/android/assets/www
-cp -R ./plugin/www/* ${WWW_PATH}/
+cp -R ./www/* ${WWW_PATH}/
 
 # Plugin Java
-cp -R ./plugin/native/android/* ./target/android/src/
+cp -R ./native/android/* ./target/android/src/
