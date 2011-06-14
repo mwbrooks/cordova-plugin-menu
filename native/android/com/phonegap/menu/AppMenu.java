@@ -37,9 +37,9 @@ public class AppMenu extends Plugin {
 	public PluginResult execute(String action, JSONArray args, String callbackId) {
 		// TODO Auto-generated method stub
 		this.callback = callbackId;
-		if(action.equals("setupMenu"))
+		if(action.equals("create"))
 		{
-			this.setupMenu(args);
+			this.createMenu(args);
 		}
 		else if(action.equals("addItem"))
 		{
@@ -58,7 +58,7 @@ public class AppMenu extends Plugin {
 		return r;
 	}
 	
-	private void setupMenu(JSONArray args)	
+	private void createMenu(JSONArray args)	
 	{
 		if(items == null)
 		{

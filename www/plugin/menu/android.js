@@ -17,8 +17,8 @@ if (navigator.userAgent.match(/android/i)) {
                     PhoneGap.exec(
                         function() {},
                         function() {},
-                        'appMenu',
-                        'setupMenu',
+                        'com.phonegap.menu.context',
+                        'create',
                         []
                     );
                 },
@@ -57,7 +57,7 @@ if (navigator.userAgent.match(/android/i)) {
                     PhoneGap.exec(
                         function() {},
                         function() {},
-                        'appMenu',
+                        'com.phonegap.menu.context',
                         'addItem',
                         [{
                             label:    data['label'],
@@ -70,7 +70,7 @@ if (navigator.userAgent.match(/android/i)) {
                     PhoneGap.exec(
                         function() {},
                         function() {},
-                        'appMenu',
+                        'com.phonegap.menu.context',
                         'removeItem',
                         [ data['data-uuid'] ]
                     );
@@ -108,7 +108,7 @@ if (navigator.userAgent.match(/android/i)) {
                     console.log('Adding the plugin');
                     // PhoneGap.addPlugin('nativeMenu', new NativeMenu());
                     // This causes cancer
-                    navigator.app.addService('appMenu', 'com.phonegap.menu.AppMenu');
+                    navigator.app.addService('com.phonegap.menu.context', 'com.phonegap.menu.AppMenu');
                 });
             }, false);
         }, false);
