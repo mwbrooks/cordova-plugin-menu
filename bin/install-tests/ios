@@ -5,4 +5,4 @@
 
 PROJECT_PATH=./target/ios
 
-cp -R ./test/* $PROJECT_PATH/www/
+cp -R ./test/unit/* $PROJECT_PATH/www/
