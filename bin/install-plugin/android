@@ -8,4 +8,4 @@ WWW_PATH=./target/android/assets/www
 cp -R ./www/* ${WWW_PATH}/
 
 # Plugin Java
-cp -Rn ./native/android/ ./target/android/src/
+cp -R ./native/android/* ./target/android/src/
