@@ -92,7 +92,7 @@ if (navigator.userAgent.match(/android/i)) {
                 }
             }
         };
-    
+
         window.Help.execute = function(options) {
             if (typeof options.data === 'undefined') options.data = [];
 
@@ -101,17 +101,9 @@ if (navigator.userAgent.match(/android/i)) {
 
             window.Help._execute[service][action](options.element.attribute);
         };
-    
-        window.addEventListener('load', function() {
-            document.addEventListener('deviceready', function() {
-                PhoneGap.addConstructor(function() {
-                    console.log('Adding the plugin');
-                    // PhoneGap.addPlugin('nativeMenu', new NativeMenu());
-                    // This causes cancer
-                    navigator.app.addService('com.phonegap.menu.context', 'com.phonegap.menu.AppMenu');
-                });
-            }, false);
-        }, false);
 
+        PhoneGap.addConstructor(function() {
+            navigator.app.addService('com.phonegap.menu.context', 'com.phonegap.menu.AppMenu');
+        });
     })();
 }
