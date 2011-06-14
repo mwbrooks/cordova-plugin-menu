@@ -6,7 +6,11 @@
     "type": "git",
     "url": "git://github.com/nitobi/phonegap-plugin-menu.git"
   },
-  "author": "Michael Brooks <michael@michaelbrooks.ca> (http://michaelbrooks.ca)",
+  "author": [
+    "Michael Brooks <michael@michaelbrooks.ca> (http://michaelbrooks.ca)",
+    "Joe Bowser <joe.bowser@nitobi.com> (http://paroxysms.ca)",
+    "Shazron Abdullah <shazron.abdullah@nitobi.com> (http://www.shazron.com)"
+  ],
   "directories": {
     "lib": "www"
   },
