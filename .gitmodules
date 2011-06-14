@@ -1,3 +1,6 @@
+[submodule "plugin/test/unit/qunit"]
+	path = plugin/test/unit/qunit
+	url = https://github.com/jquery/qunit.git
 [submodule "test/unit/qunit"]
 	path = test/unit/qunit
 	url = https://github.com/jquery/qunit.git
