@@ -5,4 +5,4 @@
 
 PROJECT_PATH=./target/android
 
-cp -R ./example/* $PROJECT_PATH/assets/www/
+cp -R ./test/example/* $PROJECT_PATH/assets/www/

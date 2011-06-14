@@ -8,4 +8,4 @@ TMP_PATH=./tmp
 rm -Rf $TMP_PATH
 mkdir $TMP_PATH
 
-cp -R ./example $TMP_PATH/www
+cp -R ./test/example $TMP_PATH/www
