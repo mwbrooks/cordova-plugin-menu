@@ -60,8 +60,7 @@ _Note:_ Your project should also be using the JavaScript for 0.9.5.1. You can fi
 
 1. Copy the following to your project's `www` directory:
 
-        phonegap-plugin-menu/www/plugin/menu/index.js ....... Common menu interface
-        phonegap-plugin-menu/www/plugin/menu/android.js ..... Temporary Android mediator
+        phonegap-plugin-menu/www/plugin/menu/index.js
 
 2. Include the JavaScript in your HTML page:
 
@@ -69,4 +68,3 @@ _Note:_ Your project should also be using the JavaScript for 0.9.5.1. You can fi
         
         <!-- After phonegap.js and the order is important -->
         <script type="text/javascript" src="plugin/menu/index.js"></script>
-        <script type="text/javascript" src="plugin/menu/android.js"></script>

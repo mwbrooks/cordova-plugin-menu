@@ -52,8 +52,6 @@ Plugin Usage in Existing Project
 1. Copy the following to your project's `www` directory:
 
         phonegap-plugin-menu/www/plugin/menu/index.js
-        phonegap-plugin-menu/www/plugin/menu/ios.js
-        phonegap-plugin-menu/www/plugin/menu/native-controls.js
 
 2. Include the JavaScript in your HTML page:
 
@@ -61,5 +59,3 @@ Plugin Usage in Existing Project
         
         <!-- After phonegap.js and the order is important -->
         <script type="text/javascript" src="plugin/menu/index.js"></script>
-        <script type="text/javascript" src="plugin/menu/ios.js"></script>
-        <script type="text/javascript" src="plugin/menu/native-controls.js"></script>
