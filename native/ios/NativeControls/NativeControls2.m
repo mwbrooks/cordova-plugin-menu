@@ -285,7 +285,7 @@
 
 - (void)tabBar:(UITabBar*)tabBar didSelectItem:(UITabBarItem *)item
 {
-    NSString* jsCallBack = [NSString stringWithFormat:@"window.plugins.nativeControls.tabBarItemSelected(%d);", item.tag];    
+    NSString* jsCallBack = [NSString stringWithFormat:@"window.HTMLCommandElement.elements[%d].attribute.action();", item.tag];    
     [super writeJavascript:jsCallBack];
 }
 
@@ -350,7 +350,7 @@
 
 - (void) toolBarDidSelectItem:(UIBarButtonItem*)item
 {
-    NSString* jsCallBack = [NSString stringWithFormat:@"window.plugins.nativeControls.toolBarItemSelected(%d);", item.tag];    
+    NSString* jsCallBack = [NSString stringWithFormat:@"window.HTMLCommandElement.elements[%d].attribute.action();", item.tag];
     [super writeJavascript:jsCallBack];
 }
 
