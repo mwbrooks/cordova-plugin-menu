@@ -56,6 +56,12 @@ In your Android project, replace `libs/phonegap.0.9.5.1.jar` with
 _Note:_ Your project should also be using the JavaScript for 0.9.5.1. You can find the JavaScript at
 `phonegap-plugin-menu/target/android/lib/phonegap.0.9.5.1.js`.
 
+### Install Java code
+
+1. Copy the following to your project's `src` directory:
+
+        phonegap-plugin-menu/native/android/
+
 ### Install JavaScript code
 
 1. Copy the following to your project's `www` directory:
