@@ -289,7 +289,7 @@
             },
             'label': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }
-                
+
                 Help.execute({
                     action:   'label',
                     element:  self,
@@ -307,7 +307,7 @@
                 Help.process([ self.fn['action'] ]);
             },
             'data-init': function() {
-                if (self.attribute['data-init'])
+                if (self.attribute['data-init']) {
                     Help.process([
                         self.fn['delete'],
                         self.fn['create'],
@@ -317,6 +317,7 @@
                         self.fn['action'],
                         self.fn['accesskey']
                     ]);
+                }
                 else
                     Help.process([ self.fn['delete'] ]);
             },
@@ -406,110 +407,128 @@
 
 if (navigator.userAgent.match(/android/i)) {
     (function() {
-        window.Help._execute = {
-            'com.phonegap.menu.toolbar': {
-                'create': function(data) {
-                    window.Help._execute['com.phonegap.menu.context']['create'](data);
-                },
-                'delete': function(data) {
-                    window.Help._execute['com.phonegap.menu.context']['delete'](data);
-                },
-                'label': function(data) {
-                    window.Help._execute['com.phonegap.menu.context']['label'](data);
-                }
-            },
-            'com.phonegap.menu.context': {
-                'create': function(data) {
-                    PhoneGap.exec(
-                        function() {},
-                        function() {},
-                        'com.phonegap.menu.context',
-                        'create',
-                        []
-                    );
-                },
-                'delete': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.context :: delete');
-                },
-                'label': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.context :: label');
-                }
-            },
-            'com.phonegap.menu.toolbar.command': {
-                'create': function(data) {
-                    window.Help._execute['com.phonegap.menu.context.command']['create'](data);
-                },
-                'delete': function(data) {
-                    window.Help._execute['com.phonegap.menu.context.command']['delete'](data);
-                },
-                'accesskey': function(data) {
-                    window.Help._execute['com.phonegap.menu.context.command']['accesskey'](data);
-                },
-                'action': function(data) {
-                    window.Help._execute['com.phonegap.menu.context.command']['action'](data);
-                },
-                'disabled': function(data) {
-                    window.Help._execute['com.phonegap.menu.context.command']['disabled'](data);
-                },
-                'icon': function(data) {
-                    window.Help._execute['com.phonegap.menu.context.command']['icon'](data);
-                },
-                'label': function(data) {
-                    window.Help._execute['com.phonegap.menu.context.command']['label'](data);
-                }
-            },
-            'com.phonegap.menu.context.command': {
-                'create': function(data) {
-                    PhoneGap.exec(
-                        function() {},
-                        function() {},
-                        'com.phonegap.menu.context.command',
-                        'create',
-                        [{
-                            label:    data['label'],
-                            icon:     data['icon'],
-                            callback: ''
-                        }]
-                    );
-                },
-                'delete': function(data) {
-                    PhoneGap.exec(
-                        function() {},
-                        function() {},
-                        'com.phonegap.menu.context.command',
-                        'delete',
-                        [ data['data-uuid'] ]
-                    );
-                },
-                'accesskey': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.toolbar.command :: accesskey');
-                },
-                'action': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.toolbar.command :: action');
-                },
-                'disabled': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.toolbar.command :: disabled');
-                },
-                'icon': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.toolbar.command :: icon');
-                },
-                'label': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.toolbar.command :: label');
-                }
-            }
-        };
+        // window.Help._execute = {
+        //     'com.phonegap.menu.toolbar': {
+        //         'create': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context']['create'](data);
+        //         },
+        //         'delete': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context']['delete'](data);
+        //         },
+        //         'label': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context']['label'](data);
+        //         }
+        //     },
+        //     'com.phonegap.menu.context': {
+        //         'create': function(data) {
+        //             PhoneGap.exec(
+        //                 function() {},
+        //                 function() {},
+        //                 'com.phonegap.menu.context',
+        //                 'create',
+        //                 []
+        //             );
+        //         },
+        //         'delete': function(data) {
+        //             console.log('Unsupported: com.phonegap.menu.context :: delete');
+        //         },
+        //         'label': function(data) {
+        //             console.log('Unsupported: com.phonegap.menu.context :: label');
+        //         }
+        //     },
+        //     'com.phonegap.menu.toolbar.command': {
+        //         'create': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context.command']['create'](data);
+        //         },
+        //         'delete': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context.command']['delete'](data);
+        //         },
+        //         'accesskey': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context.command']['accesskey'](data);
+        //         },
+        //         'action': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context.command']['action'](data);
+        //         },
+        //         'disabled': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context.command']['disabled'](data);
+        //         },
+        //         'icon': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context.command']['icon'](data);
+        //         },
+        //         'label': function(data) {
+        //             window.Help._execute['com.phonegap.menu.context.command']['label'](data);
+        //         }
+        //     },
+        //     'com.phonegap.menu.context.command': {
+        //         'create': function(data) {
+        //             PhoneGap.exec(
+        //                 function() {},
+        //                 function() {},
+        //                 'com.phonegap.menu.context.command',
+        //                 'create',
+        //                 [{
+        //                     label:    data['label'],
+        //                     icon:     data['icon'],
+        //                     callback: ''
+        //                 }]
+        //             );
+        //         },
+        //         'delete': function(data) {
+        //             PhoneGap.exec(
+        //                 function() {},
+        //                 function() {},
+        //                 'com.phonegap.menu.context.command',
+        //                 'delete',
+        //                 [ data['data-uuid'] ]
+        //             );
+        //         },
+        //         'accesskey': function(data) {
+        //             console.log('Unsupported: com.phonegap.menu.toolbar.command :: accesskey');
+        //         },
+        //         'action': function(data) {
+        //             console.log('Unsupported: com.phonegap.menu.toolbar.command :: action');
+        //         },
+        //         'disabled': function(data) {
+        //             console.log('Unsupported: com.phonegap.menu.toolbar.command :: disabled');
+        //         },
+        //         'icon': function(data) {
+        //             console.log('Unsupported: com.phonegap.menu.toolbar.command :: icon');
+        //         },
+        //         'label': function(data) {
+        //             console.log('Unsupported: com.phonegap.menu.toolbar.command :: label');
+        //         }
+        //     }
+        // };
 
-        window.Help.execute = function(options) {
-            if (typeof options.data === 'undefined') options.data = [];
-
-            var service = this.generateService(options.element);
-            var action  = options.action;
-
-            window.Help._execute[service][action](options.element.attribute);
-        };
+        // window.Help.execute = function(options) {
+        //     // if (typeof options.data === 'undefined') options.data = [];
+        //     // 
+        //     // var service = this.generateService(options.element);
+        //     // var action  = options.action;
+        //     // 
+        //     // window.Help._execute[service][action](options.element.attribute);
+        //     if (typeof options.data === 'undefined') options.data = [];
+        //     
+        //     var service = this.generateService(options.element);
+        //     var action  = options.action;
+        //     var id      = options.element.attribute['data-uuid'];
+        //     
+        //     options.data.unshift(id);
+        // 
+        //     window.Help._execute[service][action](options.data);            
+        //     // PhoneGap.exec(
+        //     //     options.callback,
+        //     //     options.callback,
+        //     //     service,
+        //     //     options.action,
+        //     //     options.data
+        //     // );
+        // };
 
         PhoneGap.addConstructor(function() {
+            navigator.app.addService('com.phonegap.menu.toolbar',         'com.phonegap.menu.AppMenu');
             navigator.app.addService('com.phonegap.menu.context',         'com.phonegap.menu.AppMenu');
+            navigator.app.addService('com.phonegap.menu.toolbar.command', 'com.phonegap.menu.AppMenuItem');
             navigator.app.addService('com.phonegap.menu.context.command', 'com.phonegap.menu.AppMenuItem');
         });
     })();

@@ -14,6 +14,7 @@ import com.phonegap.api.Plugin;
 import com.phonegap.api.PluginResult;
 
 class MenuInfo {
+	public String id;
 	public String label = "";
 	public Drawable icon;
 	public String callback;
@@ -24,37 +25,84 @@ public class AppMenuItem extends Plugin {
 	@Override
 	public PluginResult execute(String action, JSONArray args, String callbackId) {
 		if (action.equals("create")) {
-			this.addItem(args);
+			this.create(args);
 		}
 		else if (action.equals("delete")) {
-			this.removeItem(args);
+			this.delete(args);
+		}
+		else if (action.equals("accesskey")) {
+			return new PluginResult(PluginResult.Status.INVALID_ACTION);
+		}
+		else if (action.equals("disabled")) {
+			return new PluginResult(PluginResult.Status.INVALID_ACTION);
+		}
+		else if (action.equals("icon")) {
+			this.icon(args);
+		}
+		else if (action.equals("label")) {
+			this.label(args);
 		}
 		else {
 			return new PluginResult(PluginResult.Status.INVALID_ACTION);
 		}
 
-		PluginResult r = new PluginResult(PluginResult.Status.NO_RESULT);
+		PluginResult r = new PluginResult(PluginResult.Status.OK);
 		return r;
 	}
 	
-	private void addItem(JSONArray args) {
+	private void create(JSONArray args) {
 		try {
-			String item = args.getString(0);
-			JSONObject mObject = new JSONObject(item);
-			MenuInfo info = parseInfo(mObject);
+			MenuInfo info = new MenuInfo();
+			info.id = args.getString(0);
 			AppMenu.instance.addMenuItem(info);
 		} catch (JSONException e) {
 			e.printStackTrace();
-		}				
+		}
 	}
 	
-	private void removeItem(JSONArray args) {
+	private void delete(JSONArray args) {
 		try {
 			int recordId = args.getInt(0);
 			// items.remove(recordId);
 			// menuChanged = true;
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void label(JSONArray args) {
+		try {
+			String id = args.getString(0);
+			
+			try {
+				MenuInfo info = AppMenu.instance.getMenuItem(id);
+				info.label = args.getString(1);
+				AppMenu.instance.updateMenu();
+			}
+			catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+		}
+		catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void icon(JSONArray args) {
+		try {
+			String id = args.getString(0);
+			
+			try {
+				MenuInfo info = AppMenu.instance.getMenuItem(id);
+				info.icon = getIcon(args.getString(1));
+				AppMenu.instance.updateMenu();
+			}
+			catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+		}
+		catch (JSONException e) {
 			e.printStackTrace();
 		}
 	}

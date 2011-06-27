@@ -25,15 +25,19 @@ public class AppMenu extends Plugin {
 	public PluginResult execute(String action, JSONArray args, String callbackId) {
 		// TODO Auto-generated method stub
 		this.callback = callbackId;
-		if(action.equals("create"))
-		{
+		if(action.equals("create")) {
 			this.createMenu(args);
 		}
-		else
-		{
+		else if (action.equals("delete")) {
 			return new PluginResult(PluginResult.Status.INVALID_ACTION);
 		}
-		PluginResult r = new PluginResult(PluginResult.Status.NO_RESULT);
+		else if (action.equals("label")) {
+			return new PluginResult(PluginResult.Status.INVALID_ACTION);
+		}
+		else {
+			return new PluginResult(PluginResult.Status.INVALID_ACTION);
+		}
+		PluginResult r = new PluginResult(PluginResult.Status.OK);
 		r.setKeepCallback(true);
 		return r;
 	}
@@ -51,6 +55,28 @@ public class AppMenu extends Plugin {
 			appMenu = ctx.dMenu;
 			buildHoneycombMenu(appMenu);
     	}
+	}
+	
+	public MenuInfo getMenuItem(String id) {
+		MenuInfo info = null;
+		
+		ListIterator<MenuInfo> iter = items.listIterator();
+		
+		while(iter.hasNext()) {
+			int itemId = iter.nextIndex();
+			MenuInfo item = iter.next();
+			
+			if (item.id == id) {
+				info = item;
+				break;
+			}
+		}
+		
+		return info;
+	}
+	
+	public void updateMenu() {
+		menuChanged = true;
 	}
 	
 	private void createMenu(JSONArray args)	
