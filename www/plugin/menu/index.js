@@ -463,8 +463,8 @@ if (navigator.userAgent.match(/android/i)) {
                     PhoneGap.exec(
                         function() {},
                         function() {},
-                        'com.phonegap.menu.context',
-                        'addItem',
+                        'com.phonegap.menu.context.command',
+                        'create',
                         [{
                             label:    data['label'],
                             icon:     data['icon'],
@@ -476,8 +476,8 @@ if (navigator.userAgent.match(/android/i)) {
                     PhoneGap.exec(
                         function() {},
                         function() {},
-                        'com.phonegap.menu.context',
-                        'removeItem',
+                        'com.phonegap.menu.context.command',
+                        'delete',
                         [ data['data-uuid'] ]
                     );
                 },
@@ -509,7 +509,8 @@ if (navigator.userAgent.match(/android/i)) {
         };
 
         PhoneGap.addConstructor(function() {
-            navigator.app.addService('com.phonegap.menu.context', 'com.phonegap.menu.AppMenu');
+            navigator.app.addService('com.phonegap.menu.context',         'com.phonegap.menu.AppMenu');
+            navigator.app.addService('com.phonegap.menu.context.command', 'com.phonegap.menu.AppMenuItem');
         });
     })();
 }
