@@ -15,7 +15,6 @@ import com.phonegap.api.PluginResult;
 
 public class AppMenu extends Plugin {
 	public static AppMenu singleton;
-	private Menu appMenu;
 	private ArrayList <MenuInfo> items;
 	private boolean menuChanged;
 	
@@ -43,12 +42,11 @@ public class AppMenu extends Plugin {
 		}
 		
 		items.add(info);
-		menuChanged = true;
+		this.updateMenu();
 		
 		if(android.os.Build.VERSION.RELEASE.startsWith("3."))
 		{
-			appMenu = ctx.dMenu;
-			buildHoneycombMenu(appMenu);
+			buildHoneycombMenu(ctx.dMenu);
     	}
 	}
 	
@@ -98,7 +96,6 @@ public class AppMenu extends Plugin {
      */
     public boolean buildMenu(Menu menu)
     {
-    	appMenu = menu;
     	ListIterator<MenuInfo> iter = items.listIterator();    	
     	while(iter.hasNext())
     	{
@@ -107,8 +104,7 @@ public class AppMenu extends Plugin {
     		menu.add(Menu.NONE, itemId, Menu.NONE, item.label);
     		MenuItem currentItem = menu.getItem(itemId);
     		currentItem.setIcon(item.icon);
-    	}
-    	menuChanged = false;    	
+    	} 	
     	return true;
     }
     
