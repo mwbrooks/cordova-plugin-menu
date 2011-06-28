@@ -55,7 +55,8 @@ public class AppMenuItem extends Plugin {
 			MenuInfo info = new MenuInfo();
 			info.id = args.getString(0);
 			AppMenu.singleton.addMenuItem(info);
-		} catch (JSONException e) {
+		}
+		catch (JSONException e) {
 			e.printStackTrace();
 		}
 	}
@@ -65,8 +66,8 @@ public class AppMenuItem extends Plugin {
 			int recordId = args.getInt(0);
 			// items.remove(recordId);
 			// menuChanged = true;
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+		}
+		catch (JSONException e) {
 			e.printStackTrace();
 		}
 	}
@@ -110,12 +111,13 @@ public class AppMenuItem extends Plugin {
 	private Drawable getIcon(String tmp_uri) {
 		AssetManager mgr = this.ctx.getAssets();
 		String fileName = "www/" + tmp_uri;
+		
 		try {
 			InputStream image = mgr.open(fileName);
 			Drawable icon = Drawable.createFromStream(image, tmp_uri);
 			return icon;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -125,16 +127,17 @@ public class AppMenuItem extends Plugin {
 		MenuInfo info = new MenuInfo();
 		info.label = mObject.getString("label");
 		info.callback = mObject.getString("callback");
+		
 		String tmp_uri = mObject.getString("icon");
-		//I don't expect this to work at all
 		info.icon = getIcon(tmp_uri);
+		
 		try {
 			info.disabled = mObject.getBoolean("enabled");
 		}
-		//Catch the case when "enabled" is not defined
 		catch(JSONException e) {
 			info.disabled = false;
 		}
+		
 		return info;
 	}
 }
