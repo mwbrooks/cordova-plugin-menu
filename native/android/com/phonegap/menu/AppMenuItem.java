@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.view.MenuItem;
+
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 
@@ -19,6 +21,7 @@ class MenuInfo {
 	public Drawable icon;
 	public String callback;
 	public boolean disabled;
+	public MenuItem menuItem;
 }
 
 public class AppMenuItem extends Plugin {
@@ -34,7 +37,7 @@ public class AppMenuItem extends Plugin {
 			return new PluginResult(PluginResult.Status.INVALID_ACTION);
 		}
 		else if (action.equals("disabled")) {
-			return new PluginResult(PluginResult.Status.INVALID_ACTION);
+			this.disabled(args);
 		}
 		else if (action.equals("icon")) {
 			this.icon(args);
@@ -65,6 +68,17 @@ public class AppMenuItem extends Plugin {
 		try {
 			MenuInfo info = AppMenu.singleton.getMenuItem(args.getInt(0));
 			AppMenu.singleton.removeMenuItem(info);
+		}
+		catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void disabled(JSONArray args) {
+		try {
+			MenuInfo info = AppMenu.singleton.getMenuItem(args.getInt(0));
+			info.disabled = args.getBoolean(1);
+			info.menuItem.setEnabled(!info.disabled);
 		}
 		catch (JSONException e) {
 			e.printStackTrace();

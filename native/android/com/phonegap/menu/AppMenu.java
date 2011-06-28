@@ -99,7 +99,9 @@ public class AppMenu extends Plugin {
 			menu.add(Menu.NONE, item.id, Menu.NONE, item.label);
 			
 			MenuItem currentItem = menu.getItem(menu.size() - 1);
-			currentItem.setIcon(item.icon);
+			item.menuItem = currentItem;
+			item.menuItem.setIcon(item.icon);
+			item.menuItem.setEnabled(!item.disabled);
 		}
 		
 		return true;
