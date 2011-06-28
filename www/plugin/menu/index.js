@@ -420,7 +420,7 @@ if (navigator.userAgent.match(/iphone/i)) {
                     PhoneGap.exec("NativeControls2.removeToolBar");
                 },
                 'label': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.toolbar :: label');
+                    PhoneGap.exec("NativeControls2.updateToolBar", { 'label': data['label'] });
                 }
             },
             'com.phonegap.menu.context': {
@@ -452,10 +452,10 @@ if (navigator.userAgent.match(/iphone/i)) {
                     PhoneGap.exec("NativeControls2.enableToolBarItem", data['data-uuid'], !data['disabled']);
                 },
                 'icon': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.toolbar.command :: icon');
+                    PhoneGap.exec("NativeControls2.updateToolBarItem", data['data-uuid'], { 'icon': data['icon'] });
                 },
                 'label': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.toolbar.command :: label');
+                    PhoneGap.exec("NativeControls2.updateToolBarItem", data['data-uuid'], { 'label': data['label'] });
                 }
             },
             'com.phonegap.menu.context.command': {
@@ -476,7 +476,7 @@ if (navigator.userAgent.match(/iphone/i)) {
                     PhoneGap.exec("NativeControls2.enableTabBarItem", data['data-uuid'], !data['disabled']);
                 },
                 'icon': function(data) {
-                    console.log('Unsupported: com.phonegap.menu.toolbar.command :: icon');
+                    PhoneGap.exec("NativeControls2.updateTabBarItem", data['data-uuid'], { 'icon': data['icon'] });
                 },
                 'label': function(data) {
                     PhoneGap.exec("NativeControls2.updateTabBarItem", data['data-uuid'], { 'title': data['label'] });
