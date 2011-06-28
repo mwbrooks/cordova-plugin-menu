@@ -444,10 +444,6 @@ if (navigator.userAgent.match(/iphone/i)) {
                 'accesskey': function(data) {
                     console.log('Unsupported: com.phonegap.menu.toolbar.command :: accesskey');
                 },
-                'action': function(data) {
-                    console.log('TODO: Fix in the index.js');
-                    // window.plugins.nativeControls.toolBarCallbacks[ data['data-uuid'] ].onSelect = data['action'];
-                },
                 'disabled': function(data) {
                     PhoneGap.exec("NativeControls2.enableToolBarItem", data['data-uuid'], !data['disabled']);
                 },
@@ -467,10 +463,6 @@ if (navigator.userAgent.match(/iphone/i)) {
                 },
                 'accesskey': function(data) {
                     console.log('Unsupported: com.phonegap.menu.toolbar.command :: accesskey');
-                },
-                'action': function(data) {
-                    console.log('TODO: Fix in the index.js');
-                    // window.plugins.nativeControls.tabBarCallbacks[ data['data-uuid'] ].onSelect = data['action'];
                 },
                 'disabled': function(data) {
                     PhoneGap.exec("NativeControls2.enableTabBarItem", data['data-uuid'], !data['disabled']);
