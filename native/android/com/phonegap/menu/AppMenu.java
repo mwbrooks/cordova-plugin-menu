@@ -126,4 +126,8 @@ public class AppMenu extends Plugin {
 		webView.loadUrl("javascript:window.HTMLCommandElement.elements['" + item.getItemId() + "'].attribute.action();");
 		return true;
 	}
+	
+	public void onDestroy() {
+		AppMenu.singleton = null;
+	}
 }
