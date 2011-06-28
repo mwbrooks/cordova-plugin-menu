@@ -50,6 +50,12 @@ public class AppMenu extends Plugin {
 		}
 	}
 	
+	public void removeMenuItem(MenuInfo menuItem) {
+		int index = menuItems.indexOf(menuItem);
+		menuItems.remove(index);
+		this.updateMenu();
+	}
+	
 	public MenuInfo getMenuItem(String id) {
 		MenuInfo menuItem = null;
 		ListIterator<MenuInfo> iter = menuItems.listIterator();

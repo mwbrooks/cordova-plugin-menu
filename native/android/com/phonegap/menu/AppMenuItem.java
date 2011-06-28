@@ -63,9 +63,8 @@ public class AppMenuItem extends Plugin {
 	
 	private void delete(JSONArray args) {
 		try {
-			int recordId = args.getInt(0);
-			// items.remove(recordId);
-			// menuChanged = true;
+			MenuInfo info = AppMenu.singleton.getMenuItem(args.getString(0));
+			AppMenu.singleton.removeMenuItem(info);
 		}
 		catch (JSONException e) {
 			e.printStackTrace();
