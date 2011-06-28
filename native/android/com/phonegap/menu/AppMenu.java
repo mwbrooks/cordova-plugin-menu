@@ -56,7 +56,7 @@ public class AppMenu extends Plugin {
 		this.updateMenu();
 	}
 	
-	public MenuInfo getMenuItem(String id) {
+	public MenuInfo getMenuItem(int id) {
 		MenuInfo menuItem = null;
 		ListIterator<MenuInfo> iter = menuItems.listIterator();
 		
@@ -94,12 +94,11 @@ public class AppMenu extends Plugin {
 		ListIterator<MenuInfo> iter = menuItems.listIterator();
 		
 		while (iter.hasNext()) {
-			int itemId = iter.nextIndex();
 			MenuInfo item = iter.next();
 			
-			menu.add(Menu.NONE, itemId, Menu.NONE, item.label);
+			menu.add(Menu.NONE, item.id, Menu.NONE, item.label);
 			
-			MenuItem currentItem = menu.getItem(itemId);
+			MenuItem currentItem = menu.getItem(menu.size() - 1);
 			currentItem.setIcon(item.icon);
 		}
 		
@@ -122,7 +121,7 @@ public class AppMenu extends Plugin {
 	}
 	
 	public boolean onMenuItemSelected(MenuItem item) {
-		webView.loadUrl("javascript:PhoneGap.fireEvent('itemPressed');");
+		webView.loadUrl("javascript:window.HTMLCommandElement.elements['" + item.getItemId() + "'].attribute.action();");
 		return true;
 	}
 }

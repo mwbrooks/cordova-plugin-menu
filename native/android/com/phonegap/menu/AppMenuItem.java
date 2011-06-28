@@ -14,7 +14,7 @@ import com.phonegap.api.Plugin;
 import com.phonegap.api.PluginResult;
 
 class MenuInfo {
-	public String id;
+	public int id;
 	public String label = "";
 	public Drawable icon;
 	public String callback;
@@ -53,7 +53,7 @@ public class AppMenuItem extends Plugin {
 	private void create(JSONArray args) {
 		try {
 			MenuInfo info = new MenuInfo();
-			info.id = args.getString(0);
+			info.id = args.getInt(0);
 			AppMenu.singleton.addMenuItem(info);
 		}
 		catch (JSONException e) {
@@ -63,7 +63,7 @@ public class AppMenuItem extends Plugin {
 	
 	private void delete(JSONArray args) {
 		try {
-			MenuInfo info = AppMenu.singleton.getMenuItem(args.getString(0));
+			MenuInfo info = AppMenu.singleton.getMenuItem(args.getInt(0));
 			AppMenu.singleton.removeMenuItem(info);
 		}
 		catch (JSONException e) {
@@ -73,7 +73,7 @@ public class AppMenuItem extends Plugin {
 	
 	private void label(JSONArray args) {
 		try {
-			String id = args.getString(0);
+			int id = args.getInt(0);
 			
 			try {
 				MenuInfo info = AppMenu.singleton.getMenuItem(id);
@@ -91,7 +91,7 @@ public class AppMenuItem extends Plugin {
 	
 	private void icon(JSONArray args) {
 		try {
-			String id = args.getString(0);
+			int id = args.getInt(0);
 			
 			try {
 				MenuInfo info = AppMenu.singleton.getMenuItem(id);
