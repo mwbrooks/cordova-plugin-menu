@@ -14,8 +14,7 @@ import com.phonegap.api.Plugin;
 import com.phonegap.api.PluginResult;
 
 public class AppMenu extends Plugin {
-
-	public static AppMenu instance;
+	public static AppMenu singleton;
 	private Menu appMenu;
 	private ArrayList <MenuInfo> items;
 	private boolean menuChanged;
@@ -77,8 +76,8 @@ public class AppMenu extends Plugin {
 	
 	private void createMenu(JSONArray args)	
 	{
-		if (AppMenu.instance == null) {
-			AppMenu.instance = this;
+		if (AppMenu.singleton == null) {
+			AppMenu.singleton = this;
 		}
 			
 		if (items == null) {

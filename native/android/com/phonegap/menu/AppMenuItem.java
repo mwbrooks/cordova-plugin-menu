@@ -54,7 +54,7 @@ public class AppMenuItem extends Plugin {
 		try {
 			MenuInfo info = new MenuInfo();
 			info.id = args.getString(0);
-			AppMenu.instance.addMenuItem(info);
+			AppMenu.singleton.addMenuItem(info);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -76,9 +76,9 @@ public class AppMenuItem extends Plugin {
 			String id = args.getString(0);
 			
 			try {
-				MenuInfo info = AppMenu.instance.getMenuItem(id);
+				MenuInfo info = AppMenu.singleton.getMenuItem(id);
 				info.label = args.getString(1);
-				AppMenu.instance.updateMenu();
+				AppMenu.singleton.updateMenu();
 			}
 			catch (NullPointerException e) {
 				e.printStackTrace();
@@ -94,9 +94,9 @@ public class AppMenuItem extends Plugin {
 			String id = args.getString(0);
 			
 			try {
-				MenuInfo info = AppMenu.instance.getMenuItem(id);
+				MenuInfo info = AppMenu.singleton.getMenuItem(id);
 				info.icon = getIcon(args.getString(1));
-				AppMenu.instance.updateMenu();
+				AppMenu.singleton.updateMenu();
 			}
 			catch (NullPointerException e) {
 				e.printStackTrace();
