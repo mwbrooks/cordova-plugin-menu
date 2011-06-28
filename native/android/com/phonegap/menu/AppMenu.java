@@ -18,13 +18,10 @@ public class AppMenu extends Plugin {
 	public static AppMenu instance;
 	private Menu appMenu;
 	private ArrayList <MenuInfo> items;
-	private String callback;
 	private boolean menuChanged;
 	
 	@Override
 	public PluginResult execute(String action, JSONArray args, String callbackId) {
-		// TODO Auto-generated method stub
-		this.callback = callbackId;
 		if(action.equals("create")) {
 			this.createMenu(args);
 		}
@@ -38,7 +35,6 @@ public class AppMenu extends Plugin {
 			return new PluginResult(PluginResult.Status.INVALID_ACTION);
 		}
 		PluginResult r = new PluginResult(PluginResult.Status.OK);
-		r.setKeepCallback(true);
 		return r;
 	}
 	
