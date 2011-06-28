@@ -15,7 +15,7 @@ import com.phonegap.api.PluginResult;
 
 public class AppMenu extends Plugin {
 	public static AppMenu singleton;
-	private ArrayList <MenuInfo> items;
+	private ArrayList <MenuInfo> menuItems;
 	private boolean menuChanged;
 	
 	@Override
@@ -37,11 +37,11 @@ public class AppMenu extends Plugin {
 	}
 	
 	public void addMenuItem(MenuInfo info) {
-		if (items == null) {
-			items = new ArrayList<MenuInfo>();
+		if (menuItems == null) {
+			menuItems = new ArrayList<MenuInfo>();
 		}
 		
-		items.add(info);
+		menuItems.add(info);
 		this.updateMenu();
 		
 		if(android.os.Build.VERSION.RELEASE.startsWith("3."))
@@ -53,7 +53,7 @@ public class AppMenu extends Plugin {
 	public MenuInfo getMenuItem(String id) {
 		MenuInfo info = null;
 		
-		ListIterator<MenuInfo> iter = items.listIterator();
+		ListIterator<MenuInfo> iter = menuItems.listIterator();
 		
 		while(iter.hasNext()) {
 			int itemId = iter.nextIndex();
@@ -78,8 +78,8 @@ public class AppMenu extends Plugin {
 			AppMenu.singleton = this;
 		}
 			
-		if (items == null) {
-			items = new ArrayList<MenuInfo>();
+		if (menuItems == null) {
+			menuItems = new ArrayList<MenuInfo>();
 		}
 	}
 	
@@ -96,7 +96,7 @@ public class AppMenu extends Plugin {
      */
     public boolean buildMenu(Menu menu)
     {
-    	ListIterator<MenuInfo> iter = items.listIterator();    	
+    	ListIterator<MenuInfo> iter = menuItems.listIterator();    	
     	while(iter.hasNext())
     	{
     		int itemId = iter.nextIndex();
