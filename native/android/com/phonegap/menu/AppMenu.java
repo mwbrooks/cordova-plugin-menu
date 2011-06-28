@@ -76,14 +76,13 @@ public class AppMenu extends Plugin {
 		
 		while (iter.hasNext()) {
 			MenuInfo item = iter.next();
-			
-			menu.add(Menu.NONE, item.id, Menu.NONE, item.label);
-			
-			MenuItem currentItem = menu.getItem(menu.size() - 1);
-			item.menuItem = currentItem;
-			item.menuItem.setIcon(item.icon);
-			item.menuItem.setEnabled(!item.disabled);
+						
+			menu.add(Menu.NONE, item.getId(), Menu.NONE, item.getLabel());
+			item.setMenuItem(menu.getItem(menu.size() - 1));
+			item.updateAll();
 		}
+		
+		menuChanged = false;
 		
 		return true;
 	}
@@ -123,7 +122,7 @@ public class AppMenu extends Plugin {
 		}
 		
 		menuItems.add(info);
-		this.updateMenu();
+		menuChanged = true;
 		
 		if (android.os.Build.VERSION.RELEASE.startsWith("3.")) {
 			buildHoneycombMenu(ctx.dMenu);
@@ -138,7 +137,7 @@ public class AppMenu extends Plugin {
 	public void removeMenuItem(MenuInfo menuItem) {
 		int index = menuItems.indexOf(menuItem);
 		menuItems.remove(index);
-		this.updateMenu();
+		menuChanged = true;
 	}
 	
 	/**
@@ -153,20 +152,13 @@ public class AppMenu extends Plugin {
 		while (iter.hasNext()) {
 			MenuInfo tmpMenuItem = iter.next();
 			
-			if (tmpMenuItem.id == id) {
+			if (tmpMenuItem.getId() == id) {
 				menuItem = tmpMenuItem;
 				break;
 			}
 		}
 		
 		return menuItem;
-	}
-	
-	/**
-	 * Flag the menu to be updated.
-	 */
-	public void updateMenu() {
-		menuChanged = true;
 	}
 	
 	/**

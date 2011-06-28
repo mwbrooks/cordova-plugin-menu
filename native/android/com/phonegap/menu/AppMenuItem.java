@@ -16,12 +16,82 @@ import com.phonegap.api.Plugin;
 import com.phonegap.api.PluginResult;
 
 class MenuInfo {
-	public int id;
-	public String label = "";
-	public Drawable icon;
-	public String callback;
-	public boolean disabled;
-	public MenuItem menuItem;
+	private int          id;
+	private String       label    = "";
+	private Drawable     icon     = null;
+	private boolean      disabled = false;
+	private MenuItem     menuItem = null;
+	private AssetManager assets   = null;
+	
+	public MenuInfo(final int id, AssetManager assets) {
+		this.id = id;
+		this.assets = assets;
+	}
+	
+	public int getId() {
+		return this.id;
+	}
+	
+	public String getLabel() {
+		return this.label;
+	}
+	
+	public void setLabel(final String label) {
+		this.label = label;
+		this.updateLabel();
+	}
+	
+	public void updateLabel() {
+		if (menuItem != null) {
+			menuItem.setTitle(this.label);
+		}
+	}
+	
+	public void setIcon(final String icon) {
+		this.icon = this.getIcon(icon);
+		this.updateIcon();
+	}
+	
+	public void updateIcon() {
+		if (menuItem != null) {
+			menuItem.setIcon(this.icon);
+		}
+	}
+	
+	public void setDisabled(final Boolean disabled) {
+		this.disabled = disabled;
+		this.updateDisabled();
+	}
+	
+	public void updateDisabled() {
+		if (menuItem != null) {
+			menuItem.setEnabled(!this.disabled);
+		}
+	}
+
+	public void setMenuItem(MenuItem menuItem) {
+		this.menuItem = menuItem;
+	}
+	
+	public void updateAll() {
+		this.updateLabel();
+		this.updateIcon();
+		this.updateDisabled();
+	}
+	
+	private Drawable getIcon(String tmp_uri) {
+		String fileName = "www/" + tmp_uri;
+
+		try {
+			InputStream image = this.assets.open(fileName);
+			Drawable icon = Drawable.createFromStream(image, tmp_uri);
+			return icon;
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
 
 public class AppMenuItem extends Plugin {
@@ -55,8 +125,7 @@ public class AppMenuItem extends Plugin {
 	
 	private void create(JSONArray args) {
 		try {
-			MenuInfo info = new MenuInfo();
-			info.id = args.getInt(0);
+			MenuInfo info = new MenuInfo(args.getInt(0), this.ctx.getAssets());
 			AppMenu.singleton.addMenuItem(info);
 		}
 		catch (JSONException e) {
@@ -77,8 +146,7 @@ public class AppMenuItem extends Plugin {
 	private void disabled(JSONArray args) {
 		try {
 			MenuInfo info = AppMenu.singleton.getMenuItem(args.getInt(0));
-			info.disabled = args.getBoolean(1);
-			info.menuItem.setEnabled(!info.disabled);
+			info.setDisabled(args.getBoolean(1));
 		}
 		catch (JSONException e) {
 			e.printStackTrace();
@@ -87,16 +155,8 @@ public class AppMenuItem extends Plugin {
 	
 	private void label(JSONArray args) {
 		try {
-			int id = args.getInt(0);
-			
-			try {
-				MenuInfo info = AppMenu.singleton.getMenuItem(id);
-				info.label = args.getString(1);
-				AppMenu.singleton.updateMenu();
-			}
-			catch (NullPointerException e) {
-				e.printStackTrace();
-			}
+			MenuInfo info = AppMenu.singleton.getMenuItem(args.getInt(0));
+			info.setLabel(args.getString(1));
 		}
 		catch (JSONException e) {
 			e.printStackTrace();
@@ -105,52 +165,11 @@ public class AppMenuItem extends Plugin {
 	
 	private void icon(JSONArray args) {
 		try {
-			int id = args.getInt(0);
-			
-			try {
-				MenuInfo info = AppMenu.singleton.getMenuItem(id);
-				info.icon = getIcon(args.getString(1));
-				AppMenu.singleton.updateMenu();
-			}
-			catch (NullPointerException e) {
-				e.printStackTrace();
-			}
+			MenuInfo info = AppMenu.singleton.getMenuItem(args.getInt(0));
+			info.setIcon(args.getString(1));
 		}
 		catch (JSONException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	private Drawable getIcon(String tmp_uri) {
-		AssetManager mgr = this.ctx.getAssets();
-		String fileName = "www/" + tmp_uri;
-		
-		try {
-			InputStream image = mgr.open(fileName);
-			Drawable icon = Drawable.createFromStream(image, tmp_uri);
-			return icon;
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	private MenuInfo parseInfo(JSONObject mObject) throws JSONException {
-		MenuInfo info = new MenuInfo();
-		info.label = mObject.getString("label");
-		info.callback = mObject.getString("callback");
-		
-		String tmp_uri = mObject.getString("icon");
-		info.icon = getIcon(tmp_uri);
-		
-		try {
-			info.disabled = mObject.getBoolean("enabled");
-		}
-		catch(JSONException e) {
-			info.disabled = false;
-		}
-		
-		return info;
 	}
 }
