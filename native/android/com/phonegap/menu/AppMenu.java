@@ -32,6 +32,7 @@ public class AppMenu extends Plugin {
 		else {
 			return new PluginResult(PluginResult.Status.INVALID_ACTION);
 		}
+		
 		PluginResult r = new PluginResult(PluginResult.Status.OK);
 		return r;
 	}
@@ -44,96 +45,78 @@ public class AppMenu extends Plugin {
 		menuItems.add(info);
 		this.updateMenu();
 		
-		if(android.os.Build.VERSION.RELEASE.startsWith("3."))
-		{
+		if (android.os.Build.VERSION.RELEASE.startsWith("3.")) {
 			buildHoneycombMenu(ctx.dMenu);
-    	}
+		}
 	}
 	
 	public MenuInfo getMenuItem(String id) {
-		MenuInfo info = null;
-		
+		MenuInfo menuItem = null;
 		ListIterator<MenuInfo> iter = menuItems.listIterator();
 		
-		while(iter.hasNext()) {
-			int itemId = iter.nextIndex();
-			MenuInfo item = iter.next();
+		while (iter.hasNext()) {
+			MenuInfo tmpMenuItem = iter.next();
 			
-			if (item.id == id) {
-				info = item;
+			if (tmpMenuItem.id == id) {
+				menuItem = tmpMenuItem;
 				break;
 			}
 		}
 		
-		return info;
+		return menuItem;
 	}
 	
 	public void updateMenu() {
 		menuChanged = true;
 	}
 	
-	private void createMenu(JSONArray args)	
-	{
+	private void createMenu(JSONArray args) {
 		if (AppMenu.singleton == null) {
 			AppMenu.singleton = this;
 		}
-			
+		
 		if (menuItems == null) {
 			menuItems = new ArrayList<MenuInfo>();
 		}
 	}
 	
-	public boolean isMenuChanged()
-	{
+	public boolean isMenuChanged() {
 		return menuChanged;
 	}
 	
-    /**
-     * Call to build the menu
-     * 
-     * @param menu
-     * @return
-     */
-    public boolean buildMenu(Menu menu)
-    {
-    	ListIterator<MenuInfo> iter = menuItems.listIterator();    	
-    	while(iter.hasNext())
-    	{
-    		int itemId = iter.nextIndex();
-    		MenuInfo item = iter.next();
-    		menu.add(Menu.NONE, itemId, Menu.NONE, item.label);
-    		MenuItem currentItem = menu.getItem(itemId);
-    		currentItem.setIcon(item.icon);
-    	} 	
-    	return true;
-    }
-    
-    public boolean buildHoneycombMenu(final Menu menu)
-    {
-    	final AppMenu that = this;
-    	ctx.runOnUiThread(new Runnable()
-    	{
-
+	public boolean buildMenu(Menu menu) {
+		ListIterator<MenuInfo> iter = menuItems.listIterator();
+		
+		while (iter.hasNext()) {
+			int itemId = iter.nextIndex();
+			MenuInfo item = iter.next();
+			
+			menu.add(Menu.NONE, itemId, Menu.NONE, item.label);
+			
+			MenuItem currentItem = menu.getItem(itemId);
+			currentItem.setIcon(item.icon);
+		}
+		
+		return true;
+	}
+	
+	public boolean buildHoneycombMenu(final Menu menu) {
+		final AppMenu that = this;
+		
+		ctx.runOnUiThread(new Runnable() {
 			public void run() {
 				menu.clear();
 				that.buildMenu(menu);
 			}
-    		
-    	});
-    	menuChanged = false;
-    	return true;
-    }
-    
-    /**
-     * Call your receive when menuItem is selected.
-     * 
-     * @param item
-     * @return
-     */
-    public boolean onMenuItemSelected(MenuItem item)
-    {    	
-    	webView.loadUrl("javascript:PhoneGap.fireEvent('itemPressed');");
-    	return true;
-    }
-
+		});
+		
+		menuChanged = false;
+		
+		return true;
+	}
+	
+	public boolean onMenuItemSelected(MenuItem item) {
+		webView.loadUrl("javascript:PhoneGap.fireEvent('itemPressed');");
+		return true;
+	}
 }
