@@ -257,16 +257,6 @@
                     callback: callback
                 });
             },
-            'action': function(callback) {
-                if (!Help.exists(self)) { callback(); return; }
-
-                Help.execute({
-                    action:   'access',
-                    element:  self,
-                    data:     [ self.attribute.action ],
-                    callback: callback
-                });
-            },
             'disabled': function(callback) {
                 if (!Help.exists(self)) { callback(); return; }
 
@@ -304,7 +294,8 @@
                 Help.process([ self.fn['accesskey'] ]);
             },
             'action': function() {
-                Help.process([ self.fn['action'] ]);
+                // Nothing needs to be done because action is called directly from
+                // the attribute
             },
             'data-init': function() {
                 if (self.attribute['data-init']) {
