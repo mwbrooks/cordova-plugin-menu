@@ -606,7 +606,7 @@ if (navigator.userAgent.match(/iphone/i)) {
         }
     };
 
-    var context = {
+    window.context = {
         'create': function(success, fail, args) {
             if (args[1] === 'context') {
                 if (document.getElementById('phonegap-menu-context')) {
@@ -635,7 +635,7 @@ if (navigator.userAgent.match(/iphone/i)) {
         }
     };
     
-    var contextCommand = {
+    window.contextCommand = {
         'create': function(success, fail, args) {
             var element = document.createElement('div');
             element.setAttribute('class', 'command');
