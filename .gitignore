@@ -10,7 +10,7 @@
 xcuserdata
 native/ios/build
 target/ios/www
-target/ios/MenuPlugin/Plugins
+#target/ios/MenuPlugin/Plugins
 
 # Android
 target/android/assets/www
