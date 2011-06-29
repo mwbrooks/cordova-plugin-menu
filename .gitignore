@@ -18,3 +18,6 @@ target/android/bin
 target/android/src
 
 /target/ios/build/
+
+# Deskto
+target/desktop

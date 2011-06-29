@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Build Application for Desktop
+# =============================
+
+PROJECT_PATH=target/desktop
+
+open -a "Safari" ${PROJECT_PATH}/www/index.html

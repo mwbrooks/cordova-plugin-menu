@@ -1,0 +1,9 @@
+#! /bin/sh
+
+# Clean Project for Desktop
+# =========================
+
+PROJECT_PATH=./target/desktop
+
+rm -Rf $PROJECT_PATH/www
+mkdir $PROJECT_PATH/www
