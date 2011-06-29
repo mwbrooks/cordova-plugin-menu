@@ -51,5 +51,5 @@
 - (void) enableToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) showToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) hideToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-
+- (void) updateToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 @end
