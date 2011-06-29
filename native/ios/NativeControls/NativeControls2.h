@@ -15,10 +15,10 @@
 #import <UIKit/UIKit.h>
 #import <UIKit/UITabBar.h>
 #import <UIKit/UIToolbar.h>
-#import <PhoneGap/PhoneGapCommand.h>
+#import <PhoneGap/PGPlugin.h>
 #import "UIWebView+PGAdditions.h"
 
-@interface NativeControls2 : PhoneGapCommand <UITabBarDelegate, UIActionSheetDelegate> {
+@interface NativeControls2 : PGPlugin <UITabBarDelegate, UIActionSheetDelegate> {
 
 }
 
