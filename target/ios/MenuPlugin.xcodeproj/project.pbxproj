@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30C0956013BAA3C8004E2465 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C0955F13BAA3C8004E2465 /* CoreMedia.framework */; };
+		30C0956513BAAABC004E2465 /* Capture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30C0956413BAAABC004E2465 /* Capture.bundle */; };
 		AC96E28A13A6BDC9004E38BF /* NativeControls2.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96E28713A6BDC9004E38BF /* NativeControls2.m */; };
 		AC96E28B13A6BDC9004E38BF /* UIWebView+PGAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96E28913A6BDC9004E38BF /* UIWebView+PGAdditions.m */; };
 		ACC1C4D913A6B11A007E2CEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4D813A6B11A007E2CEA /* Foundation.framework */; };
@@ -21,7 +23,6 @@
 		ACC1C4EB13A6B11A007E2CEA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4EA13A6B11A007E2CEA /* QuartzCore.framework */; };
 		ACC1C4ED13A6B11A007E2CEA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4EC13A6B11A007E2CEA /* SystemConfiguration.framework */; };
 		ACC1C4EF13A6B11A007E2CEA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4EE13A6B11A007E2CEA /* MobileCoreServices.framework */; };
-		ACC1C4F313A6B11A007E2CEA /* MenuPlugin-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C4F213A6B11A007E2CEA /* MenuPlugin-Info.plist */; };
 		ACC1C4F613A6B11A007E2CEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C4F413A6B11A007E2CEA /* InfoPlist.strings */; };
 		ACC1C4F913A6B11A007E2CEA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC1C4F813A6B11A007E2CEA /* main.m */; };
 		ACC1C4FB13A6B11A007E2CEA /* PhoneGap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4FA13A6B11A007E2CEA /* PhoneGap.framework */; };
@@ -32,13 +33,13 @@
 		ACC1C50813A6B11A007E2CEA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C50713A6B11A007E2CEA /* Default@2x.png */; };
 		ACC1C50A13A6B11A007E2CEA /* Default~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C50913A6B11A007E2CEA /* Default~iPad.png */; };
 		ACC1C50C13A6B11A007E2CEA /* PhoneGap.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C50B13A6B11A007E2CEA /* PhoneGap.plist */; };
-		ACC1C50F13A6B11A007E2CEA /* AppDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C50E13A6B11A007E2CEA /* AppDelegate.h */; };
 		ACC1C51113A6B11A007E2CEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC1C51013A6B11A007E2CEA /* AppDelegate.m */; };
-		ACC1C51413A6B11A007E2CEA /* README in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C51313A6B11A007E2CEA /* README */; };
 		ACC1C51B13A6B13B007E2CEA /* www in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C51A13A6B13B007E2CEA /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30C0955F13BAA3C8004E2465 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		30C0956413BAAABC004E2465 /* Capture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Capture.bundle; path = Resources/Capture.bundle; sourceTree = "<group>"; };
 		AC96E28613A6BDC9004E38BF /* NativeControls2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeControls2.h; sourceTree = "<group>"; };
 		AC96E28713A6BDC9004E38BF /* NativeControls2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeControls2.m; sourceTree = "<group>"; };
 		AC96E28813A6BDC9004E38BF /* UIWebView+PGAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+PGAdditions.h"; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C0956013BAA3C8004E2465 /* CoreMedia.framework in Frameworks */,
 				ACC1C4D913A6B11A007E2CEA /* Foundation.framework in Frameworks */,
 				ACC1C4DB13A6B11A007E2CEA /* UIKit.framework in Frameworks */,
 				ACC1C4DD13A6B11A007E2CEA /* CoreGraphics.framework in Frameworks */,
@@ -138,6 +140,7 @@
 		ACC1C4D713A6B11A007E2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30C0955F13BAA3C8004E2465 /* CoreMedia.framework */,
 				ACC1C4D813A6B11A007E2CEA /* Foundation.framework */,
 				ACC1C4DA13A6B11A007E2CEA /* UIKit.framework */,
 				ACC1C4DC13A6B11A007E2CEA /* CoreGraphics.framework */,
@@ -181,6 +184,7 @@
 		ACC1C4FC13A6B11A007E2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				30C0956413BAAABC004E2465 /* Capture.bundle */,
 				ACC1C4FD13A6B11A007E2CEA /* icons */,
 				ACC1C50413A6B11A007E2CEA /* splash */,
 			);
@@ -275,7 +279,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACC1C4F313A6B11A007E2CEA /* MenuPlugin-Info.plist in Resources */,
 				ACC1C4F613A6B11A007E2CEA /* InfoPlist.strings in Resources */,
 				ACC1C4FF13A6B11A007E2CEA /* icon.png in Resources */,
 				ACC1C50113A6B11A007E2CEA /* icon@2x.png in Resources */,
@@ -284,9 +287,8 @@
 				ACC1C50813A6B11A007E2CEA /* Default@2x.png in Resources */,
 				ACC1C50A13A6B11A007E2CEA /* Default~iPad.png in Resources */,
 				ACC1C50C13A6B11A007E2CEA /* PhoneGap.plist in Resources */,
-				ACC1C50F13A6B11A007E2CEA /* AppDelegate.h in Resources */,
-				ACC1C51413A6B11A007E2CEA /* README in Resources */,
 				ACC1C51B13A6B13B007E2CEA /* www in Resources */,
+				30C0956513BAAABC004E2465 /* Capture.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "\n\t\t\t\t\t\t\t\tif [ ! -d \"$PROJECT_DIR/www\" ] ; then\n\t\t\t\t\t\t\t\t\tcp -R /Users/Shared/PhoneGap/Frameworks/PhoneGap.framework/www \"$PROJECT_DIR\"\n\t\t\t\t\t\t\t\tfi\n\t\t\t\t\t\t\t\t# detect www folder reference in project, if missing, print warning\n\t\t\t\t\t\t\t\tgrep \"{isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = \\\"<group>\\\"; };\" \"$PROJECT_DIR/$PROJECT_NAME.xcodeproj/project.pbxproj\"\n\t\t\t\t\t\t\t\trc=$? \n\t\t\t\t\t\t\t\tif [ $rc != 0 ] ; then\n\t\t\t\t\t\t\t\techo -e \"warning: Missing - Add $PROJECT_DIR/www as a folder reference in your project. Just drag and drop the folder into your project, in Xcode 4.\" 1>&2\n\t\t\t\t\t\t\t\tfi\t\t\t\t\t\t\t";
+			shellScript = "\n\t\t\t\t\t\t\t\tif [ ! -d \"$PROJECT_DIR/www\" ] ; then\n\t\t\t\t\t\t\t\t\tcp -R /Users/Shared/PhoneGap/Frameworks/PhoneGap.framework/www \"$PROJECT_DIR\"\n\t\t\t\t\t\t\t\tfi\n\t\t\t\t\t\t\t\t# detect www folder reference in project, if missing, print warning\n\t\t\t\t\t\t\t\tgrep \"{isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = \\\"<group>\\\"; };\" \"$PROJECT_DIR/$PROJECT_NAME.xcodeproj/project.pbxproj\"\n\t\t\t\t\t\t\t\trc=$? \n\t\t\t\t\t\t\t\tif [ $rc != 0 ] ; then\n\t\t\t\t\t\t\t\techo -e \"warning: Missing - Add $PROJECT_DIR/www as a folder reference in your project. Just drag and drop the folder into your project, in Xcode 4.\" 1>&2\n\t\t\t\t\t\t\t\tfi\n\n# convenience, copy index.html changes here back, and plugin/menu/index.js\ncp \"$PROJECT_DIR/www/index.html\" \"$PROJECT_DIR/../../test/example\"\ncp \"$PROJECT_DIR/www/plugin/menu/index.js\" \"$PROJECT_DIR/../../www/plugin/menu\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

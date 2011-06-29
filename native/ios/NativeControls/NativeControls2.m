@@ -21,7 +21,7 @@
 @synthesize tabBar, toolBar, tabBarItems, toolBarItems;
 @synthesize lastTabBarPosition, lastToolBarPosition;
 
--(PhoneGapCommand*) initWithWebView:(UIWebView*)theWebView
+-(PGPlugin*) initWithWebView:(UIWebView*)theWebView
 {
     self = (NativeControls2*)[super initWithWebView:theWebView];
     if (self) 
@@ -147,11 +147,12 @@
         [self createTabBar:nil withDict:nil];
 	}
 
-    NSString* name      = [arguments objectAtIndex:0];
-    NSString* title     = [arguments objectAtIndex:1];
-    NSString* imageName = [arguments objectAtIndex:2];
-    BOOL enable         = [[arguments objectAtIndex:3] boolValue];
-    int tag             = [[arguments objectAtIndex:4] intValue];
+    NSString* callbackId  = [arguments objectAtIndex:0];
+    NSString* name      = [arguments objectAtIndex:1];
+    NSString* title     = [arguments objectAtIndex:2];
+    NSString* imageName = [arguments objectAtIndex:3];
+    BOOL enable         = [[arguments objectAtIndex:4] boolValue];
+    int tag             = [[arguments objectAtIndex:5] intValue];
 
     UITabBarItem *item = nil;    
     if ([imageName length] > 0) 
@@ -220,7 +221,9 @@
         [self createTabBar:nil withDict:nil];
 	}
 
-    NSString* name = [arguments objectAtIndex:0];
+    NSString* callbackId  = [arguments objectAtIndex:0];
+    NSString* name = [arguments objectAtIndex:1];
+    
     UITabBarItem* item = [self.tabBarItems objectForKey:name];
     if (item) {
 		item.title = [options objectForKey:@"title"];
@@ -238,8 +241,9 @@
     if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
 	}
-	
-    NSString* name = [arguments objectAtIndex:0];
+
+    NSString* callbackId  = [arguments objectAtIndex:0];
+    NSString* name = [arguments objectAtIndex:1];
     UITabBarItem* item = [self.tabBarItems objectForKey:name];
 	
 	NSMutableArray* items = [self.tabBar.items mutableCopy];
@@ -254,8 +258,9 @@
 
 - (void) enableTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 {
-    NSString* name      = [arguments objectAtIndex:0];
-    BOOL enable         = [[arguments objectAtIndex:1] boolValue];
+    NSString* callbackId  = [arguments objectAtIndex:0];
+    NSString* name      = [arguments objectAtIndex:1];
+    BOOL enable         = [[arguments objectAtIndex:2] boolValue];
 	
     UITabBarItem* item = [self.tabBarItems objectForKey:name];
 	
@@ -278,7 +283,8 @@
         [self createTabBar:nil withDict:nil];
 	}
 
-    NSString* itemName = [arguments objectAtIndex:0];
+    NSString* callbackId  = [arguments objectAtIndex:0];
+    NSString* itemName = [arguments objectAtIndex:1];
     UITabBarItem* item = [self.tabBarItems objectForKey:itemName];
     self.tabBar.selectedItem = item;
 }
@@ -291,6 +297,14 @@
 
 #pragma mark -
 #pragma mark ToolBar
+
+- (void) updateToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+	if (!self.toolBar) {
+		return;
+	}
+    //TODO:
+}
 
 - (void) removeToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
 {
@@ -360,11 +374,12 @@
         [self createToolBar:nil withDict:nil];
 	}
 
-    NSString* name      = [arguments objectAtIndex:0];
-    NSString* title     = [arguments objectAtIndex:1];
-    NSString* imageName = [arguments objectAtIndex:2];
-    BOOL enable         = [[arguments objectAtIndex:3] boolValue];
-    int tag             = [[arguments objectAtIndex:4] intValue];
+    NSString* callbackId  = [arguments objectAtIndex:0];
+    NSString* name      = [arguments objectAtIndex:1];
+    NSString* title     = [arguments objectAtIndex:2];
+    NSString* imageName = [arguments objectAtIndex:3];
+    BOOL enable         = [[arguments objectAtIndex:4] boolValue];
+    int tag             = [[arguments objectAtIndex:5] intValue];
 	
     UIBarButtonItem* item = nil;    
     if ([imageName length] > 0) 
@@ -451,7 +466,8 @@
         [self createToolBar:nil withDict:nil];
 	}
 	
-    NSString* name = [arguments objectAtIndex:0];
+    NSString* callbackId  = [arguments objectAtIndex:0];
+    NSString* name = [arguments objectAtIndex:1];
     UIBarButtonItem* item = [self.toolBarItems objectForKey:name];
 	
 	NSMutableArray* items = [self.toolBar.items mutableCopy];
@@ -471,8 +487,9 @@
         [self createToolBar:nil withDict:nil];
 	}
 	
-    NSString* name      = [arguments objectAtIndex:0];
-    BOOL enable         = [[arguments objectAtIndex:1] boolValue];
+    NSString* callbackId  = [arguments objectAtIndex:0];
+    NSString* name      = [arguments objectAtIndex:1];
+    BOOL enable         = [[arguments objectAtIndex:2] boolValue];
 	
     UIBarButtonItem* item = [self.toolBarItems objectForKey:name];
 	
