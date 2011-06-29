@@ -21,7 +21,7 @@
 @synthesize tabBar, toolBar, tabBarItems, toolBarItems;
 @synthesize lastTabBarPosition, lastToolBarPosition;
 
--(PhoneGapCommand*) initWithWebView:(UIWebView*)theWebView
+-(PGPlugin*) initWithWebView:(UIWebView*)theWebView
 {
     self = (NativeControls2*)[super initWithWebView:theWebView];
     if (self) 

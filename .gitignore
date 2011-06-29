@@ -16,3 +16,5 @@ target/ios/MenuPlugin/Plugins
 target/android/assets/www
 target/android/bin
 target/android/src
+
+/target/ios/build/
