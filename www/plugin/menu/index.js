@@ -398,10 +398,24 @@
 
 if (navigator.userAgent.match(/android/i)) {
     PhoneGap.addConstructor(function() {
-        navigator.app.addService('com.phonegap.menu.toolbar',         'com.phonegap.menu.AppMenu');
         navigator.app.addService('com.phonegap.menu.context',         'com.phonegap.menu.AppMenu');
-        navigator.app.addService('com.phonegap.menu.toolbar.command', 'com.phonegap.menu.AppMenuItem');
         navigator.app.addService('com.phonegap.menu.context.command', 'com.phonegap.menu.AppMenuItem');
+
+        PhoneGap.originalExec = PhoneGap.exec;
+
+        PhoneGap.exec = function(success, fail, service, action, args) {
+            if (service === 'com.phonegap.menu.toolbar') {
+                window.toolbar[action](success, fail, args);
+            }
+            else if (service === 'com.phonegap.menu.toolbar.command') {
+                try {
+                window.toolbarCommand[action](success, fail, args);
+                } catch(e) { console.log(e); }
+            }
+            else {
+                PhoneGap.originalExec(success, fail, service, action, args);
+            }
+        };
     });
 }
 
@@ -486,3 +500,179 @@ if (navigator.userAgent.match(/iphone/i)) {
         };
     })();
 }
+
+//
+// HTML Menu Implementation
+//
+
+(function(window) {
+    var elements = {};
+    var htmlElement;
+    var contextElement;
+    
+    window.toolbar = {
+        'create': function(success, fail, args) {
+            if (args[1] === 'toolbar') {
+                if (document.getElementById('phonegap-menu-toolbar')) {
+                    success();
+                    return;
+                }
+
+                htmlElement = document.createElement('div');
+                htmlElement.setAttribute('id', 'phonegap-menu-toolbar');
+                document.body.appendChild(htmlElement);
+                document.body.style.paddingTop = '32px';
+                success();
+            }
+            else {
+                fail();
+            }
+        },
+
+        'delete': function(success, fail, args) {
+            htmlElement.parentElement.removeChild(htmlElement)
+            delete htmlElement;
+            document.body.style.paddingTop = '0px';
+            success();
+        },
+        
+        'label': function(success, fail, args) {
+            try {
+                htmlElement.innerText = args[1];
+                success();
+            }
+            catch(e) {
+                fail(e);
+            }
+        }
+    };
+    
+    window.toolbarCommand = {
+        'create': function(success, fail, args) {
+            var element = document.createElement('div');
+            element.setAttribute('class', 'command');
+            element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            document.getElementById('phonegap-menu-toolbar').appendChild(element);
+            elements[args[0]] = element;
+            success();
+        },
+        'delete': function(success, fail, args) {
+            contextElement.parentElement.removeChild(contextElement)
+            delete contextElement;
+            success();
+        },
+        'accesskey': function(success, fail, args) {
+            var element = elements[args[0]];
+            var classes = element.getAttribute('class').split(' ');
+
+            switch(args[1]) {
+                case 'back':
+                    classes.push('accesskey-back');
+                    break;
+                default:
+                    classes.forEach(function(v, i) { if (v === 'accesskey-back') classes.splice(i, 1); });
+                    break;
+            }
+
+            element.setAttribute('class', classes.join(' '));
+
+            success();
+        },
+        'disabled': function(success, fail, args) {
+            var element = elements[args[0]];
+            var classes = element.getAttribute('class').split(' ');
+            
+            if (args[1]) {
+                classes.push('disabled');
+                element.removeEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action);
+            }
+            else {
+                classes.forEach(function(v, i) { if (v === 'disabled') classes.splice(i, 1); });
+                element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            }
+
+            element.setAttribute('class', classes.join(' '));
+
+            success();
+        },
+        'icon': function(success, fail, args) {
+            if (args[1] !== '')
+                elements[args[0]].innerHTML = '<span><img src="' + args[1] + '" />';
+            success();
+        },
+        'label': function(success, fail, args) {
+            elements[args[0]].innerHTML = '<span>' + args[1] + '</span>';
+            success();
+        }
+    };
+
+    var context = {
+        'create': function(success, fail, args) {
+            if (args[1] === 'context') {
+                if (document.getElementById('phonegap-menu-context')) {
+                    success();
+                    return;
+                }
+
+                contextElement = document.createElement('div');
+                contextElement.setAttribute('id', 'phonegap-menu-context');
+                document.body.appendChild(contextElement);
+                success();
+            }
+            else {
+                fail();
+            }
+        },
+
+        'delete': function(success, fail, args) {
+            contextElement.parentElement.removeChild(contextElement)
+            delete contextElement;
+            success();
+        },
+        
+        'label': function(success, fail, args) {
+            success();
+        }
+    };
+    
+    var contextCommand = {
+        'create': function(success, fail, args) {
+            var element = document.createElement('div');
+            element.setAttribute('class', 'command');
+            element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            document.getElementById('phonegap-menu-context').appendChild(element);
+            elements[args[0]] = element;
+            success();
+        },
+        'delete': function(success, fail, args) {
+            contextElement.parentElement.removeChild(contextElement)
+            delete contextElement;
+            success();
+        },
+        'disabled': function(success, fail, args) {
+            var element = elements[args[0]];
+            var classes = element.getAttribute('class').split(' ');
+            
+            if (args[1]) {
+                classes.push('disabled');
+                element.removeEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action);
+            }
+            else {
+                classes.forEach(function(v, i) { if (v === 'disabled') classes.splice(i, 1); });
+                element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            }
+
+            element.setAttribute('class', classes.join(' '));
+
+            success();
+        },
+        'icon': function(success, fail, args) {
+            elements[args[0]].style.backgroundImage = "url('" + args[1] + "')";
+            success();
+        },
+        'label': function(success, fail, args) {
+            elements[args[0]].innerHTML = '<span>' + args[1] + '</span>';
+            success();
+        }
+    };
+})(window);
