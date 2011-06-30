@@ -396,7 +396,7 @@
 // Android-Specific
 //
 
-if (navigator.userAgent.match(/android/i)) {
+if (navigator.userAgent.match(/android/i) && typeof window.PhoneGap !== 'undefined') {
     PhoneGap.addConstructor(function() {
         navigator.app.addService('com.phonegap.menu.context',         'com.phonegap.menu.AppMenu');
         navigator.app.addService('com.phonegap.menu.context.command', 'com.phonegap.menu.AppMenuItem');
@@ -423,7 +423,7 @@ if (navigator.userAgent.match(/android/i)) {
 // iOS-Specific
 //
 
-if (navigator.userAgent.match(/iphone/i)) {
+if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefined') {
     (function() {
         window.Help._execute = {
             'com.phonegap.menu.toolbar': {
@@ -530,7 +530,7 @@ if (navigator.userAgent.match(/iphone/i)) {
                 listElement.setAttribute('id', 'phonegap-menu-toolbar-list');
                 htmlElement.appendChild(listElement);
 
-                document.body.style.paddingTop = '32px';
+                document.body.style.marginTop = '32px';
 
                 success();
             }
@@ -542,7 +542,7 @@ if (navigator.userAgent.match(/iphone/i)) {
         'delete': function(success, fail, args) {
             htmlElement.parentElement.removeChild(htmlElement)
             delete htmlElement;
-            document.body.style.paddingTop = '0px';
+            document.body.style.marginTop = '';
             success();
         },
         
@@ -627,6 +627,7 @@ if (navigator.userAgent.match(/iphone/i)) {
                 contextElement = document.createElement('div');
                 contextElement.setAttribute('id', 'phonegap-menu-context');
                 document.body.appendChild(contextElement);
+                document.body.style.marginBottom = '42px';
                 success();
             }
             else {
@@ -637,6 +638,7 @@ if (navigator.userAgent.match(/iphone/i)) {
         'delete': function(success, fail, args) {
             contextElement.parentElement.removeChild(contextElement)
             delete contextElement;
+            document.body.style.marginBottom = '';
             success();
         },
         
