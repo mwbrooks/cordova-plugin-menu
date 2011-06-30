@@ -15,6 +15,22 @@
     width:100%;
 }
 
+#phonegap-menu-toolbar-label {
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    text-align:center;
+    top:0px;
+}
+
+#phonegap-menu-toolbar-list {
+    margin:0px;
+    padding:0px;
+    position:absolute;
+    right:0px;
+    top:0px;
+}
 #phonegap-menu-context {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #4B4B4B), color-stop(1.0, #090909));
     bottom:0px;
@@ -37,8 +53,10 @@
   float:right;
   font-size:11px;
   line-height:16px;
+  list-style:none;
   margin-right:10px;
   margin-top:2px;
+  z-index:1;
 }
 
 #phonegap-menu-toolbar .command span {

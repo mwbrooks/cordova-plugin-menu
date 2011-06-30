@@ -521,7 +521,17 @@ if (navigator.userAgent.match(/iphone/i)) {
                 htmlElement = document.createElement('div');
                 htmlElement.setAttribute('id', 'phonegap-menu-toolbar');
                 document.body.appendChild(htmlElement);
+
+                var labelElement = document.createElement('div');
+                labelElement.setAttribute('id', 'phonegap-menu-toolbar-label');
+                htmlElement.appendChild(labelElement);
+
+                var listElement = document.createElement('ul');
+                listElement.setAttribute('id', 'phonegap-menu-toolbar-list');
+                htmlElement.appendChild(listElement);
+
                 document.body.style.paddingTop = '32px';
+
                 success();
             }
             else {
@@ -538,7 +548,7 @@ if (navigator.userAgent.match(/iphone/i)) {
         
         'label': function(success, fail, args) {
             try {
-                htmlElement.innerText = args[1];
+                document.getElementById('phonegap-menu-toolbar-label').innerHTML = args[1];
                 success();
             }
             catch(e) {
@@ -549,10 +559,10 @@ if (navigator.userAgent.match(/iphone/i)) {
     
     window.toolbarCommand = {
         'create': function(success, fail, args) {
-            var element = document.createElement('div');
+            var element = document.createElement('li');
             element.setAttribute('class', 'command');
             element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
-            document.getElementById('phonegap-menu-toolbar').appendChild(element);
+            document.getElementById('phonegap-menu-toolbar-list').appendChild(element);
             elements[args[0]] = element;
             success();
         },
