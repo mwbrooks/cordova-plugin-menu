@@ -509,6 +509,15 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
     var elements = {};
     var htmlElement;
     var contextElement;
+    var touchType = 'click';
+
+    try {
+        document.createEvent('TouchEvent');
+        touchType = 'touchend';
+    }
+    catch(e) {
+    }
+    
     
     window.toolbar = {
         'create': function(success, fail, args) {
@@ -561,7 +570,7 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
         'create': function(success, fail, args) {
             var element = document.createElement('li');
             element.setAttribute('class', 'command');
-            element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            element.addEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action, false);
             document.getElementById('phonegap-menu-toolbar-list').appendChild(element);
             elements[args[0]] = element;
             success();
@@ -594,11 +603,11 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
             
             if (args[1]) {
                 classes.push('disabled');
-                element.removeEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action);
+                element.removeEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action);
             }
             else {
                 classes.forEach(function(v, i) { if (v === 'disabled') classes.splice(i, 1); });
-                element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+                element.addEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action, false);
             }
 
             element.setAttribute('class', classes.join(' '));
@@ -651,7 +660,7 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
         'create': function(success, fail, args) {
             var element = document.createElement('div');
             element.setAttribute('class', 'command');
-            element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            element.addEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action, false);
             document.getElementById('phonegap-menu-context').appendChild(element);
             elements[args[0]] = element;
             success();
@@ -667,11 +676,11 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
             
             if (args[1]) {
                 classes.push('disabled');
-                element.removeEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action);
+                element.removeEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action);
             }
             else {
                 classes.forEach(function(v, i) { if (v === 'disabled') classes.splice(i, 1); });
-                element.addEventListener('click', window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+                element.addEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action, false);
             }
 
             element.setAttribute('class', classes.join(' '));
