@@ -3,4 +3,6 @@
 # Clean Tmp Project
 # =================
 
-rm -Rf ./tmp
+if test -d ./tmp; then \
+	rm -Rf ./tmp; \
+fi

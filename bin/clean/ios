@@ -3,7 +3,10 @@
 # Clean Project for iOS
 # =====================
 
-PROJECT_PATH=./target/ios
+PROJECT_PATH=./target/ios/www
 
-rm -Rf $PROJECT_PATH/www
-mkdir $PROJECT_PATH/www
+if test -d ${PROJECT_PATH}; then \
+	rm -Rf ${PROJECT_PATH}; \
+fi
+
+mkdir ${PROJECT_PATH}
