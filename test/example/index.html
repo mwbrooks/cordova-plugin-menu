@@ -15,7 +15,7 @@
     <script type="text/javascript" charset="utf-8" src="menu.js"></script>
 
     <script type="text/javascript" charset="utf-8">
-        var onDeviceReady = function() {
+        var createToolbar = function() {
             // Toolbar
 
             var toolbar = document.createElement('menu');
@@ -38,7 +38,9 @@
             toolbar.appendChild(commandLogout);
             toolbar.appendChild(commandAdd);
             //toolbar.appendChild(commandBack);
-
+        };
+        
+        var createContext = function() {
             // Context Menu
 
             var context = document.createElement('menu');
@@ -67,8 +69,12 @@
             // context.removeChild(commandHome);
         };
         
+        window.addEventListener('DOMContentLoaded', function() {
+            createToolbar();
+        }, false);
+        
         window.addEventListener('load', function() {
-            document.addEventListener('deviceready', onDeviceReady, false);
+            document.addEventListener('deviceready', createContext, false);
         }, false);
     </script>
 </head>
