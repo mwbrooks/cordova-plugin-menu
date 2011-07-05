@@ -105,3 +105,62 @@
     float:left;
     margin-left:10px;
 }
+
+/** Application Styles **/
+
+body {
+  background-color: #CCC;
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, color-stop(0.5, rgba(255, 255, 255, 0.246094)), color-stop(0.5, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
+  -webkit-background-size: 10px;
+  font-family: Verdana;
+}
+
+body > img {
+  -webkit-box-shadow: black 0px 0px 10px;
+  display:block;
+  margin:20px auto;
+  max-width:100%;
+}
+
+body > span {
+  color:#444;
+  display:block;
+  font-size:18px;
+  padding:10px 0px;
+  text-align:center;
+  text-shadow:#FFF 0px 1px 0px;
+}
+
+body > form {
+  background-color:#EFEFEF;
+  border:1px solid #444;
+  -webkit-border-radius:10px;
+  padding:20px 10px;
+}
+
+body > form > select {
+  max-width:100%;
+}
+
+body > ul {
+  margin:10px 0px;
+  padding:0px;
+}
+body > ul li {
+  background-color:#E8E8E8;
+  border-width:0px 1px 1px 1px;
+  border-style:solid;
+  border-color:#444;
+  list-style:none;
+  margin:0px;
+  padding:5px 10px;
+}
+
+body > ul li:first-child {
+  -webkit-border-radius:10px 10px 0px 0px;
+  border-top:1px solid #444;
+}
+
+body > ul li:last-child {
+  -webkit-border-radius:0px 0px 10px 10px;
+}

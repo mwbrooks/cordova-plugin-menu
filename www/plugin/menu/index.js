@@ -1,6 +1,7 @@
 (function(window) {
 
     window.Help = {
+        menuPosition: 'fixed',
         nextUUID: 0,
         generateUUID: function() {
             return ++this.nextUUID;
@@ -416,6 +417,18 @@ if (navigator.userAgent.match(/android/i) && typeof window.PhoneGap !== 'undefin
     PhoneGap.addConstructor(function() {
         navigator.app.addService('com.phonegap.menu.context',         'com.phonegap.menu.AppMenu');
         navigator.app.addService('com.phonegap.menu.context.command', 'com.phonegap.menu.AppMenuItem');
+        
+        var version = navigator.device.version.split('.');
+        version.forEach(function(value, index) {
+            version[index] = parseInt(value);
+        });
+        
+        Help.menuPosition = (version[0] > 2 || (version[0] >= 2 && version[1] >= 2)) ? 'fixed' : 'absolute';
+        
+        var toolbar = document.getElementById('phonegap-menu-toolbar');
+        if (toolbar) {
+            toolbar.style.position = Help.menuPosition;
+        }
     });
 }
 
@@ -529,6 +542,7 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
 
                 htmlElement = document.createElement('div');
                 htmlElement.setAttribute('id', 'phonegap-menu-toolbar');
+                htmlElement.setAttribute('style', 'position:' + Help.menuPosition + ';');
                 document.body.appendChild(htmlElement);
 
                 var labelElement = document.createElement('div');
@@ -540,7 +554,7 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
                 htmlElement.appendChild(listElement);
 
                 document.body.style.marginTop = '32px';
-
+                
                 success();
             }
             else {
@@ -635,6 +649,7 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
 
                 contextElement = document.createElement('div');
                 contextElement.setAttribute('id', 'phonegap-menu-context');
+                contextElement.setAttribute('style', 'position:' + Help.menuPosition + ';');
                 document.body.appendChild(contextElement);
                 document.body.style.marginBottom = '42px';
                 success();
