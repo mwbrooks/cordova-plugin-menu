@@ -9,7 +9,9 @@ For plugin usage, you will need to manually install the plugin.
 Prerequisites 
 -------------
 
-### Android Setup
+### Android Setup (OS X and Linux)
+
+> Your Android path may vary.
 
 1. Add the Android SDK to your path.
 
@@ -18,6 +20,76 @@ Prerequisites
 2. Create a AVD (simulator) using the `android` command-line tool.
 
         $ android
+
+### Android Setup (Windows)
+
+> Your Android path may vary.
+
+1. Add the Android SDK to your path.
+
+    1. Open the _Environment Variables_ window
+    2. Edit _Path_ under _System Variables_
+    
+            <existing paths>;C:\android-sdk-windows\tools
+
+2. Create a AVD (simulator) using the `android.bat` (double click or run from command-line).
+
+        C:\android-sdk-windows\tools\android.bat
+
+### Unix Terminal (Windows)
+
+On Windows, it is possible to install a Unix terminal environment.
+This is a great alternative to the Command Prompt `cmd.exe`.
+From the Unix shell, you can interact with your `C:\` as `/c/` and common Unix commands.
+
+1. [Follow the GitHub tutorial on installing GitBash](http://help.github.com/win-set-up-git/)
+    - You do not need to setup SSH keys, unless you plan to use Git within Windows.
+2. [Download `make.exe`](http://dl.dropbox.com/u/30262219/ie/make.exe)
+    - Copy to `C:\Program Files (x86)\Git\bin`
+    - _Reference:_ File originally [available on msysgit repository](http://repo.or.cz/w/msysgit.git?a=blob;f=bin/make.exe;h=a971ea1266ff40e89137bba068e2c944a382725f;hb=968336eddac1874c56cd934d10783566af5a3e26)
+3. Close and reopen GitBash
+
+Initialize Android Project
+--------------------------
+
+### OS X or Linux
+
+1. Change into the Android target
+
+        $ cd phonegap-plugin-menu/target/android
+
+2. Choose what targets the Android application should support
+
+        $ android list target
+
+3. For each target ID, add the target to the project, where `1` is the target ID
+
+        $ android update project -p . -t 1
+
+### Windows
+
+> The commands are shown in by the Command Prompt (C:\>) and Unix Shell Emulator ($).
+  I highly recommend that you use the Unix Shell.
+
+1. Change into the Android target
+
+        C:\> cd phonegap-plugin-menu/target/android
+        
+        $ cd phonegap-plugin-menu/target/android
+
+2. Choose what targets the Android application should support
+
+        C:\> android.bat list target
+    
+        $ cmd.exe /k android.bat list target
+
+3. For each target ID, add the target to the project, where `1` is the target ID
+
+        C:\> android.bat update project -p . -t 1
+        
+        $ cmd.exe /k android.bat update project -p . -t 1
+
+> From here on, you should be using OS X, Linux, or GitBash within Windows
 
 Plugin Development
 ------------------
