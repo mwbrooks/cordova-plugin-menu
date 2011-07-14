@@ -463,7 +463,7 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
             },
             'com.phonegap.menu.toolbar.command': {
                 'create': function(data) {
-                    PhoneGap.exec(null, null, "NativeControls2", "createToolBarItem", [ data['data-uuid'], data['label'], data['icon'], !data['disabled'], data['data-uuid'] ]);
+     PhoneGap.exec(null, null, "NativeControls2", "createToolBarItem", [ data['data-uuid'], data['label'], data['icon'], !data['disabled'], data['data-uuid'], data['accesskey'] ]);
                 },
                 'delete': function(data ) {
                     PhoneGap.exec(null, null, "NativeControls2", "removeToolBarItem", [ data['data-uuid'] ]);

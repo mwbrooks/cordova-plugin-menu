@@ -303,7 +303,10 @@
 	if (!self.toolBar) {
 		return;
 	}
-    //TODO:
+
+    if ([options objectForKey:@"label"]) {
+        self.toolBar.topItem.title  = [options objectForKey:@"label"];
+	}
 }
 
 - (void) removeToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
@@ -350,10 +353,9 @@
     CGRect toolBarBounds = self.webView.bounds;
 	toolBarBounds.size.height = height;
 	
-    self.toolBar = [[UIToolbar alloc] initWithFrame:toolBarBounds];
+    self.toolBar = [[UINavigationBar alloc] init];
     [self.toolBar sizeToFit];
-    self.toolBar.hidden                 = NO;
-    self.toolBar.multipleTouchEnabled   = NO;
+    [self.toolBar pushNavigationItem:[[UINavigationItem alloc] initWithTitle:@""] animated:NO];
     self.toolBar.autoresizesSubviews    = YES;
     self.toolBar.userInteractionEnabled = YES;
     self.toolBar.barStyle               = style;
@@ -380,6 +382,11 @@
     NSString* imageName = [arguments objectAtIndex:3];
     BOOL enable         = [[arguments objectAtIndex:4] boolValue];
     int tag             = [[arguments objectAtIndex:5] intValue];
+    
+    NSString* accesskey = @"";
+    if ([arguments count] > 6) {
+        accesskey = [arguments objectAtIndex:6];
+    }
 	
     UIBarButtonItem* item = nil;    
     if ([imageName length] > 0) 
@@ -442,17 +449,18 @@
     if ([options objectForKey:@"animate"]) {
         animateItems = [(NSString*)[options objectForKey:@"animate"] boolValue];
 	}
-	
-    NSMutableArray* items = [[self.toolBar items] mutableCopy];
-	if (!items) {
-		items = [[NSMutableArray alloc] initWithCapacity:1];
-	}
-	[items addObject:item];
-
-    [self.toolBar setItems:items animated:YES];
-	[items release];
-	
-	[self.toolBarItems setObject:item forKey:name];
+    
+    if ([accesskey isEqualToString:@"back"]) {
+        if (!self.toolBar.topItem.leftBarButtonItem) {
+            self.toolBar.topItem.leftBarButtonItem = item;
+            [self.toolBarItems setObject:item forKey:name];
+        }
+    } else {
+        if (!self.toolBar.topItem.rightBarButtonItem) {
+            self.toolBar.topItem.rightBarButtonItem = item;
+            [self.toolBarItems setObject:item forKey:name];
+        }
+    }
 }
 
 /**
@@ -475,7 +483,12 @@
 	if (index != NSNotFound)
 	{
 		[items removeObjectAtIndex:index];
-		[self.toolBar setItems:items animated:YES];
+		// either it's on the left or right - find it
+        if (self.toolBar.topItem.leftBarButtonItem == item) {
+            self.toolBar.topItem.leftBarButtonItem = nil;
+        } if (self.toolBar.topItem.rightBarButtonItem == item) {
+            self.toolBar.topItem.rightBarButtonItem = nil;
+        }
 	}
 	
 	[items release];

@@ -25,7 +25,7 @@
 @property (nonatomic, assign) PGLayoutPosition lastTabBarPosition;
 @property (nonatomic, assign) PGLayoutPosition lastToolBarPosition;
 @property (nonatomic, retain) UITabBar* tabBar;
-@property (nonatomic, retain) UIToolbar* toolBar;
+@property (nonatomic, retain) UINavigationBar* toolBar;
 @property (nonatomic, retain) NSMutableDictionary* tabBarItems;
 @property (nonatomic, retain) NSMutableDictionary* toolBarItems;
 
