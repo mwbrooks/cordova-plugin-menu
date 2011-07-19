@@ -19,5 +19,12 @@ target/android/src
 
 /target/ios/build/
 
-# Deskto
+# BlackBerry
+target/blackberry-webworks/build
+target/blackberry-webworks/www
+
+# Desktop
 target/desktop
+
+# Text Editors
+._*

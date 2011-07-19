@@ -41,6 +41,14 @@ android:
 	./bin/clean/tmp
 	./bin/build/android
 
+blackberry:
+	./bin/clean/blackberry
+	./bin/install-example/blackberry
+	./bin/install-phonegap-js/blackberry
+	./bin/install-plugin/blackberry
+	./bin/clean/tmp
+	./bin/build/blackberry
+
 desktop:
 	./bin/clean/desktop
 	./bin/install-phonegap-js/desktop
@@ -57,4 +65,4 @@ ios:
 	./bin/clean/tmp
 	./bin/build/ios
 
-.PHONY: all help example test android desktop ios
+.PHONY: all help example test android blackberry desktop ios

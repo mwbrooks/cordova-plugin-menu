@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Build Application for BlackBerry
+# ================================
+
+PROJECT_PATH=target/blackberry-webworks
+
+ant -f ${PROJECT_PATH}/build.xml load-simulator

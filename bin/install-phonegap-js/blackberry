@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Install phonegap.js for BlackBerry
+# ==================================
+
+PROJECT_PATH=./target/blackberry-webworks
+
+cp -R ${PROJECT_PATH}/lib/www/* $PROJECT_PATH/www/
