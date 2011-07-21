@@ -8,4 +8,4 @@ WWW_PATH=./target/blackberry-webworks/www
 cp -R ./www/* ${WWW_PATH}/
 
 # Plugin Java
-cp -R ./native/desktop/* ${WWW_PATH}
+cp -R ./native/blackberry-webworks/* ${WWW_PATH}
