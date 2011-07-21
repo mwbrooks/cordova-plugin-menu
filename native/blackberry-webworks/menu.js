@@ -3,16 +3,13 @@ window.menuItems = {};
 window.Help._execute = {
     'com.phonegap.menu.toolbar': {
         'create': function(data) {
-            alert('toolbar create');
-            // PhoneGap.exec(null, null, "NativeControls2", "createToolBar", []);
+            window.toolbar.create(function(){}, function(){}, [ data['uuid'], 'toolbar' ]);
         },
         'delete': function(data) {
-            alert('toolbar delete');
-            // PhoneGap.exec(null, null, "NativeControls2", "removeToolBar", []);
+            // window.toolbar.delete(function(){}, function(){}, [ data['uuid'] ]);
         },
         'label': function(data) {
-            alert('toolbar label');
-            // PhoneGap.exec(null, null, "NativeControls2", "updateToolBar", [ { 'label': data['label'] } ]);
+            window.toolbar.label(function(){}, function(){}, [ data['uuid'], data['label'] ]);
         }
     },
     'com.phonegap.menu.context': {
@@ -28,28 +25,24 @@ window.Help._execute = {
     },
     'com.phonegap.menu.toolbar.command': {
         'create': function(data) {
-            alert('toolbar command create');
-            // PhoneGap.exec(null, null, "NativeControls2", "createToolBarItem", [ data['data-uuid'], data['label'], data['icon'], !data['disabled'], data['data-uuid'], data['accesskey'] ]);
+            window.toolbarCommand.create(function(){}, function(){}, [ data['uuid'], data['label'], data['icon'], data['disabled'], data['data-uuid'], data['accesskey'] ]);
         },
         'delete': function(data ) {
-            alert('toolbar command delete');
-            // PhoneGap.exec(null, null, "NativeControls2", "removeToolBarItem", [ data['data-uuid'] ]);
+            // window.toolbarCommand.create(function(){}, function(){}, [ data['uuid'] ]);
         },
         'accesskey': function(data) {
-            alert('toolbar command accesskey');
+            // alert('toolbar command accesskey');
             // console.log('Unsupported: com.phonegap.menu.toolbar.command :: accesskey');
         },
         'disabled': function(data) {
-            alert('toolbar command disabled');
+            // alert('toolbar command disabled');
             // PhoneGap.exec(null, null, "NativeControls2", "enableToolBarItem", [ data['data-uuid'], !data['disabled'] ]);
         },
         'icon': function(data) {
-            alert('toolbar command icon');
-            // PhoneGap.exec(null, null, "NativeControls2", "updateToolBarItem", [data['data-uuid'], { 'icon': data['icon'] }]);
+            window.toolbarCommand.icon(function(){}, function(){}, [ data['uuid'], data['icon'] ]);
         },
         'label': function(data) {
-            alert('toolbar command label');
-            // PhoneGap.exec(null, null, "NativeControls2", "updateToolBarItem", [data['data-uuid'], { 'label': data['label'] }]);
+            window.toolbarCommand.label(function(){}, function(){}, [ data['uuid'], data['label'] ]);
         }
     },
     'com.phonegap.menu.context.command': {
