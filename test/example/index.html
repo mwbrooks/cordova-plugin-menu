@@ -7,13 +7,9 @@
     <title>PhoneGap Menu Plugin Example</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.1.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegap.0.9.6.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0rc1.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegap.1.0.0rc2.js"></script>
     
     <!-- phonegap-plugin-menu -->
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0rc2.js"></script>
     <script type="text/javascript" charset="utf-8" src="plugin/menu/index.js"></script>
     <script type="text/javascript" charset="utf-8" src="menu.js"></script>
 
@@ -82,6 +78,14 @@
     </script>
 </head>
 <body>
+    <menu type="toolbar" label="Home">
+        <command label="Logout" action="callback" />
+    </menu>
+
+    <menu type="context">
+        <command label="Home" icon="image/house.png" disabled="true" action="callback" />
+    </menu>
+
     <span>
         This is some text at the top of the webview.
     </span>
