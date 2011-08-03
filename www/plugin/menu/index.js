@@ -44,11 +44,7 @@ var PGMenuElement = (function() {
     var Menu = function(element) {
         var element = element;
 
-        // PhoneGap exec commands and accompanying safety checks
         var exec = {
-
-            // Create menu
-
             type: function(menu, callback) {
                 var attributes = menu.getAttributes();
 
@@ -73,9 +69,6 @@ var PGMenuElement = (function() {
                         break;
                 }
             },
-
-            // Update Label
-
             label: function(menu, callback) {
                 var attributes = menu.getAttributes();
 
@@ -91,9 +84,6 @@ var PGMenuElement = (function() {
         };
 
         return {
-
-            // Construct a barebones menu
-
             create: function(callback) {
                 var attributes = this.getAttributes();
 
@@ -106,9 +96,6 @@ var PGMenuElement = (function() {
                 // try to create the menu
                 exec.type(this, callback);
             },
-
-            // Update PhoneGap menu to match attribute values
-
             update: function(callback) {
                 var attributes = this.getAttributes();
 
@@ -131,9 +118,6 @@ var PGMenuElement = (function() {
                     }, callback);
                 });
             },
-
-            // Get menu attributes or default values
-
             getAttributes: function() {
                 return {
                     'pg-created': element.getAttribute('pg-created') || false,
@@ -141,17 +125,11 @@ var PGMenuElement = (function() {
                     'label':      element.getAttribute('label')      || ''
                 };
             },
-
-            // Save each attribute to the menu element
-
             setAttributes: function(attributes) {
                 for(var key in attributes) {
                     element.setAttribute(key, attributes[key]);
                 }
             },
-
-            // Has PhoneGap created the menu?
-
             isCreated: function() {
                 var attributes = this.getAttributes(element);
 
@@ -163,12 +141,82 @@ var PGMenuElement = (function() {
     var Command = function(element) {
         var element = element;
 
-        return {
-            create: function(callback) {
+        var exec = {
+            accesskey: function(command, callback) {
                 callback();
             },
-            update: function(callback) {
+            action: function(command, callback) {
                 callback();
+            },
+            create: function(command, callback) {
+                callback();
+            },
+            disabled: function(command, callback) {
+                callback();
+            },
+            icon: function(command, callback) {
+                callback();
+            },
+            label: function(command, callback) {
+                var attributes = command.getAttributes();
+
+                if (attributes['label'] !== attributes['pg-label']) {
+                    // PhoneGap.exec
+                    command.setAttributes({ 'pg-label': attributes['label'] });
+                    callback();
+                }
+                else {
+                    callback();
+                }
+            }
+        };
+
+        return {
+            create: function(callback) {
+                var attributes = this.getAttributes();
+
+                // check if PhoneGap has already created the command
+                if (this.isCreated()) { callback(); return; }
+
+                // save the default attributes to the command element
+                this.setAttributes(attributes);
+
+                exec.create(this, callback);
+            },
+            update: function(callback) {
+                var attributes = this.getAttributes();
+
+                // cannot do anything until PhoneGap has created the command
+                if (!this.isCreated()) { callback(); return; }
+
+                exec.label(this, function() {
+                    exec.icon(this, function() {
+                        exec.disabled(this, function() {
+                            exec.action(this, function() {
+                                exec.accesskey(this, function() {
+                                    console.log('updated: ', element);
+                                    callback();
+                                });
+                            });
+                        });
+                    });
+                });
+            },
+            getAttributes: function() {
+                return {
+                    'pg-created': element.getAttribute('pg-created') || false,
+                    'label':      element.getAttribute('label')      || ''
+                };
+            },
+            setAttributes: function(attributes) {
+                for(var key in attributes) {
+                    element.setAttribute(key, attributes[key]);
+                }
+            },
+            isCreated: function() {
+                var attributes = this.getAttributes(element);
+
+                return !!(attributes['pg-created']);
             }
         };
     };
