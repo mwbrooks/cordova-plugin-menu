@@ -20,12 +20,12 @@ function asyncForEach(array, fn, callback) {
             callback();
         }
     }
-    
+
     function processNextItem() {
         var item = array.pop();
         fn(item, nextItem);
     }
-    
+
     nextItem();
 };
 
@@ -43,6 +43,52 @@ var PGMenuElement = (function() {
 
     var Menu = function(element) {
         var element = element;
+
+        // PhoneGap exec commands and accompanying safety checks
+        var exec = {
+
+            // Create menu
+
+            type: function(menu, callback) {
+                var attributes = menu.getAttributes();
+
+                if (attributes['pg-created']) {
+                    callback();
+                    return;
+                }
+
+                switch(attributes['type']) {
+                    case 'toolbar':
+                        // PhoneGap.exec
+                        menu.setAttributes({ 'pg-created': true });
+                        callback();
+                        break;
+                    case 'context':
+                        // PhoneGap.exec
+                        menu.setAttributes({ 'pg-created': true });
+                        callback();
+                        break;
+                    default:
+                        callback();
+                        break;
+                }
+            },
+
+            // Update Label
+
+            label: function(menu, callback) {
+                var attributes = menu.getAttributes();
+
+                if (attributes['label'] !== attributes['pg-label']) {
+                    // PhoneGap.exec
+                    menu.setAttributes({ 'pg-label': attributes['label'] });
+                    callback();
+                }
+                else {
+                    callback();
+                }
+            }
+        };
 
         return {
 
@@ -70,9 +116,19 @@ var PGMenuElement = (function() {
                 if (!this.isCreated()) { callback(); return; }
 
                 exec.label(this, function() {
-                    console.log(element);
-                    // document.getElementsByTagName('command').forEach.update
-                    callback();
+                    console.log('updated: ', element);
+
+                    var elements = element.getElementsByTagName('command');
+
+                    asyncForEach(elements, function(element, callback) {
+                        var command = new Command(element);
+
+                        command.create(function() {
+                            command.update(function() {
+                                callback();
+                            });
+                        });
+                    }, callback);
                 });
             },
 
@@ -104,51 +160,17 @@ var PGMenuElement = (function() {
         };
     };
 
-    // PhoneGap exec commands and accompanying safety checks
+    var Command = function(element) {
+        var element = element;
 
-    var exec = {
-
-        // Create menu
-
-        type: function(menu, callback) {
-            var attributes = menu.getAttributes();
-
-            if (attributes['pg-created']) {
+        return {
+            create: function(callback) {
                 callback();
-                return;
-            }
-
-            switch(attributes['type']) {
-                case 'toolbar':
-                    // PhoneGap.exec
-                    menu.setAttributes({ 'pg-created': true });
-                    callback();
-                    break;
-                case 'context':
-                    // PhoneGap.exec
-                    menu.setAttributes({ 'pg-created': true });
-                    callback();
-                    break;
-                default:
-                    callback();
-                    break;
-            }
-        },
-
-        // Update Label
-
-        label: function(menu, callback) {
-            var attributes = menu.getAttributes();
-
-            if (attributes['label'] !== attributes['pg-label']) {
-                // PhoneGap.exec
-                menu.setAttributes({ 'pg-label': attributes['label'] });
+            },
+            update: function(callback) {
                 callback();
             }
-            else {
-                callback();
-            }
-        }
+        };
     };
 
     return {
@@ -169,6 +191,7 @@ var PGMenuElement = (function() {
             });
         }
     };
+
 })();
 
 // var something = (function() {
