@@ -60,33 +60,39 @@ var PGMenuElement = (function() {
                     return;
                 }
 
-                switch(attributes['type']) {
-                    case 'toolbar':
-                        // PhoneGap.exec
+                PhoneGap.exec(
+                    function() {
                         menu.setAttributes({ 'pg-created': true });
                         callback();
-                        break;
-                    case 'context':
-                        // PhoneGap.exec
-                        menu.setAttributes({ 'pg-created': true });
+                    },
+                    function() {
                         callback();
-                        break;
-                    default:
-                        callback();
-                        break;
-                }
+                    },
+                    menu.getService(),
+                    'create',
+                    [attributes['pg-id'], attributes['type']]
+                );
             },
             label: function(menu, callback) {
                 var attributes = menu.getAttributes();
 
-                if (attributes['label'] !== attributes['pg-label']) {
-                    // PhoneGap.exec
-                    menu.setAttributes({ 'pg-label': attributes['label'] });
+                if (attributes['label'] === attributes['pg-label']) {
                     callback();
+                    return;
                 }
-                else {
-                    callback();
-                }
+
+                PhoneGap.exec(
+                    function() {
+                        menu.setAttributes({ 'pg-label': attributes['label'] });
+                        callback();
+                    },
+                    function() {
+                        callback();
+                    },
+                    menu.getService(),
+                    'label',
+                    [attributes['pg-id'], attributes['label']]
+                );
             }
         };
 
@@ -127,10 +133,10 @@ var PGMenuElement = (function() {
             },
             getAttributes: function() {
                 return {
-                    'pg-created': element.getAttribute('pg-created') || false,
-                    'pg-id':      element.getAttribute('pg-id')      || Help.nextId(),
-                    'type':       element.getAttribute('type')       || '',
-                    'label':      element.getAttribute('label')      || ''
+                    'pg-created': (element.getAttribute('pg-created') === 'true') || false,
+                    'pg-id':      element.getAttribute('pg-id')                   || Help.nextId(),
+                    'type':       element.getAttribute('type')                    || '',
+                    'label':      element.getAttribute('label')                   || ''
                 };
             },
             setAttributes: function(attributes) {
@@ -142,6 +148,10 @@ var PGMenuElement = (function() {
                 var attributes = this.getAttributes(element);
 
                 return !!(attributes['pg-created']);
+            },
+            getService: function() {
+                var type = element.getAttribute('type');
+                return 'com.phonegap.menu.' + type;
             }
         };
     };
