@@ -116,8 +116,6 @@ var PGMenuElement = (function() {
                 if (!this.isCreated()) { callback(); return; }
 
                 exec.label(this, function() {
-                    console.log('updated: ', element);
-
                     var elements = element.getElementsByTagName('command');
 
                     asyncForEach(elements, function(element, callback) {
@@ -161,31 +159,119 @@ var PGMenuElement = (function() {
 
         var exec = {
             accesskey: function(command, callback) {
-                callback();
+                var attributes = command.getAttributes();
+
+                if (attributes['accesskey'] === attributes['pg-accesskey']) {
+                    callback();
+                }
+
+                PhoneGap.exec(
+                    function() {
+                        command.setAttributes({ 'pg-accesskey': attributes['accesskey'] });
+                        callback();
+                    },
+                    function() {
+                        callback();
+                    },
+                    command.getService(),
+                    'accesskey',
+                    [attributes['pg-id'], attributes['accesskey']]
+                );
             },
             action: function(command, callback) {
+                var attributes = command.getAttributes();
+
+                var action = attributes['action'];
+                var fn     = action;
+
+                if (typeof fn === 'string') {
+                    fn = function() { eval.call(window, action); };
+                }
+
+                PGMenuElement.actions[attributes['pg-id']] = fn;
+
                 callback();
             },
             create: function(command, callback) {
-                callback();
+                var attributes = command.getAttributes();
+
+                if (attributes['pg-created']) {
+                    callback();
+                    return;
+                }
+
+                PhoneGap.exec(
+                    function() {
+                        command.setAttributes({ 'pg-created': true });
+                        callback();
+                    },
+                    function() {
+                        callback();
+                    },
+                    command.getService(),
+                    'create',
+                    [attributes['pg-id']]
+                );
             },
             disabled: function(command, callback) {
-                callback();
+                var attributes = command.getAttributes();
+
+                if (attributes['disabled'] === attributes['pg-disabled']) {
+                    callback();
+                }
+
+                PhoneGap.exec(
+                    function() {
+                        command.setAttributes({ 'pg-disabled': attributes['disabled'] });
+                        callback();
+                    },
+                    function() {
+                        callback();
+                    },
+                    command.getService(),
+                    'disabled',
+                    [attributes['pg-id'], attributes['disabled']]
+                );
             },
             icon: function(command, callback) {
-                callback();
+                var attributes = command.getAttributes();
+
+                if (attributes['icon'] === attributes['pg-icon']) {
+                    callback();
+                }
+
+                PhoneGap.exec(
+                    function() {
+                        command.setAttributes({ 'pg-icon': attributes['icon'] });
+                        callback();
+                    },
+                    function() {
+                        callback();
+                    },
+                    command.getService(),
+                    'icon',
+                    [attributes['pg-id'], attributes['icon']]
+                );
             },
             label: function(command, callback) {
                 var attributes = command.getAttributes();
 
-                if (attributes['label'] !== attributes['pg-label']) {
-                    // PhoneGap.exec
-                    command.setAttributes({ 'pg-label': attributes['label'] });
+                if (attributes['label'] === attributes['pg-label']) {
                     callback();
                 }
-                else {
-                    callback();
-                }
+
+                PhoneGap.exec(
+                    function() {
+                        command.setAttributes({ 'pg-label': attributes['label'] });
+                        callback();
+                    },
+                    function() {
+                        callback();
+                    },
+                    command.getService(),
+                    'label',
+                    [attributes['pg-id'], attributes['label']]
+                );
             }
         };
 
@@ -202,17 +288,17 @@ var PGMenuElement = (function() {
                 exec.create(this, callback);
             },
             update: function(callback) {
-                var attributes = this.getAttributes();
+                var self       = this;
+                var attributes = self.getAttributes();
 
                 // cannot do anything until PhoneGap has created the command
-                if (!this.isCreated()) { callback(); return; }
+                if (!self.isCreated()) { callback(); return; }
 
-                exec.label(this, function() {
-                    exec.icon(this, function() {
-                        exec.disabled(this, function() {
-                            exec.action(this, function() {
-                                exec.accesskey(this, function() {
-                                    console.log('updated: ', element);
+                exec.label(self, function() {
+                    exec.icon(self, function() {
+                        exec.disabled(self, function() {
+                            exec.action(self, function() {
+                                exec.accesskey(self, function() {
                                     callback();
                                 });
                             });
@@ -222,11 +308,13 @@ var PGMenuElement = (function() {
             },
             getAttributes: function() {
                 return {
-                    'pg-created': element.getAttribute('pg-created') || false,
-                    'pg-id':      element.getAttribute('pg-id')      || Help.nextId(),
-                    'disabled':   element.getAttribute('disabled')   || false,
-                    'icon':       element.getAttribute('icon')       || '',
-                    'label':      element.getAttribute('label')      || ''
+                    'pg-created': (element.getAttribute('pg-created') === 'true') || false,
+                    'pg-id':      element.getAttribute('pg-id')                   || Help.nextId(),
+                    'accesskey':  element.getAttribute('accesskey')               || '',
+                    'action':     element.getAttribute('action')                  || function(){},
+                    'disabled':   (element.getAttribute('disabled') === 'true')   || false,
+                    'icon':       element.getAttribute('icon')                    || '',
+                    'label':      element.getAttribute('label')                   || ''
                 };
             },
             setAttributes: function(attributes) {
@@ -238,6 +326,10 @@ var PGMenuElement = (function() {
                 var attributes = this.getAttributes(element);
 
                 return !!(attributes['pg-created']);
+            },
+            getService: function() {
+                var type = element.parentElement.getAttribute('type');
+                return 'com.phonegap.menu.' + type + '.command';
             }
         };
     };
@@ -258,6 +350,8 @@ var PGMenuElement = (function() {
                     });
                 });
             });
+        },
+        actions: {
         }
     };
 
@@ -453,7 +547,8 @@ var PGMenuElement = (function() {
         'create': function(success, fail, args) {
             var element = document.createElement('li');
             element.setAttribute('class', 'command');
-            // element.addEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            var fn = function() { PGMenuElement.actions[args[0]](); };
+            element.addEventListener(touchType, fn, false);
             document.getElementById('phonegap-menu-toolbar-list').appendChild(element);
             elements[args[0]] = element;
             success();
@@ -486,7 +581,7 @@ var PGMenuElement = (function() {
             
             if (args[1]) {
                 classes.push('disabled');
-                element.removeEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action);
+                // element.removeEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action);
             }
             else {
                 classes.forEach(function(v, i) { if (v === 'disabled') classes.splice(i, 1); });
@@ -503,7 +598,6 @@ var PGMenuElement = (function() {
             success();
         },
         'label': function(success, fail, args) {
-            console.log(elements);
             elements[args[0]].innerHTML = '<span>' + args[1] + '</span>';
             success();
         }
@@ -540,7 +634,8 @@ var PGMenuElement = (function() {
         'create': function(success, fail, args) {
             var element = document.createElement('div');
             element.setAttribute('class', 'command');
-            // element.addEventListener(touchType, window.HTMLCommandElement.elements[args[0]].attribute.action, false);
+            var fn = function() { PGMenuElement.actions[args[0]](); };
+            element.addEventListener(touchType, fn, false);
             document.getElementById('phonegap-menu-context').appendChild(element);
             elements[args[0]] = element;
             success();
@@ -573,6 +668,9 @@ var PGMenuElement = (function() {
         },
         'label': function(success, fail, args) {
             elements[args[0]].innerHTML = '<span>' + args[1] + '</span>';
+            success();
+        },
+        'accesskey': function(success, fail, args) {
             success();
         }
     };

@@ -34,10 +34,11 @@
             }
         }
         catch(e) {
-            console.log('Unknown action for ' + service + ':');
-            console.log('  => uri:    ' + service);
-            console.log('  => action: ' + action);
-            console.log('  => args:   ' + args);            
+            console.log(e);
+            console.log('  Unknown action for ' + service + ':');
+            console.log('    => uri:    ' + service);
+            console.log('    => action: ' + action);
+            console.log('    => args:   ' + args);
         }
     };
 

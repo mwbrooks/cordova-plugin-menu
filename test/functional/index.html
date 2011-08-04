@@ -9,15 +9,21 @@
 
     <script type="text/javascript" charset="utf-8" src="../../www/plugin/menu/index.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../native/desktop/menu.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var callback = function() {
+            console.log('Congrats, you fired a callback');
+        };
+    </script>
 </head>
 <body>
     <menu type="toolbar" label="Home">
-        <command label="Logout" action="callback" />
-        <command label="back" accesskey="back" action="callback" />
+        <command label="Logout" action="callback()" />
+        <command label="back"   action="callback()" disabled="true" accesskey="back" />
     </menu>
 
     <menu type="context">
-        <command label="Home" icon="image/house.png" disabled="true" action="callback" />
+        <command label="Home"      icon="image/house.png" disabled="false" action="callback()" />
+        <command label="Settings"  icon="image/gear.png"  disabled="true"  action="callback()" />
     </menu>
 </body>
 </html>
