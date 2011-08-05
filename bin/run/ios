@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Build Application for Desktop
+# =============================
+
+PROJECT_PATH=build/ios
+
+open ${PROJECT_PATH}/*.xcodeproj

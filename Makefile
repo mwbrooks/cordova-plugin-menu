@@ -14,8 +14,9 @@ help:
 	@echo "  make COMMAND"
 	@echo
 	@echo "COMMANDS"
-	@echo "  dist .............. Distribute plugin."
-	@echo "  desktop-example ... Build example app for desktop."
+	@echo "  dist .............. Generate plugin distribute in /build/dist/"
+	@echo "  desktop-example ... Build & run example app for desktop."
+	@echo "  ios-example ....... Build & run example app for iOS."
 	@echo
 	@echo "USAGE"
 	@echo "  make dist .............. Only generate plugin distribution files."
@@ -23,6 +24,8 @@ help:
 	@echo
 
 desktop-example: clean dist example desktop
+
+ios-example: clean dist example ios
 
 dist:
 	./bin/clean/dist
@@ -58,12 +61,8 @@ desktop:
 	./bin/run/desktop
 
 ios:
-	./bin/clean/ios
-	./bin/install-phonegap-js/ios
-	./bin/install-example/ios
-	./bin/install-plugin/ios
-	./bin/clean/tmp
-	./bin/build/ios
+	./bin/install/ios
+	./bin/run/ios
 
 clean:
 	./bin/clean/build
