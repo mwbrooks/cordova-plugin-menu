@@ -1,0 +1,13 @@
+#! /bin/sh
+
+# Install Desktop Plugin to App
+# =============================
+
+# install platform
+cp -R ./target/desktop ./build/desktop
+
+# install app
+cp -R ./build/app/www/* ./build/desktop/www/
+
+# install plugin
+cp -R ./build/dist/desktop/www/* ./build/desktop/www/

@@ -1,0 +1,10 @@
+#! /bin/sh
+
+# Clean Project for Distribution
+# ==============================
+
+DIST_PATH=./build/dist
+
+if test -d ${DIST_PATH}; then \
+	rm -Rf ${DIST_PATH}; \
+fi

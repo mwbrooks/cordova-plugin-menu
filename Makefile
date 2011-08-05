@@ -20,6 +20,7 @@ help:
 	@echo "TARGETS"
 	@echo "  android ...... Run on Android."
 	@echo "  blackberry ... Run on BlackBerry."
+	@echo "  desktop ...... Run on Desktop."
 	@echo "  ios .......... Run on iOS."
 	@echo
 	@echo "USAGE"
@@ -27,11 +28,20 @@ help:
 	@echo "  make android test ...... Build test suite and run on Android."
 	@echo
 
-example:
-	./bin/tmp/example
+desktop-example: clean dist example desktop
 
-test:
-	./bin/tmp/test
+dist:
+	./bin/clean/dist
+	./bin/dist/android
+	./bin/dist/blackberry
+	./bin/dist/desktop
+	./bin/dist/ios
+
+example:
+	./bin/create/example
+
+# test:
+#     ./bin/tmp/test
 
 android:
 	./bin/clean/android
@@ -50,12 +60,8 @@ blackberry:
 	./bin/build/blackberry
 
 desktop:
-	./bin/clean/desktop
-	./bin/install-phonegap-js/desktop
-	./bin/install-example/desktop
-	./bin/install-plugin/desktop
-	./bin/clean/tmp
-	./bin/build/desktop
+	./bin/install/desktop
+	./bin/run/desktop
 
 ios:
 	./bin/clean/ios
@@ -65,4 +71,7 @@ ios:
 	./bin/clean/tmp
 	./bin/build/ios
 
-.PHONY: all help example test android blackberry desktop ios
+clean:
+	./bin/clean/build
+
+.PHONY: all help example test dist android blackberry desktop ios clean

@@ -5,6 +5,9 @@
 *.pbxuser
 /native/iOS/test/build/
 
+# Plugin Scripts
+/build/
+
 # iOS
 *.xcworkspace
 xcuserdata

@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Android Distribution
+# ====================
+
+DIST_PATH=./build/dist/android
+
+mkdir -p ${DIST_PATH}

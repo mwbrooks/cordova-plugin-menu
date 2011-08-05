@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# BlackBerry Distribution
+# =======================
+
+DIST_PATH=./build/dist/blackberry
+
+mkdir -p ${DIST_PATH}

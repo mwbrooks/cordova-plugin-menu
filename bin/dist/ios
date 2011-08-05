@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# iOS Distribution
+# ================
+
+DIST_PATH=./build/dist/ios
+
+mkdir -p ${DIST_PATH}

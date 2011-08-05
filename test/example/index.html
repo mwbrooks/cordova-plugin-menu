@@ -11,7 +11,6 @@
     <!-- phonegap-plugin-menu -->
     <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0rc2.js"></script>
     <script type="text/javascript" charset="utf-8" src="plugin/menu/index.js"></script>
-    <script type="text/javascript" charset="utf-8" src="menu.js"></script>
 
     <script type="text/javascript" charset="utf-8">
         var createToolbar = function() {
@@ -75,15 +74,19 @@
         window.addEventListener('load', function() {
             document.addEventListener('deviceready', createContext, false);
         }, false);
+
+        var callback = function() { alert('hello'); }
     </script>
 </head>
 <body>
     <menu type="toolbar" label="Home">
-        <command label="Logout" action="callback" />
+        <command label="Logout" action="callback()" />
+        <command label="back"   action="callback()" disabled="true" accesskey="back" />
     </menu>
 
     <menu type="context">
-        <command label="Home" icon="image/house.png" disabled="true" action="callback" />
+        <command label="Home"      icon="image/house.png" disabled="false" action="callback()" />
+        <command label="Settings"  icon="image/gear.png"  disabled="true"  action="callback()" />
     </menu>
 
     <span>
