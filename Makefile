@@ -11,21 +11,15 @@ help:
 	@echo "    - Build & run tests suite"
 	@echo
 	@echo "SYNOPSIS"
-	@echo "  make COMMAND TARGET"
+	@echo "  make COMMAND"
 	@echo
 	@echo "COMMANDS"
-	@echo "  example ...... Build example application."
-	@echo "  test ......... Build test suite."
-	@echo
-	@echo "TARGETS"
-	@echo "  android ...... Run on Android."
-	@echo "  blackberry ... Run on BlackBerry."
-	@echo "  desktop ...... Run on Desktop."
-	@echo "  ios .......... Run on iOS."
+	@echo "  dist .............. Distribute plugin."
+	@echo "  desktop-example ... Build example app for desktop."
 	@echo
 	@echo "USAGE"
-	@echo "  make android example ... Build example application and run on Android."
-	@echo "  make android test ...... Build test suite and run on Android."
+	@echo "  make dist .............. Only generate plugin distribution files."
+	@echo "  make desktop-example ... Build example application and run on Android."
 	@echo
 
 desktop-example: clean dist example desktop
