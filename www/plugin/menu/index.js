@@ -1,6 +1,6 @@
 // Load the menu on startup
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('deviceready', function() {
     PGMenuElement.update();
 }, false);
 

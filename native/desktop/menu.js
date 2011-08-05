@@ -42,13 +42,4 @@
         }
     };
 
-    window.addEventListener('load', function() {
-        var event = document.createEvent('HTMLEvents');
-        event.initEvent('deviceready', true, false);
-
-        setTimeout(function() {
-            document.dispatchEvent(event);
-        }, 150);
-    }, false);
-
 })(window);
