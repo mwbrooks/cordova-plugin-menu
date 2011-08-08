@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		30C0956013BAA3C8004E2465 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C0955F13BAA3C8004E2465 /* CoreMedia.framework */; };
 		30C0956513BAAABC004E2465 /* Capture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30C0956413BAAABC004E2465 /* Capture.bundle */; };
-		AC96E28A13A6BDC9004E38BF /* NativeControls2.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96E28713A6BDC9004E38BF /* NativeControls2.m */; };
-		AC96E28B13A6BDC9004E38BF /* UIWebView+PGAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96E28913A6BDC9004E38BF /* UIWebView+PGAdditions.m */; };
 		ACC1C4D913A6B11A007E2CEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4D813A6B11A007E2CEA /* Foundation.framework */; };
 		ACC1C4DB13A6B11A007E2CEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4DA13A6B11A007E2CEA /* UIKit.framework */; };
 		ACC1C4DD13A6B11A007E2CEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1C4DC13A6B11A007E2CEA /* CoreGraphics.framework */; };
@@ -34,16 +32,11 @@
 		ACC1C50A13A6B11A007E2CEA /* Default~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C50913A6B11A007E2CEA /* Default~iPad.png */; };
 		ACC1C50C13A6B11A007E2CEA /* PhoneGap.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C50B13A6B11A007E2CEA /* PhoneGap.plist */; };
 		ACC1C51113A6B11A007E2CEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC1C51013A6B11A007E2CEA /* AppDelegate.m */; };
-		ACC1C51B13A6B13B007E2CEA /* www in Resources */ = {isa = PBXBuildFile; fileRef = ACC1C51A13A6B13B007E2CEA /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30C0955F13BAA3C8004E2465 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		30C0956413BAAABC004E2465 /* Capture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Capture.bundle; path = Resources/Capture.bundle; sourceTree = "<group>"; };
-		AC96E28613A6BDC9004E38BF /* NativeControls2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeControls2.h; sourceTree = "<group>"; };
-		AC96E28713A6BDC9004E38BF /* NativeControls2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeControls2.m; sourceTree = "<group>"; };
-		AC96E28813A6BDC9004E38BF /* UIWebView+PGAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+PGAdditions.h"; sourceTree = "<group>"; };
-		AC96E28913A6BDC9004E38BF /* UIWebView+PGAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+PGAdditions.m"; sourceTree = "<group>"; };
 		ACC1C4D413A6B11A007E2CEA /* MenuPlugin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuPlugin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACC1C4D813A6B11A007E2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ACC1C4DA13A6B11A007E2CEA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -72,7 +65,6 @@
 		ACC1C50E13A6B11A007E2CEA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		ACC1C51013A6B11A007E2CEA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
 		ACC1C51313A6B11A007E2CEA /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
-		ACC1C51A13A6B13B007E2CEA /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,22 +99,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AC96E28513A6BDC9004E38BF /* NativeControls */ = {
-			isa = PBXGroup;
-			children = (
-				AC96E28613A6BDC9004E38BF /* NativeControls2.h */,
-				AC96E28713A6BDC9004E38BF /* NativeControls2.m */,
-				AC96E28813A6BDC9004E38BF /* UIWebView+PGAdditions.h */,
-				AC96E28913A6BDC9004E38BF /* UIWebView+PGAdditions.m */,
-			);
-			name = NativeControls;
-			path = Plugins/NativeControls;
-			sourceTree = "<group>";
-		};
 		ACC1C4C613A6B11A007E2CEA = {
 			isa = PBXGroup;
 			children = (
-				ACC1C51A13A6B13B007E2CEA /* www */,
 				ACC1C4F013A6B11A007E2CEA /* MenuPlugin */,
 				ACC1C4D713A6B11A007E2CEA /* Frameworks */,
 				ACC1C4D513A6B11A007E2CEA /* Products */,
@@ -223,7 +202,6 @@
 		ACC1C51213A6B11A007E2CEA /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				AC96E28513A6BDC9004E38BF /* NativeControls */,
 				ACC1C51313A6B11A007E2CEA /* README */,
 			);
 			name = Plugins;
@@ -287,7 +265,6 @@
 				ACC1C50813A6B11A007E2CEA /* Default@2x.png in Resources */,
 				ACC1C50A13A6B11A007E2CEA /* Default~iPad.png in Resources */,
 				ACC1C50C13A6B11A007E2CEA /* PhoneGap.plist in Resources */,
-				ACC1C51B13A6B13B007E2CEA /* www in Resources */,
 				30C0956513BAAABC004E2465 /* Capture.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,8 +294,6 @@
 			files = (
 				ACC1C4F913A6B11A007E2CEA /* main.m in Sources */,
 				ACC1C51113A6B11A007E2CEA /* AppDelegate.m in Sources */,
-				AC96E28A13A6BDC9004E38BF /* NativeControls2.m in Sources */,
-				AC96E28B13A6BDC9004E38BF /* UIWebView+PGAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

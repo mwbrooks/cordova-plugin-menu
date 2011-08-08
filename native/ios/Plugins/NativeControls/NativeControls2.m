@@ -55,6 +55,10 @@
 	[self.webView pg_relayout:NO];
 	
 	self.tabBar = nil;
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 
@@ -83,6 +87,10 @@
 	
 	self.lastTabBarPosition = atBottom?PGLayoutPositionBottom:PGLayoutPositionTop;
 	[self.webView pg_addSiblingView:self.tabBar withPosition:self.lastTabBarPosition withAnimation:NO];
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 /**
@@ -97,6 +105,10 @@
 	if (![self.webView pg_hasSiblingView:self.tabBar]) {
 		[self.webView pg_addSiblingView:self.tabBar withPosition:self.lastTabBarPosition withAnimation:NO];
 	}
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 /**
@@ -112,6 +124,10 @@
 		[self.webView pg_removeSiblingView:self.tabBar withAnimation:NO];
 		[self.webView pg_relayout:NO];
 	}
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 /**
@@ -209,6 +225,9 @@
 	
 	[self.tabBarItems setObject:item forKey:name];
 	[item release];
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 
@@ -229,6 +248,9 @@
 		item.title = [options objectForKey:@"title"];
         item.badgeValue = [options objectForKey:@"badge"];
 	}
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 /**
@@ -254,6 +276,9 @@
 	}
 	
 	[items release];
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 - (void) enableTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
@@ -268,6 +293,9 @@
 	if (index != NSNotFound) {
 		item.enabled = enable;
 	}
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 /**
@@ -287,6 +315,9 @@
     NSString* itemName = [arguments objectAtIndex:1];
     UITabBarItem* item = [self.tabBarItems objectForKey:itemName];
     self.tabBar.selectedItem = item;
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 - (void)tabBar:(UITabBar*)tabBar didSelectItem:(UITabBarItem *)item
@@ -307,6 +338,10 @@
     if ([options objectForKey:@"label"]) {
         self.toolBar.topItem.title  = [options objectForKey:@"label"];
 	}
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 - (void) removeToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
@@ -319,6 +354,10 @@
 	[self.webView pg_relayout:NO];
 	
 	self.toolBar = nil;
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 - (void) createToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
@@ -362,6 +401,10 @@
 	
 	self.lastToolBarPosition = atTop?PGLayoutPositionTop:PGLayoutPositionBottom;
 	[self.webView pg_addSiblingView:self.toolBar withPosition:self.lastToolBarPosition withAnimation:NO];
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 - (void) toolBarDidSelectItem:(UIBarButtonItem*)item
@@ -461,6 +504,9 @@
             [self.toolBarItems setObject:item forKey:name];
         }
     }
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 /**
@@ -492,6 +538,9 @@
 	}
 	
 	[items release];
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 - (void) enableToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
@@ -511,6 +560,9 @@
 	{
 		item.enabled = enable;
 	}
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }	
 
 /**
@@ -525,6 +577,10 @@
 	if (![self.webView pg_hasSiblingView:self.toolBar]) {
 		[self.webView pg_addSiblingView:self.toolBar withPosition:self.lastToolBarPosition withAnimation:NO];
 	}
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 /**
@@ -540,6 +596,10 @@
 		[self.webView pg_removeSiblingView:self.toolBar withAnimation:NO];
 		[self.webView pg_relayout:NO];
 	}
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
 @end
