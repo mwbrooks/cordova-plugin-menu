@@ -93,7 +93,7 @@ public class AppMenu extends Plugin {
 	 * Called when a given menu item has been selected.
 	 */
 	public boolean onMenuItemSelected(MenuItem item) {
-		webView.loadUrl("javascript:window.HTMLCommandElement.elements['" + item.getItemId() + "'].attribute.action();");
+		webView.loadUrl("javascript:window.PGMenuElement.actions['" + item.getItemId() + "']();");
 		return true;
 	}
 	
