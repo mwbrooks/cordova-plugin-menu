@@ -6,28 +6,38 @@ help:
 	@echo "  Build & Run Plugin"
 	@echo
 	@echo "DESCRIPTION"
-	@echo "  This tool helps you development your PhoneGap plugin."
-	@echo "    - Build & run example application"
-	@echo "    - Build & run tests suite"
+	@echo "  Easily build and run the plugin."
 	@echo
 	@echo "SYNOPSIS"
 	@echo "  make COMMAND"
 	@echo
 	@echo "COMMANDS"
-	@echo "  dist .............. Generate plugin distribute in /build/dist/"
-	@echo "  desktop-example ... Build & run example app for desktop."
-	@echo "  ios-example ....... Build & run example app for iOS."
+	@echo "  dist ......... Generate plugin distribution at /build/dist/"
+	@echo "  android ...... Build & run example app for Android."
+	@echo "  blackberry ... Build & run example app for BlackBerry 5/6."
+	@echo "  desktop ...... Build & run example app for Desktop."
+	@echo "  ios .......... Build & run example app for iOS."
 	@echo
 	@echo "USAGE"
-	@echo "  make dist .............. Only generate plugin distribution files."
-	@echo "  make desktop-example ... Build example application and run on Android."
+	@echo "  make dist ...... Only generate plugin distribution files."
+	@echo "  make desktop ... Build example application and run on Desktop."
 	@echo
 
-android-example: clean dist example android
+android: clean dist example
+	./bin/install/android
+	./bin/run/android
 
-desktop-example: clean dist example desktop
+blackberry: clean dist example
+	./bin/install/blackberry
+	./bin/run/blackberry
 
-ios-example: clean dist example ios
+desktop: clean dist example
+	./bin/install/desktop
+	./bin/run/desktop
+
+ios: clean dist example
+	./bin/install/ios
+	./bin/run/ios
 
 dist:
 	./bin/clean/dist
@@ -38,29 +48,6 @@ dist:
 
 example:
 	./bin/create/example
-
-# test:
-#     ./bin/tmp/test
-
-android:
-	./bin/install/android
-	./bin/run/android
-
-blackberry:
-	./bin/clean/blackberry
-	./bin/install-example/blackberry
-	./bin/install-phonegap-js/blackberry
-	./bin/install-plugin/blackberry
-	./bin/clean/tmp
-	./bin/build/blackberry
-
-desktop:
-	./bin/install/desktop
-	./bin/run/desktop
-
-ios:
-	./bin/install/ios
-	./bin/run/ios
 
 clean:
 	./bin/clean/build
