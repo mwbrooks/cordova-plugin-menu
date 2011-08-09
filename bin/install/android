@@ -1,0 +1,13 @@
+#! /bin/sh
+
+# Install Android Plugin to App
+# =============================
+
+# install platform
+cp -R ./target/android ./build/android
+
+# install app
+cp -R ./build/app/www/* ./build/android/assets/www/
+
+# install plugin
+cp -R ./build/dist/android/* ./build/android/

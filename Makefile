@@ -23,6 +23,8 @@ help:
 	@echo "  make desktop-example ... Build example application and run on Android."
 	@echo
 
+android-example: clean dist example android
+
 desktop-example: clean dist example desktop
 
 ios-example: clean dist example ios
@@ -41,12 +43,8 @@ example:
 #     ./bin/tmp/test
 
 android:
-	./bin/clean/android
-	./bin/install-phonegap-js/android
-	./bin/install-example/android
-	./bin/install-plugin/android
-	./bin/clean/tmp
-	./bin/build/android
+	./bin/install/android
+	./bin/run/android
 
 blackberry:
 	./bin/clean/blackberry
