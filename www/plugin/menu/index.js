@@ -297,7 +297,19 @@ var PGMenuElement = (function() {
                 return !!(attributes['pg-created']);
             },
             getService: function() {
-                var type = element.parentElement.getAttribute('type');
+                var parent  = element;
+                var tagName = '';
+
+                // Android and iOS WebKit "bug"
+                //   For non-standard elements, such as <menu> and <command<
+                //   element.parentElement returns element instead of parentElement
+                //   element.parentElement.parentElement returns element.parentElement
+                do {
+                    parent = parent.parentElement;
+                    tagName = parent.tagName.toLowerCase();
+                } while (tagName !== 'menu' && tagName !== 'body');
+
+                var type = parent.getAttribute('type');
                 return 'com.phonegap.menu.' + type + '.command';
             }
         };
