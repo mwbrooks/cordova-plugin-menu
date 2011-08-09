@@ -4,7 +4,7 @@
 # =============================
 
 # install platform
-cp -R ./target/android ./build/android
+cp -R ./bin/template/android ./build/android
 
 # install app
 cp -R ./build/app/www/* ./build/android/assets/www/
