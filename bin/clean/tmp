@@ -1,8 +1,0 @@
-#! /bin/sh
-
-# Clean Tmp Project
-# =================
-
-if test -d ./tmp; then \
-	rm -Rf ./tmp; \
-fi

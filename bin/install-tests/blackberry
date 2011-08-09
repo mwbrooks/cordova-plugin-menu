@@ -1,8 +1,0 @@
-#! /bin/sh
-
-# Install Example for BlackBerry
-# ==============================
-
-PROJECT_PATH=./target/blackberry-webworks
-
-cp -R ./test/unit/* $PROJECT_PATH/www/
