@@ -16,4 +16,7 @@
     <plugin name="Temperature" value="com.phonegap.TempListener"/>
     <plugin name="FileTransfer" value="com.phonegap.FileTransfer"/>
     <plugin name="Capture" value="com.phonegap.Capture"/>
+    <plugin name="Capture" value="com.phonegap.Capture"/>
+    <plugin name="com.phonegap.menu.context" value="com.phonegap.menu.AppMenu"/>
+    <plugin name="com.phonegap.menu.context.command" value="com.phonegap.menu.AppMenuItem"/>
 </plugins>
