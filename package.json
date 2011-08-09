@@ -15,7 +15,7 @@
     "lib": "www"
   },
   "engines": {
-    "phonegap": "0.9.5"
+    "phonegap": "1.0.0"
   }
 }
 
