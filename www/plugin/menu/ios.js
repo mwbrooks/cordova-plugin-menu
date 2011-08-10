@@ -23,67 +23,65 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
     var serviceMap = {
         'com.phonegap.menu.toolbar': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "createToolBar", []);
+                PhoneGap.exec(success, fail, "NativeControls2", "createToolBar", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "removeToolBar", []);
+                PhoneGap.exec(success, fail, "NativeControls2", "removeToolBar", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateToolBar", [ { 'label': data['label'] } ]);
+                PhoneGap.exec(success, fail, "NativeControls2", "updateToolBar", data);
             }
         },
         'com.phonegap.menu.context': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "createTabBar", []);
+                PhoneGap.exec(success, fail, "NativeControls2", "createTabBar", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "removeTabBar", []);
+                PhoneGap.exec(success, fail, "NativeControls2", "removeTabBar", data);
             },
             'label': function(success, fail, data) {
-                console.log('Unsupported: com.phonegap.menu.context :: label');
-                success();
+                success(); // No label for a TabBar
             }
         },
         'com.phonegap.menu.toolbar.command': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "createToolBarItem", [ data['data-uuid'], data['label'], data['icon'], !data['disabled'], data['data-uuid'], data['accesskey'] ]);
+                PhoneGap.exec(success, fail, "NativeControls2", "createToolBarItem", data);
             },
             'delete': function(success, fail, data ) {
-                PhoneGap.exec(success, fail, "NativeControls2", "removeToolBarItem", [ data['data-uuid'] ]);
+                PhoneGap.exec(success, fail, "NativeControls2", "removeToolBarItem", data);
             },
             'accesskey': function(success, fail, data) {
-                console.log('Unsupported: com.phonegap.menu.toolbar.command :: accesskey');
                 success();
             },
             'disabled': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "enableToolBarItem", [ data['data-uuid'], !data['disabled'] ]);
+                PhoneGap.exec(success, fail, "NativeControls2", "enableToolBarItem", data);
             },
             'icon': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateToolBarItem", [data['data-uuid'], { 'icon': data['icon'] }]);
+                PhoneGap.exec(success, fail, "NativeControls2", "updateToolBarItemImage", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateToolBarItem", [data['data-uuid'], { 'label': data['label'] }]);
+                PhoneGap.exec(success, fail, "NativeControls2", "updateToolBarItemTitle", data);
             }
         },
         'com.phonegap.menu.context.command': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "createTabBarItem", [ data['data-uuid'], data['label'], data['icon'], !data['disabled'], data['data-uuid'] ]);
+                PhoneGap.exec(success, fail, "NativeControls2", "createTabBarItem", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "removeTabBarItem", [ data['data-uuid'] ]);
+                PhoneGap.exec(success, fail, "NativeControls2", "removeTabBarItem", data);
             },
             'accesskey': function(success, fail, data) {
-                console.log('Unsupported: com.phonegap.menu.toolbar.command :: accesskey');
                 success();
             },
             'disabled': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "enableTabBarItem", [ data['data-uuid'], !data['disabled'] ]);
+                data[1] = !data[1];
+                PhoneGap.exec(success, fail, "NativeControls2", "enableTabBarItem", data);
             },
             'icon': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateTabBarItem", [ data['data-uuid'], { 'icon': data['icon'] } ]);
+                PhoneGap.exec(success, fail, "NativeControls2", "updateTabBarItemImage", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateTabBarItem", [ data['data-uuid'], { 'title': data['label'] } ]);
+                PhoneGap.exec(success, fail, "NativeControls2", "updateTabBarItemTitle", data);
             }
         }
     };

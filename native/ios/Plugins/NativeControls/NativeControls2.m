@@ -163,12 +163,21 @@
         [self createTabBar:nil withDict:nil];
 	}
 
-    NSString* callbackId  = [arguments objectAtIndex:0];
-    NSString* name      = [arguments objectAtIndex:1];
-    NSString* title     = [arguments objectAtIndex:2];
-    NSString* imageName = [arguments objectAtIndex:3];
-    BOOL enable         = [[arguments objectAtIndex:4] boolValue];
-    int tag             = [[arguments objectAtIndex:5] intValue];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    NSString* name       = [arguments objectAtIndex:1];
+    NSString* title      = @"";
+    NSString* imageName  = @"";
+    BOOL enable          = true;
+    int tag              = [name intValue];
+    
+    @try {
+        title     = [arguments objectAtIndex:2];
+        imageName = [arguments objectAtIndex:3];
+        enable    = [[arguments objectAtIndex:4] boolValue];
+        tag       = [[arguments objectAtIndex:5] intValue];
+    } @catch (NSException *exception) {
+        // Move on
+    }
 
     UITabBarItem *item = nil;    
     if ([imageName length] > 0) 
@@ -231,23 +240,64 @@
 }
 
 
+///**
+// * Update an existing tab bar item to change its title/badge value.
+// */
+//- (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+//{
+//    if (!self.tabBar) {
+//        [self createTabBar:nil withDict:nil];
+//	}
+//
+//    NSString* callbackId  = [arguments objectAtIndex:0];
+//    NSString* name = [arguments objectAtIndex:1];
+//    
+//    UITabBarItem* item = [self.tabBarItems objectForKey:name];
+////    if (item) {
+////		item.title = [options objectForKey:@"label"];
+////        item.badgeValue = [options objectForKey:@"badge"];
+////	}
+//    
+//    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+//    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+//}
+
 /**
- * Update an existing tab bar item to change its title/badge value.
+ * Update an existing tab bar item's image.
  */
-- (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) updateTabBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     if (!self.tabBar) {
         [self createTabBar:nil withDict:nil];
 	}
-
-    NSString* callbackId  = [arguments objectAtIndex:0];
-    NSString* name = [arguments objectAtIndex:1];
+    
+    NSString* callbackId = [arguments objectAtIndex:0];
+    NSString* name       = [arguments objectAtIndex:1];
+    NSString* imageName  = [arguments objectAtIndex:2];
     
     UITabBarItem* item = [self.tabBarItems objectForKey:name];
-    if (item) {
-		item.title = [options objectForKey:@"title"];
-        item.badgeValue = [options objectForKey:@"badge"];
+    UIImage* image = [UIImage imageNamed:imageName];
+    [item setImage:image];
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+}
+
+/**
+ * Update an existing tab bar item's title.
+ */
+- (void) updateTabBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    if (!self.tabBar) {
+        [self createTabBar:nil withDict:nil];
 	}
+    
+    NSString* callbackId = [arguments objectAtIndex:0];
+    NSString* name       = [arguments objectAtIndex:1];
+    NSString* title      = [arguments objectAtIndex:2];
+    
+    UITabBarItem* item = [self.tabBarItems objectForKey:name];
+    [item setTitle: title];
     
     PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
     [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
@@ -335,9 +385,9 @@
 		return;
 	}
 
-    if ([options objectForKey:@"label"]) {
-        self.toolBar.topItem.title  = [options objectForKey:@"label"];
-	}
+//    if ([options objectForKey:@"label"]) {
+//        self.toolBar.topItem.title  = [options objectForKey:@"label"];
+//	}
     
     PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
     NSString* callbackId = [arguments objectAtIndex:0];
@@ -419,12 +469,21 @@
         [self createToolBar:nil withDict:nil];
 	}
 
-    NSString* callbackId  = [arguments objectAtIndex:0];
-    NSString* name      = [arguments objectAtIndex:1];
-    NSString* title     = [arguments objectAtIndex:2];
-    NSString* imageName = [arguments objectAtIndex:3];
-    BOOL enable         = [[arguments objectAtIndex:4] boolValue];
-    int tag             = [[arguments objectAtIndex:5] intValue];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    NSString* name       = [arguments objectAtIndex:1];
+    NSString* title      = @" ";
+    NSString* imageName  = @"";
+    BOOL enable          = true;
+    int tag              = [name intValue];
+    
+    @try {
+        title     = [arguments objectAtIndex:2];
+        imageName = [arguments objectAtIndex:3];
+        enable    = [[arguments objectAtIndex:4] boolValue];
+        tag       = [[arguments objectAtIndex:5] intValue];
+    } @catch (NSException *exception) {
+        // Move on
+    }
     
     NSString* accesskey = @"";
     if ([arguments count] > 6) {
@@ -504,6 +563,48 @@
             [self.toolBarItems setObject:item forKey:name];
         }
     }
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+}
+
+/**
+ * Update an existing toolbar item's image.
+ */
+- (void) updateToolBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    if (!self.toolBar) {
+        [self createToolBar:nil withDict:nil];
+	}
+    
+    NSString* callbackId = [arguments objectAtIndex:0];
+    NSString* name       = [arguments objectAtIndex:1];
+//    NSString* imageName  = [arguments objectAtIndex:2];
+    
+//    UIBarButtonItem* item = [self.toolBarItems objectForKey:name];
+//    [item setTitle: nil];
+//    UIImage* image = [UIImage imageNamed:imageName];
+//    [item setImage:image];
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+}
+
+/**
+ * Update an existing toolbar item's title.
+ */
+- (void) updateToolBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    if (!self.toolBar) {
+        [self createToolBar:nil withDict:nil];
+	}
+    
+    NSString* callbackId = [arguments objectAtIndex:0];
+    NSString* name       = [arguments objectAtIndex:1];
+    NSString* title      = [arguments objectAtIndex:2];
+    
+    UIBarButtonItem* item = [self.toolBarItems objectForKey:name];
+    [item setTitle: title];
     
     PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
     [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];

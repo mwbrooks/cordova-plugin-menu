@@ -39,7 +39,9 @@
 - (void) enableTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+//- (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) updateTabBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) updateTabBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 /* Tool Bar methods
@@ -51,5 +53,6 @@
 - (void) enableToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) showToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) hideToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) updateToolBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) updateToolBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options;
 @end
