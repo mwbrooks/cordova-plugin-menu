@@ -1,0 +1,10 @@
+#! /bin/sh
+
+# Clean Build Directory
+# ====================
+
+BUILD_PATH=./build
+
+if test -d $BUILD_PATH; then \
+	rm -Rf $BUILD_PATH; \
+fi

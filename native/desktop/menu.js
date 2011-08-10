@@ -34,20 +34,12 @@
             }
         }
         catch(e) {
-            console.log('Unknown action for ' + service + ':');
-            console.log('  => uri:    ' + service);
-            console.log('  => action: ' + action);
-            console.log('  => args:   ' + args);            
+            console.log(e);
+            console.log('  Unknown action for ' + service + ':');
+            console.log('    => uri:    ' + service);
+            console.log('    => action: ' + action);
+            console.log('    => args:   ' + args);
         }
     };
-
-    window.addEventListener('load', function() {
-        var event = document.createEvent('HTMLEvents');
-        event.initEvent('deviceready', true, false);
-
-        setTimeout(function() {
-            document.dispatchEvent(event);
-        }, 150);
-    }, false);
 
 })(window);

@@ -1,5 +1,0 @@
-#! /bin/sh
-
-rm -rf ./project/www
-cp -r ./test ./project/www/
-

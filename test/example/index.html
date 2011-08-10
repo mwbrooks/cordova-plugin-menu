@@ -7,81 +7,27 @@
     <title>PhoneGap Menu Plugin Example</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.1.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegap.0.9.6.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0rc1.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegap.1.0.0rc2.js"></script>
     
     <!-- phonegap-plugin-menu -->
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="plugin/menu/index.js"></script>
-    <script type="text/javascript" charset="utf-8" src="menu.js"></script>
-
-    <script type="text/javascript" charset="utf-8">
-        var createToolbar = function() {
-            // Toolbar
-
-            var toolbar = document.createElement('menu');
-            toolbar.setAttribute('type', 'toolbar');
-            toolbar.setAttribute('label', 'Home');
-
-            var commandLogout = document.createElement('command');
-            commandLogout.setAttribute('label', 'Logout');
-            commandLogout.setAttribute('action', function() { alert('Logout'); });
-
-            var commandAdd = document.createElement('command');
-            commandAdd.setAttribute('icon', 'image/plus.png');
-            commandAdd.setAttribute('action', function() { alert('Add'); });
-
-            var commandBack = document.createElement('command');
-            commandBack.setAttribute('label', 'Back');
-            commandBack.setAttribute('accesskey', 'back');
-            commandBack.setAttribute('action', function() { alert('Back'); });
-
-            toolbar.appendChild(commandLogout);
-            toolbar.appendChild(commandAdd);
-            toolbar.appendChild(commandBack);
-        };
-        
-        var createContext = function() {
-            // Context Menu
-
-            var context = document.createElement('menu');
-            context.setAttribute('type', 'context');
-
-            var commandHome = document.createElement('command');
-            commandHome.setAttribute('label', 'Home');
-            commandHome.setAttribute('icon',  'image/house.png');
-            commandHome.setAttribute('action', function() { alert('Home'); });
-            commandHome.setAttribute('disabled', true);
-
-            var commandSearch = document.createElement('command');
-            commandSearch.setAttribute('label', 'Search');
-            commandSearch.setAttribute('icon',  'image/magnifyingglass.png');
-            commandSearch.setAttribute('action', function() { alert('Search'); });
-
-            var commandSettings = document.createElement('command');
-            commandSettings.setAttribute('label', 'Settings');
-            commandSettings.setAttribute('icon',  'image/preferences.png');
-            commandSettings.setAttribute('action', function() { alert('Settings'); });
-
-            context.appendChild(commandHome);
-            context.appendChild(commandSearch);
-            context.appendChild(commandSettings);
-
-            // context.removeChild(commandHome);
-        };
-        
-        window.addEventListener('DOMContentLoaded', function() {
-            createToolbar();
-        }, false);
-        
-        window.addEventListener('load', function() {
-            document.addEventListener('deviceready', createContext, false);
-        }, false);
+    <script type="text/javascript">
+        var callback = function() {
+            alert('whoa');
+        }
     </script>
 </head>
 <body>
+    <menu type="toolbar" label="Home">
+        <command label="Logout" action="callback()" />
+        <command label="back"   action="callback()" disabled="true" accesskey="back" />
+    </menu>
+
+    <menu type="context">
+        <command label="Home"      icon="image/house.png"       disabled="false" action="callback()" />
+        <command label="Settings"  icon="image/preferences.png" disabled="false" action="callback()" />
+    </menu>
+
     <span>
         This is some text at the top of the webview.
     </span>

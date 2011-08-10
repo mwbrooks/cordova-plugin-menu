@@ -1,8 +1,0 @@
-#! /bin/sh
-
-# Install Example for Android
-# ===========================
-
-PROJECT_PATH=./target/blackberry-webworks
-
-cp -R ./test/example/* $PROJECT_PATH/www/

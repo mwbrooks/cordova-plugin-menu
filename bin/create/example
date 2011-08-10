@@ -1,0 +1,11 @@
+#! /bin/sh
+
+# Create Example App
+# ==================
+
+BUILD_PATH=./build/app
+
+rm -Rf $BUILD_PATH
+mkdir -p $BUILD_PATH
+
+cp -R ./test/example $BUILD_PATH/www

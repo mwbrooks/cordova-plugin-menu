@@ -1,8 +1,0 @@
-#! /bin/sh
-
-# Install phonegap.js for Desktop
-# ===============================
-
-PROJECT_PATH=./target/desktop
-
-# cp -R ${PROJECT_PATH}/lib/*.js $PROJECT_PATH/www/

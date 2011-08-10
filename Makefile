@@ -6,63 +6,50 @@ help:
 	@echo "  Build & Run Plugin"
 	@echo
 	@echo "DESCRIPTION"
-	@echo "  This tool helps you development your PhoneGap plugin."
-	@echo "    - Build & run example application"
-	@echo "    - Build & run tests suite"
+	@echo "  Easily build and run the plugin."
 	@echo
 	@echo "SYNOPSIS"
-	@echo "  make COMMAND TARGET"
+	@echo "  make COMMAND"
 	@echo
 	@echo "COMMANDS"
-	@echo "  example ...... Build example application."
-	@echo "  test ......... Build test suite."
-	@echo
-	@echo "TARGETS"
-	@echo "  android ...... Run on Android."
-	@echo "  blackberry ... Run on BlackBerry."
-	@echo "  ios .......... Run on iOS."
+	@echo "  dist ......... Generate plugin distribution at /build/dist/"
+	@echo "  android ...... Build & run example app for Android."
+	@echo "  blackberry ... Build & run example app for BlackBerry 5/6."
+	@echo "  desktop ...... Build & run example app for Desktop."
+	@echo "  ios .......... Build & run example app for iOS."
 	@echo
 	@echo "USAGE"
-	@echo "  make android example ... Build example application and run on Android."
-	@echo "  make android test ...... Build test suite and run on Android."
+	@echo "  make dist ...... Only generate plugin distribution files."
+	@echo "  make desktop ... Build example application and run on Desktop."
 	@echo
 
+android: clean dist example
+	./bin/install/android
+	./bin/run/android
+
+blackberry: clean dist example
+	./bin/install/blackberry
+	./bin/run/blackberry
+
+desktop: clean dist example
+	./bin/install/desktop
+	./bin/run/desktop
+
+ios: clean dist example
+	./bin/install/ios
+	./bin/run/ios
+
+dist:
+	./bin/clean/dist
+	./bin/dist/android
+	./bin/dist/blackberry
+	./bin/dist/desktop
+	./bin/dist/ios
+
 example:
-	./bin/tmp/example
+	./bin/create/example
 
-test:
-	./bin/tmp/test
+clean:
+	./bin/clean/build
 
-android:
-	./bin/clean/android
-	./bin/install-phonegap-js/android
-	./bin/install-example/android
-	./bin/install-plugin/android
-	./bin/clean/tmp
-	./bin/build/android
-
-blackberry:
-	./bin/clean/blackberry
-	./bin/install-example/blackberry
-	./bin/install-phonegap-js/blackberry
-	./bin/install-plugin/blackberry
-	./bin/clean/tmp
-	./bin/build/blackberry
-
-desktop:
-	./bin/clean/desktop
-	./bin/install-phonegap-js/desktop
-	./bin/install-example/desktop
-	./bin/install-plugin/desktop
-	./bin/clean/tmp
-	./bin/build/desktop
-
-ios:
-	./bin/clean/ios
-	./bin/install-phonegap-js/ios
-	./bin/install-example/ios
-	./bin/install-plugin/ios
-	./bin/clean/tmp
-	./bin/build/ios
-
-.PHONY: all help example test android blackberry desktop ios
+.PHONY: all help example test dist android blackberry desktop ios clean

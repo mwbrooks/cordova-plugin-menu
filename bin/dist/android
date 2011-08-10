@@ -1,0 +1,23 @@
+#! /bin/sh
+
+# Android Distribution
+# ====================
+
+BASE_PATH=./build/dist/android
+
+# JavaScript
+
+WEB_PATH=${BASE_PATH}/assets/www/plugin/menu
+INDEX_JS=${WEB_PATH}/index.js
+
+mkdir -p ${WEB_PATH}
+
+cat ./www/plugin/menu/index.js  >> ${INDEX_JS}
+cat ./www/plugin/menu/helper.js >> ${INDEX_JS}
+
+# Java
+
+NATIVE_PATH=${BASE_PATH}
+
+cp -R ./native/android/* ${NATIVE_PATH}
+
