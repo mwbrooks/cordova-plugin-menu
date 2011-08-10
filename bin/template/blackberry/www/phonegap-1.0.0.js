@@ -643,6 +643,16 @@ if (typeof _nativeReady !== 'undefined') { PhoneGap.onNativeReady.fire(); }
  */
 
 /**
+ * Acceleration object has 3D coordinates and timestamp.
+ */
+var Acceleration = function(x, y, z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.timestamp = new Date().getTime();
+};
+
+/**
  * navigator.accelerometer
  * 
  * Provides access to device accelerometer data.
@@ -654,16 +664,6 @@ if (typeof _nativeReady !== 'undefined') { PhoneGap.onNativeReady.fire(); }
     if (typeof navigator.accelerometer !== "undefined") {
         return;
     }
-
-    /**
-     * Acceleration object has 3D coordinates and timestamp.
-     */
-    function Acceleration(x, y, z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.timestamp = new Date().getTime();
-    };
     
     /**
      * @constructor
@@ -809,6 +809,20 @@ var Camera = Camera || (function() {
     };
 
     /**
+     * Encoding of image returned from getPicture.
+     *
+     * Example: navigator.camera.getPicture(success, fail,
+     *              { quality: 80,
+     *                destinationType: Camera.DestinationType.DATA_URL,
+     *                sourceType: Camera.PictureSourceType.CAMERA,
+     *                encodingType: Camera.EncodingType.PNG})
+     */
+    var EncodingType = {
+        JPEG: 0,                    // Return JPEG encoded image
+        PNG: 1                      // Return PNG encoded image
+    };
+
+    /**
      * @constructor
      */
     function Camera() {
@@ -820,6 +834,7 @@ var Camera = Camera || (function() {
      */
     Camera.prototype.DestinationType = DestinationType;
     Camera.prototype.PictureSourceType = PictureSourceType;
+    Camera.prototype.EncodingType = EncodingType;
     
     /**
      * Gets a picture from source defined by "options.sourceType", and returns the
@@ -845,19 +860,51 @@ var Camera = Camera || (function() {
             return;
         }
 
-        var quality = 80;
-        if (options.quality) {
+        if (typeof options.quality == "number") {
             quality = options.quality;
+        } else if (typeof options.quality == "string") {
+            var qlity = new Number(options.quality);
+            if (isNaN(qlity) === false) {
+                quality = qlity.valueOf();
+            }
         }
+
         var destinationType = DestinationType.DATA_URL;
         if (options.destinationType) {
             destinationType = options.destinationType;
         }
+
         var sourceType = PictureSourceType.CAMERA;
         if (typeof options.sourceType == "number") {
             sourceType = options.sourceType;
         }
-        PhoneGap.exec(successCallback, errorCallback, "Camera", "takePicture", [quality, destinationType, sourceType]);
+
+        var targetWidth = -1;
+        if (typeof options.targetWidth == "number") {
+            targetWidth = options.targetWidth;
+        } else if (typeof options.targetWidth == "string") {
+            var width = new Number(options.targetWidth);
+            if (isNaN(width) === false) {
+                targetWidth = width.valueOf();
+            }
+        }
+
+        var targetHeight = -1;
+        if (typeof options.targetHeight == "number") {
+            targetHeight = options.targetHeight;
+        } else if (typeof options.targetHeight == "string") {
+            var height = new Number(options.targetHeight);
+            if (isNaN(height) === false) {
+                targetHeight = height.valueOf();
+            }
+        }
+
+        var encodingType = EncodingType.JPEG;
+        if (typeof options.encodingType == "number") {
+            encodingType = options.encodingType;
+        }
+
+        PhoneGap.exec(successCallback, errorCallback, "Camera", "takePicture", [quality, destinationType, sourceType, targetWidth, targetHeight, encodingType]);
     };
 
     /**
@@ -872,7 +919,8 @@ var Camera = Camera || (function() {
      */
     return {
         DestinationType: DestinationType,
-        PictureSourceType: PictureSourceType
+        PictureSourceType: PictureSourceType,
+        EncodingType: EncodingType
     };
 }());
 
@@ -1168,13 +1216,13 @@ var Contact = Contact || (function() {
         //
         // name
         if (contact.name !== null) {   
-            if (contact.name.givenName !== null) {
+            if (contact.name.givenName) {
                 bbContact.firstName = contact.name.givenName;
             }
-            if (contact.name.familyName !== null) {
+            if (contact.name.familyName) {
                 bbContact.lastName = contact.name.familyName;
             }
-            if (contact.name.honorificPrefix !== null) {
+            if (contact.name.honorificPrefix) {
                 bbContact.title = contact.name.honorificPrefix;
             }
         }
@@ -1750,7 +1798,7 @@ var ContactFindOptions = function(filter, multiple) {
                 if (bbContact.otherPhone) {
                     phoneNumbers.push(new ContactField('other', bbContact.otherPhone));
                 }
-                contact.phoneNumbers = phoneNumbers;
+                contact.phoneNumbers = phoneNumbers.length > 0 ? phoneNumbers : null;
             }
             // emails
             else if (field.indexOf('emails') === 0) {
@@ -1764,7 +1812,7 @@ var ContactFindOptions = function(filter, multiple) {
                 if (bbContact.email3) { 
                     emails.push(new ContactField(null, bbContact.email3, null));
                 }
-                contact.emails = emails;
+                contact.emails = emails.length > 0 ? emails : null;
             }
             // addresses
             else if (field.indexOf('addresses') === 0) {
@@ -1775,15 +1823,19 @@ var ContactFindOptions = function(filter, multiple) {
                 if (bbContact.workAddress) {
                     addresses.push(createContactAddress("work", bbContact.workAddress));
                 }
-                contact.addresses = addresses;
+                contact.addresses = addresses.length > 0 ? addresses : null;
             }
             // birthday
             else if (field.indexOf('birthday') === 0) {
-                contact.birthday = bbContact.birthday;
+                if (bbContact.birthday) {
+                    contact.birthday = bbContact.birthday;
+                }
             }
             // note
             else if (field.indexOf('note') === 0) {
-                contact.note = bbContact.note;
+                if (bbContact.note) {
+                    contact.note = bbContact.note;
+                }
             }
             // organizations
             else if (field.indexOf('organizations') === 0) {
@@ -1792,11 +1844,15 @@ var ContactFindOptions = function(filter, multiple) {
                     organizations.push(
                         new ContactOrganization(null, null, bbContact.company, null, bbContact.jobTitle));
                 }
-                contact.organizations = organizations;
+                contact.organizations = organizations.length > 0 ? organizations : null;
             }
             // categories
             else if (field.indexOf('categories') === 0) {
-                contact.categories = bbContact.categories; 
+                if (bbContact.categories && bbContact.categories.length > 0) {
+                    contact.categories = bbContact.categories;
+                } else {
+                    contact.categories = null;
+                }
             }
             // urls
             else if (field.indexOf('urls') === 0) {
@@ -1804,7 +1860,7 @@ var ContactFindOptions = function(filter, multiple) {
                 if (bbContact.webpage) {
                     urls.push(new ContactField(null, bbContact.webpage));
                 }
-                contact.urls = urls;
+                contact.urls = urls.length > 0 ? urls : null;
             }
             // photos
             else if (field.indexOf('photos') === 0) {
@@ -1814,7 +1870,7 @@ var ContactFindOptions = function(filter, multiple) {
                 if (bbContact.picture) {
                     photos.push(new ContactField('base64', bbContact.picture));
                 }
-                contact.photos = photos;
+                contact.photos = photos.length > 0 ? photos : null;
             }
         }
 
@@ -2243,6 +2299,34 @@ var FileReader = FileReader || (function() {
         );
     };
     
+    /**
+     * Read file and return data as a binary data.
+     *
+     * @param file          {File} File object containing file properties
+     */
+    FileReader.prototype.readAsBinaryString = function(file) {
+        // TODO - Can't return binary data to browser.
+        if (typeof file.fullPath === "undefined") {
+            this.fileName = file;
+        } else {
+            this.fileName = file.fullPath;
+        }
+    };
+
+    /**
+     * Read file and return data as a binary data.
+     *
+     * @param file          {File} File object containing file properties
+     */
+    FileReader.prototype.readAsArrayBuffer = function(file) {
+        // TODO - Can't return binary data to browser.
+        if (typeof file.fullPath === "undefined") {
+            this.fileName = file;
+        } else {
+            this.fileName = file.fullPath;
+        }
+    };
+
     return FileReader;
 }());
 
@@ -2453,10 +2537,11 @@ var FileWriter = FileWriter || (function() {
                     return;
                 }
 
-                // new length is maximum of old length, or position plus bytes written
-                me.length = Math.max(me.length, me.position + result);
                 // position always increases by bytes written because file would be extended
                 me.position += result;
+
+                // new length is now where writing finished
+                me.length = me.position;
 
                 // success procedure
                 if (typeof me.onwrite == "function") {
@@ -3680,12 +3765,28 @@ var Geolocation = Geolocation || (function() {
 /**
  * MediaFileData error.
  */
-function MediaFileDataError() {
+var MediaFileDataError = function() {
     this.code = 0;
 };
 
 MediaFileDataError.UNKNOWN_ERROR = 0;
 MediaFileDataError.TIMEOUT_ERROR = 1;
+
+/**
+ * Media file data.
+ * codecs {DOMString} The actual format of the audio and video content.
+ * bitrate {Number} The average bitrate of the content. In the case of an image, this attribute has value 0.
+ * height {Number} The height of the image or video in pixels. In the case of a sound clip, this attribute has value 0.
+ * width {Number The width of the image or video in pixels. In the case of a sound clip, this attribute has value 0.
+ * duration {Number} The length of the video or sound clip in seconds. In the case of an image, this attribute has value 0.
+ */
+var MediaFileData = function(){
+    this.codecs = null;
+    this.bitrate = 0;
+    this.height = 0;
+    this.width = 0;
+    this.duration = 0;
+};
 
 /**
  * Represents media file properties.
@@ -3700,22 +3801,6 @@ var MediaFile = MediaFile || (function() {
  
     // extend File
     PhoneGap.extend(MediaFile, File);
-    
-    /**
-     * Media file data.
-     * codecs {DOMString} The actual format of the audio and video content.
-     * bitrate {Number} The average bitrate of the content. In the case of an image, this attribute has value 0.
-     * height {Number} The height of the image or video in pixels. In the case of a sound clip, this attribute has value 0.
-     * width {Number The width of the image or video in pixels. In the case of a sound clip, this attribute has value 0.
-     * duration {Number} The length of the video or sound clip in seconds. In the case of an image, this attribute has value 0.
-     */
-    function MediaFileData() {
-        this.codecs = null;
-        this.bitrate = 0;
-        this.height = 0;
-        this.width = 0;
-        this.duration = 0;
-    };
     
     /**
      * Obtains the format data of the media file.
@@ -3736,7 +3821,7 @@ var MediaFile = MediaFile || (function() {
 /**
  * Media capture error.
  */
-function CaptureError() {
+var CaptureError = function() {
     this.code = 0;
 };
 
@@ -3754,9 +3839,9 @@ CaptureError.CAPTURE_NOT_SUPPORTED = 20;
 /**
  * Encapsulates a set of parameters that the capture device supports.
  */
-function ConfigurationData() {
+var ConfigurationData = function() {
     // The ASCII-encoded string in lower case representing the media type. 
-    this.type; 
+    this.type = null;
     // The height attribute represents height of the image or video in pixels. 
     // In the case of a sound clip this attribute has value 0. 
     this.height = 0;
@@ -3768,35 +3853,35 @@ function ConfigurationData() {
 /**
  * Encapsulates all image capture operation configuration options.
  */
-function CaptureImageOptions() {
+var CaptureImageOptions = function() {
     // Upper limit of images user can take. Value must be equal or greater than 1.
     this.limit = 1; 
     // The selected image mode. Must match with one of the elements in supportedImageModes array.
-    this.mode; 
+    this.mode = null;
 };
 
 /**
  * Encapsulates all video capture operation configuration options.
  */
-function CaptureVideoOptions() {
+var CaptureVideoOptions = function() {
     // Upper limit of videos user can record. Value must be equal or greater than 1.
     this.limit = 1;
     // Maximum duration of a single video clip in seconds.
-    this.duration;
+    this.duration = 0;
     // The selected video mode. Must match with one of the elements in supportedVideoModes array.
-    this.mode;
+    this.mode = null;
 };
 
 /**
  * Encapsulates all audio capture operation configuration options.
  */
-function CaptureAudioOptions() {
+var CaptureAudioOptions = function() {
     // Upper limit of sound clips user can record. Value must be equal or greater than 1.
     this.limit = 1;
     // Maximum duration of a single sound clip in seconds.
-    this.duration;
+    this.duration = 0;
     // The selected audio mode. Must match with one of the elements in supportedAudioModes array.
-    this.mode;
+    this.mode = null;
 };
 
 /**
@@ -4015,7 +4100,7 @@ function CaptureAudioOptions() {
      */
     Capture.prototype.cancelCaptures = function() { 
         PhoneGap.exec(null, null, 'MediaCapture', 'stopCaptures', []);
-    }
+    };
     
     /**
      * Define navigator.device.capture object.

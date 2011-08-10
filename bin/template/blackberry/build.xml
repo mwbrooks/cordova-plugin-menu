@@ -32,26 +32,8 @@
     <!-- LOAD SIMULATOR -->
     
     <target name="load-simulator" depends="build">
-
-        <!-- Locate BBWP simulator directory. There may be multiple, so choose the first. -->
-        <path id="bbwp.sim.path">
-            <first>
-                <fileset dir="${properties.bbwp.dir}/simpack">
-                    <include name="**/handhelds.manifest.txt" />
-                </fileset>
-            </first>
-        </path>
-        <dirname property="bbwp.sim.dir" file="${toString:bbwp.sim.path}" />
-
-        <!-- Simulator directory: Use sim.dir property if set in project.properties file. 
-             Otherwise, use bbwp simulator directory. -->
-        <condition 
-            property="simulator.dir" 
-            value="${properties.sim.dir}" 
-            else="${bbwp.sim.dir}">
-                <available file="${properties.sim.dir}" type="dir" />
-        </condition>
-        <echo message="Simulator directory=${simulator.dir}" />
+        <!-- Find the simulator directory -->
+        <set-simulator-dir />
 
         <!-- Simulator binary: Use sim.bin property if set in project.properties file  
              or try setting to 'defaultSimulator.bat' in simulator directory. -->
@@ -196,6 +178,9 @@
     <!-- CLEAN SIMULATOR -->
     
     <target name="clean-simulator">
+        <!-- Find the simulator directory -->
+        <set-simulator-dir />
+        
         <exec executable="${simulator.dir}/clean.bat" dir="${simulator.dir}" />
         
         <delete>
@@ -256,15 +241,50 @@ GETTING STARTED
     
     <target name="generate-cod-name">
         <xmlproperty file="www/config.xml" prefix="config.xml" />
-        <propertyregex property="cod.name"
+        <propertyregex property="replaced.name"
                        input="${config.xml.widget.name}"
-                       regexp="(\W+)"
+                       regexp="([\W_]+)"
                        replace=""
                        casesensitive="false"
                        global="true"
                        defaultValue="${config.xml.widget.name}" />
+        <if>
+            <length string="${replaced.name}" length="0" />
+            <then>
+                <property name="cod.name" value="PhoneGapApplication" />
+            </then>
+            <else>
+                <property name="cod.name" value="${replaced.name}" />
+            </else>
+        </if>
         
         <echo message="Generated name: ${cod.name}.cod" />
     </target>
+    
+    <!-- MACRO: SET SIMULATOR DIRECTORY -->
+    
+    <macrodef name="set-simulator-dir">
+        <sequential>
+            <!-- Locate BBWP simulator directory. There may be multiple, so choose the first. -->
+            <path id="bbwp.sim.path">
+                <first>
+                    <fileset dir="${properties.bbwp.dir}/simpack">
+                        <include name="**/handhelds.manifest.txt" />
+                    </fileset>
+                </first>
+            </path>
+            <dirname property="bbwp.sim.dir" file="${toString:bbwp.sim.path}" />
+
+            <!-- Simulator directory: Use sim.dir property if set in project.properties file.
+                 Otherwise, use bbwp simulator directory. -->
+            <condition
+                property="simulator.dir"
+                value="${properties.sim.dir}"
+                else="${bbwp.sim.dir}">
+                    <available file="${properties.sim.dir}" type="dir" />
+            </condition>
+            <echo message="Simulator directory=${simulator.dir}" />
+        </sequential>
+    </macrodef>
     
 </project>
