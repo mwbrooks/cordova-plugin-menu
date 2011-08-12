@@ -28,12 +28,7 @@
 
 - (void) createToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) removeToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) removeToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) enableToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) showToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) hideToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateToolBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateToolBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 @end

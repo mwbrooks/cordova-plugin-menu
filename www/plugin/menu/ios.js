@@ -45,22 +45,22 @@
         },
         'com.phonegap.menu.toolbar.command': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "createToolBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar.command", "createToolBarItem", data);
             },
             'delete': function(success, fail, data ) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "removeToolBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar.command", "removeToolBarItem", data);
             },
             'accesskey': function(success, fail, data) {
                 success();
             },
             'disabled': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "enableToolBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar.command", "enableToolBarItem", data);
             },
             'icon': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "updateToolBarItemImage", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar.command", "updateToolBarItemImage", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "updateToolBarItemTitle", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar.command", "updateToolBarItemTitle", data);
             }
         },
         'com.phonegap.menu.context.command': {

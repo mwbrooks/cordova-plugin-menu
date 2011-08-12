@@ -40,6 +40,8 @@
 		<string>PGTabBarItem</string>
 		<key>com.phonegap.menu.toolbar</key>
 		<string>PGToolBar</string>
+		<key>com.phonegap.menu.toolbar.command</key>
+		<string>PGToolBarItem</string>
 		<key>com.phonegap.notification</key>
 		<string>PGNotification</string>
 	</dict>
