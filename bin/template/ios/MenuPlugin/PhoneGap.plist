@@ -36,8 +36,10 @@
 		<string>PGCapture</string>
 		<key>com.phonegap.notification</key>
 		<string>PGNotification</string>
-		<key>NativeControls2</key>
-		<string>NativeControls2</string>
+		<key>com.phonegap.menu.toolbar</key>
+		<string>PGToolBar</string>
+		<key>com.phonegap.menu.context</key>
+		<string>PGTabBar</string>
 	</dict>
 	<key>TopActivityIndicator</key>
 	<string>gray</string>

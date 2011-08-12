@@ -2,11 +2,11 @@
 // iOS-Specific
 //
 
-if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefined') {
+(function(window) {
     PhoneGap.originalExec = PhoneGap.exec;
 
     PhoneGap.exec = function(success, fail, service, action, args) {
-        if (serviceMap[service]) {
+        if (serviceMap[service] && serviceMap[service][action]) {
             try {
                 console.log("serviceMap: " + service + '::' + action);
                 serviceMap[ service ][ action ]( success, fail, args );
@@ -23,21 +23,21 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
     var serviceMap = {
         'com.phonegap.menu.toolbar': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "createToolBar", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "createToolBar", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "removeToolBar", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "removeToolBar", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateToolBar", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "updateToolBar", data);
             }
         },
         'com.phonegap.menu.context': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "createTabBar", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "createTabBar", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "removeTabBar", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "removeTabBar", data);
             },
             'label': function(success, fail, data) {
                 success(); // No label for a TabBar
@@ -45,44 +45,44 @@ if (navigator.userAgent.match(/iphone/i) && typeof window.PhoneGap !== 'undefine
         },
         'com.phonegap.menu.toolbar.command': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "createToolBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "createToolBarItem", data);
             },
             'delete': function(success, fail, data ) {
-                PhoneGap.exec(success, fail, "NativeControls2", "removeToolBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "removeToolBarItem", data);
             },
             'accesskey': function(success, fail, data) {
                 success();
             },
             'disabled': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "enableToolBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "enableToolBarItem", data);
             },
             'icon': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateToolBarItemImage", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "updateToolBarItemImage", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateToolBarItemTitle", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "updateToolBarItemTitle", data);
             }
         },
         'com.phonegap.menu.context.command': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "createTabBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "createTabBarItem", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "removeTabBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "removeTabBarItem", data);
             },
             'accesskey': function(success, fail, data) {
                 success();
             },
             'disabled': function(success, fail, data) {
                 data[1] = !data[1];
-                PhoneGap.exec(success, fail, "NativeControls2", "enableTabBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "enableTabBarItem", data);
             },
             'icon': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateTabBarItemImage", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "updateTabBarItemImage", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "NativeControls2", "updateTabBarItemTitle", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "updateTabBarItemTitle", data);
             }
         }
     };
-}
+})(window);
