@@ -28,14 +28,7 @@
 
 - (void) createTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) removeTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) removeTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) enableTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-//- (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateTabBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateTabBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 @end

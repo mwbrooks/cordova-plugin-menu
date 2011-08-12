@@ -65,23 +65,23 @@
         },
         'com.phonegap.menu.context.command': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "createTabBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "createTabBarItem", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "removeTabBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "removeTabBarItem", data);
             },
             'accesskey': function(success, fail, data) {
                 success();
             },
             'disabled': function(success, fail, data) {
                 data[1] = !data[1];
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "enableTabBarItem", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "enableTabBarItem", data);
             },
             'icon': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "updateTabBarItemImage", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "updateTabBarItemImage", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "updateTabBarItemTitle", data);
+                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "updateTabBarItemTitle", data);
             }
         }
     };
