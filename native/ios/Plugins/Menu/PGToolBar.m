@@ -39,38 +39,7 @@
     [super dealloc];
 }
 
-- (void) updateToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
-{
-	if (!self.toolBar) {
-		return;
-	}
-    
-    //    if ([options objectForKey:@"label"]) {
-    //        self.toolBar.topItem.title  = [options objectForKey:@"label"];
-    //	}
-    
-    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
-    NSString* callbackId = [arguments objectAtIndex:0];
-    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
-}
-
-- (void) removeToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
-{
-	if (!self.toolBar) {
-		return;
-	}
-	
-	[self.webView pg_removeSiblingView:self.toolBar withAnimation:NO];
-	[self.webView pg_relayout:NO];
-	
-	self.toolBar = nil;
-    
-    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
-    NSString* callbackId = [arguments objectAtIndex:0];
-    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
-}
-
-- (void) createToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) create:(NSArray*)arguments withDict:(NSDictionary*)options
 {
 	if (self.toolBar) {
 		return;
@@ -117,13 +86,47 @@
     [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
+- (void) delete:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+	if (!self.toolBar) {
+		return;
+	}
+	
+	[self.webView pg_removeSiblingView:self.toolBar withAnimation:NO];
+	[self.webView pg_relayout:NO];
+	
+	self.toolBar = nil;
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString* callbackId = [arguments objectAtIndex:0];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+}
+
+- (void) label:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+	if (!self.toolBar) {
+		return;
+	}
+    
+    NSString* callbackId = [arguments objectAtIndex:0];
+//  NSString* id         = [arguments objectAtIndex:1];
+    NSString* title      = [arguments objectAtIndex:2];
+    
+    if (title) {
+        self.toolBar.topItem.title = title;
+	}
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+}
+
 /**
  * Show the toolbar after its been created.
  */
 - (void) showToolBar:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     if (!self.toolBar) {
-        [self createToolBar:nil withDict:nil];
+        [self create:nil withDict:nil];
 	}
     
 	if (![self.webView pg_hasSiblingView:self.toolBar]) {

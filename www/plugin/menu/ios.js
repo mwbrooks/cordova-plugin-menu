@@ -23,13 +23,13 @@
     var serviceMap = {
         'com.phonegap.menu.toolbar': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "createToolBar", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.toolbar", "create", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "removeToolBar", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.toolbar", "delete", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.toolbar", "updateToolBar", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.toolbar", "label", data);
             }
         },
         'com.phonegap.menu.context': {

@@ -26,8 +26,9 @@
 @property (nonatomic, retain) UINavigationBar* toolBar;
 @property (nonatomic, retain) NSMutableDictionary* toolBarItems;
 
-- (void) createToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) removeToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) create:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) delete:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) label:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) showToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) hideToolBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 
