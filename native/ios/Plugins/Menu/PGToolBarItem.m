@@ -216,7 +216,7 @@
 
 - (void) toolBarDidSelectItem:(UIBarButtonItem*)item
 {
-    NSString* jsCallBack = [NSString stringWithFormat:@"window.HTMLCommandElement.elements[%d].attribute.action();", item.tag];
+    NSString* jsCallBack = [NSString stringWithFormat:@"window.PGMenuElement.actions[%d]();", item.tag];
     [super writeJavascript:jsCallBack];
 }
 

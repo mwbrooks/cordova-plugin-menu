@@ -131,4 +131,29 @@
     [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
+/**
+ * Manually select an individual tab bar item, or nil for deselecting a currently selected tab bar item.
+ * @brief manually select a tab bar item
+ * @param arguments the name of the tab bar item to select
+ * @see createTabBarItem
+ * @see showTabBarItems
+ */
+- (void) selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+{
+    NSString* callbackId = [arguments objectAtIndex:0];
+    NSString* itemName   = [arguments objectAtIndex:1];
+    UITabBarItem* item   = [self.tabBarItems objectForKey:itemName];
+    
+    self.tabBar.selectedItem = item;
+    
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+}
+
+- (void)tabBar:(UITabBar*)tabBar didSelectItem:(UITabBarItem *)item
+{
+    NSString* jsCallBack = [NSString stringWithFormat:@"window.PGMenuElement.actions[%d]();", item.tag];    
+    [super writeJavascript:jsCallBack];
+}
+
 @end

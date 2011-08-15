@@ -25,6 +25,5 @@
 - (void) disabled:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) icon:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) label:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 @end
