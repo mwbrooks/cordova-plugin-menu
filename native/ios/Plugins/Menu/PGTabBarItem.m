@@ -132,7 +132,7 @@
 //- (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
 //{
 //    if (!self.tabBar) {
-//        [self createTabBar:nil withDict:nil];
+//        [self create:nil withDict:nil];
 //	}
 //
 //    NSString* callbackId  = [arguments objectAtIndex:0];

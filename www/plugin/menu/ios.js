@@ -34,13 +34,13 @@
         },
         'com.phonegap.menu.context': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "createTabBar", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.context", "create", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context", "removeTabBar", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.context", "delete", data);
             },
             'label': function(success, fail, data) {
-                success(); // No label for a TabBar
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.context", "label", data);
             }
         },
         'com.phonegap.menu.toolbar.command': {

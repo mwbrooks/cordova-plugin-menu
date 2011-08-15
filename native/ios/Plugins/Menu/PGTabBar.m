@@ -39,7 +39,7 @@
     [super dealloc];
 }
 
-- (void) removeTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) delete:(NSArray*)arguments withDict:(NSDictionary*)options
 {
 	if (!self.tabBar) {
 		return;
@@ -56,7 +56,7 @@
 }
 
 
-- (void) createTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) create:(NSArray*)arguments withDict:(NSDictionary*)options
 {
 	if (self.tabBar) {
 		return;
@@ -87,13 +87,20 @@
     [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
+- (void) label:(NSArray*)arguments withDict:(NSDictionary*)options {
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    NSString*     callbackId   = [arguments objectAtIndex:0];
+    
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+}
+
 /**
  * Show the tab bar after its been created.
  */
 - (void) showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     if (!self.tabBar) {
-        [self createTabBar:nil withDict:nil];
+        [self create:nil withDict:nil];
 	}
     
 	if (![self.webView pg_hasSiblingView:self.tabBar]) {

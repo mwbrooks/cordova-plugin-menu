@@ -26,8 +26,9 @@
 @property (nonatomic, retain) UITabBar* tabBar;
 @property (nonatomic, retain) NSMutableDictionary* tabBarItems;
 
-- (void) createTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) removeTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) create:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) delete:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) label:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) showTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) hideTabBar:(NSArray*)arguments withDict:(NSDictionary*)options;
 
