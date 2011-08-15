@@ -19,7 +19,7 @@
 
 @implementation PGToolBarItem
 
-- (void) createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) create:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGToolBar* pgToolBar  = (PGToolBar*)[[self appDelegate] getCommandInstance:TOOL_BAR_PLUGIN];
     NSString*  callbackId = [arguments objectAtIndex:0];
@@ -121,10 +121,17 @@
     [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
+- (void) accesskey:(NSArray*)arguments withDict:(NSDictionary*)options {
+    NSString*     callbackId   = [arguments objectAtIndex:0];
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+}
+
 /**
  * Update an existing toolbar item's image.
  */
-- (void) updateToolBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) icon:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGToolBar* pgToolBar  = (PGToolBar*)[[self appDelegate] getCommandInstance:TOOL_BAR_PLUGIN];
     NSString* callbackId  = [arguments objectAtIndex:0];
@@ -143,7 +150,7 @@
 /**
  * Update an existing toolbar item's title.
  */
-- (void) updateToolBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) label:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGToolBar* pgToolBar  = (PGToolBar*)[[self appDelegate] getCommandInstance:TOOL_BAR_PLUGIN];
     NSString* callbackId  = [arguments objectAtIndex:0];
@@ -162,7 +169,7 @@
  * @param arguments Parameters used to identify the toolbar item to update
  *  -# \c name internal name used to represent this item when it was created
  */
-- (void) removeToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) delete:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGToolBar* pgToolBar  = (PGToolBar*)[[self appDelegate] getCommandInstance:TOOL_BAR_PLUGIN];
     NSString*  callbackId = [arguments objectAtIndex:0];
@@ -188,7 +195,7 @@
     [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
-- (void) enableToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) disabled:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGToolBar* pgToolBar  = (PGToolBar*)[[self appDelegate] getCommandInstance:TOOL_BAR_PLUGIN];
     NSString*  callbackId = [arguments objectAtIndex:0];

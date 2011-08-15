@@ -19,10 +19,11 @@
     
 }
 
-- (void) createToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) removeToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) enableToolBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateToolBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateToolBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) create:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) delete:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) accesskey:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) disabled:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) icon:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) label:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 @end
