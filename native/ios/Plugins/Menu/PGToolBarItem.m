@@ -200,14 +200,14 @@
     PGToolBar* pgToolBar  = (PGToolBar*)[[self appDelegate] getCommandInstance:TOOL_BAR_PLUGIN];
     NSString*  callbackId = [arguments objectAtIndex:0];
     NSString*  name       = [arguments objectAtIndex:1];
-    BOOL       enable     = [[arguments objectAtIndex:2] boolValue];
+    BOOL       disabled   = [[arguments objectAtIndex:2] boolValue];
 	
     UIBarButtonItem* item = [pgToolBar.toolBarItems objectForKey:name];
 	
 	NSUInteger index = [pgToolBar.toolBar.items indexOfObject:item];
 	if (index != NSNotFound)
 	{
-		item.enabled = enable;
+		item.enabled = !disabled;
 	}
     
     PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];

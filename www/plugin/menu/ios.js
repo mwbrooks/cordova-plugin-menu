@@ -65,23 +65,22 @@
         },
         'com.phonegap.menu.context.command': {
             'create': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "createTabBarItem", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.context.command", "create", data);
             },
             'delete': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "removeTabBarItem", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.context.command", "delete", data);
             },
             'accesskey': function(success, fail, data) {
-                success();
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.context.command", "accesskey", data);
             },
             'disabled': function(success, fail, data) {
-                data[1] = !data[1];
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "enableTabBarItem", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.context.command", "disabled", data);
             },
             'icon': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "updateTabBarItemImage", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.context.command", "icon", data);
             },
             'label': function(success, fail, data) {
-                PhoneGap.exec(success, fail, "com.phonegap.menu.context.command", "updateTabBarItemTitle", data);
+                PhoneGap.originalExec(success, fail, "com.phonegap.menu.context.command", "label", data);
             }
         }
     };

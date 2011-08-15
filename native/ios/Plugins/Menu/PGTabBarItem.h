@@ -19,12 +19,12 @@
     
 }
 
-- (void) createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) removeTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) enableTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-//- (void) updateTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateTabBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options;
-- (void) updateTabBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) create:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) delete:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) accesskey:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) disabled:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) icon:(NSArray*)arguments withDict:(NSDictionary*)options;
+- (void) label:(NSArray*)arguments withDict:(NSDictionary*)options;
 - (void) selectTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options;
 
 @end

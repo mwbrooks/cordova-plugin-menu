@@ -46,7 +46,7 @@
  * @param options Options for customizing the individual tab item
  *  - \c badge value to display in the optional circular badge on the item; if nil or unspecified, the badge will be hidden
  */
-- (void) createTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) create:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGTabBar* pgTabBar   = (PGTabBar*)[[self appDelegate] getCommandInstance:TAB_BAR_PLUGIN];
     NSString* callbackId = [arguments objectAtIndex:0];
@@ -151,7 +151,7 @@
 /**
  * Update an existing tab bar item's image.
  */
-- (void) updateTabBarItemImage:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) icon:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGTabBar* pgTabBar   = (PGTabBar*)[[self appDelegate] getCommandInstance:TAB_BAR_PLUGIN];
     NSString* callbackId = [arguments objectAtIndex:0];
@@ -169,7 +169,7 @@
 /**
  * Update an existing tab bar item's title.
  */
-- (void) updateTabBarItemTitle:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) label:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGTabBar* pgTabBar   = (PGTabBar*)[[self appDelegate] getCommandInstance:TAB_BAR_PLUGIN];
     NSString* callbackId = [arguments objectAtIndex:0];
@@ -188,7 +188,7 @@
  * @param arguments Parameters used to identify the tab bar item to update
  *  -# \c name internal name used to represent this item when it was created
  */
-- (void) removeTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) delete:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGTabBar* pgTabBar   = (PGTabBar*)[[self appDelegate] getCommandInstance:TAB_BAR_PLUGIN];
     NSString* callbackId = [arguments objectAtIndex:0];
@@ -208,18 +208,25 @@
     [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
 }
 
-- (void) enableTabBarItem:(NSArray*)arguments withDict:(NSDictionary*)options
+- (void) accesskey:(NSArray*)arguments withDict:(NSDictionary*)options {
+    NSString*     callbackId   = [arguments objectAtIndex:0];
+    PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
+    
+    [self writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];
+}
+
+- (void) disabled:(NSArray*)arguments withDict:(NSDictionary*)options
 {
     PGTabBar* pgTabBar   = (PGTabBar*)[[self appDelegate] getCommandInstance:TAB_BAR_PLUGIN];
     NSString* callbackId = [arguments objectAtIndex:0];
     NSString* name       = [arguments objectAtIndex:1];
-    BOOL enable          = [[arguments objectAtIndex:2] boolValue];
+    BOOL disabled        = [[arguments objectAtIndex:2] boolValue];
 	
     UITabBarItem* item = [pgTabBar.tabBarItems objectForKey:name];
 	
 	NSUInteger index = [pgTabBar.tabBar.items indexOfObject:item];
 	if (index != NSNotFound) {
-		item.enabled = enable;
+		item.enabled = !disabled;
 	}
     
     PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
