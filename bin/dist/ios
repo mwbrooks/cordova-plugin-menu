@@ -16,7 +16,6 @@ mkdir -p ${DIST_WEB_PATH}
 
 cat ./www/plugin/menu/index.js  >> ${INDEX_JS}
 cat ./www/plugin/menu/helper.js >> ${INDEX_JS}
-cat ./www/plugin/menu/ios.js    >> ${INDEX_JS}
 
 # Objective-C
 
