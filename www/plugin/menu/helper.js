@@ -22,7 +22,7 @@ function asyncForEach(array, fn, callback) {
     }
 
     function processNextItem() {
-        var item = array.pop();
+        var item = array.shift();
         fn(item, nextItem);
     }
 
