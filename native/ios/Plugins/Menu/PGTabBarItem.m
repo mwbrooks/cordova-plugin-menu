@@ -158,8 +158,10 @@
     NSString* name       = [arguments objectAtIndex:1];
     NSString* imageName  = [arguments objectAtIndex:2];
     
+    NSString* imagePath = [[PhoneGapDelegate class] pathForResource:imageName];
+    UIImage*  image     = [UIImage imageWithContentsOfFile:imagePath];
+    
     UITabBarItem* item = [pgTabBar.tabBarItems objectForKey:name];
-    UIImage* image = [UIImage imageNamed:imageName];
     [item setImage:image];
     
     PluginResult* pluginResult = [PluginResult resultWithStatus: PGCommandStatus_OK];
