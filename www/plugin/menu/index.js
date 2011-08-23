@@ -178,7 +178,17 @@ var PGMenuElement = (function() {
                 var action = attributes['action'];
                 var fn     = action;
 
-                if (typeof fn === 'string') {
+                // An action can either be formatted in two ways:
+                //
+                //   1. A JavaScript function
+                //     - Anonymous function
+                //     - Function referenced by variables
+                //   2. A string that should be evaluated as JavaScript
+                //
+                if (fn.match(/^function/)) {
+                    fn = eval('(function(window) { return ' + action + '; })(window);');
+                }
+                else {
                     fn = function() { eval.call(window, action); };
                 }
 
