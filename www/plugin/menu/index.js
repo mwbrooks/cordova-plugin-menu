@@ -1,22 +1,41 @@
-// Load the menu on startup
+//
+// Generate Menu
+// =============
+// On deviceready generate the menus.
+//
 
 document.addEventListener('deviceready', function() {
     PGMenuElement.update();
 }, false);
 
+//
 // PhoneGap Menu Element
+// =====================
+//
+// The PhoneGap Menu plugin is a generalized menu interface
+// that creates a native Android, iOS, and BlackBerry menu.
+// The menu implementation is based on the
+// [W3C HTMLMenuElement & HTMLCommandElement Specification]
+// (http://www.w3.org/TR/html5/interactive-elements.html).
+//
 
 var PGMenuElement = (function() {
 
-    var Help = {
-        currentId: 0,
-        nextId: function() {
-            return ++this.currentId;
+    // Manage and generate unique IDs
+    // for each menu or command element.
+    var Id = {
+        current: 0,
+        next: function() {
+            return ++this.current;
         }
     };
 
-    // Interface between DOM Menu Element and PhoneGap Menu
-
+    //
+    // A Menu Object
+    // -------------
+    //
+    // Interface between HTMLMenuElement and native Menu instance.
+    //
     var Menu = function(element) {
         var element = element;
 
@@ -101,7 +120,7 @@ var PGMenuElement = (function() {
             getAttributes: function() {
                 return {
                     'pg-created': (element.getAttribute('pg-created') === 'true') || false,
-                    'pg-id':      element.getAttribute('pg-id')                   || Help.nextId(),
+                    'pg-id':      element.getAttribute('pg-id')                   || Id.next(),
                     'type':       element.getAttribute('type')                    || '',
                     'label':      element.getAttribute('label')                   || ''
                 };
@@ -123,6 +142,12 @@ var PGMenuElement = (function() {
         };
     };
 
+    //
+    // A Command Object
+    // ----------------
+    //
+    // Interface between HTMLCommandElement and native Menu instance.
+    //
     var Command = function(element) {
         var element = element;
 
@@ -278,7 +303,7 @@ var PGMenuElement = (function() {
             getAttributes: function() {
                 return {
                     'pg-created': (element.getAttribute('pg-created') === 'true') || false,
-                    'pg-id':      element.getAttribute('pg-id')                   || Help.nextId(),
+                    'pg-id':      element.getAttribute('pg-id')                   || Id.next(),
                     'accesskey':  element.getAttribute('accesskey')               || '',
                     'action':     element.getAttribute('action')                  || function(){},
                     'disabled':   (element.getAttribute('disabled') === 'true')   || false,
@@ -317,7 +342,13 @@ var PGMenuElement = (function() {
 
     return {
         //
-        // Initializes new menu elements and updates existing menus.
+        // Update Menu
+        // -----------
+        //
+        // Brute force way to initialize new menu elements
+        // and updates existing menus.
+        //
+        // Each menu will inturn manage its <command> elements.
         //
         update: function() {
             var elements = document.getElementsByTagName('menu');
@@ -332,6 +363,20 @@ var PGMenuElement = (function() {
                 });
             });
         },
+
+        //
+        // Command Action Callbacks
+        // ------------------------
+        //
+        // The callbacks are publically accessible
+        // so that the native side of PhoneGap can trigger
+        // a callback. Each action is referenced by the elements
+        // ID.
+        //
+        // To fire an element's action:
+        //
+        //     PGMenuElement.actions[12]();
+        //
         actions: {
         }
     };
