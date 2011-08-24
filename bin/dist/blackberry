@@ -3,7 +3,7 @@
 # BlackBerry Distribution
 # =======================
 
-BASE_PATH=./build/dist/blackberry
+BASE_PATH=./build/distribution/blackberry
 
 # JavaScript
 

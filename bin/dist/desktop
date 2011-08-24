@@ -3,7 +3,7 @@
 # Desktop Distribution
 # ====================
 
-DIST_PATH=./build/dist/desktop
+DIST_PATH=./build/distribution/desktop
 DIST_WEB_PATH=${DIST_PATH}/www/plugin/menu
 
 INDEX_JS=${DIST_WEB_PATH}/index.js

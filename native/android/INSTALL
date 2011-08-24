@@ -1,0 +1,18 @@
+How to Install phonegap-plugin-menu
+===================================
+
+Copy Files
+----------
+
+Copy all files except `INSTALL` to your Android project.
+The directory structure of the files is important.
+
+Update plugins.xml
+------------------
+
+Add the following four elements to `res/xml/plugins.xml`:
+
+    <plugin name="com.phonegap.menu.toolbar"         value="com.phonegap.menu.AppMenu" />
+    <plugin name="com.phonegap.menu.toolbar.command" value="com.phonegap.menu.AppMenuItem" />
+    <plugin name="com.phonegap.menu.context"         value="com.phonegap.menu.AppMenu" />
+    <plugin name="com.phonegap.menu.context.command" value="com.phonegap.menu.AppMenuItem" />

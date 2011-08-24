@@ -12,7 +12,7 @@ help:
 	@echo "  make COMMAND"
 	@echo
 	@echo "COMMANDS"
-	@echo "  dist ......... Generate plugin distribution at /build/dist/"
+	@echo "  dist ......... Generate plugin distribution for all platforms."
 	@echo "  android ...... Build & run example app for Android."
 	@echo "  blackberry ... Build & run example app for BlackBerry 5/6."
 	@echo "  desktop ...... Build & run example app for Desktop."
@@ -45,6 +45,10 @@ dist:
 	./bin/dist/blackberry
 	./bin/dist/desktop
 	./bin/dist/ios
+	@echo "---------------------------"
+	@echo "  Plugin Distribution:"
+	@echo "    => /build/distribution/"
+	@echo "---------------------------"
 
 example:
 	./bin/create/example

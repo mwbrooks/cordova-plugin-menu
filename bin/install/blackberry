@@ -10,4 +10,4 @@ cp -R ./bin/template/blackberry ./build/blackberry
 cp -R ./build/app/www/* ./build/blackberry/www/
 
 # install plugin
-cp -R ./build/dist/blackberry/* ./build/blackberry/
+cp -R ./build/distribution/blackberry/* ./build/blackberry/

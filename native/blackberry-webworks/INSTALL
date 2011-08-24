@@ -1,0 +1,15 @@
+How to Install phonegap-plugin-menu
+===================================
+
+Copy Files
+----------
+
+Copy all files except `INSTALL` to your BlackBerry WebWorks  project.
+The directory structure of the files is important.
+
+Update config.xml
+-----------------
+
+Add the following feature element to `www/config.xml`:
+
+    <feature id="blackberry.ui.menu" required="true" />

@@ -3,7 +3,7 @@
 # Android Distribution
 # ====================
 
-BASE_PATH=./build/dist/android
+BASE_PATH=./build/distribution/android
 
 # JavaScript
 

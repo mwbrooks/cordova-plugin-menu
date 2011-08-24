@@ -3,7 +3,7 @@
 # Clean Project for Distribution
 # ==============================
 
-DIST_PATH=./build/dist
+DIST_PATH=./build/distribution
 
 if test -d ${DIST_PATH}; then \
 	rm -Rf ${DIST_PATH}; \

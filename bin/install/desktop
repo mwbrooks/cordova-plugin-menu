@@ -10,4 +10,4 @@ cp -R ./bin/template/desktop ./build/desktop
 cp -R ./build/app/www/* ./build/desktop/www/
 
 # install plugin
-cp -R ./build/dist/desktop/www/* ./build/desktop/www/
+cp -R ./build/distribution/desktop/www/* ./build/desktop/www/

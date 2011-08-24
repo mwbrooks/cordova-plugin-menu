@@ -10,4 +10,4 @@ cp -R ./bin/template/android ./build/android
 cp -R ./build/app/www/* ./build/android/assets/www/
 
 # install plugin
-cp -R ./build/dist/android/* ./build/android/
+cp -R ./build/distribution/android/* ./build/android/

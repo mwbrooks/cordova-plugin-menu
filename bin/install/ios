@@ -10,4 +10,4 @@ cp -R ./bin/template/ios ./build/ios
 cp -R ./build/app/www/* ./build/ios/www/
 
 # install plugin
-cp -R ./build/dist/ios/* ./build/ios/
+cp -R ./build/distribution/ios/* ./build/ios/
