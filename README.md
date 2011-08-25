@@ -162,3 +162,28 @@ Call to re-render all menus.
 Menus are not automatically updated for performance considerations.
 - DOM Mutation Events can affect performance.
 - Polling is inefficient for how often a menu is updated.
+
+Want to contribute?
+-------------------
+
+### Report or fix an issue
+
+We use [GitHub Issues](https://github.com/nitobi/phonegap-plugin-menu/issues)
+
+By the way, you rock! Thanks for helping us improve phonegap-plugin-menu!
+
+### Pull Requests
+
+Pull requests are welcome!
+
+We appreciate the use of topic branches.
+
+    git checkout -b issue_23
+
+    # code
+
+    git commit -m "Issue 23: Fix a bad bug."
+
+    git push origin issue_23
+
+    # send pull request from branch issue_23 to nitobi:master
