@@ -12,8 +12,9 @@ INDEX_JS=${WEB_PATH}/index.js
 
 mkdir -p ${WEB_PATH}
 
-cat ./www/plugin/menu/index.js  >> ${INDEX_JS}
-cat ./www/plugin/menu/helper.js >> ${INDEX_JS}
+cat ./www/plugin/menu/index.js      >> ${INDEX_JS}
+cat ./www/plugin/menu/helper.js     >> ${INDEX_JS}
+cat ./www/plugin/menu/blackberry.js >> ${INDEX_JS}
 
 # Java
 
