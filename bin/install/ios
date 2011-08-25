@@ -7,7 +7,7 @@
 cp -R ./bin/template/ios ./build/ios
 
 # install app
-cp -R ./build/app/www/* ./build/ios/www/
+cp -R ./build/www/* ./build/ios/www/
 
 # install plugin
 cp -R ./build/distribution/ios/* ./build/ios/

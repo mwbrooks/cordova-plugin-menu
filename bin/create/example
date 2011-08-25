@@ -3,9 +3,9 @@
 # Create Example App
 # ==================
 
-BUILD_PATH=./build/app
+BUILD_PATH=./build/www
 
 rm -Rf $BUILD_PATH
 mkdir -p $BUILD_PATH
 
-cp -R ./test/example $BUILD_PATH/www
+cp -R ./example/ $BUILD_PATH
