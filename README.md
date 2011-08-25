@@ -1,284 +1,164 @@
 PhoneGap Plugin for Native Menus
 ================================
 
-> HTMLMenuElement and HTMLCommandElement polyfill
+> Add a native ToolBar, TabBar, or Menu to a PhoneGap platform.
 
-Overview
---------
+Summary
+-------
 
-The implementation is loosely based on the [W3C HTMLMenuElement / HTMLCommandElement Specification](http://www.w3.org/TR/html5/interactive-elements.html).
+The phonegap-plugin-menu provides an HTML interface to define a
+menu types. Each PhoneGap platform will then render the appropriate
+native menu from the HTML.
 
-API
-===
+The implementation is loose polyfill of the [W3C HTMLMenuElement / HTMLCommandElement Specification](http://www.w3.org/TR/html5/interactive-elements.html).
 
-Markup
-------
+Platform Support
+----------------
 
-### Toolbar
+- Android
+- BlackBerry WebWorks
+- iOS
+
+Example
+-------
 
     <menu type="toolbar" label="Tweets">
-      <command type="command" label="Back"    icon="back-arrow.png" disabled="false" accesskey="back" />
-      <command type="command" label="Options" icon="gear.png"       disabled="false" />
+        <command label="Back" icon="img/back.png" disabled="false" action="Page.back();" accesskey="back" />
+        <command label="New"  icon="img/new.png"  disabled="false" action="Page.new();"  accesskey="" />
     </menu>
-
-### Context Menu
 
     <menu type="context">
-      <command label="Tweets"  icon="bubble.png"  disabled="false" />
-      <command label="Replies" icon="reply.png"   disabled="false" />
-      <command label="Search"  icon="search.png"  disabled="false" accesskey="search" />
-      <command label="Profile" icon="profile.png" disabled="false" />
+        <command label="Tweets"  icon="bubble.png"  disabled="false" action="Page.tweets();"  accesskey="" />
+        <command label="Replies" icon="reply.png"   disabled="false" action="Page.replies();" accesskey="" />
+        <command label="Search"  icon="search.png"  disabled="false" action="Page.search();"  accesskey="search" />
+        <command label="Profile" icon="profile.png" disabled="false" action="Page.profile();" accesskey="" />
     </menu>
 
-JavaScript
-----------
+Install from Download
+---------------------
 
-    // Create a toolbar menu
-    //
-    var toolbar = document.createElement('menu');
-    toolbar.setAttribute('type', 'toolbar');
-    toolbar.setAttribute('label', 'Tweets');  // optional
-    
-    // Add a Back button
-    //
-    var backButton = document.createElement('command');
-    backButton.setAttribute('label',     'Back');            // Default: ""
-    backButton.setAttribute('icon',      'back-arrow.png');  // Default: ""
-    backButton.setAttribute('disabled',  'false');           // Default: false
-    backButton.setAttribute('accesskey', 'back');            // Default: ""
-    toolbar.appendChild(backButton);
-    
-    // Add a Options button
-    //
-    var optionsButton = document.createElement('command');
-    optionsButton.setAttribute('label', 'Options');
-    optionsButton.setAttribute('icon',  'gear.png');
-    toolbar.appendChild(optionsButton);
-    
-    // To remove a button
-    //
-    toolbar.removeChild(backButtton);
+1. Download the latest release from [phonegap-plugin-menu Downloads Page](https://github.com/nitobi/phonegap-plugin-menu/archives/master).
+2. Extract the release
+3. For your platform, read `INSTALL`
+    - `/android/INSTALL`
+    - `/blackberry/INSTALL`
+    - `/desktop/INSTALL`
+    - `/ios/INSTALL`
 
-    // getAttribute
-    //
-    toolbar.getAttribute('label');    // Returns 'Tweets'
-    backButton.getAttribute('icon');  // Returns 'back-arrow.png'
-    
-    // hasAttribute
-    //
-    toolbar.hasAttribute('label');  // true
-    
-    // removeAttribute
-    //
-    toolbar.removeAttribute('label');
+Install from Source
+-------------------
 
-Getting Started with Android
-============================
+1. Clone or download the source code
+2. Change into the source code directory
+3. Run `make` to view the available options
+4. Run `make dist`
+5. Follow _Install from Download_ instructions
 
-For plugin development, you can quickly build and test using a
-set of built-in command-line scripts.
+HTML API
+--------
 
-For plugin usage, you will need to manually install the plugin.
+Menus and commands are represented purely in HTML. You can customize the menu and commands using changes their HTML attributes.
 
-Prerequisites 
--------------
-
-### Android Setup (OS X and Linux)
-
-> Your Android path may vary.
-
-1. Add the Android SDK to your path.
-
-        $ export PATH=$PATH:/Applications/android-sdk-mac_x86/tools
-
-2. Create a AVD (simulator) using the `android` command-line tool.
-
-        $ android
-
-### Android Setup (Windows)
-
-> Your Android path may vary.
-
-1. Add the Android SDK to your path.
-
-    1. Open the _Environment Variables_ window
-    2. Edit _Path_ under _System Variables_
-    
-            <existing paths>;C:\android-sdk-windows\tools
-
-2. Create a AVD (simulator) using the `android.bat` (double click or run from command-line).
-
-        C:\android-sdk-windows\tools\android.bat
-
-### Unix Terminal (Windows)
-
-On Windows, it is possible to install a Unix terminal environment.
-This is a great alternative to the Command Prompt `cmd.exe`.
-From the Unix shell, you can interact with your `C:\` as `/c/` and common Unix commands.
-
-1. [Follow the GitHub tutorial on installing GitBash](http://help.github.com/win-set-up-git/)
-    - You do not need to setup SSH keys, unless you plan to use Git within Windows.
-2. [Download `make.exe`](http://dl.dropbox.com/u/30262219/ie/make.exe)
-    - Copy to `C:\Program Files (x86)\Git\bin`
-    - _Reference:_ File originally [available on msysgit repository](http://repo.or.cz/w/msysgit.git?a=blob;f=bin/make.exe;h=a971ea1266ff40e89137bba068e2c944a382725f;hb=968336eddac1874c56cd934d10783566af5a3e26)
-3. Close and reopen GitBash
-
-Initialize Android Project
---------------------------
-
-### OS X or Linux
-
-1. Change into the Android target
-
-        $ cd phonegap-plugin-menu/target/android
-
-2. Choose what targets the Android application should support
-
-        $ android list target
-
-3. For each target ID, add the target to the project, where `1` is the target ID
-
-        $ android update project -p . -t 1
-
-### Windows
-
-> The commands are shown in by the Command Prompt (C:\>) and Unix Shell Emulator ($).
-  I highly recommend that you use the Unix Shell.
-
-1. Change into the Android target
-
-        C:\> cd phonegap-plugin-menu/target/android
-        
-        $ cd phonegap-plugin-menu/target/android
-
-2. Choose what targets the Android application should support
-
-        C:\> android.bat list target
-    
-        $ cmd.exe /k android.bat list target
-
-3. For each target ID, add the target to the project, where `1` is the target ID
-
-        C:\> android.bat update project -p . -t 1
-        
-        $ cmd.exe /k android.bat update project -p . -t 1
-
-> From here on, you should be using OS X, Linux, or GitBash within Windows
-
-Plugin Development
+&#60;menu&#62; API
 ------------------
 
-### Build Plugin
+__&#60;menu type="toolbar"&#62;__
 
-1. Open your AVD simulator
+Create a toolbar menu.
 
-        $ android
+- Android: Treats toolbar as a context menu.
+- BlackBerry: Treat toolbar as a context menu.
+- iOS: Creates a native ToolBar. The PhoneGap webview is repositioned below the toolbar.
 
-2. Change directory to `phonegap-plugin-menu`
+__&#60;menu type="context"&#62;__
 
-        $ cd phonegap-plugin-menu
+Create a context menu. This menu is typically invoked by the device's menu button.
 
-3. View command-line script Help Menu
+- Android: Creates an Android menu that is invoked by the menu button.
+- BlackBerry: Creates a BlackBerry menu that is invoked by the menu button.
+- iOS: Creates a native TabBar. The PhoneGap webview is repositioned above the TabBar.
 
-        $ make help
+__&#60;menu label="Home"&#62;__
 
-4. Build example application to Android target
+Add a title to the menu. The title will behave differently for a `type="toolbar"` and `type="context"` menu.
 
-        $ make example android
+- Android: Ignored because context menus do not have titles.
+- BlackBerry: Ignored because context menus do not have titles.
+- iOS: A title is added to the ToolBar but ignored for the TabBar.
 
+&#60;command&#62; API
+----------------------
 
-Plugin Usage in Existing Project
---------------------------------
+__&#60;command label="toolbar"&#62;__
 
-### Upgrade PhoneGap-Android (Java)
+Add a title to a command button.
 
-The upgrade is based on PhoneGap-Android 0.9.5.1 and adds hooks for an dynamic Android menu.
+__&#60;command icon="context"&#62;__
 
-In your Android project, replace `libs/phonegap.0.9.5.1.jar` with
-`phonegap-plugin-menu/target/android/libs/phonegap.0.9.5.1.jar`.
+Add an icon image to a command button.
 
-    $ cp /phonegap-plugin-menu/target/android/libs/phonegap.0.9.5.1.jar /project/libs/phonegap.0.9.5.1.jar
+__&#60;command disabled="true"&#62;__
 
-_Note:_ Your project should also be using the JavaScript for 0.9.5.1. You can find the JavaScript at
-`phonegap-plugin-menu/target/android/lib/phonegap.0.9.5.1.js`.
+Enable or disabled a command button.
 
-### Install Java code
+- Android: Disabled commands are hidden.
+- BlackBerry: Disabled commands are hidden.
+- iOS: Disabled commands are faded.
 
-1. Copy the following to your project's `src` directory:
+__&#60;command action="Home"&#62;__
 
-        phonegap-plugin-menu/native/android/
+Attach callback function or JavaScript expression to a command.
 
-### Install JavaScript code
+Inline HTML can use a JavaScript expression such as:
 
-1. Copy the following to your project's `www` directory:
+    <command action="someGlobalFunction();">
+    <command action="console.log('hello'); console.log('world');">
 
-        phonegap-plugin-menu/www/plugin/menu/index.js
+JavaScript can attach callback functions as such:
 
-2. Include the JavaScript in your HTML page:
+    // get a handle to a command element
+    var cmd = document.getElementById('someCommandId');
 
-        <script type="text/javascript" src="phonegap.0.9.5.1.min.js"></script>
-        
-        <!-- After phonegap.js and the order is important -->
-        <script type="text/javascript" src="plugin/menu/index.js"></script>
+    // anonymous function
+    cmd.setAttribute('action', function() {
+        console.log('hello from an anonymous function!');
+    });
 
-Getting Started with iOS
-========================
+    // function handle
+    var callback = function() {
+        console.log('hello from a callback function!');
+    });
 
-For plugin development, you can quickly build and test using a
-set of built-in command-line scripts.
+    cmd.setAttribute('action', callback);
 
-For plugin usage, you will need to manually install the plugin.
+JavaScript API
+--------------
 
-Prerequisites 
--------------
+Similar to other HTML elements, you can create and manipulate `<menu>` and `<command>` using JavaScript.
 
-### Xcode Setup
+    // <menu type="toolbar">
+    //     <command label="Home" />
+    // </menu>
 
-1. Install the latest Xcode SDK
+    var menu = document.createElement('menu');
+    menu.setAttribute('type', 'toolbar');
+    document.body.appendChild(menu);
 
-### PhoneGap-iOS Setup
+    var command = document.createElement('command');
+    command.setAttribute('label', 'Home');
+    command.setAttribute('action', function() {
+        console.log('Home');
+    });
+    menu.appendChild(command);
 
-1. [Download the PhoneGap 0.9.5.1 release](http://www.phonegap.com/download-thankyou)
-2. Unzip
-3. Run `iOS/PhoneGapInstaller.pkg`
+    // Refresh all menus
 
-Plugin Development
-------------------
+    PGMenuElement.update();
 
-### Build Plugin
+__PGMenuElement.update();__
 
-1. Change directory to `phonegap-plugin-menu`
+Call to re-render all menus.
 
-        $ cd phonegap-plugin-menu
-
-2. View command-line script Help Menu
-
-        $ make help
-
-3. Build example application to iOS target
-
-        $ make example ios
-
-4. Clean & Run the open Xcode project
-
-Plugin Usage in Existing Project
---------------------------------
-
-### Install Native code
-
-1. Copy the following to your project's `MyProject/MyProject/Plugins` directory:
-
-        phonegap-plugin-menu/native/ios/NativeControls
-
-### Install JavaScript code
-
-1. Copy the following to your project's `www` directory:
-
-        phonegap-plugin-menu/www/plugin/menu/index.js
-
-2. Include the JavaScript in your HTML page:
-
-        <script type="text/javascript" src="phonegap.0.9.5.1.min.js"></script>
-        
-        <!-- After phonegap.js and the order is important -->
-        <script type="text/javascript" src="plugin/menu/index.js"></script>
+Menus are not automatically updated for performance considerations.
+- DOM Mutation Events can affect performance.
+- Polling is inefficient for how often a menu is updated.
