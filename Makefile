@@ -13,6 +13,7 @@ help:
 	@echo
 	@echo "COMMANDS"
 	@echo "  dist ......... Generate plugin distribution for all platforms."
+	@echo "  release ...... Generate an archive (zip) using the latest tag."
 	@echo "  android ...... Build & run example app for Android."
 	@echo "  blackberry ... Build & run example app for BlackBerry 5/6."
 	@echo "  desktop ...... Build & run example app for Desktop."
@@ -45,10 +46,21 @@ dist:
 	./bin/dist/blackberry
 	./bin/dist/desktop
 	./bin/dist/ios
-	@echo "---------------------------"
-	@echo "  Plugin Distribution:"
-	@echo "    => /build/distribution/"
-	@echo "---------------------------"
+	@echo "--------------"
+	@echo " Distribution"
+	@echo "--------------"
+	@echo "  => /build/distribution/"
+	@echo
+
+release: dist
+	cd ./build/distribution; zip -rq phonegap-plugin-menu-v`git describe --tags master`.zip .
+	mkdir -p ./build/release
+	mv ./build/distribution/*.zip ./build/release
+	@echo "---------"
+	@echo " Release"
+	@echo "---------"
+	@echo "  => /build/release/phonegap-plugin-menu-v`git describe --tags master`.zip"
+	@echo
 
 example:
 	./bin/create/example
@@ -56,4 +68,4 @@ example:
 clean:
 	./bin/clean/build
 
-.PHONY: all help example test dist android blackberry desktop ios clean
+.SILENT: all help example test dist release android blackberry desktop ios clean
