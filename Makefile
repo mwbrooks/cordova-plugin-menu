@@ -29,7 +29,7 @@ android: clean dist example
 	./bin/run/android
 
 blackberry: clean dist example
-	./bin/install/blackberry/Users/timkim/repo/phonegap-plugin-menu/bin/install/desktop
+	./bin/install/blackberry
 	./bin/run/blackberry
 
 desktop: clean dist example
