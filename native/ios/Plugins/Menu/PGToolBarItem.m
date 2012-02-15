@@ -13,6 +13,7 @@
 //
 
 #import "PGToolBarItem.h"
+#import <PhoneGap/PhoneGapDelegate.h>
 #import "PGToolBar.h"
 
 #define TOOL_BAR_PLUGIN @"com.phonegap.menu.toolbar"

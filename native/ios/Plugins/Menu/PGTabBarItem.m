@@ -13,6 +13,7 @@
 //
 
 #import "PGTabBarItem.h"
+#import <PhoneGap/PhoneGapDelegate.h>
 #import "PGTabBar.h"
 
 #define TAB_BAR_PLUGIN @"com.phonegap.menu.context"
