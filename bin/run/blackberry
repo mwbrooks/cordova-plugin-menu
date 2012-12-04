@@ -1,8 +1,0 @@
-#! /bin/sh
-
-# Build Application for BlackBerry
-# ================================
-
-PROJECT_PATH=./build/blackberry
-
-ant -f ${PROJECT_PATH}/build.xml load-simulator
