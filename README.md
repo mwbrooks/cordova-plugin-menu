@@ -1,63 +1,39 @@
-PhoneGap Plugin for Native Menus
-================================
+# Native Menu Plugin for Apache Cordova
 
-> Add a native ToolBar, TabBar, or Menu to a PhoneGap platform.
+## Overview
 
-Summary
--------
-
-The phonegap-plugin-menu provides an HTML interface to define a
-menu types. Each PhoneGap platform will then render the appropriate
+The cordova-plugin-menu provides an HTML interface to define a
+menu types. Each Cordova platform will then render the appropriate
 native menu from the HTML.
 
-The implementation is loose polyfill of the [W3C HTMLMenuElement / HTMLCommandElement Specification](http://www.w3.org/TR/html5/interactive-elements.html).
+The implementation is loose polyfill of the [W3C HTMLMenuElement](http://dev.w3.org/html5/spec/single-page.html#the-menu-element).
 
-Platform Support
-----------------
+## Platform Support
 
 - Android
-- BlackBerry WebWorks
+- BlackBerry 10
 - iOS
 
-Example
--------
+## Example
 
     <menu type="toolbar" label="Tweets">
         <command label="Back" icon="img/back.png" disabled="false" action="Page.back();" accesskey="back" />
-        <command label="New"  icon="img/new.png"  disabled="false" action="Page.new();"  accesskey="" />
+        <command label="New"  icon="img/new.png"  disabled="false" action="Page.new();"  accesskey=""     />
     </menu>
 
     <menu type="context">
-        <command label="Tweets"  icon="bubble.png"  disabled="false" action="Page.tweets();"  accesskey="" />
-        <command label="Replies" icon="reply.png"   disabled="false" action="Page.replies();" accesskey="" />
+        <command label="Tweets"  icon="bubble.png"  disabled="false" action="Page.tweets();"  accesskey=""       />
+        <command label="Replies" icon="reply.png"   disabled="false" action="Page.replies();" accesskey=""       />
         <command label="Search"  icon="search.png"  disabled="false" action="Page.search();"  accesskey="search" />
-        <command label="Profile" icon="profile.png" disabled="false" action="Page.profile();" accesskey="" />
+        <command label="Profile" icon="profile.png" disabled="false" action="Page.profile();" accesskey=""       />
     </menu>
 
-Install from Download
----------------------
+## HTML API
 
-1. Download the latest release from [phonegap-plugin-menu Downloads Page](https://github.com/nitobi/phonegap-plugin-menu/archives/master).
-2. Extract the release
-3. For your platform, read `INSTALL`
-    - `/android/INSTALL`
-    - `/blackberry/INSTALL`
-    - `/desktop/INSTALL`
-    - `/ios/INSTALL`
-
-Install from Source
--------------------
-
-1. Clone or download the source code
-2. Change into the source code directory
-3. Run `make` to view the available options
-4. Run `make dist`
-5. Follow _Install from Download_ instructions
-
-HTML API
---------
-
-Menus and commands are represented purely in HTML. You can customize the menu and commands using changes their HTML attributes.
+Menus and commands are defined in the DOM and represented as HTML.
+Similar to other HTML elments, you can define the role of the menu and commands
+with HTML attributes. During runtime, you can interact with the menu and commands
+using JavaScript.
 
 &#60;menu&#62; API
 ------------------
@@ -66,9 +42,9 @@ __&#60;menu type="toolbar"&#62;__
 
 Create a toolbar menu.
 
-- Android: Treats toolbar as a context menu.
-- BlackBerry: Treat toolbar as a context menu.
-- iOS: Creates a native ToolBar. The PhoneGap webview is repositioned below the toolbar.
+- Android: Creates a title bar.
+- BlackBerry: @DISCUSS
+- iOS: Creates a native ToolBar. The Cordova webview is repositioned below the toolbar.
 
 __&#60;menu type="context"&#62;__
 
@@ -76,7 +52,7 @@ Create a context menu. This menu is typically invoked by the device's menu butto
 
 - Android: Creates an Android menu that is invoked by the menu button.
 - BlackBerry: Creates a BlackBerry menu that is invoked by the menu button.
-- iOS: Creates a native TabBar. The PhoneGap webview is repositioned above the TabBar.
+- iOS: Creates a native TabBar. The Cordova webview is repositioned above the TabBar.
 
 __&#60;menu label="Home"&#62;__
 
@@ -136,9 +112,13 @@ JavaScript API
 
 Similar to other HTML elements, you can create and manipulate `<menu>` and `<command>` using JavaScript.
 
-    // <menu type="toolbar">
-    //     <command label="Home" />
-    // </menu>
+HTML:
+
+    <menu type="toolbar">
+        <command label="Home" />
+    </menu>
+
+JavaScript:
 
     var menu = document.createElement('menu');
     menu.setAttribute('type', 'toolbar');
@@ -151,26 +131,14 @@ Similar to other HTML elements, you can create and manipulate `<menu>` and `<com
     });
     menu.appendChild(command);
 
-    // Refresh all menus
-
-    PGMenuElement.update();
-
-__PGMenuElement.update();__
-
-Call to re-render all menus.
-
-Menus are not automatically updated for performance considerations.
-- DOM Mutation Events can affect performance.
-- Polling is inefficient for how often a menu is updated.
-
 Want to contribute?
 -------------------
 
 ### Report or fix an issue
 
-We use [GitHub Issues](https://github.com/nitobi/phonegap-plugin-menu/issues)
+We use [GitHub Issues](https://github.com/mwbrooks/cordova-plugin-menu/issues)
 
-By the way, you rock! Thanks for helping us improve phonegap-plugin-menu!
+By the way, you rock! Thanks for helping us improve cordova-plugin-menu!
 
 ### Pull Requests
 
@@ -186,4 +154,4 @@ We appreciate the use of topic branches.
 
     git push origin issue_23
 
-    # send pull request from branch issue_23 to nitobi:master
+    # send pull request from branch issue_23 to mwbrooks:master
